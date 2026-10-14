@@ -1,0 +1,68 @@
+status: "PASS"
+inputs:
+  logical_model:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.candidate.yaml"
+    sha256: "d49ca992ba7e1ab5b2378bc24867bf876cd67f940e819be57bad297993b79712"
+  semantic_registry:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+    sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+  source_manifest:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+    sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+  notebook_correction:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.correction-001.md"
+    sha256: "d6b2134e5f104fbc29865077f155e1dbff574faf0bc44e31a1c4cd30c6608ad5"
+normalization:
+  notebook_envelope_ignored: true
+  structural_authority: "LOGICAL_MODEL_PROMOTED"
+  reused_from_notebook:
+    - "TABLE_DESCRIPTION"
+    - "ACCESS_CLASSIFICATION"
+    - "COLUMN_DESCRIPTION"
+    - "POSTGRESQL_TYPE_CANDIDATE"
+    - "UNIT"
+    - "FORMAT"
+    - "MIN_VALUE"
+    - "MAX_VALUE"
+    - "PII"
+    - "SENSITIVE"
+  restored_from_logical_model:
+    - "RELATION_AND_ATTRIBUTE_IDS"
+    - "PHYSICAL_NAMES"
+    - "GRAIN"
+    - "NULLABILITY"
+    - "NULL_MEANING"
+    - "DEFAULT"
+    - "ALLOWED_VALUES"
+    - "GENERATED"
+    - "DERIVATION"
+    - "RULES"
+    - "EVIDENCE"
+    - "PRIMARY_KEYS"
+    - "FOREIGN_KEYS"
+    - "UNIQUE_CONSTRAINTS"
+    - "CHECKS"
+    - "RETENTION"
+  generated_deterministically:
+    - "FK_SUPPORTING_INDEXES"
+    - "CONTROLLED_DOMAIN_CATALOGS"
+  neutralized_unsupported_description_ids:
+    - "COMPETICAO.ID"
+    - "PARTIDA.ID"
+    - "EQUIPE.ID"
+    - "EQUIPE_ATLETA_INSCRICAO.ID"
+counts:
+  tables: 32
+  columns: 204
+  foreign_keys: 59
+  unique_constraints: 18
+  checks: 13
+  index_candidates: 59
+  catalogs: 32
+  open_issues: 1
+validation:
+  relation_and_attribute_coverage: "EXACT"
+  logical_constraints: "EXACT"
+  foreign_key_index_coverage: "PASS"
+  controlled_domain_catalog_coverage: "EXACT"
+  logical_references: "PASS"

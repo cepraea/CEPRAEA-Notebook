@@ -37,6 +37,11 @@ selected_sources:
     role: "CONTROLE"
     readiness: "READY"
     content_sha256: "db2d64da96802b51a7ed3d231a60f0f4efc20f32762902aecbdd1ebb8a4d163d"
+  - source_id: "987b84b7-42e9-4c9d-a59c-f7fd292c437a"
+    title: "CTRL — Contrato_Artefatos — e4bc4693534d"
+    role: "CONTROLE"
+    readiness: "READY"
+    content_sha256: "e4bc4693534d12d5e32068fd82f771d78c90db86d54a661e0b52d29e7c4b277a"
   - source_id: "718459c6-32df-46cc-bfb8-15b981a2b01e"
     title: "00-manifesto-fontes.template"
     role: "CONTROLE"
@@ -689,6 +694,110 @@ stages:
       promoted_at: "2026-10-14T15:52:45-03:00"
       wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/03-modelo-logico.promoted.md"
       wrapper_sha256: "63d1c00efeb91dc59615054c9a759b688c414f84d7575644bd2276effda35a4f"
+  - id: "STAGE_04"
+    started_at: "2026-10-14T16:04:15-03:00"
+    prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-04-run-001.md"
+    prompt_sha256: "5c727229f5930d2f5022aa7430e0c65ec311eedbd5a9bc74e23028b49855691b"
+    correction_prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-04-correction-001.md"
+    correction_prompt_sha256: "e0d82e11bff6498f0ba04748d2f0d95acaff0b3ca04e673f960e97c6376e9a69"
+    base_prompt_file: "notebooklm-modelagem/prompts/04-gerar-dicionario-dados.md"
+    base_prompt_sha256: "ace4485fc28a91fc5ee360a0bf27f4678f5b49b8410add816fa73251d03077c5"
+    template_file: "notebooklm-modelagem/templates/04-dicionario-dados.template.yaml"
+    template_sha256: "a29bba1c600e0e23ee4089c2cfedcfc7b449ee3c987cb709715ad3dc01791d19"
+    template_wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/04-dicionario-dados.template.md"
+    template_wrapper_sha256: "0df10770fd15b9122a88ea291ac4bb39fc624682a5437a1a7e381dbfa41e2db2"
+    template_source_id: "6fefbaff-d56f-4293-8e07-f1c6393d2dcf"
+    selected_source_ids:
+      - "b9ddf059-9d06-4373-a828-61f409e30113"
+      - "fdf6c7d9-75c7-41f3-8935-39ffaf747bb1"
+      - "fc42d826-edbc-475f-b0a3-328ef35bf813"
+      - "6fefbaff-d56f-4293-8e07-f1c6393d2dcf"
+      - "991b26f0-0d26-4cfe-935d-81b92dee7c76"
+      - "987b84b7-42e9-4c9d-a59c-f7fd292c437a"
+    input_artifacts:
+      - document_id: "SEMANTIC_REGISTRY"
+        version: "0.1.0"
+        sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+        promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
+      - document_id: "LOGICAL_MODEL"
+        version: "0.1.0"
+        sha256: "d49ca992ba7e1ab5b2378bc24867bf876cd67f940e819be57bad297993b79712"
+        promoted_source_id: "fdf6c7d9-75c7-41f3-8935-39ffaf747bb1"
+    generation:
+      mechanism: "REPORT_CUSTOM"
+      status: "CANDIDATE_READY"
+      task_id: "669c185b-45ca-4b0d-9204-491082874376"
+      artifact_id: "669c185b-45ca-4b0d-9204-491082874376"
+    attempts:
+      - task_id: "f55066af-50f9-439e-86bb-023ce35c5958"
+        artifact_id: "f55066af-50f9-439e-86bb-023ce35c5958"
+        mechanism: "REPORT_CUSTOM"
+        status: "REJECTED_BEFORE_COMPLETION"
+        started_at: "2026-10-14T16:03:00-03:00"
+        language: "pt_BR"
+        rejection_reason: "STALE_CONTROL_SOURCE; CONTRACT_SOURCE_HASH_DB2D64DA9680_DIFFERS_FROM_CURRENT_LOCAL_HASH_E4BC4693534D"
+      - task_id: "a17e83e7-6c64-4379-a8bf-d428a9939f05"
+        artifact_id: "a17e83e7-6c64-4379-a8bf-d428a9939f05"
+        mechanism: "REPORT_CUSTOM"
+        status: "REJECTED"
+        started_at: "2026-10-14T16:05:49-03:00"
+        completed_at: "2026-10-14T16:14:40-03:00"
+        language: "pt_BR"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-04-run-001.md"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.report-001.md"
+        sha256: "9c7b1e2782e9a087fde5d1fc0edafd59f8b2ec5c94a40506a0d6f9d50dbee678"
+        work_source_id: "fc42d826-edbc-475f-b0a3-328ef35bf813"
+        work_source_status: "READY"
+        rejection_reason: "COVERAGE_32_OF_32_AND_204_OF_204; TEMPLATE_FIELDS_DIVERGE; 23_FOREIGN_KEY_IDS_RENAMED; 6_UNIQUE_CONSTRAINTS_INVENTED; COLUMN_METADATA_INCOMPLETE"
+      - task_id: "669c185b-45ca-4b0d-9204-491082874376"
+        artifact_id: "669c185b-45ca-4b0d-9204-491082874376"
+        mechanism: "REPORT_CUSTOM_CORRECTION"
+        status: "ACCEPTED_FOR_ASSEMBLY"
+        started_at: "2026-10-14T16:17:30-03:00"
+        completed_at: "2026-10-14T16:28:00-03:00"
+        language: "pt_BR"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-04-correction-001.md"
+        prompt_sha256: "e0d82e11bff6498f0ba04748d2f0d95acaff0b3ca04e673f960e97c6376e9a69"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.correction-001.md"
+        sha256: "d6b2134e5f104fbc29865077f155e1dbff574faf0bc44e31a1c4cd30c6608ad5"
+        acceptance_evidence: "TEMPLATE_FIELDS_PASS; COVERAGE_32_OF_32_AND_204_OF_204; DESCRIPTIONS_TYPES_ACCESS_METADATA_REUSABLE; STRUCTURAL_AND_TRACEABILITY_NORMALIZATION_REQUIRED"
+    download:
+      path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.correction-001.md"
+      sha256: "d6b2134e5f104fbc29865077f155e1dbff574faf0bc44e31a1c4cd30c6608ad5"
+    operator_assembly:
+      status: "CANDIDATE_READY"
+      validation_script: "notebooklm-modelagem/scripts/assemble_data_dictionary.py"
+      validation_script_sha256: "762955f509c0f01eb72c9464603fa0f22d300e474ba9c68b75aef603b63b6b5e"
+      normalization_script: "notebooklm-modelagem/scripts/normalize_data_dictionary.py"
+      normalization_script_sha256: "b7e3a26d70dab9a35bb703f0bcca8c737d7ed8ed6ba6fc9f56e6b1ccbf235b42"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.candidate.yaml"
+      sha256: "7e463236b87039e1aa79a2c6be68fb6fe1129a7e53a8fd770adf0326f1bc47fb"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.assembly-audit.yaml"
+      audit_sha256: "cf87014be4ce3569652a4cf888113eb803525fec576a8001cfe2a0b883395689"
+      assembled_at: "2026-10-14T16:35:01-03:00"
+      normalization: "NOTEBOOK_ENVELOPE_IGNORED; LOGICAL_STRUCTURE_AND_TRACEABILITY_RESTORED; FK_INDEXES_AND_CATALOGS_GENERATED_DETERMINISTICALLY; UNSUPPORTED_UUID_DEFAULT_DESCRIPTIONS_NEUTRALIZED"
+      counts:
+        tables: 32
+        columns: 204
+        foreign_keys: 59
+        unique_constraints: 18
+        checks: 13
+        index_candidates: 59
+        catalogs: 32
+        open_issues: 1
+    validation:
+      status: "PASS"
+      validated_at: "2026-10-14T16:35:01-03:00"
+      evidence: "YAML_STRICT_PASS; SPECIALIZED_DATA_DICTIONARY_VALIDATION_PASS; RELATION_COVERAGE_32_OF_32; ATTRIBUTE_COVERAGE_204_OF_204; FK_IDS_59_OF_59_EXACT; UNIQUE_CONSTRAINT_IDS_18_OF_18_EXACT; CHECK_IDS_13_OF_13_EXACT; FK_INDEX_COVERAGE_59_OF_59; CONTROLLED_DOMAIN_CATALOG_COVERAGE_EXACT; RULE_AND_EVIDENCE_REFERENCES_PASS; DETERMINISTIC_REBUILD_IDENTICAL; ONE_NON_BLOCKING_HISTORICAL_DATA_ISSUE_PRESERVED"
+    approval:
+      required: true
+      decision: "PENDING"
+      approved_by: null
+      approved_at: null
+      evidence: null
+    promotion:
+      status: "NOT_STARTED"
+      promoted_source_id: null
 
 incidents:
   - id: "INC_AUTH_001"
