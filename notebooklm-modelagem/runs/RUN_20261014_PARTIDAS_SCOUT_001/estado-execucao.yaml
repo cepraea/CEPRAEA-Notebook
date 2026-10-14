@@ -3,7 +3,7 @@ run:
   id: "RUN_20261014_PARTIDAS_SCOUT_001"
   domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
   notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
-  status: "BLOQUEADA"
+  status: "EM_EXECUCAO"
   started_at: "2026-10-14T05:23:23-03:00"
   completed_at: null
   operator: "CODEX"
@@ -176,6 +176,7 @@ selected_sources:
 stages:
   - id: "STAGE_00"
     prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-00-retry-001.md"
+    enrichment_prompt_file: "notebooklm-modelagem/prompts/00-reconciliar-fontes.md"
     selected_source_ids:
       - "965f27f8-7475-43d0-a5b3-0fc985debf80"
       - "991b26f0-0d26-4cfe-935d-81b92dee7c76"
@@ -231,6 +232,18 @@ stages:
         output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.rejected-003.yaml"
         sha256: "26593d23bff68e47e0deda8ec1f2c58e467278f8946dfdf170a6393cdd7b7378"
         rejection_reason: "YAML_E_ENVELOPE_VALIDOS_MAS_ZERO_DE_30_NOTEBOOK_SOURCE_IDS_CORRESPONDEM_AO_MAPA_OBRIGATORIO"
+    operator_assembly:
+      status: "BASE_READY"
+      script: "notebooklm-modelagem/scripts/build_source_manifest.py"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.yaml"
+      sha256: "dd14ca629dd19b887ab804115d052440cf0f45b9ceb82a374950279e3fab216e"
+      generated_at: "2026-10-14T06:57:55-03:00"
+      validation:
+        status: "PASS"
+        evidence: "SCHEMA_PASS; SOURCE_ID_COVERAGE_PASS: 30/30; DETERMINISTIC_REBUILD_IDENTICAL"
+      semantic_enrichment:
+        status: "NOT_STARTED"
+        completed_source_ids: []
     download:
       path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.rejected-003.yaml"
       sha256: "26593d23bff68e47e0deda8ec1f2c58e467278f8946dfdf170a6393cdd7b7378"
@@ -282,9 +295,14 @@ blockers:
     description: "Duas gerações concluídas não respeitaram o contrato YAML 1.1. A segunda preserva conteúdo útil, mas exige normalização estrutural pelo operador ou divisão do lote."
     resolution: "REEXECUCAO_AUTORIZADA_COM_TEMPLATE_NATIVO_718459C6"
   - id: "BLOCK_STAGE_00_SOURCE_ID_CONFORMANCE"
-    status: "OPEN"
+    status: "RESOLVED"
     affected_stage_id: "STAGE_00"
     description: "A terceira geração respeitou o YAML e o envelope 1.1, mas inventou todos os 30 notebook_source_id apesar do mapa literal fornecido no prompt."
+    resolution: "MANIFESTO_BASE_MONTADO_DETERMINISTICAMENTE_PELO_OPERADOR_COM_COBERTURA_30_DE_30"
+  - id: "BLOCK_STAGE_00_SEMANTIC_ENRICHMENT"
+    status: "OPEN"
+    affected_stage_id: "STAGE_00"
+    description: "O manifesto-base possui identidade e classificação inicial, mas ainda não contém evidências, precedências e conflitos revisados por fonte."
     resolution: null
 
 physical_gate:

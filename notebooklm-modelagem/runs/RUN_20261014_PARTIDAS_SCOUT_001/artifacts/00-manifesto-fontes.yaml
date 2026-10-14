@@ -13,723 +13,723 @@ document:
   input_artifacts: []
 scope:
   included:
-  - "Partida, sets, segmentos, shoot-out, placar, pontuação e finalizações."
-  - "Tiro de seis metros, punições, posses, fases ofensivas e sistemas defensivos."
-  - "Ações da goleira, zonas, resultado, scout, protocolo, revisão, confiabilidade, vídeo, trecho e timecode."
-  - "Modelos e SQL existentes somente como propostas históricas a reconciliar."
+    - "Partida, sets, segmentos, shoot-out, placar, pontuação e finalizações."
+    - "Tiro de seis metros, punições, posses, fases ofensivas e sistemas defensivos."
+    - "Ações da goleira, zonas, resultado, scout, protocolo, revisão, confiabilidade, vídeo, trecho e timecode."
+    - "Modelos e SQL existentes somente como propostas históricas a reconciliar."
   excluded:
-  - "Carga e planejamento de treinamento."
-  - "Saúde, prontuário ou avaliação médica."
-  - "Gestão financeira ou administrativa."
-  - "Mídia institucional e acervo fotográfico."
-  - "Infraestrutura fora do necessário para classificar os artefatos históricos."
+    - "Carga e planejamento de treinamento."
+    - "Saúde, prontuário ou avaliação médica."
+    - "Gestão financeira ou administrativa."
+    - "Mídia institucional e acervo fotográfico."
+    - "Infraestrutura fora do necessário para classificar os artefatos históricos."
   reference_date: "2026-10-14"
 sources:
-- id: "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
-  canonical_title: "CTRL — Fluxo_Modelagem — acf6afa2aab0"
-  notebook_source_id: "965f27f8-7475-43d0-a5b3-0fc985debf80"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: "acf6afa2aab04d625d4d01d989d139c801b87358750e72f9f10c76f8d1c151fa"
-  language: null
-  authority_class: "DECISAO_HUMANA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_CTRL_INSTRUCOES_NOTEBOOK_A6EDE74B1BAA_63B2FA9E"
-  canonical_title: "CTRL — Instrucoes_Notebook — a6ede74b1baa"
-  notebook_source_id: "991b26f0-0d26-4cfe-935d-81b92dee7c76"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: "a6ede74b1baabc872bde3c5c800a0ef91d065de377633a33d5d57947b2c2c94f"
-  language: null
-  authority_class: "DECISAO_HUMANA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_CTRL_CONTRATO_ARTEFATOS_DB2D64DA9680_5CDE0B19"
-  canonical_title: "CTRL — Contrato_Artefatos — db2d64da9680"
-  notebook_source_id: "cf663fd6-cb2a-4c03-82a0-a31023023f1c"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: "db2d64da96802b51a7ed3d231a60f0f4efc20f32762902aecbdd1ebb8a4d163d"
-  language: null
-  authority_class: "DECISAO_HUMANA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_00_MANIFESTO_FONTES_TEMPLATE_8F26F1D8"
-  canonical_title: "00-manifesto-fontes.template"
-  notebook_source_id: "718459c6-32df-46cc-bfb8-15b981a2b01e"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "DECISAO_HUMANA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
-  canonical_title: "regras_ihf_beach_handball_2026_en.pdf.pdf"
-  notebook_source_id: "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "AUTORITATIVA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487"
-  canonical_title: "Regras de Handebol de Praia 2026 - Tradução 29 de maio de 2026.pdf"
-  notebook_source_id: "236e788c-9c85-4133-93c8-4650a26e867a"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_ATUALIZACOES_IHF_2026_MD_02D99F75"
-  canonical_title: "atualizacoes_ihf_2026.md"
-  notebook_source_id: "0d48291e-32ab-449e-8f86-ea43244c921c"
-  drive_file_id: null
-  source_type: "MARKDOWN"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "AUTORITATIVA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA"
-  canonical_title: "Esclarecimentos regras de jogo.pdf"
-  notebook_source_id: "9c553f24-6f99-4a21-b63c-9cbfda6552c1"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "AUTORITATIVA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327"
-  canonical_title: "REGULAMENTO GERAL CAMPEONATO CARIOCA DE HANDEBOL DE PRAIA 2026.pdf"
-  notebook_source_id: "e593c4e6-903a-4169-a1c5-7f551bbe5b9d"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "AUTORITATIVA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_REGULAMENTO_CBHB_2026_PDF_818BCC8B"
-  canonical_title: "regulamento_cbhb_2026.pdf"
-  notebook_source_id: "bb8b9ba4-cd24-452a-aa2b-2a3a3854e0a0"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "AUTORITATIVA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5"
-  canonical_title: "2-point goals (spin and in-flight shots)-min.pdf"
-  notebook_source_id: "f68c1687-7153-4283-a6a0-5e33b814fe00"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_6_METRE_THROW_PUNISHMENTS_PDF_D2567ACD"
-  canonical_title: "6-metre throw + punishments.pdf"
-  notebook_source_id: "049d2bf2-ac90-44f8-951a-ae9a32c0cc64"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
-  canonical_title: "Protocolo de Scout — Beach Handball"
-  notebook_source_id: "a44eece7-56e3-407c-9348-23b35ab0efa4"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "OPERACIONAL_PRIMARIA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC"
-  canonical_title: "Development of an instrument for observation of collective tactical procedures"
-  notebook_source_id: "162256e7-41bf-40ac-b77f-7b892250771f"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56"
-  canonical_title: "Contextual factors and decision-making in positional attack"
-  notebook_source_id: "605ea05f-b931-405d-984f-4773065aa6c8"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2"
-  canonical_title: "O jogo ofensivo do handebol de areia"
-  notebook_source_id: "74cb7983-decc-42de-86eb-f691d8e00d53"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A"
-  canonical_title: "Latest trends in defence.pdf"
-  notebook_source_id: "d8076ca2-b651-48af-be4e-b14dd524c377"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94"
-  canonical_title: "The structuring of the defensive phase of beach handball.pdf"
-  notebook_source_id: "de6241bc-cad8-42a5-80db-015ef2c1a780"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E"
-  canonical_title: "Estudo das ações do guarda redes de andebol de praia através da análise.pdf"
-  notebook_source_id: "a3068def-bef6-49bd-b063-c8593116298f"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_TEMPOS_DE_DEFESA_DO_GOLEIRO_DE_HANDEBOL_DE_PRAIA_PDF_EB0902C0"
-  canonical_title: "Tempos de defesa do goleiro de handebol de praia.pdf"
-  notebook_source_id: "9b742f2e-0d21-4fb1-bca9-33411d6c6ec2"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_UNDERSTANDING_PSYCHOLOGICAL_PRESSURE_IN_BEACH_HANDBALL_S_28248533"
-  canonical_title: "Understanding psychological pressure in beach handball shootouts.pdf"
-  notebook_source_id: "36d92b57-69c1-4563-a2a4-71a7bd357dc7"
-  drive_file_id: null
-  source_type: "PDF"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "SUPORTE"
-  lifecycle_status: "COMPLEMENTAR"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_CEPRAEA_DATABASE_CCB2A718"
-  canonical_title: "CEPRAEA DATABASE"
-  notebook_source_id: "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "OPERACIONAL_PRIMARIA"
-  lifecycle_status: "EM_VERIFICACAO"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_04A_MODELO_CONCEITUAL_MD_D7C900D7"
-  canonical_title: "04A-MODELO-CONCEITUAL.md"
-  notebook_source_id: "3bb0c332-947d-494f-a6fa-85493b579464"
-  drive_file_id: null
-  source_type: "MARKDOWN"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "HISTORICA"
-  lifecycle_status: "HISTORICA"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_04B_MODELO_LOGICO_MD_FFCFA1B3"
-  canonical_title: "04B-MODELO-LOGICO.md"
-  notebook_source_id: "aef04d7f-4e75-4597-8f96-acc3b87f945d"
-  drive_file_id: null
-  source_type: "MARKDOWN"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "HISTORICA"
-  lifecycle_status: "HISTORICA"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_04C_DICIONARIO_DE_DADOS_MD_6B0D9716"
-  canonical_title: "04C-DICIONARIO-DE-DADOS.md"
-  notebook_source_id: "fef688f6-d141-475d-87c0-abbeaffe46fb"
-  drive_file_id: null
-  source_type: "MARKDOWN"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "HISTORICA"
-  lifecycle_status: "HISTORICA"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7"
-  canonical_title: "catalogo-regras-invariantes.md"
-  notebook_source_id: "475ce51f-f4bd-44ca-8194-31d42ea308e8"
-  drive_file_id: null
-  source_type: "MARKDOWN"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "HISTORICA"
-  lifecycle_status: "HISTORICA"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_MATRIZ_RELACOES_CARDINALIDADES_MD_43B1FECB"
-  canonical_title: "matriz-relacoes-cardinalidades.md"
-  notebook_source_id: "2cea376b-08be-4969-b2e4-d66189ca0935"
-  drive_file_id: null
-  source_type: "MARKDOWN"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "HISTORICA"
-  lifecycle_status: "HISTORICA"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_05_SCHEMA_POSTGRESQL_SQL_B7F68C42"
-  canonical_title: "05-schema-postgresql.sql"
-  notebook_source_id: "c30b6966-654c-4682-84d5-41b0d15febb0"
-  drive_file_id: null
-  source_type: "SQL"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "HISTORICA"
-  lifecycle_status: "HISTORICA"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_06_MIGRATIONS_ROLLBACK_SQL_MD_B809827E"
-  canonical_title: "06-migrations-rollback.sql.md"
-  notebook_source_id: "e9e4272e-d302-4ce3-bf80-b1c9bdc84060"
-  drive_file_id: null
-  source_type: "SQL"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "HISTORICA"
-  lifecycle_status: "HISTORICA"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
-- id: "SRC_07_MATRIZ_RBAC_E_POLITICAS_RLS_0BB80919"
-  canonical_title: "07-matriz-rbac-e-politicas-rls"
-  notebook_source_id: "49ceb0ca-9160-4d36-a8ac-b58470c73f80"
-  drive_file_id: null
-  source_type: "OTHER"
-  publisher: null
-  source_revision: null
-  publication_date: null
-  retrieved_at: null
-  content_sha256: null
-  language: null
-  authority_class: "HISTORICA"
-  lifecycle_status: "HISTORICA"
-  notebook_status: "READY"
-  valid_from: null
-  valid_to: null
-  supersedes_source_id: null
-  duplicate_of_source_id: null
-  supported_domain_ids:
-  - "PARTIDAS_SCOUT_ANALISE_TATICA"
-  limitations: []
+  - id: "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+    canonical_title: "CTRL — Fluxo_Modelagem — acf6afa2aab0"
+    notebook_source_id: "965f27f8-7475-43d0-a5b3-0fc985debf80"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: "acf6afa2aab04d625d4d01d989d139c801b87358750e72f9f10c76f8d1c151fa"
+    language: null
+    authority_class: "DECISAO_HUMANA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_CTRL_INSTRUCOES_NOTEBOOK_A6EDE74B1BAA_63B2FA9E"
+    canonical_title: "CTRL — Instrucoes_Notebook — a6ede74b1baa"
+    notebook_source_id: "991b26f0-0d26-4cfe-935d-81b92dee7c76"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: "a6ede74b1baabc872bde3c5c800a0ef91d065de377633a33d5d57947b2c2c94f"
+    language: null
+    authority_class: "DECISAO_HUMANA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_CTRL_CONTRATO_ARTEFATOS_DB2D64DA9680_5CDE0B19"
+    canonical_title: "CTRL — Contrato_Artefatos — db2d64da9680"
+    notebook_source_id: "cf663fd6-cb2a-4c03-82a0-a31023023f1c"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: "db2d64da96802b51a7ed3d231a60f0f4efc20f32762902aecbdd1ebb8a4d163d"
+    language: null
+    authority_class: "DECISAO_HUMANA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_00_MANIFESTO_FONTES_TEMPLATE_8F26F1D8"
+    canonical_title: "00-manifesto-fontes.template"
+    notebook_source_id: "718459c6-32df-46cc-bfb8-15b981a2b01e"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "DECISAO_HUMANA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
+    canonical_title: "regras_ihf_beach_handball_2026_en.pdf.pdf"
+    notebook_source_id: "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487"
+    canonical_title: "Regras de Handebol de Praia 2026 - Tradução 29 de maio de 2026.pdf"
+    notebook_source_id: "236e788c-9c85-4133-93c8-4650a26e867a"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_ATUALIZACOES_IHF_2026_MD_02D99F75"
+    canonical_title: "atualizacoes_ihf_2026.md"
+    notebook_source_id: "0d48291e-32ab-449e-8f86-ea43244c921c"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA"
+    canonical_title: "Esclarecimentos regras de jogo.pdf"
+    notebook_source_id: "9c553f24-6f99-4a21-b63c-9cbfda6552c1"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327"
+    canonical_title: "REGULAMENTO GERAL CAMPEONATO CARIOCA DE HANDEBOL DE PRAIA 2026.pdf"
+    notebook_source_id: "e593c4e6-903a-4169-a1c5-7f551bbe5b9d"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_REGULAMENTO_CBHB_2026_PDF_818BCC8B"
+    canonical_title: "regulamento_cbhb_2026.pdf"
+    notebook_source_id: "bb8b9ba4-cd24-452a-aa2b-2a3a3854e0a0"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5"
+    canonical_title: "2-point goals (spin and in-flight shots)-min.pdf"
+    notebook_source_id: "f68c1687-7153-4283-a6a0-5e33b814fe00"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_6_METRE_THROW_PUNISHMENTS_PDF_D2567ACD"
+    canonical_title: "6-metre throw + punishments.pdf"
+    notebook_source_id: "049d2bf2-ac90-44f8-951a-ae9a32c0cc64"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
+    canonical_title: "Protocolo de Scout — Beach Handball"
+    notebook_source_id: "a44eece7-56e3-407c-9348-23b35ab0efa4"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "OPERACIONAL_PRIMARIA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC"
+    canonical_title: "Development of an instrument for observation of collective tactical procedures"
+    notebook_source_id: "162256e7-41bf-40ac-b77f-7b892250771f"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56"
+    canonical_title: "Contextual factors and decision-making in positional attack"
+    notebook_source_id: "605ea05f-b931-405d-984f-4773065aa6c8"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2"
+    canonical_title: "O jogo ofensivo do handebol de areia"
+    notebook_source_id: "74cb7983-decc-42de-86eb-f691d8e00d53"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A"
+    canonical_title: "Latest trends in defence.pdf"
+    notebook_source_id: "d8076ca2-b651-48af-be4e-b14dd524c377"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94"
+    canonical_title: "The structuring of the defensive phase of beach handball.pdf"
+    notebook_source_id: "de6241bc-cad8-42a5-80db-015ef2c1a780"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E"
+    canonical_title: "Estudo das ações do guarda redes de andebol de praia através da análise.pdf"
+    notebook_source_id: "a3068def-bef6-49bd-b063-c8593116298f"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_TEMPOS_DE_DEFESA_DO_GOLEIRO_DE_HANDEBOL_DE_PRAIA_PDF_EB0902C0"
+    canonical_title: "Tempos de defesa do goleiro de handebol de praia.pdf"
+    notebook_source_id: "9b742f2e-0d21-4fb1-bca9-33411d6c6ec2"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_UNDERSTANDING_PSYCHOLOGICAL_PRESSURE_IN_BEACH_HANDBALL_S_28248533"
+    canonical_title: "Understanding psychological pressure in beach handball shootouts.pdf"
+    notebook_source_id: "36d92b57-69c1-4563-a2a4-71a7bd357dc7"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_CEPRAEA_DATABASE_CCB2A718"
+    canonical_title: "CEPRAEA DATABASE"
+    notebook_source_id: "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "OPERACIONAL_PRIMARIA"
+    lifecycle_status: "EM_VERIFICACAO"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_04A_MODELO_CONCEITUAL_MD_D7C900D7"
+    canonical_title: "04A-MODELO-CONCEITUAL.md"
+    notebook_source_id: "3bb0c332-947d-494f-a6fa-85493b579464"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_04B_MODELO_LOGICO_MD_FFCFA1B3"
+    canonical_title: "04B-MODELO-LOGICO.md"
+    notebook_source_id: "aef04d7f-4e75-4597-8f96-acc3b87f945d"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_04C_DICIONARIO_DE_DADOS_MD_6B0D9716"
+    canonical_title: "04C-DICIONARIO-DE-DADOS.md"
+    notebook_source_id: "fef688f6-d141-475d-87c0-abbeaffe46fb"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7"
+    canonical_title: "catalogo-regras-invariantes.md"
+    notebook_source_id: "475ce51f-f4bd-44ca-8194-31d42ea308e8"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_MATRIZ_RELACOES_CARDINALIDADES_MD_43B1FECB"
+    canonical_title: "matriz-relacoes-cardinalidades.md"
+    notebook_source_id: "2cea376b-08be-4969-b2e4-d66189ca0935"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_05_SCHEMA_POSTGRESQL_SQL_B7F68C42"
+    canonical_title: "05-schema-postgresql.sql"
+    notebook_source_id: "c30b6966-654c-4682-84d5-41b0d15febb0"
+    drive_file_id: null
+    source_type: "SQL"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_06_MIGRATIONS_ROLLBACK_SQL_MD_B809827E"
+    canonical_title: "06-migrations-rollback.sql.md"
+    notebook_source_id: "e9e4272e-d302-4ce3-bf80-b1c9bdc84060"
+    drive_file_id: null
+    source_type: "SQL"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+  - id: "SRC_07_MATRIZ_RBAC_E_POLITICAS_RLS_0BB80919"
+    canonical_title: "07-matriz-rbac-e-politicas-rls"
+    notebook_source_id: "49ceb0ca-9160-4d36-a8ac-b58470c73f80"
+    drive_file_id: null
+    source_type: "OTHER"
+    publisher: null
+    source_revision: null
+    publication_date: null
+    retrieved_at: null
+    content_sha256: null
+    language: null
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
 evidence_refs: []
 precedence_rules: []
 conflicts: []
 open_issues:
-- id: "ISSUE_SOURCE_METADATA_ENRICHMENT"
-  status: "ABERTA"
-  question: "Quais metadados documentais podem ser comprovados em cada fonte?"
-  affected_ids:
-  - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
-  - "SRC_CTRL_INSTRUCOES_NOTEBOOK_A6EDE74B1BAA_63B2FA9E"
-  - "SRC_CTRL_CONTRATO_ARTEFATOS_DB2D64DA9680_5CDE0B19"
-  - "SRC_00_MANIFESTO_FONTES_TEMPLATE_8F26F1D8"
-  - "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
-  - "SRC_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487"
-  - "SRC_ATUALIZACOES_IHF_2026_MD_02D99F75"
-  - "SRC_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA"
-  - "SRC_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327"
-  - "SRC_REGULAMENTO_CBHB_2026_PDF_818BCC8B"
-  - "SRC_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5"
-  - "SRC_6_METRE_THROW_PUNISHMENTS_PDF_D2567ACD"
-  - "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
-  - "SRC_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC"
-  - "SRC_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56"
-  - "SRC_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2"
-  - "SRC_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A"
-  - "SRC_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94"
-  - "SRC_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E"
-  - "SRC_TEMPOS_DE_DEFESA_DO_GOLEIRO_DE_HANDEBOL_DE_PRAIA_PDF_EB0902C0"
-  - "SRC_UNDERSTANDING_PSYCHOLOGICAL_PRESSURE_IN_BEACH_HANDBALL_S_28248533"
-  - "SRC_CEPRAEA_DATABASE_CCB2A718"
-  - "SRC_04A_MODELO_CONCEITUAL_MD_D7C900D7"
-  - "SRC_04B_MODELO_LOGICO_MD_FFCFA1B3"
-  - "SRC_04C_DICIONARIO_DE_DADOS_MD_6B0D9716"
-  - "SRC_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7"
-  - "SRC_MATRIZ_RELACOES_CARDINALIDADES_MD_43B1FECB"
-  - "SRC_05_SCHEMA_POSTGRESQL_SQL_B7F68C42"
-  - "SRC_06_MIGRATIONS_ROLLBACK_SQL_MD_B809827E"
-  - "SRC_07_MATRIZ_RBAC_E_POLITICAS_RLS_0BB80919"
-  impact: "Editora, revisão, datas, idioma, tipo nativo e limitações permanecem incompletos."
-  required_evidence: "Metadados observáveis da fonte e análise individual rastreada."
-  owner: "OPERADOR"
-- id: "ISSUE_SOURCE_SEMANTIC_RECONCILIATION"
-  status: "ABERTA"
-  question: "Quais evidências, precedências e conflitos são demonstrados pelas fontes selecionadas?"
-  affected_ids:
-  - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
-  - "SRC_CTRL_INSTRUCOES_NOTEBOOK_A6EDE74B1BAA_63B2FA9E"
-  - "SRC_CTRL_CONTRATO_ARTEFATOS_DB2D64DA9680_5CDE0B19"
-  - "SRC_00_MANIFESTO_FONTES_TEMPLATE_8F26F1D8"
-  - "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
-  - "SRC_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487"
-  - "SRC_ATUALIZACOES_IHF_2026_MD_02D99F75"
-  - "SRC_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA"
-  - "SRC_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327"
-  - "SRC_REGULAMENTO_CBHB_2026_PDF_818BCC8B"
-  - "SRC_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5"
-  - "SRC_6_METRE_THROW_PUNISHMENTS_PDF_D2567ACD"
-  - "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
-  - "SRC_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC"
-  - "SRC_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56"
-  - "SRC_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2"
-  - "SRC_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A"
-  - "SRC_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94"
-  - "SRC_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E"
-  - "SRC_TEMPOS_DE_DEFESA_DO_GOLEIRO_DE_HANDEBOL_DE_PRAIA_PDF_EB0902C0"
-  - "SRC_UNDERSTANDING_PSYCHOLOGICAL_PRESSURE_IN_BEACH_HANDBALL_S_28248533"
-  - "SRC_CEPRAEA_DATABASE_CCB2A718"
-  - "SRC_04A_MODELO_CONCEITUAL_MD_D7C900D7"
-  - "SRC_04B_MODELO_LOGICO_MD_FFCFA1B3"
-  - "SRC_04C_DICIONARIO_DE_DADOS_MD_6B0D9716"
-  - "SRC_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7"
-  - "SRC_MATRIZ_RELACOES_CARDINALIDADES_MD_43B1FECB"
-  - "SRC_05_SCHEMA_POSTGRESQL_SQL_B7F68C42"
-  - "SRC_06_MIGRATIONS_ROLLBACK_SQL_MD_B809827E"
-  - "SRC_07_MATRIZ_RBAC_E_POLITICAS_RLS_0BB80919"
-  impact: "O manifesto-base ainda não pode ser aprovado ou promovido."
-  required_evidence: "Enriquecimento semântico fundamentado e revisado pelo operador."
-  owner: "OPERADOR"
+  - id: "ISSUE_SOURCE_METADATA_ENRICHMENT"
+    status: "ABERTA"
+    question: "Quais metadados documentais podem ser comprovados em cada fonte?"
+    affected_ids:
+      - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+      - "SRC_CTRL_INSTRUCOES_NOTEBOOK_A6EDE74B1BAA_63B2FA9E"
+      - "SRC_CTRL_CONTRATO_ARTEFATOS_DB2D64DA9680_5CDE0B19"
+      - "SRC_00_MANIFESTO_FONTES_TEMPLATE_8F26F1D8"
+      - "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
+      - "SRC_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487"
+      - "SRC_ATUALIZACOES_IHF_2026_MD_02D99F75"
+      - "SRC_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA"
+      - "SRC_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327"
+      - "SRC_REGULAMENTO_CBHB_2026_PDF_818BCC8B"
+      - "SRC_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5"
+      - "SRC_6_METRE_THROW_PUNISHMENTS_PDF_D2567ACD"
+      - "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
+      - "SRC_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC"
+      - "SRC_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56"
+      - "SRC_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2"
+      - "SRC_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A"
+      - "SRC_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94"
+      - "SRC_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E"
+      - "SRC_TEMPOS_DE_DEFESA_DO_GOLEIRO_DE_HANDEBOL_DE_PRAIA_PDF_EB0902C0"
+      - "SRC_UNDERSTANDING_PSYCHOLOGICAL_PRESSURE_IN_BEACH_HANDBALL_S_28248533"
+      - "SRC_CEPRAEA_DATABASE_CCB2A718"
+      - "SRC_04A_MODELO_CONCEITUAL_MD_D7C900D7"
+      - "SRC_04B_MODELO_LOGICO_MD_FFCFA1B3"
+      - "SRC_04C_DICIONARIO_DE_DADOS_MD_6B0D9716"
+      - "SRC_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7"
+      - "SRC_MATRIZ_RELACOES_CARDINALIDADES_MD_43B1FECB"
+      - "SRC_05_SCHEMA_POSTGRESQL_SQL_B7F68C42"
+      - "SRC_06_MIGRATIONS_ROLLBACK_SQL_MD_B809827E"
+      - "SRC_07_MATRIZ_RBAC_E_POLITICAS_RLS_0BB80919"
+    impact: "Editora, revisão, datas, idioma, tipo nativo e limitações permanecem incompletos."
+    required_evidence: "Metadados observáveis da fonte e análise individual rastreada."
+    owner: "OPERADOR"
+  - id: "ISSUE_SOURCE_SEMANTIC_RECONCILIATION"
+    status: "ABERTA"
+    question: "Quais evidências, precedências e conflitos são demonstrados pelas fontes selecionadas?"
+    affected_ids:
+      - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+      - "SRC_CTRL_INSTRUCOES_NOTEBOOK_A6EDE74B1BAA_63B2FA9E"
+      - "SRC_CTRL_CONTRATO_ARTEFATOS_DB2D64DA9680_5CDE0B19"
+      - "SRC_00_MANIFESTO_FONTES_TEMPLATE_8F26F1D8"
+      - "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
+      - "SRC_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487"
+      - "SRC_ATUALIZACOES_IHF_2026_MD_02D99F75"
+      - "SRC_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA"
+      - "SRC_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327"
+      - "SRC_REGULAMENTO_CBHB_2026_PDF_818BCC8B"
+      - "SRC_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5"
+      - "SRC_6_METRE_THROW_PUNISHMENTS_PDF_D2567ACD"
+      - "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
+      - "SRC_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC"
+      - "SRC_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56"
+      - "SRC_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2"
+      - "SRC_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A"
+      - "SRC_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94"
+      - "SRC_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E"
+      - "SRC_TEMPOS_DE_DEFESA_DO_GOLEIRO_DE_HANDEBOL_DE_PRAIA_PDF_EB0902C0"
+      - "SRC_UNDERSTANDING_PSYCHOLOGICAL_PRESSURE_IN_BEACH_HANDBALL_S_28248533"
+      - "SRC_CEPRAEA_DATABASE_CCB2A718"
+      - "SRC_04A_MODELO_CONCEITUAL_MD_D7C900D7"
+      - "SRC_04B_MODELO_LOGICO_MD_FFCFA1B3"
+      - "SRC_04C_DICIONARIO_DE_DADOS_MD_6B0D9716"
+      - "SRC_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7"
+      - "SRC_MATRIZ_RELACOES_CARDINALIDADES_MD_43B1FECB"
+      - "SRC_05_SCHEMA_POSTGRESQL_SQL_B7F68C42"
+      - "SRC_06_MIGRATIONS_ROLLBACK_SQL_MD_B809827E"
+      - "SRC_07_MATRIZ_RBAC_E_POLITICAS_RLS_0BB80919"
+    impact: "O manifesto-base ainda não pode ser aprovado ou promovido."
+    required_evidence: "Enriquecimento semântico fundamentado e revisado pelo operador."
+    owner: "OPERADOR"
