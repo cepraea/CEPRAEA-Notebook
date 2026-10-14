@@ -18,19 +18,21 @@ if git diff --quiet && git diff --staged --quiet \
 fi
 
 # ── 2. Determinar o branch de trabalho ────────────────────────────────────
-# Regra: se já estamos num branch agent/* → continua (mesma sessão)
-#        se estamos em main ou vazio → cria branch novo (nova tarefa)
+# Cada sessão gera um branch próprio com timestamp — sem depender de checkout manual.
+# Se TASK_BRANCH estiver definido (ex: export TASK_BRANCH=feat/minha-tarefa),
+# usa esse nome e acumula commits no mesmo PR.
 CURRENT_BRANCH=$(git branch --show-current 2>/dev/null || echo "")
 
-if [[ "$CURRENT_BRANCH" == agent/* ]]; then
-  DRAFT_BRANCH="$CURRENT_BRANCH"
-  echo "→ Continuando no branch: $DRAFT_BRANCH"
+if [ -n "${TASK_BRANCH:-}" ]; then
+  DRAFT_BRANCH="$TASK_BRANCH"
+  git checkout -B "$DRAFT_BRANCH" 2>/dev/null || true
+  echo "→ Branch de tarefa nomeada: $DRAFT_BRANCH"
 else
-  # Novo branch por tarefa: agent/<agente>/<data>-<hash curto>
-  SHORT=$(git rev-parse --short HEAD 2>/dev/null || echo "init")
-  DRAFT_BRANCH="agent/${AGENT}/${DATE}-${SHORT}"
+  # Branch novo por sessão: agent/<agente>/<data>T<hora>
+  DATETIME=$(date '+%Y-%m-%dT%H-%M')
+  DRAFT_BRANCH="agent/${AGENT}/${DATETIME}"
   git checkout -B "$DRAFT_BRANCH"
-  echo "→ Novo branch de tarefa: $DRAFT_BRANCH"
+  echo "→ Novo branch de sessão: $DRAFT_BRANCH"
 fi
 
 # ── 3. Gate de qualidade ───────────────────────────────────────────────────

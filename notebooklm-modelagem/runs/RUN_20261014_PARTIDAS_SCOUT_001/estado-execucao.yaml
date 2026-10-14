@@ -386,10 +386,15 @@ stages:
         promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
     generation:
       mechanism: "REPORT_CUSTOM"
-      status: "NOT_STARTED"
-      task_id: null
-      artifact_id: null
-    attempts: []
+      status: "IN_PROGRESS"
+      task_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
+      artifact_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
+    attempts:
+      - task_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
+        artifact_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
+        status: "IN_PROGRESS"
+        started_at: "2026-10-14T09:17:09-03:00"
+        reconciliation: "ID_RECUPERADO_POR_CREATED_AT_APOS_RESPOSTA_LOCAL_VAZIA"
     validation:
       status: "NOT_STARTED"
       validated_at: null
