@@ -13,6 +13,9 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 
+# Fontes externas (PDFs, JSONs brutos do NotebookLM — não versionados)
+src-notebookLM/
+
 # OS
 .DS_Store
 Thumbs.db
