@@ -566,6 +566,89 @@ stages:
       promoted_at: "2026-10-14T14:35:04-03:00"
       wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/02-modelo-conceitual.promoted.md"
       wrapper_sha256: "cedcbd6c3eafac5b6dc2162c62f100327890c2b5823bad8af8d7b98b26808027"
+  - id: "STAGE_03"
+    started_at: "2026-10-14T14:41:50-03:00"
+    prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-03-run-001.md"
+    prompt_sha256: "432b732b3925dc0523ddcc58ebcdb6d74e408d994bc8eafe18ef5b48830c9f52"
+    base_prompt_file: "notebooklm-modelagem/prompts/03-gerar-modelo-logico.md"
+    base_prompt_sha256: "8b1b86ca0b178a3a3cb45d2cec331d0174b0802363334b4daa408a4871dc8d46"
+    template_file: "notebooklm-modelagem/templates/03-modelo-logico.template.yaml"
+    template_sha256: "fde82e954dc7da00a0f60e694271bd797a69890a7e62f656bb12f1f2ef9a371a"
+    template_wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/03-modelo-logico.template.md"
+    template_wrapper_sha256: "1a57c1f63aaa8495bb9fa0731d870cb40560e2e6f4362115ab390b60914ab332"
+    template_source_id: "6b62d2b5-14f3-4439-9372-aecb05c9ed77"
+    selected_source_ids:
+      - "b9ddf059-9d06-4373-a828-61f409e30113"
+      - "912812ce-78c6-4acf-85a6-6c0339ce0838"
+      - "6b62d2b5-14f3-4439-9372-aecb05c9ed77"
+      - "991b26f0-0d26-4cfe-935d-81b92dee7c76"
+      - "cf663fd6-cb2a-4c03-82a0-a31023023f1c"
+    input_artifacts:
+      - document_id: "SEMANTIC_REGISTRY"
+        version: "0.1.0"
+        sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+        promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
+      - document_id: "CONCEPTUAL_MODEL"
+        version: "0.1.0"
+        sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
+        promoted_source_id: "912812ce-78c6-4acf-85a6-6c0339ce0838"
+    generation:
+      mechanism: "REPORT_CUSTOM"
+      status: "CANDIDATE_READY"
+      task_id: "6a5978b4-e131-4c90-a90f-ff2c56d52184"
+      artifact_id: "6a5978b4-e131-4c90-a90f-ff2c56d52184"
+    attempts:
+      - task_id: null
+        artifact_id: null
+        mechanism: "REPORT_CUSTOM"
+        status: "FAILED_BEFORE_TASK_CREATION"
+        attempted_at: "2026-10-14T14:42:31-03:00"
+        language: "pt-BR"
+        failure_reason: "VALIDATION_ERROR_UNKNOWN_LANGUAGE_CODE"
+      - task_id: "6a5978b4-e131-4c90-a90f-ff2c56d52184"
+        artifact_id: "6a5978b4-e131-4c90-a90f-ff2c56d52184"
+        mechanism: "REPORT_CUSTOM"
+        status: "ACCEPTED_FOR_ASSEMBLY"
+        started_at: "2026-10-14T14:43:04-03:00"
+        completed_at: "2026-10-14T14:54:38-03:00"
+        language: "pt_BR"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-03-run-001.md"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.report-001.md"
+        sha256: "5cc7f17f275b6d2c30cb0b29e7faa38a7a31f9a3956c45e5196d044e4bf31dfb"
+        acceptance_evidence: "YAML_BODY_PARSE_PASS; CONCEPTUAL_ENTITIES_29_OF_29; CONCEPTUAL_RELATIONSHIPS_46_OF_46; RULE_AND_EVIDENCE_REFERENCES_PASS; TWO_OPERATOR_NORMALIZATIONS_REQUIRED"
+    download:
+      path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.report-001.md"
+      sha256: "5cc7f17f275b6d2c30cb0b29e7faa38a7a31f9a3956c45e5196d044e4bf31dfb"
+    operator_assembly:
+      status: "CANDIDATE_READY"
+      script: "notebooklm-modelagem/scripts/assemble_logical_model.py"
+      script_sha256: "272c23971d76f42b583627138a712a13ab1196376ee2d4a6c8da38a14c91d61b"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.candidate.yaml"
+      sha256: "3d335b4a488d67c97cca3a962854a4fa0a52389151fcf3e79e06ca83cf75b207"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.assembly-audit.yaml"
+      audit_sha256: "1a80fcaacea28af0556b759c4b9158bdc72866c9fd46e8905b39a5cc3b3d42c9"
+      assembled_at: "2026-10-14T14:54:38-03:00"
+      normalization: "MARKDOWN_HEADING_REMOVED; GOLEIRA_POSICAO_REMOVED_FROM_CONCEPTUAL_ENTITY_IDS_OF_ATLETA_WITHOUT_SEMANTIC_CHANGE"
+      counts:
+        relations: 31
+        foreign_keys: 57
+        normalization_decisions: 5
+        open_issues: 2
+        covered_conceptual_entities: 29
+        covered_conceptual_relationships: 46
+    validation:
+      status: "PASS"
+      validated_at: "2026-10-14T14:54:38-03:00"
+      evidence: "ENVELOPE_1_1_PASS; SPECIALIZED_LOGICAL_MODEL_VALIDATION_PASS; ENTITY_COVERAGE_29_OF_29; RELATIONSHIP_COVERAGE_46_OF_46; FK_ENDPOINTS_AND_ATTRIBUTES_PASS; NULLABILITY_AND_DELETE_SEMANTICS_PASS; RULE_AND_EVIDENCE_REFERENCES_PASS; NO_PLACEHOLDERS; DETERMINISTIC_REBUILD_IDENTICAL; TWO_NON_BLOCKING_OPEN_ISSUES; GENERIC_VALIDATOR_NOT_APPLICABLE_BECAUSE_ATTRIBUTE_IDS_ARE_RELATION_SCOPED"
+    approval:
+      required: true
+      decision: "PENDING"
+      approved_by: null
+      approved_at: null
+      evidence: null
+    promotion:
+      status: "NOT_STARTED"
+      promoted_source_id: null
 
 incidents:
   - id: "INC_AUTH_001"
