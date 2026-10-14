@@ -1,0 +1,35 @@
+# AI & LLMs
+google-generativeai
+anthropic
+openai
+langchain
+llama-index
+
+# Notebooks & Data Science
+jupyter
+pandas
+numpy
+matplotlib
+plotly
+
+# Ontologias & Web Semântica
+rdflib
+owlready2
+SPARQLWrapper
+
+# Banco de Dados
+psycopg2-binary
+sqlalchemy
+
+# Documentação & Markdown
+mkdocs
+mkdocs-material
+python-frontmatter
+mistune
+
+# Utilitários
+python-dotenv
+pydantic
+httpx
+requests
+rich

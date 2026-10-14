@@ -30,6 +30,8 @@ Esta checklist orienta a modelagem no Gemini Notebook Pro das fontes atuais e fu
 
 **Ambiente e continuidade — Gemini Notebook Pro**
 
+**Notebook de modelagem:** `# BANCO - CEPRAEA Beach Handball`. Este é o núcleo de análise, reconciliação e produção fundamentada dos artefatos; execução de migrations e testes depende de ambiente PostgreSQL autorizado e observável.
+
 ### Finalidade
 
 Este documento é o guia operacional permanente para orientar a modelagem de dados do CEPRAEA BEAH PRO no Gemini Notebook (NotebookLM) Pro.
@@ -59,7 +61,7 @@ O arquivo deve ser adicionado como fonte ao notebook pertinente e associado a in
 7. Explicitar associações, papéis e cardinalidades;
 8. Transformar em modelo lógico relacional;
 9. Derivar o dicionário de dados;
-10. Propor modelo físico, migrations e testes PostgreSQL;
+10. Liberar progressivamente o `STOP GATE` físico do domínio e propor modelo físico, migrations e testes PostgreSQL;
 11. Executar testes no ambiente realmente acessível;
 12. Registrar evidências, decisões, limites e conclusões de cada unidade.
 
@@ -453,7 +455,76 @@ Examinar fontes atuais e documentos de modelo legados para detectar homônimos, 
 
 Atributos incorporados ao SQL devem possuir significado, domínio e vínculo comprovável com regra/decisão; o dicionário não homologado permanece PROPOSTO.
 
+## 6B. Cobertura factual de partidas e análise esportiva
+
+### Regra de modelagem
+
+A partida conserva identidade, contexto competitivo e estado, mas não concentra como atributos todos os fatos que ocorrem nela. Elementos com identidade, ciclo de vida, temporalidade ou proveniência devem ser representados por entidades próprias; ocorrências durante a partida, por eventos próprios; classificações estáveis, por domínios ou catálogos controlados. Não esconder essa estrutura em texto livre ou `JSONB` sem justificativa.
+
+### Estrutura da partida
+
+- [ ] Sets e demais segmentos da partida possuem identidade, ordem, tipo, início, término, estado e vínculo com a partida.
+- [ ] O shoot-out é representado como fase ou segmento próprio, separado dos segmentos regulares.
+- [ ] O placar inicial, suas alterações e o placar final podem ser reconstruídos em ordem temporal.
+- [ ] O resultado oficial permanece distinto do placar calculado a partir dos eventos observados.
+- [ ] Correções de placar preservam valor anterior, motivo, ator, instante e fonte.
+- [ ] As cardinalidades entre partida, segmentos, shoot-out, eventos e placares são validadas contra as regras vigentes.
+
+### Eventos observáveis
+
+- [ ] Cada evento possui identidade, partida, segmento, ordem ou instante, ator quando conhecido, equipe, contexto, resultado e proveniência.
+- [ ] Gols de um e dois pontos são fatos de pontuação distintos e referenciam a regra aplicável.
+- [ ] Spin shot e in-flight são classificados na ação correspondente, sem serem reduzidos ao placar agregado.
+- [ ] Tiros de seis metros registram concessão, execução, executante, goleira, resultado e regra aplicável quando disponíveis.
+- [ ] Punições e exclusões registram tipo, participante ou equipe afetada, instante, duração quando aplicável, autoridade e fundamento.
+- [ ] Posses e fases ofensivas registram limites temporais, equipe, origem, término e desfecho conforme o protocolo adotado.
+- [ ] Sistemas defensivos observados são vinculados ao intervalo ou fase em que ocorreram, sem serem tratados como atributo permanente da equipe.
+- [ ] Ações da goleira registram situação, ação, zona, técnica, resultado e contexto definidos pelo protocolo.
+- [ ] Zonas da quadra usam catálogo ou representação espacial versionada e vinculada ao protocolo.
+- [ ] O resultado da ação distingue sucesso, falha, interrupção, desconhecido, não observado e não aplicável quando esses estados forem materialmente diferentes.
+
+### Scout e análise tática
+
+- [ ] O protocolo de scout possui identidade, versão, vigência, definições operacionais, categorias, valores permitidos e fonte.
+- [ ] Cada observação identifica protocolo e versão, analista, objeto observado, referência temporal, codificação, evidência e estado de revisão.
+- [ ] Revisões preservam a observação anterior, o revisor, o instante, a justificativa e a decisão resultante.
+- [ ] A confiabilidade da observação registra método, amostra, avaliadores e resultado quando for calculada.
+- [ ] Fato observado, interpretação tática, indicador derivado e decisão técnica permanecem distintos.
+- [ ] Indicadores de partida ou atleta declaram fórmula, unidade, granularidade, numerador, denominador, população válida e limitações.
+
+### Evidência audiovisual e proveniência
+
+- [ ] Vídeo ou outro registro audiovisual possui identidade, origem, versão, duração, disponibilidade e classificação de acesso.
+- [ ] Timecode inicial e final localizam o trecho observado e usam uma referência temporal definida.
+- [ ] Evento e observação podem referenciar o mesmo trecho sem duplicar o arquivo audiovisual.
+- [ ] Recorte, transcodificação ou sincronização preserva ligação com a mídia de origem e registra a transformação.
+- [ ] Ausência de vídeo não transforma dado inferido em fato observado.
+
+### Critério de saída
+
+- [ ] Nenhum fato esportivo necessário existe apenas como atributo agregado de `MATCH`.
+- [ ] Estrutura da partida, eventos, observações, interpretações e indicadores possuem limites explícitos.
+- [ ] As relações e cardinalidades foram registradas nos dois sentidos e confrontadas com regras e protocolos aplicáveis.
+- [ ] Eventos e observações preservam temporalidade, ator, contexto e proveniência.
+- [ ] Casos positivos, negativos, de correção e de ausência foram definidos para a cobertura factual implementada.
+
 ## 7. Modelo físico PostgreSQL/Supabase
+
+### Liberação progressiva do `STOP GATE` físico
+
+O `STOP GATE` físico está liberado de forma progressiva e independente por domínio delimitado. A liberação de um domínio autoriza propor, implementar e testar somente as estruturas físicas e integrações correspondentes; não libera automaticamente outros domínios, implantação em produção, migração destrutiva ou alteração de fatos históricos.
+
+Antes da passagem de cada domínio para o modelo físico:
+
+- [ ] Escopo, fontes relevantes, autoridade e vigência estão delimitados.
+- [ ] Conceitos, regras, relações, cardinalidades e temporalidade necessários estão validados.
+- [ ] O dicionário registra atributos, domínios, ausência, unidades, proveniência e classificação de acesso.
+- [ ] Conflitos capazes de alterar integridade, significado, segurança ou histórico estão resolvidos ou bloqueiam somente o elemento afetado.
+- [ ] Transformações do modelo lógico para PostgreSQL estão registradas e justificadas.
+- [ ] Migration, rollback, casos de teste e critérios `PASS/FAIL` estão definidos.
+- [ ] Alterações de alto risco possuem aprovação humana explícita antes da implantação.
+
+O domínio atravessa o `STOP GATE` somente quando esses critérios possuem evidência rastreável. Resultado proposto, implementado, executado, testado e homologado são estados distintos.
 
 ### Migration
 
@@ -477,6 +548,9 @@ Atributos incorporados ao SQL devem possuir significado, domínio e vínculo com
 - [ ] Cada nova resposta cria nova versão imutável.
 - [ ] Vínculos históricos não são apagados em cascata.
 - [ ] Resultados concluídos exigem segmentos suficientes e coerentes.
+- [ ] Placar agregado pode ser reconciliado com eventos de pontuação e resultado oficial, sem substituir nenhuma dessas evidências.
+- [ ] Correção de evento, observação ou placar preserva histórico, autoria, motivo e proveniência.
+- [ ] Observação tática ou indicador derivado não reescreve o fato esportivo de origem.
 - [ ] Alteração destrutiva possui plano de migração, backup e rollback.
 - [ ] SQL gerado ainda não é marcado como válido antes da execução.
 
@@ -522,6 +596,10 @@ Comparar esquema efetivamente criado com conceitos, modelo lógico, dicionário,
 
 Conclusão da análise documental; conclusão da reconciliação; modelo conceitual pronto; lógico/dicionário pronto; SQL proposto; migration executada; testes aprovados/reprovados; homologação humana. Um PASS específico não aprova o corpus inteiro nem o projeto.
 
+### Etapa posterior ao PostgreSQL
+
+Quando fizer parte do domínio delimitado, derivar views, contratos de dados, APIs, pipelines ou produtos analíticos somente do esquema executado e testado. Cada artefato posterior deve preservar vínculo com conceitos, regras, atributos, permissões, versão do schema e evidências de validação que o sustentam.
+
 ## 8. Testes mínimos obrigatórios
 
 ### Estruturais
@@ -557,6 +635,21 @@ Conclusão da análise documental; conclusão da reconciliação; modelo conceit
 - [ ] Presença anterior ao início da sessão falha.
 - [ ] Presença válida é registrada independentemente.
 - [ ] Correção administrativa exige motivo quando previsto.
+
+### Partidas, scout e análise factual
+
+- [ ] Partida concluída possui estrutura de segmentos coerente com a regra aplicável.
+- [ ] Shoot-out é registrado separadamente dos segmentos regulares.
+- [ ] Eventos de pontuação válidos produzem a evolução de placar esperada.
+- [ ] Divergência entre placar calculado e resultado oficial é detectada sem sobrescrita automática.
+- [ ] Gol de um ponto e gol de dois pontos produzem efeitos distintos conforme a regra versionada.
+- [ ] Spin shot, in-flight e tiro de seis metros aceitam somente classificações previstas pelas regras e pelo protocolo aplicáveis.
+- [ ] Punição ou exclusão sem participante ou equipe afetada, instante ou fundamento exigido falha.
+- [ ] Posse, fase ofensiva, sistema defensivo e ação da goleira mantêm o contexto temporal definido pelo protocolo.
+- [ ] Observação sem protocolo, versão, analista ou referência temporal obrigatória falha.
+- [ ] Revisão de scout cria histórico e não altera silenciosamente a observação anterior.
+- [ ] Timecode inválido, invertido ou fora da duração conhecida da mídia falha.
+- [ ] Indicador derivado pode ser reproduzido a partir dos fatos, fórmula e versão registrados.
 
 ### RLS
 
@@ -728,18 +821,24 @@ Relevância julgada; alterações e conflitos de escopo analisados; artefatos af
 
 ## 13. Definição de pronto do fluxo
 
-O processamento do corpus está pronto para o escopo implementado quando:
+Modelagem completa não significa que todas as fontes do corpus foram lidas. A conclusão é avaliada por domínio delimitado:
+
+> Para o domínio delimitado, todos os conceitos, regras, relações, atributos, restrições, permissões e testes necessários foram rastreados, implementados e verificados.
+
+O processamento está pronto para o escopo implementado quando:
 
 - [ ] Fontes relevantes estão identificadas e classificadas.
 - [ ] Precedências e documentos substituídos estão registrados.
 - [ ] Regras utilizadas possuem origem rastreável.
 - [ ] Conceitos ambíguos estão definidos.
 - [ ] Modelo lógico preserva semântica e histórico.
+- [ ] A passagem progressiva pelo `STOP GATE` físico está registrada para o domínio implementado.
+- [ ] Partidas e análises esportivas, quando pertencentes ao domínio, preservam estrutura, eventos, observações, temporalidade e proveniência.
 - [ ] Migrations foram executadas.
 - [ ] Constraints e RLS foram testadas.
 - [ ] Testes positivos e negativos passaram.
+- [ ] Artefatos posteriores ao PostgreSQL, quando incluídos, correspondem ao schema executado e testado.
 - [ ] Limitações não verificadas estão explícitas.
 - [ ] Evidências permitem reprodução.
 - [ ] Decisões de alto risco possuem aprovação humana.
 - [ ] Nenhum artefato adicional é necessário para demonstrar o funcionamento.
-

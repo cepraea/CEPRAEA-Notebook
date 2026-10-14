@@ -1,0 +1,157 @@
+status: PASS
+inputs:
+  manifest:
+    path: notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml
+    sha256: 4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc
+  base:
+    path: notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.report-002.md
+    sha256: 5c17bf36dd955e3c834e15d591421395b0be157892d3be55142c45e5e8efde21
+  supplement:
+    path: notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.supplement-001.md
+    sha256: 05ed04f2a44c28f7df0082e674b0a6edab81d00ee8ad09b6bbb60bcadb537ac5
+normalization:
+  concept_classification_by_id:
+    PARTIDA: ENTITY
+    EQUIPE: ENTITY
+    ATLETA: ENTITY
+    GOLEIRA_POSICAO: ROLE
+    PERIODO_SET: EVENT
+    GOL_DE_OURO: RULE
+    SHOOT_OUT: EVENT
+    GOL_SIMPLES: EVENT
+    GOL_DUPLO: EVENT
+    SPIN_SHOT: CATALOG
+    IN_FLIGHT_SHOT: CATALOG
+    TIRO_SEIS_METROS: EVENT
+    EXCLUSAO_DISCIPLINAR: EVENT
+    DESQUALIFICACAO_SEGUNDA_EXCLUSAO: EVENT
+    CARTAO_AZUL_SUSPENSAO: EVENT
+    POSSE_DE_BOLA: EVENT
+    UNIDADE_BASICA_ATAQUE_BOU: EVENT
+    FASE_TATICA: CATALOG
+    SISTEMA_TATICO: CATALOG
+    ZONA_ANALITICA_QUADRA: CATALOG
+    PROTOCOLO_SCOUT: CATALOG
+    CONFIABILIDADE_OBSERVADOR: INDICATOR
+    EVENTO_SCOUT: EVENT
+    ANALISTA_OBSERVADOR: ROLE
+    TIMECODE: VALUE_OBJECT
+    TRECHO_OBSERVADO: VALUE_OBJECT
+  privacy_value_map:
+    DADO_PESSOAL: PESSOAL
+    USO_INTERNO: INTERNO
+  base_rule_type_by_id:
+    RN_IHF_VIGENCIA_2026: TEMPORAL
+    RN_SGATE_0023_PONTUACAO_FHERJ_2026: CALCULATION
+  scalar_fields_converted_to_single_item_lists:
+  - allowed_values
+  - conditions
+  - evidence_ref_ids
+  - exceptions
+  - exclusions
+  - implementation_targets
+  - inclusions
+  - invalid_context
+  - related_concept_ids
+  - subject_ids
+  - synonyms
+  - valid_context
+  - verification_test_ids
+selection:
+  included_base_rule_ids:
+  - RN_IHF_VIGENCIA_2026
+  - RN_SGATE_0023_PONTUACAO_FHERJ_2026
+  omitted_base_rule_ids:
+  - RN_DEC_DATA_045_1_SSOT_PRESENCA
+  - RN_DISP_001_DECLARACAO_INTENCAO
+  - RN_IHF_JOGO_PASSIVO_PASSES
+  - RN_IHF_LIMITE_ATLETAS_QUADRA
+  - RN_IHF_PROTECAO_GOLEIRO_CABECA
+  - RN_IHF_ULTIMOS_15_SEGUNDOS
+  - RN_REG_IHF_002_EXCLUSAO_DUAS_ATLETAS
+  included_supplement_rule_ids:
+  - RN_SEMANTICA_GOLEIRA
+  - RN_TETO_PARTICIPANTES_SUMULA
+  - RN_REJEICAO_VARIAVEIS_INFERENCIAIS
+  - RN_PASSIVO_QUATRO_PASSES
+  - RN_SANCAO_FINAL_15_SEGUNDOS
+  - RN_PROTECAO_CABECA_GOLEIRA
+  - RN_PROIBICAO_RETARDO_REPETIDO
+  - RN_PRAZO_INSCRICAO_ATLETA_72H
+  - RN_REGRAS_EXECUCAO_TIRO_SEIS_METROS
+  omitted_open_issue_ids:
+  - ISSUE_FHERJ_SCORING_POSITIONS_8_PLUS
+  - ISSUE_MIGRATION_VERSION_STATUS
+  - ISSUE_MISSING_RLS_POLICIES
+  - ISSUE_SHOOTOUT_SCORE_MISSING_ETAPA_FINAL
+  - ISSUE_SOURCE_06_MIGRATIONS_ROLLBACK_SQL_MD_B809827E_002
+  - ISSUE_SOURCE_07_MATRIZ_RBAC_E_POLITICAS_RLS_0BB80919_001
+counts:
+  concepts: 47
+  rules: 11
+  decisions: 3
+  open_issues: 1
+coverage:
+  status: PASS
+  required_topics:
+    partida:
+    - PARTIDA
+    competicao:
+    - COMPETICAO
+    equipe:
+    - EQUIPE
+    atleta:
+    - ATLETA
+    papel:
+    - PAPEL_ESPORTIVO_OPERACIONAL
+    periodo_set:
+    - PERIODO_SET
+    segmento_observado:
+    - SEGMENTO_OBSERVADO
+    - TRECHO_OBSERVADO
+    gol_de_ouro:
+    - GOL_DE_OURO
+    shoot_out:
+    - SHOOT_OUT
+    placar:
+    - PLACAR_JOGO
+    - ESTADO_DO_PLACAR
+    - EVOLUCAO_DO_PLACAR
+    - EVENTO_DE_PONTUACAO
+    pontuacao:
+    - GOL_SIMPLES
+    - GOL_DUPLO
+    - SPIN_SHOT
+    - IN_FLIGHT_SHOT
+    - TIRO_SEIS_METROS
+    disciplina:
+    - PUNICAO_DISCIPLINAR
+    - EXCLUSAO_DISCIPLINAR
+    - CONSEQUENCIA_DISCIPLINAR
+    posse_e_fases:
+    - POSSE_DE_BOLA
+    - FASE_OFENSIVA
+    - FASE_DEFENSIVA
+    - SISTEMA_DEFENSIVO
+    observacao_tatica:
+    - ACAO_DA_GOLEIRA
+    - ZONA_ANALITICA_QUADRA
+    - ACAO_OBSERVADA
+    - RESULTADO_DA_ACAO
+    scout:
+    - EVENTO_SCOUT
+    - OBSERVACAO_DE_SCOUT
+    - PROTOCOLO_SCOUT
+    - VERSAO_PROTOCOLO_SCOUT
+    qualidade_observacao:
+    - ANALISTA_OBSERVADOR
+    - REVISAO_DA_OBSERVACAO
+    - ESTADO_DE_REVISAO
+    - CONFIABILIDADE_OBSERVADOR
+    midia:
+    - MIDIA_VIDEO
+    - TIMECODE
+    - TRECHO_OBSERVADO
+    proveniencia:
+    - PROVENIENCIA_OBSERVACAO
+  temporality_declared_for_all_concepts: true
