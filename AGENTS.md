@@ -61,8 +61,8 @@ Para tarefas em várias etapas, descreva um plano breve:
 
 Critérios de sucesso fortes permitem que você repita de forma independente. Critérios fracos (“faça funcionar”) exigem constante esclarecimento.
 
+Ao finalizar uma ação, entregue a próxima ação recomendada
+
 ---
 
 **Essas diretrizes funcionam se:** houver menos alterações desnecessárias nos diffs, menos reescritas por excesso de complexidade e perguntas de esclarecimento acontecerem antes da implementação, em vez de depois dos erros.
-
-Se quiser, também posso converter isso em uma versão em “português mais natural e fluido” para uso direto em documentos de equipe.

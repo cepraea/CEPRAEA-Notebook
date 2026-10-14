@@ -13,6 +13,26 @@ Executar o fluxo sem atribuir ao NotebookLM capacidades de orquestração, aprov
 5. Confirme que cada `source_id` selecionada está pronta.
 6. Defina o prompt e o artefato esperado para uma única etapa.
 
+Na etapa 00, monte primeiro o manifesto-base sem geração:
+
+```bash
+python3 notebooklm-modelagem/scripts/build_source_manifest.py \
+  caminho/estado-execucao.yaml \
+  caminho/00-manifesto-fontes.yaml
+```
+
+O NotebookLM não preenche IDs da API, hashes, estados ou timestamps. Para enriquecer o manifesto, analise uma fonte documental por execução, mantenha o vínculo com o `source_id` selecionado no estado do operador e revise a resposta antes da mesclagem.
+
+Nunca envie `.yaml` ou `.yml` diretamente. Antes do upload, derive uma fonte aceita:
+
+```bash
+python3 notebooklm-modelagem/scripts/yaml_to_markdown.py \
+  --output caminho/templates-yaml.md \
+  notebooklm-modelagem/templates/00-manifesto-fontes.template.yaml
+```
+
+Para vários YAML do mesmo módulo, passe todos na mesma execução. O arquivo Markdown conserva um cabeçalho por caminho e cada conteúdo dentro de um bloco `yaml`. Registre o hash do YAML canônico e o hash da fonte derivada.
+
 Liste IDs e estados sem depender do título:
 
 ```bash
@@ -27,7 +47,7 @@ Não execute geração, upload ou promoção sem autorização para modificar o 
 
 ## Executar uma etapa
 
-Use todas as fontes explicitamente. Repita `--source` para cada ID:
+Use somente a fonte documental analisada e os controles indispensáveis. Repita `--source` para esses IDs:
 
 ```bash
 notebooklm generate report \
@@ -35,7 +55,7 @@ notebooklm generate report \
   --source SOURCE_ID_1 \
   --source SOURCE_ID_2 \
   --format custom \
-  --language pt-BR \
+  --language pt_BR \
   --prompt-file notebooklm-modelagem/prompts/00-reconciliar-fontes.md \
   --json
 ```
@@ -64,21 +84,32 @@ notebooklm download report caminho/artefato.yaml \
 ```bash
 python3 notebooklm-modelagem/scripts/validate_yaml.py \
   --schema notebooklm-modelagem/schemas/artifact-envelope.schema.json \
+  --state caminho/estado-execucao.yaml \
   caminho/artefato.yaml
 
 sha256sum caminho/artefato.yaml
 ```
 
-Além da validação mecânica, confirme escopo, evidências, conflitos e ausência de alegações de execução. Registre resultado, hash, revisor e decisão no estado do operador.
+Para `SOURCE_MANIFEST`, `--state` exige correspondência integral entre `sources[].notebook_source_id` e `selected_sources[].source_id`. Validação de schema isolada não comprova a identidade das fontes. Além da validação mecânica, confirme escopo, evidências, conflitos e ausência de alegações de execução. Registre resultado, hash, revisor e decisão no estado do operador.
 
 O prompt `07` gera apenas `recommendation`. A autorização física existe somente quando `physical_gate.operator_decision` foi preenchida por responsável humano com escopo, data e evidência.
 
 ## Promover o artefato aprovado
 
-Adicione o arquivo validado como nova fonte:
+Converta o YAML validado em Markdown de ingestão e registre os hashes dos dois arquivos:
 
 ```bash
-notebooklm source add caminho/artefato.yaml \
+python3 notebooklm-modelagem/scripts/yaml_to_markdown.py \
+  --output caminho/artefato.yaml.md \
+  caminho/artefato.yaml
+
+sha256sum caminho/artefato.yaml caminho/artefato.yaml.md
+```
+
+Adicione apenas o Markdown derivado como nova fonte:
+
+```bash
+notebooklm source add caminho/artefato.yaml.md \
   --notebook 93446a17-55bf-4cd8-b9f9-18c52c8f4c1d \
   --type file \
   --title "RUN_ID — DOCUMENT_ID vVERSAO" \

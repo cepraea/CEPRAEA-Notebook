@@ -1,19 +1,38 @@
-# Prompt 00 — Reconciliar fontes
+# Prompt 00 — Enriquecer uma fonte
 
-Produza somente `00-manifesto-fontes.yaml` para o domínio e o `run_id` informados pelo operador.
+Analise somente a fonte documental selecionada pelo operador. Os documentos de controle selecionados servem apenas para orientar a análise.
 
-Use apenas as fontes selecionadas nesta solicitação. Siga `Fluxo_Modelagem.md`, `INSTRUCOES_NOTEBOOK.md`, `CONTRATO_ARTEFATOS.md` e `00-manifesto-fontes.template.yaml` quando estiverem entre as fontes selecionadas.
+Não produza o manifesto final. Identidade da fonte, UUID do NotebookLM, `run_id`, hashes, estados e aprovação pertencem ao operador.
 
 ## Tarefa
 
-1. Registre o `notebook_source_id` real de cada fonte selecionada.
-2. Classifique autoridade, vigência, escopo, revisão e limitações.
-3. Detecte duplicidades, substituições e material histórico.
-4. Crie `evidence_refs` com IDs únicos e localizadores precisos.
-5. Registre precedências demonstráveis e conflitos não resolvidos.
-6. Não promova uma fonte por nome, pasta ou rótulo editorial.
-7. Não faça modelagem conceitual, lógica ou física.
+1. Proponha título canônico, editora ou responsável, revisão, data, idioma, tipo documental e limitações somente quando demonstráveis.
+2. Classifique autoridade e vigência com justificativa localizada.
+3. Extraia evidências relevantes ao domínio com página, regra, seção, aba, célula ou timecode.
+4. Sinalize indícios de tradução, duplicidade, substituição ou material histórico sem concluir além da evidência.
+5. Não faça modelagem conceitual, lógica ou física.
 
-Use `null` quando revisão, hash ou data de obtenção não estiverem disponíveis nas fontes. Não invente metadados do operador.
+Use `null` quando um valor não estiver demonstrado. Não invente identificadores ou metadados operacionais.
 
-Retorne somente YAML válido, sem cerca Markdown. O documento começa como `PROPOSTO`.
+Retorne somente YAML válido, sem cerca Markdown, nesta estrutura:
+
+```yaml
+source_assessment:
+  canonical_title_proposal: null
+  publisher: null
+  source_revision: null
+  publication_date: null
+  language: null
+  source_type: null
+  authority_class_proposal: null
+  lifecycle_status_proposal: null
+  classification_rationale: null
+  limitations: []
+evidence_candidates:
+  - locator: null
+    evidence_type: "FATO|REGRA|DECISAO|DERIVACAO|SUPORTE"
+    excerpt: null
+    interpretation: null
+reconciliation_signals: []
+open_questions: []
+```

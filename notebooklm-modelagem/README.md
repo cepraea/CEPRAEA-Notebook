@@ -33,6 +33,8 @@ notebooklm-modelagem/
 │   └── artifact-envelope.schema.json
 ├── scripts/
 │   ├── validate_yaml.py
+│   ├── build_source_manifest.py
+│   ├── yaml_to_markdown.py
 │   └── yaml_to_json.py
 ├── templates/
 │   └── 00-...07-*.template.yaml
@@ -111,6 +113,7 @@ Os candidatos SQL não são migrations executáveis por si só. O operador comp�
 ```bash
 python3 notebooklm-modelagem/scripts/validate_yaml.py \
   --schema notebooklm-modelagem/schemas/artifact-envelope.schema.json \
+  --state caminho/estado-execucao.yaml \
   caminho/do/artefato.yaml
 
 python3 notebooklm-modelagem/scripts/yaml_to_json.py \
@@ -118,7 +121,22 @@ python3 notebooklm-modelagem/scripts/yaml_to_json.py \
   caminho/do/artefato.json
 ```
 
-Use `--allow-placeholders` somente para validar templates. O JSON é derivado mecanicamente do YAML e não é editado.
+Use `--state` no manifesto de fontes para conferir os IDs contra a seleção da execução. Use `--allow-placeholders` somente para validar templates. O JSON é derivado mecanicamente do YAML e não é editado.
+
+## Ingestão de YAML no NotebookLM
+
+Arquivos `.yaml` e `.yml` são canônicos no workspace, mas não devem ser enviados diretamente ao NotebookLM. O seletor de fontes bloqueia essas extensões antes da indexação.
+
+Gere uma fonte Markdown derivada, preservando caminho e bloco YAML:
+
+```bash
+python3 notebooklm-modelagem/scripts/yaml_to_markdown.py \
+  --output caminho/fontes-yaml.md \
+  caminho/primeiro.yaml \
+  caminho/segundo.yaml
+```
+
+O Markdown derivado pode consolidar arquivos do mesmo módulo e economizar slots. Ele é fonte de ingestão; os YAML originais continuam sendo a fonte canônica editável.
 
 ## Critério de conclusão
 

@@ -1,5 +1,6 @@
 schema_version: "1.1"
 document:
+  # OPERATOR_ONLY: identidade e estado são preenchidos fora do NotebookLM.
   id: "SOURCE_MANIFEST"
   artifact_kind: "SOURCE_MANIFEST"
   title: "Manifesto de fontes"
@@ -22,15 +23,16 @@ scope:
 sources:
   - id: "SOURCE_ID"
     canonical_title: "TITULO_CANONICO"
-    notebook_source_id: "NOTEBOOK_SOURCE_UUID"
+    # OPERATOR_ONLY: ID retornado pela API, nunca gerado pelo modelo.
+    notebook_source_id: null
     drive_file_id: null
     source_type: "PDF|GOOGLE_DOC|SPREADSHEET|WEB|MARKDOWN|SQL|OTHER"
-    publisher: "RESPONSAVEL_OU_ENTIDADE"
+    publisher: null
     source_revision: null
     publication_date: null
     retrieved_at: null
     content_sha256: null
-    language: "pt-BR"
+    language: null
     authority_class: "AUTORITATIVA|OPERACIONAL_PRIMARIA|DECISAO_HUMANA|SUPORTE|HISTORICA|INDETERMINADA"
     lifecycle_status: "VIGENTE|COMPLEMENTAR|SUBSTITUIDA|HISTORICA|EM_VERIFICACAO|QUARENTENA"
     notebook_status: "READY|PROCESSING|FAILED"

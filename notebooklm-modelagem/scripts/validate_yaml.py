@@ -32,7 +32,7 @@ class StrictLoader(yaml.SafeLoader):
     pass
 
 
-def reject_aliases(loader: StrictLoader, node: yaml.Node) -> Any:
+def reject_aliases(_loader: StrictLoader, node: yaml.Node) -> Any:
     raise yaml.constructor.ConstructorError(None, None, "aliases YAML não são permitidos", node.start_mark)
 
 
@@ -58,6 +58,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Valida artefatos YAML do pacote de modelagem.")
     parser.add_argument("path", type=Path)
     parser.add_argument("--schema", type=Path)
+    parser.add_argument("--state", type=Path, help="Confere as fontes contra selected_sources do estado da execução.")
     parser.add_argument("--allow-placeholders", action="store_true")
     return parser.parse_args()
 
@@ -101,10 +102,29 @@ def main() -> int:
         if not args.allow_placeholders and isinstance(data, dict):
             document = data.get("document")
             artifact_kind = document.get("artifact_kind") if isinstance(document, dict) else None
-            required = REQUIRED_BODY_KEYS.get(artifact_kind, set())
+            required = REQUIRED_BODY_KEYS.get(artifact_kind, set()) if isinstance(artifact_kind, str) else set()
             missing = sorted(required - data.keys())
             if missing:
                 raise ValueError(f"seções obrigatórias ausentes: {', '.join(missing)}")
+            if args.state and artifact_kind == "SOURCE_MANIFEST":
+                state = yaml.load(args.state.read_text(encoding="utf-8"), Loader=StrictLoader)
+                selected = state.get("selected_sources", []) if isinstance(state, dict) else []
+                sources = data.get("sources", [])
+                expected_ids = [item.get("source_id") for item in selected if isinstance(item, dict)]
+                actual_ids = [item.get("notebook_source_id") for item in sources if isinstance(item, dict)]
+                if len(expected_ids) != len(set(expected_ids)):
+                    raise ValueError("selected_sources contém source_id duplicado")
+                if len(actual_ids) != len(set(actual_ids)):
+                    raise ValueError("sources contém notebook_source_id duplicado")
+                missing_ids = set(expected_ids) - set(actual_ids)
+                unexpected_ids = set(actual_ids) - set(expected_ids)
+                if missing_ids or unexpected_ids or len(expected_ids) != len(actual_ids):
+                    matched = len(set(expected_ids) & set(actual_ids))
+                    raise ValueError(
+                        "cobertura de fontes divergente: "
+                        f"correspondentes={matched}/{len(expected_ids)}, "
+                        f"ausentes={len(missing_ids)}, inesperadas={len(unexpected_ids)}"
+                    )
     except (OSError, ValueError, yaml.YAMLError, jsonschema.ValidationError) as exc:
         print(f"ERRO {args.path}: {exc}", file=sys.stderr)
         return 1

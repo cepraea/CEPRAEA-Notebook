@@ -4,6 +4,8 @@
 
 O NotebookLM produz propostas. Aprovação, promoção, execução e homologação pertencem ao registro do operador e às evidências externas.
 
+Identificadores retornados pela API (`notebook_source_id`, `promoted_source_id` e IDs de artefatos), hashes, `run_id`, `notebook_id`, timestamps e estados de processamento são `OPERATOR_ONLY`. O NotebookLM não deve gerá-los nem confirmá-los. O operador monta o envelope determinístico e associa a ele o conteúdo semântico proposto.
+
 Vocabulários distintos não devem ser misturados:
 
 | Campo | Valores |
@@ -61,7 +63,7 @@ input_artifacts:
 
 ## Proveniência
 
-O manifesto define evidências uma única vez:
+O operador monta o manifesto-base a partir do estado da execução. O NotebookLM propõe apenas enriquecimento semântico por fonte; após revisão e associação determinística, o manifesto define evidências uma única vez:
 
 ```yaml
 evidence_refs:
