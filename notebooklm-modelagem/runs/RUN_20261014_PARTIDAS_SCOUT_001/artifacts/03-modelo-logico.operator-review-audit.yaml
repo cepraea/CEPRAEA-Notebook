@@ -1,0 +1,65 @@
+status: "PASS"
+inputs:
+  base_candidate:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.candidate.yaml"
+    sha256: "3d335b4a488d67c97cca3a962854a4fa0a52389151fcf3e79e06ca83cf75b207"
+  operator_review:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.operator-review.yaml"
+    sha256: "8532ca5eb56daa6dd978de5e508846198cbac2f32572ffca9eef132b25e3511d"
+  semantic_registry:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+    sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+  conceptual_model:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.yaml"
+    sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
+  source_manifest:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+    sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+operator_decisions:
+  - id: "DEC_RANKING_CONVIDADOS_FHERJ_2026"
+    source: "USER_STATEMENT_2026_10_14"
+    decision: "A participação esportiva e a elegibilidade para o ranking final são fatos independentes e contextuais à competição."
+    confirmed_facts:
+      - "Campinas participa do Campeonato Carioca desde 2025 e não conta para o ranking final."
+      - "Chile participa de determinadas etapas e não conta para o ranking final."
+      - "A participação sem pontuação final decorre de decisão dos clubes apoiada pela FHERJ."
+    modeling_consequence: "Registrar a elegibilidade na participação equipe-competição, sem inferi-la por UF, país ou cadastro\
+      \ global da equipe."
+  - id: "DEC_PLACAR_HISTORICO_INCOMPLETO"
+    source: "OPERATOR_REVIEW_2026_10_14"
+    decision: "Placar detalhado desconhecido deve permanecer nulo e possuir estado explícito de completude; zero não representa\
+      \ ausência de evidência."
+    confirmed_facts: []
+    modeling_consequence: "Permitir shoot-out confirmado com pontuação detalhada desconhecida, sem fabricar valores."
+changes:
+  shoot_out_attribute_updates:
+    - "PONTOS_EQUIPE_A"
+    - "PONTOS_EQUIPE_B"
+  shoot_out_added_attribute_ids:
+    - "STATUS_COMPLETUDE"
+    - "MOTIVO_INCOMPLETUDE"
+  shoot_out_added_check_ids:
+    - "CHK_SHOOT_OUT_COMPLETUDE"
+  added_relation_ids:
+    - "PARTICIPACAO_EQUIPE_COMPETICAO"
+  added_foreign_key_ids:
+    - "FK_PARTICIPACAO_EQUIPE_COMPETICAO_COMPETICAO"
+    - "FK_PARTICIPACAO_EQUIPE_COMPETICAO_EQUIPE"
+  added_normalization_decision_ids:
+    - "NORM_DECISION_006"
+  approved_logical_relationship_ids:
+    - "EQUIPE_PARTICIPA_COMPETICAO"
+  resolved_open_issue_ids:
+    - "ISSUE_EXCECAO_CAMPINAS_FHERJ_2026"
+upstream_reconciliation:
+  required: true
+  target: "Próxima versão do modelo conceitual"
+  relationship_id: "EQUIPE_PARTICIPA_COMPETICAO"
+counts:
+  relations: 32
+  foreign_keys: 59
+  normalization_decisions: 6
+  open_issues: 1
+  covered_conceptual_entities: 29
+  covered_conceptual_relationships: 46
+  approved_logical_relationships: 1

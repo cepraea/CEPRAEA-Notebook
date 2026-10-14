@@ -1,0 +1,103 @@
+schema_version: "1.0"
+run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
+status: "OPERATOR_REVIEWED"
+inputs:
+  manifest_candidate_sha256: "3c7e202d09793d368aaf33c070c441e0a566b8c11c670df10bb0f7858b7d345d"
+  first_response_sha256: "b7135a3e6a9c2306dccab839988a28e26ddff2e3dc2d66429f827ee5b7dbb3cb"
+  corrected_response_sha256: "73a7c749aab3a03055b3f793875b59aa0f5e13574a0c5c356685715cce7173e6"
+precedence_rules:
+  - id: "PRECEDENCE_001"
+    higher_authority_source_id: "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
+    lower_authority_source_id: "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
+    scope: "REGRAS_DE_JOGO_E_CAMADA_REGULAMENTAR_DO_SCOUT"
+    rationale: "O protocolo de scout determina expressamente que sua camada regulamentar siga as Regras IHF vigentes em 2026."
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_002"
+  - id: "PRECEDENCE_002"
+    higher_authority_source_id: "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
+    lower_authority_source_id: "SRC_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA"
+    scope: "LEIS_DO_JOGO_E_INTERPRETACAO_ESTADUAL"
+    rationale: "O documento estadual declara que seus esclarecimentos se baseiam nas atuais Leis do Jogo de Handebol de Praia da IHF."
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_001"
+conflicts:
+  - id: "CONFLICT_001"
+    status: "COMPATIVEL"
+    subject_id: "ESTRUTURA_TEMPORAL_DA_PARTIDA_E_PERIODOS"
+    source_ids:
+      - "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
+      - "SRC_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487"
+    description: "Os dois textos definem dois períodos pontuados separadamente, com duração de 10 minutos cada."
+    impact: "Confirma a convergência documental do formato temporal básico da partida."
+    resolution: null
+    decision_id: null
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_003"
+  - id: "CONFLICT_002"
+    status: "SUBSTITUICAO_DEMONSTRADA"
+    subject_id: "VIGENCIA_DAS_ATUALIZACOES_IHF_2026"
+    source_ids:
+      - "SRC_REGRAS_IHF_BEACH_HANDBALL_2026_EN_PDF_PDF_C96E8C2E"
+      - "SRC_ATUALIZACOES_IHF_2026_MD_02D99F75"
+    description: "A nota do livro de regras indicava 1º de julho de 2026 para disposições destacadas; a comunicação posterior da IHF antecipou para 1º de abril de 2026 as alterações de Beach Handball nela descritas."
+    impact: "A vigência deve ser registrada por disposição, distinguindo as alterações cobertas pela comunicação posterior."
+    resolution: "Usar 1º de abril de 2026 somente para as alterações de Beach Handball explicitamente abrangidas pela comunicação posterior da IHF."
+    decision_id: null
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_001"
+      - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_002"
+  - id: "CONFLICT_003"
+    status: "COMPLEMENTAR"
+    subject_id: "JOGO_PASSIVO"
+    source_ids:
+      - "SRC_ATUALIZACOES_IHF_2026_MD_02D99F75"
+      - "SRC_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA"
+    description: "A atualização IHF limita a quatro os passes após o sinal de pré-aviso; o esclarecimento estadual trata da recusa intencional de oportunidade clara seguida da obrigação de arremesso pelo recebedor."
+    impact: "Os dois critérios devem permanecer distinguíveis no registro de jogo passivo."
+    resolution: null
+    decision_id: null
+    evidence_ref_ids:
+      - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_004"
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_011"
+  - id: "CONFLICT_004"
+    status: "COMPLEMENTAR"
+    subject_id: "INCORPORACAO_DE_ESCLARECIMENTOS_DE_ARBITRAGEM_NO_CIRCUITO_ESTADUAL"
+    source_ids:
+      - "SRC_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA"
+      - "SRC_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327"
+    description: "Os esclarecimentos adotam orientações de arbitragem baseadas no Mundial IHF para o Circuito Estadual; o regulamento geral exige observância conjunta de suas normas e das normas nacionais e internacionais aplicáveis."
+    impact: "Vincula a interpretação operacional de arbitragem ao contexto específico do circuito estadual."
+    resolution: null
+    decision_id: null
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_001"
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_002"
+resolved_open_issue_ids:
+  - "ISSUE_SOURCE_METADATA_ENRICHMENT"
+  - "ISSUE_SOURCE_SEMANTIC_RECONCILIATION"
+  - "ISSUE_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_UNGROUNDED_EVIDENCE"
+  - "ISSUE_REGULAMENTO_CBHB_2026_PDF_818BCC8B_UNGROUNDED_EVIDENCE"
+  - "ISSUE_SOURCE_6_METRE_THROW_PUNISHMENTS_PDF_D2567ACD_UNGROUNDED_EVIDENCE"
+  - "ISSUE_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_UNGROUNDED_EVIDENCE"
+  - "ISSUE_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56_UNGROUNDED_EVIDENCE"
+  - "ISSUE_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_UNGROUNDED_EVIDENCE"
+  - "ISSUE_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_UNGROUNDED_EVIDENCE"
+  - "ISSUE_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94_UNGROUNDED_EVIDENCE"
+  - "ISSUE_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E_UNGROUNDED_EVIDENCE"
+  - "ISSUE_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_UNGROUNDED_EVIDENCE"
+  - "ISSUE_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_UNGROUNDED_EVIDENCE"
+  - "ISSUE_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_UNGROUNDED_EVIDENCE"
+  - "ISSUE_SOURCE_05_SCHEMA_POSTGRESQL_SQL_B7F68C42_UNGROUNDED_EVIDENCE"
+  - "ISSUE_SOURCE_07_MATRIZ_RBAC_E_POLITICAS_RLS_0BB80919_UNGROUNDED_EVIDENCE"
+rejected_proposals:
+  - subject: "PRECEDENCIA_CBHB_SOBRE_FHERJ"
+    reason: "A obrigação de observar normas conjuntamente não demonstra precedência geral entre os regulamentos."
+  - subject: "SUBSTITUICAO_DDL_POR_MIGRACAO_OU_ROLLBACK"
+    reason: "Os excertos citados são cabeçalhos e não demonstram correção ou substituição técnica."
+  - subject: "CONTRADICAO_SOBRE_DESQUALIFICACAO_DIRETA"
+    reason: "Os excertos citados não contêm as sanções comparadas e as regras podem ser complementares."
+  - subject: "PRECEDENCIA_DA_BASE_CEPRAEA_SOBRE_DDL"
+    reason: "Ser fonte do frontend não demonstra autoridade sobre especificações físicas do banco."
+  - subject: "CONSOLIDACAO_DAS_PENDENCIAS_HISTORICAS"
+    reason: "A consolidação eliminaria diferenças materiais entre questões ainda abertas."
