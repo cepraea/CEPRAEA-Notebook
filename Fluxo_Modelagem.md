@@ -728,7 +728,7 @@ Relevância julgada; alterações e conflitos de escopo analisados; artefatos af
 
 ## 13. Definição de pronto do fluxo
 
-O processamento do corpus está pronto para o escopo implementado quando:
+O processamento do corpus está pronto para o escopo implementado quando a conclusão for verificável por domínio (ou seja, não significa "todas as fontes foram lidas", mas sim que, para o domínio delimitado, todos os conceitos, regras, relações, atributos, restrições, permissões e testes necessários foram rastreados, implementados e verificados):
 
 - [ ] Fontes relevantes estão identificadas e classificadas.
 - [ ] Precedências e documentos substituídos estão registrados.
@@ -742,4 +742,3 @@ O processamento do corpus está pronto para o escopo implementado quando:
 - [ ] Evidências permitem reprodução.
 - [ ] Decisões de alto risco possuem aprovação humana.
 - [ ] Nenhum artefato adicional é necessário para demonstrar o funcionamento.
-
