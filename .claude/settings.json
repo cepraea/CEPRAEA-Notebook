@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "AGENT_ID=claude-code bash '/home/davis/Gemini NotebookLM/auto-commit.sh'",
+            "statusMessage": "Commitando alterações da sessão..."
+          }
+        ]
+      }
+    ]
+  }
+}
