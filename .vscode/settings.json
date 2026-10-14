@@ -1,0 +1,41 @@
+{
+  // ── Python: interpretador e ambiente ──────────────────────────────────────
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.terminal.activateEnvInCurrentTerminal": true,
+
+  // ── Pylance: análise e autocomplete ───────────────────────────────────────
+  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
+
+  // ── Editor: comportamento para arquivos Python ─────────────────────────────
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": false,
+    "editor.rulers": [88]
+  },
+
+  // ── Jupyter: configurações de notebook ────────────────────────────────────
+  "jupyter.notebookFileRoot": "${workspaceFolder}",
+  "jupyter.askForKernelRestart": false,
+  "notebook.lineNumbers": "on",
+  "notebook.output.scrolling": true,
+
+  // ── Formatação geral ──────────────────────────────────────────────────────
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // ── Arquivos a ignorar no Explorer ────────────────────────────────────────
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/.pytest_cache": true,
+    "**/*.egg-info": true
+  }
+}
