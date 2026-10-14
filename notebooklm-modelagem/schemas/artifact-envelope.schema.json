@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cepraea.local/schemas/artifact-envelope.schema.json",
+  "title": "Envelope de artefato de modelagem",
+  "type": "object",
+  "required": ["schema_version", "document"],
+  "properties": {
+    "schema_version": { "const": "1.1" },
+    "document": {
+      "type": "object",
+      "required": ["id", "artifact_kind", "title", "version", "status", "run_id", "domain_id", "notebook_id", "generated_at", "supersedes", "input_artifacts"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" },
+        "artifact_kind": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "status": { "const": "PROPOSTO" },
+        "run_id": { "type": "string", "pattern": "^RUN_[A-Z0-9_]+$" },
+        "domain_id": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" },
+        "notebook_id": { "const": "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d" },
+        "generated_at": { "type": ["string", "null"] },
+        "supersedes": { "type": ["string", "null"] },
+        "input_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["document_id", "version", "sha256", "promoted_source_id"],
+            "properties": {
+              "document_id": { "type": "string" },
+              "version": { "type": "string" },
+              "sha256": { "type": "string" },
+              "promoted_source_id": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
