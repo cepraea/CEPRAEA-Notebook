@@ -3,7 +3,7 @@ run:
   id: "RUN_20261014_PARTIDAS_SCOUT_001"
   domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
   notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
-  status: "EM_EXECUCAO"
+  status: "BLOQUEADA"
   started_at: "2026-10-14T05:23:23-03:00"
   completed_at: null
   operator: "CODEX"
@@ -242,8 +242,16 @@ stages:
         status: "PASS"
         evidence: "SCHEMA_PASS; SOURCE_ID_COVERAGE_PASS: 30/30; DETERMINISTIC_REBUILD_IDENTICAL"
       semantic_enrichment:
-        status: "NOT_STARTED"
+        status: "PILOT_REJECTED"
         completed_source_ids: []
+        attempts:
+          - source_id: "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+            task_id: "3ec95ece-7330-43ab-97bb-28a13635dfc2"
+            artifact_id: "3ec95ece-7330-43ab-97bb-28a13635dfc2"
+            status: "REJECTED"
+            output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/enrichment/ihf-rules-2026-en.assessment.rejected-001.md"
+            sha256: "dda31047c947f2ecea52998d1e609f7cae3b793238165d1300fb496dd38daa3b"
+            rejection_reason: "REPORT_GENERATOR_RETURNED_MARKDOWN_PLAN_AND_INVENTED_SEMANTIC_IDS_INSTEAD_OF_REQUESTED_YAML_FRAGMENT"
     download:
       path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.rejected-003.yaml"
       sha256: "26593d23bff68e47e0deda8ec1f2c58e467278f8946dfdf170a6393cdd7b7378"
@@ -262,6 +270,11 @@ stages:
       promoted_source_id: null
 
 incidents:
+  - id: "INC_AUTH_001"
+    operation: "AUTH_CHECK_BEFORE_SINGLE_SOURCE_ENRICHMENT"
+    source_id: "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+    status: "RESOLVED"
+    resolution: "CLI_0_8_3; SANDBOX_CHECKS_TIMED_OUT; PASSIVE_ESCALATED_CHECK_RETURNED_STATUS_OK_AND_TOKEN_FETCH_TRUE"
   - id: "INC_GENERATION_002"
     operation: "GENERATE_REPORT_STAGE_00_WITH_NATIVE_TEMPLATE"
     source_id: null
@@ -303,6 +316,17 @@ blockers:
     status: "OPEN"
     affected_stage_id: "STAGE_00"
     description: "O manifesto-base possui identidade e classificação inicial, mas ainda não contém evidências, precedências e conflitos revisados por fonte."
+    resolution: null
+  - id: "BLOCK_STAGE_00_NOTEBOOK_AUTH"
+    status: "RESOLVED"
+    affected_stage_id: "STAGE_00"
+    description: "As verificações ativa (60 s) e passiva (20 s) de autenticação do NotebookLM expiraram; o piloto de enriquecimento não foi iniciado."
+    resolution: "AUTENTICACAO_CONFIRMADA_FORA_DA_RESTRICAO_DE_REDE_DO_SANDBOX"
+  - id: "BLOCK_STAGE_00_ENRICHMENT_TRANSPORT"
+    status: "OPEN"
+    affected_stage_id: "STAGE_00"
+    description: "O gerador de relatório não obedeceu ao fragmento YAML. A conversa atual do notebook contém dois turnos anteriores; usar chat estruturado isolado exige preservar e depois reinicializar essa conversa."
+    decision_required: "AUTORIZAR_SALVAR_HISTORICO_COMO_NOTA_E_REINICIAR_CHAT|MANTER_HISTORICO_E_INTERROMPER_ENRIQUECIMENTO"
     resolution: null
 
 physical_gate:

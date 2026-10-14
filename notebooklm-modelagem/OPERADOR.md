@@ -23,6 +23,18 @@ python3 notebooklm-modelagem/scripts/build_source_manifest.py \
 
 O NotebookLM não preenche IDs da API, hashes, estados ou timestamps. Para enriquecer o manifesto, analise uma fonte documental por execução, mantenha o vínculo com o `source_id` selecionado no estado do operador e revise a resposta antes da mesclagem.
 
+Para o enriquecimento da etapa 00, prefira chat com saída JSON, pois `references[].source_id` é metadado retornado pela API. Use `--new` somente após autorização explícita para apagar a conversa corrente do notebook:
+
+```bash
+notebooklm ask \
+  --notebook 93446a17-55bf-4cd8-b9f9-18c52c8f4c1d \
+  --source SOURCE_DOCUMENTAL \
+  --prompt-file notebooklm-modelagem/prompts/00-reconciliar-fontes.md \
+  --json
+```
+
+O operador conserva a resposta e `references` como candidato, verifica se todas as referências pertencem à fonte selecionada e somente então associa o enriquecimento ao `notebook_source_id` já registrado. O gerador de relatório não é usado para essa subetapa.
+
 Nunca envie `.yaml` ou `.yml` diretamente. Antes do upload, derive uma fonte aceita:
 
 ```bash
