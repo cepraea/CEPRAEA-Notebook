@@ -5,8 +5,8 @@ set -euo pipefail
 
 REPO="/home/davis/Gemini NotebookLM"
 AGENT="${AGENT_ID:-manual}"
-DRAFT_BRANCH="draft/agent"
 MAIN_BRANCH="main"
+DATE=$(date '+%Y-%m-%d')
 
 cd "$REPO"
 
@@ -17,12 +17,22 @@ if git diff --quiet && git diff --staged --quiet \
   exit 0
 fi
 
-# ── 2. Garantir que estamos no branch de rascunho ──────────────────────────
+# ── 2. Determinar o branch de trabalho ────────────────────────────────────
+# Cada sessão gera um branch próprio com timestamp — sem depender de checkout manual.
+# Se TASK_BRANCH estiver definido (ex: export TASK_BRANCH=feat/minha-tarefa),
+# usa esse nome e acumula commits no mesmo PR.
 CURRENT_BRANCH=$(git branch --show-current 2>/dev/null || echo "")
 
-if [ "$CURRENT_BRANCH" = "$MAIN_BRANCH" ] || [ -z "$CURRENT_BRANCH" ]; then
-  git checkout -B "$DRAFT_BRANCH" 2>/dev/null || git checkout "$DRAFT_BRANCH"
-  echo "→ Trocando para $DRAFT_BRANCH"
+if [ -n "${TASK_BRANCH:-}" ]; then
+  DRAFT_BRANCH="$TASK_BRANCH"
+  git checkout -B "$DRAFT_BRANCH" 2>/dev/null || true
+  echo "→ Branch de tarefa nomeada: $DRAFT_BRANCH"
+else
+  # Branch novo por sessão: agent/<agente>/<data>T<hora>
+  DATETIME=$(date '+%Y-%m-%dT%H-%M')
+  DRAFT_BRANCH="agent/${AGENT}/${DATETIME}"
+  git checkout -B "$DRAFT_BRANCH"
+  echo "→ Novo branch de sessão: $DRAFT_BRANCH"
 fi
 
 # ── 3. Gate de qualidade ───────────────────────────────────────────────────
@@ -54,7 +64,7 @@ echo "✓ Commit: auto($AGENT) @ $TIMESTAMP"
 
 # ── 6. Push para o remote ─────────────────────────────────────────────────
 echo "→ Fazendo push para origin/$DRAFT_BRANCH..."
-git push -u origin "$DRAFT_BRANCH" 2>&1
+git push -u origin "$DRAFT_BRANCH" 2>&1 || true
 
 # ── 7. Abrir PR se não existir um aberto ──────────────────────────────────
 if command -v gh &>/dev/null; then
@@ -84,3 +94,4 @@ fi
 
 echo ""
 echo "✓ Concluído: $FILES arquivo(s) | branch: $DRAFT_BRANCH | agente: $AGENT"
+echo "  PR: https://github.com/cepraea/CEPRAEA-Notebook/pulls"
