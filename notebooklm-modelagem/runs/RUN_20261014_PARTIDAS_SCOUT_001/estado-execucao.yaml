@@ -385,16 +385,34 @@ stages:
         sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
         promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
     generation:
-      mechanism: "REPORT_CUSTOM"
-      status: "IN_PROGRESS"
-      task_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
-      artifact_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
+      mechanism: "REPORT_CUSTOM_CORRECTION"
+      status: "PENDING"
+      task_id: "c29c2cee-c17f-4907-b32c-2295d99b95f6"
+      artifact_id: "c29c2cee-c17f-4907-b32c-2295d99b95f6"
     attempts:
       - task_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
         artifact_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
-        status: "IN_PROGRESS"
+        status: "REJECTED"
         started_at: "2026-10-14T09:17:09-03:00"
+        completed_at: "2026-10-14T09:22:35-03:00"
         reconciliation: "ID_RECUPERADO_POR_CREATED_AT_APOS_RESPOSTA_LOCAL_VAZIA"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.report-001.md"
+        sha256: "29b3ad4be3b5f7ba08ae0d9ac73e1532c71d8e20ae163cde29ea3dc3bc06b4e7"
+        rejection_reason: "ESTRUTURA_DIVERGE_DO_TEMPLATE; IDS_INVALIDOS; COBERTURA_SEMANTICA_INCOMPLETA"
+        work_source_id: "8b397dbd-f974-47eb-9b90-17ff593815e3"
+        work_source_status: "READY"
+      - conversation_id: "447c36d8-e262-4c37-add6-e7a0347d91fb"
+        turn_number: 2
+        mechanism: "CHAT_CORRECTION"
+        status: "REJECTED"
+        output_path: null
+        sha256: null
+        rejection_reason: "TIMEOUT_LOCAL_E_RESPOSTA_REMOTA_VAZIA"
+      - task_id: "c29c2cee-c17f-4907-b32c-2295d99b95f6"
+        artifact_id: "c29c2cee-c17f-4907-b32c-2295d99b95f6"
+        mechanism: "REPORT_CUSTOM_CORRECTION"
+        status: "PENDING"
+        prompt_file: "notebooklm-modelagem/prompts/01-corrigir-registro-semantico.md"
     validation:
       status: "NOT_STARTED"
       validated_at: null
