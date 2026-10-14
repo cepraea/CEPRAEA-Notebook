@@ -534,38 +534,52 @@ stages:
       exclusion_review_sha256: "9a83d2d50b8e9641ea06c1f9fdf8dac9ba4eb9a9a8ce8a07f561bdd18389383e"
       exclusion_review_audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.exclusion-review-audit.yaml"
       exclusion_review_audit_sha256: "073cc53bce9172de469d0f17734f1aeccd2d3b555e5d82c8bcb321ad99a97b7c"
+      ranking_reconciliation_script: "notebooklm-modelagem/scripts/apply_conceptual_ranking_reconciliation.py"
+      ranking_reconciliation_script_sha256: "08755e3696e5002916c791383f10827cad1d1da561ca2e13e3b1156ee1354f35"
+      ranking_reconciliation_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.ranking-reconciliation.yaml"
+      ranking_reconciliation_sha256: "1f5e33324868e81eaa2c10f06915b1ac5a0dd60b529f376e46ae9589474078c8"
+      ranking_reconciliation_audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.ranking-reconciliation-audit.yaml"
+      ranking_reconciliation_audit_sha256: "5bc7bed3815e11287cefc9338176f6bcb9a13c2c7ffaf04fed9f9fb51f26b16c"
       output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.yaml"
-      sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
+      sha256: "8f3b83a34f960c4c4387462cecafec2ae6c651046e1f56e3de7710c7c2ddecff"
       audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.critical-review-audit.yaml"
       audit_sha256: "b251dbf0a5d640c34d80c7531ad3778cc65b16dbac0d936abec1632e5f86250e"
-      assembled_at: "2026-10-14T14:35:04-03:00"
+      assembled_at: "2026-10-14T15:52:45-03:00"
       previous_candidate_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.pre-critical-review.yaml"
       previous_candidate_sha256: "5f738b55f649c8aa4d5b6911a8b1394f9825d17c80cf9a1cdc9925d5a5758a7b"
       counts:
         entities: 29
-        relationships: 46
-        domain_invariants: 22
+        relationships: 47
+        domain_invariants: 23
         open_issues: 0
         required_concept_ids: 47
         covered_concept_ids: 47
         excluded_concept_ids: 0
     validation:
       status: "PASS"
-      validated_at: "2026-10-14T14:35:04-03:00"
-      evidence: "ENVELOPE_1_1_PASS; EXACT_16_CRITICAL_CONCEPTS_PROMOTED; PROMOTED_REFERENCES_PASS; CARDINALITY_CONTRACT_PASS; COVERAGE_47_OF_47_WITH_ZERO_EXCLUSIONS; OPEN_ISSUES_ZERO; DETERMINISTIC_REBUILD_IDENTICAL; WRAPPER_MARKDOWN_READY"
+      validated_at: "2026-10-14T15:52:45-03:00"
+      evidence: "ENVELOPE_1_1_PASS; VERSION_0_1_1_SUPERSEDES_0_1_0; EQUIPE_PARTICIPA_COMPETICAO_RECONCILED; INV_ELEGIBILIDADE_RANKING_CONTEXTUAL_ADDED; PROMOTED_REFERENCES_PASS; CARDINALITY_CONTRACT_PASS; COVERAGE_47_OF_47_WITH_ZERO_EXCLUSIONS; OPEN_ISSUES_ZERO; DETERMINISTIC_OUTPUT_IDENTICAL; WRAPPER_MARKDOWN_READY"
     approval:
       required: true
       decision: "APPROVED"
       approved_by: "USER"
-      approved_at: "2026-10-14T14:35:04-03:00"
-      evidence: "USER_REQUEST_2026_10_14_REVIEW_SIX_EXCLUSIONS_AND_CONDITIONAL_APPROVAL; OPERATOR_REVIEW_PROMOTED_ALL_SIX_AS_OWN_EVENTS_SNAPSHOT_OR_TEMPORAL_ASSIGNMENT; VALIDATION_PASS_WITH_ZERO_EXCLUSIONS"
+      approved_at: "2026-10-14T15:52:45-03:00"
+      evidence: "USER_REQUEST_2026_10_14_RECONCILE_EQUIPE_PARTICIPA_COMPETICAO_IN_NEXT_CONCEPTUAL_VERSION; USER_CONFIRMED_CAMPINAS_AND_CHILE_OUTSIDE_FINAL_RANKING; VALIDATION_PASS_WITH_ZERO_EXCLUSIONS"
+    promotion_history:
+      - version: "0.1.0"
+        sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
+        promoted_source_id: "912812ce-78c6-4acf-85a6-6c0339ce0838"
+        promoted_source_status: "READY"
+        promoted_at: "2026-10-14T14:35:04-03:00"
+        wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/02-modelo-conceitual.promoted.md"
+        wrapper_sha256: "cedcbd6c3eafac5b6dc2162c62f100327890c2b5823bad8af8d7b98b26808027"
     promotion:
       status: "PROMOTED"
-      promoted_source_id: "912812ce-78c6-4acf-85a6-6c0339ce0838"
+      promoted_source_id: "5107f1a8-c307-4203-9694-545689d7d353"
       promoted_source_status: "READY"
-      promoted_at: "2026-10-14T14:35:04-03:00"
-      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/02-modelo-conceitual.promoted.md"
-      wrapper_sha256: "cedcbd6c3eafac5b6dc2162c62f100327890c2b5823bad8af8d7b98b26808027"
+      promoted_at: "2026-10-14T15:52:45-03:00"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/02-modelo-conceitual.promoted-v0.1.1.md"
+      wrapper_sha256: "c7b412a4780568a65039cc08c23c1def95271a58bdd3c711b8d18c7bb7b3a3cf"
   - id: "STAGE_03"
     started_at: "2026-10-14T14:41:50-03:00"
     prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-03-run-001.md"
@@ -579,7 +593,7 @@ stages:
     template_source_id: "6b62d2b5-14f3-4439-9372-aecb05c9ed77"
     selected_source_ids:
       - "b9ddf059-9d06-4373-a828-61f409e30113"
-      - "912812ce-78c6-4acf-85a6-6c0339ce0838"
+      - "5107f1a8-c307-4203-9694-545689d7d353"
       - "6b62d2b5-14f3-4439-9372-aecb05c9ed77"
       - "991b26f0-0d26-4cfe-935d-81b92dee7c76"
       - "cf663fd6-cb2a-4c03-82a0-a31023023f1c"
@@ -589,9 +603,9 @@ stages:
         sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
         promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
       - document_id: "CONCEPTUAL_MODEL"
-        version: "0.1.0"
-        sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
-        promoted_source_id: "912812ce-78c6-4acf-85a6-6c0339ce0838"
+        version: "0.1.1"
+        sha256: "8f3b83a34f960c4c4387462cecafec2ae6c651046e1f56e3de7710c7c2ddecff"
+        promoted_source_id: "5107f1a8-c307-4203-9694-545689d7d353"
     generation:
       mechanism: "REPORT_CUSTOM"
       status: "CANDIDATE_READY"
@@ -629,11 +643,15 @@ stages:
       operator_review_sha256: "8532ca5eb56daa6dd978de5e508846198cbac2f32572ffca9eef132b25e3511d"
       operator_review_audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.operator-review-audit.yaml"
       operator_review_audit_sha256: "f3dfbccf1e5c0471ac6403132b066ae36782946e0b66d05ce1100b46ef6956e8"
+      conceptual_reconciliation_script: "notebooklm-modelagem/scripts/reconcile_logical_conceptual_input.py"
+      conceptual_reconciliation_script_sha256: "2880c185c94c0b189818a330a9eb49f953343baa564f12d03bbee00b8aee82db"
+      conceptual_reconciliation_audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.conceptual-reconciliation-audit.yaml"
+      conceptual_reconciliation_audit_sha256: "ea6dfadaa759f8589c02aae445696bf8a429e11082cefdcf43453261849843ab"
       output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.candidate.yaml"
-      sha256: "86a8deb4bf33e81336c2efc5db322407172535a826d4e58f5ef3f02c0f415deb"
+      sha256: "d49ca992ba7e1ab5b2378bc24867bf876cd67f940e819be57bad297993b79712"
       audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.assembly-audit.yaml"
       audit_sha256: "1a80fcaacea28af0556b759c4b9158bdc72866c9fd46e8905b39a5cc3b3d42c9"
-      assembled_at: "2026-10-14T15:39:25-03:00"
+      assembled_at: "2026-10-14T15:52:45-03:00"
       normalization: "MARKDOWN_HEADING_REMOVED; GOLEIRA_POSICAO_REMOVED_FROM_CONCEPTUAL_ENTITY_IDS_OF_ATLETA_WITHOUT_SEMANTIC_CHANGE; UNKNOWN_SHOOT_OUT_SCORES_PRESERVED_AS_NULL; CONTEXTUAL_TEAM_COMPETITION_RANKING_ELIGIBILITY_ADDED"
       operator_decisions:
         - id: "DEC_RANKING_CONVIDADOS_FHERJ_2026"
@@ -643,8 +661,8 @@ stages:
           status: "APPLIED"
           evidence: "UNKNOWN_IS_NOT_ZERO; HISTORICAL_GAPS_REMAIN_TRACEABLE"
       upstream_reconciliation:
-        required: true
-        target: "NEXT_CONCEPTUAL_MODEL_VERSION"
+        required: false
+        resolved_in_conceptual_version: "0.1.1"
         relationship_id: "EQUIPE_PARTICIPA_COMPETICAO"
       counts:
         relations: 32
@@ -652,21 +670,25 @@ stages:
         normalization_decisions: 6
         open_issues: 1
         covered_conceptual_entities: 29
-        covered_conceptual_relationships: 46
-        approved_logical_relationships: 1
+        covered_conceptual_relationships: 47
+        approved_logical_relationships: 0
     validation:
       status: "PASS"
-      validated_at: "2026-10-14T15:39:25-03:00"
-      evidence: "ENVELOPE_1_1_PASS; SPECIALIZED_LOGICAL_MODEL_VALIDATION_PASS; ENTITY_COVERAGE_29_OF_29; CONCEPTUAL_RELATIONSHIP_COVERAGE_46_OF_46; APPROVED_LOGICAL_REFINEMENT_1_OF_1; FK_ENDPOINTS_AND_ATTRIBUTES_PASS; NULLABILITY_AND_DELETE_SEMANTICS_PASS; RULE_AND_EVIDENCE_REFERENCES_PASS; NO_PLACEHOLDERS; DETERMINISTIC_REBUILD_IDENTICAL; CAMPINAS_CHILE_RANKING_ISSUE_RESOLVED; ONE_NON_BLOCKING_HISTORICAL_DATA_ISSUE_REMAINS; GENERIC_VALIDATOR_NOT_APPLICABLE_BECAUSE_ATTRIBUTE_IDS_ARE_RELATION_SCOPED"
+      validated_at: "2026-10-14T15:52:45-03:00"
+      evidence: "ENVELOPE_1_1_PASS; SPECIALIZED_LOGICAL_MODEL_VALIDATION_PASS; ENTITY_COVERAGE_29_OF_29; CONCEPTUAL_RELATIONSHIP_COVERAGE_47_OF_47; APPROVED_LOGICAL_REFINEMENTS_ZERO; FK_ENDPOINTS_AND_ATTRIBUTES_PASS; NULLABILITY_AND_DELETE_SEMANTICS_PASS; RULE_AND_EVIDENCE_REFERENCES_PASS; NO_PLACEHOLDERS; DETERMINISTIC_OUTPUT_IDENTICAL; EQUIPE_PARTICIPA_COMPETICAO_RECONCILED_UPSTREAM; CAMPINAS_CHILE_RANKING_ISSUE_RESOLVED; ONE_NON_BLOCKING_HISTORICAL_DATA_ISSUE_REMAINS; GENERIC_VALIDATOR_NOT_APPLICABLE_BECAUSE_ATTRIBUTE_IDS_ARE_RELATION_SCOPED"
     approval:
       required: true
-      decision: "PENDING"
-      approved_by: null
-      approved_at: null
-      evidence: null
+      decision: "APPROVED"
+      approved_by: "USER"
+      approved_at: "2026-10-14T15:52:45-03:00"
+      evidence: "USER_REQUEST_2026_10_14_RECONCILE_RELATIONSHIP_THEN_APPROVE_AND_PROMOTE_STAGE_03; SPECIALIZED_VALIDATION_PASS; CONCEPTUAL_RELATIONSHIP_COVERAGE_47_OF_47; APPROVED_LOGICAL_REFINEMENTS_ZERO"
     promotion:
-      status: "NOT_STARTED"
-      promoted_source_id: null
+      status: "PROMOTED"
+      promoted_source_id: "fdf6c7d9-75c7-41f3-8935-39ffaf747bb1"
+      promoted_source_status: "READY"
+      promoted_at: "2026-10-14T15:52:45-03:00"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/03-modelo-logico.promoted.md"
+      wrapper_sha256: "63d1c00efeb91dc59615054c9a759b688c414f84d7575644bd2276effda35a4f"
 
 incidents:
   - id: "INC_AUTH_001"

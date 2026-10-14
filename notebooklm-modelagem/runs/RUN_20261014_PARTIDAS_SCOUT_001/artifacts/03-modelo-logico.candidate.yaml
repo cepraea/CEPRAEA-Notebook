@@ -16,9 +16,9 @@ document:
       sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
       promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
     - document_id: "CONCEPTUAL_MODEL"
-      version: "0.1.0"
-      sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
-      promoted_source_id: "912812ce-78c6-4acf-85a6-6c0339ce0838"
+      version: "0.1.1"
+      sha256: "8f3b83a34f960c4c4387462cecafec2ae6c651046e1f56e3de7710c7c2ddecff"
+      promoted_source_id: "5107f1a8-c307-4203-9694-545689d7d353"
 relations:
   - id: "COMPETICAO"
     logical_name: "Competição Esportiva"
@@ -4443,8 +4443,6 @@ normalization_decisions:
       \ constitui propriedade permanente da equipe."
     accepted_tradeoffs:
       - "O serviço de ranking deve consultar a participação vigente antes de agregar pontos."
-      - "A relação EQUIPE_PARTICIPA_COMPETICAO é um refinamento lógico aprovado que deverá ser reconciliado no próximo versionamento\
-        \ conceitual."
 open_issues:
   - id: "ISSUE_LACUNA_PLACAR_SHOOTOUT_E_ETAPAS"
     status: "ABERTA"

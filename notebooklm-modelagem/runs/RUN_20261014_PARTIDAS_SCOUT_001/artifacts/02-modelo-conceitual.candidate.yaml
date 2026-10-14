@@ -3,13 +3,13 @@ document:
   id: "CONCEPTUAL_MODEL"
   artifact_kind: "CONCEPTUAL_MODEL"
   title: "Modelo conceitual"
-  version: "0.1.0"
+  version: "0.1.1"
   status: "PROPOSTO"
   run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
   domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
   notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
   generated_at: null
-  supersedes: null
+  supersedes: "CONCEPTUAL_MODEL@0.1.0"
   input_artifacts:
     - document_id: "SEMANTIC_REGISTRY"
       version: "0.1.0"
@@ -1345,6 +1345,35 @@ relationships:
     rule_ids: []
     evidence_ref_ids:
       - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+  - id: "EQUIPE_PARTICIPA_COMPETICAO"
+    name: "Equipe Participa de Competição"
+    from_entity_id: "EQUIPE"
+    to_entity_id: "COMPETICAO"
+    meaning: "Associação temporal que registra a participação esportiva de uma equipe em uma competição e sua elegibilidade\
+      \ independente para o ranking final."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "tipo_participacao"
+      - "status_elegibilidade_ranking"
+      - "motivo_decisao"
+      - "decisao_ref"
+      - "valido_desde"
+      - "valido_ate"
+    temporality: "VERSIONADA"
+    exclusivity_rules:
+      - "A inelegibilidade para o ranking final não pode ser inferida por UF, país ou cadastro global da equipe."
+      - "A inelegibilidade para o ranking final não invalida partidas, placares ou estatísticas esportivas da equipe."
+      - "Uma decisão de inelegibilidade exige motivo, referência e intervalo de vigência auditáveis."
+    rule_ids:
+      - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+    evidence_ref_ids:
+      - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
 domain_invariants:
   - id: "INV_LIMITE_JOGADORES_SUMULA"
     statement: "Cada equipe pode relacionar no maximo 10 atletas uniformizados em sumula por partida, devendo manter exatamente\
@@ -1592,6 +1621,18 @@ domain_invariants:
     evidence_ref_ids:
       - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
       - "EVID_REGULAMENTO_CBHB_2026_PDF_818BCC8B_005"
+  - id: "INV_ELEGIBILIDADE_RANKING_CONTEXTUAL"
+    statement: "Participação esportiva e elegibilidade para o ranking final são independentes: equipes inelegíveis por decisão\
+      \ contextual mantêm válidos seus jogos, placares e estatísticas e são excluídas somente da agregação do ranking final;\
+      \ a elegibilidade não é inferida por origem geográfica."
+    affected_entity_ids:
+      - "EQUIPE"
+      - "COMPETICAO"
+      - "PARTIDA"
+    rule_ids:
+      - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+    evidence_ref_ids:
+      - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
 coverage:
   required_concept_ids:
     - "PARTIDA"
