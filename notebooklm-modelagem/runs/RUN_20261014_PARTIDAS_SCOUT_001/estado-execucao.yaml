@@ -622,24 +622,42 @@ stages:
     operator_assembly:
       status: "CANDIDATE_READY"
       script: "notebooklm-modelagem/scripts/assemble_logical_model.py"
-      script_sha256: "272c23971d76f42b583627138a712a13ab1196376ee2d4a6c8da38a14c91d61b"
+      script_sha256: "acac8cf4c79af380e7dfe5f08d88816d586d603a05688c907b96aa044b70bce1"
+      finalization_script: "notebooklm-modelagem/scripts/apply_logical_operator_review.py"
+      finalization_script_sha256: "d10154d39bd8a5de654aac76a98a6fbb6b4bfeed23ec00838675cf48344df11b"
+      operator_review_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.operator-review.yaml"
+      operator_review_sha256: "8532ca5eb56daa6dd978de5e508846198cbac2f32572ffca9eef132b25e3511d"
+      operator_review_audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.operator-review-audit.yaml"
+      operator_review_audit_sha256: "f3dfbccf1e5c0471ac6403132b066ae36782946e0b66d05ce1100b46ef6956e8"
       output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.candidate.yaml"
-      sha256: "3d335b4a488d67c97cca3a962854a4fa0a52389151fcf3e79e06ca83cf75b207"
+      sha256: "86a8deb4bf33e81336c2efc5db322407172535a826d4e58f5ef3f02c0f415deb"
       audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.assembly-audit.yaml"
       audit_sha256: "1a80fcaacea28af0556b759c4b9158bdc72866c9fd46e8905b39a5cc3b3d42c9"
-      assembled_at: "2026-10-14T14:54:38-03:00"
-      normalization: "MARKDOWN_HEADING_REMOVED; GOLEIRA_POSICAO_REMOVED_FROM_CONCEPTUAL_ENTITY_IDS_OF_ATLETA_WITHOUT_SEMANTIC_CHANGE"
+      assembled_at: "2026-10-14T15:39:25-03:00"
+      normalization: "MARKDOWN_HEADING_REMOVED; GOLEIRA_POSICAO_REMOVED_FROM_CONCEPTUAL_ENTITY_IDS_OF_ATLETA_WITHOUT_SEMANTIC_CHANGE; UNKNOWN_SHOOT_OUT_SCORES_PRESERVED_AS_NULL; CONTEXTUAL_TEAM_COMPETITION_RANKING_ELIGIBILITY_ADDED"
+      operator_decisions:
+        - id: "DEC_RANKING_CONVIDADOS_FHERJ_2026"
+          status: "APPLIED"
+          evidence: "USER_CONFIRMED_CAMPINAS_AND_CHILE_OUTSIDE_FINAL_RANKING; CLUB_DECISION_SUPPORTED_BY_FHERJ"
+        - id: "DEC_PLACAR_HISTORICO_INCOMPLETO"
+          status: "APPLIED"
+          evidence: "UNKNOWN_IS_NOT_ZERO; HISTORICAL_GAPS_REMAIN_TRACEABLE"
+      upstream_reconciliation:
+        required: true
+        target: "NEXT_CONCEPTUAL_MODEL_VERSION"
+        relationship_id: "EQUIPE_PARTICIPA_COMPETICAO"
       counts:
-        relations: 31
-        foreign_keys: 57
-        normalization_decisions: 5
-        open_issues: 2
+        relations: 32
+        foreign_keys: 59
+        normalization_decisions: 6
+        open_issues: 1
         covered_conceptual_entities: 29
         covered_conceptual_relationships: 46
+        approved_logical_relationships: 1
     validation:
       status: "PASS"
-      validated_at: "2026-10-14T14:54:38-03:00"
-      evidence: "ENVELOPE_1_1_PASS; SPECIALIZED_LOGICAL_MODEL_VALIDATION_PASS; ENTITY_COVERAGE_29_OF_29; RELATIONSHIP_COVERAGE_46_OF_46; FK_ENDPOINTS_AND_ATTRIBUTES_PASS; NULLABILITY_AND_DELETE_SEMANTICS_PASS; RULE_AND_EVIDENCE_REFERENCES_PASS; NO_PLACEHOLDERS; DETERMINISTIC_REBUILD_IDENTICAL; TWO_NON_BLOCKING_OPEN_ISSUES; GENERIC_VALIDATOR_NOT_APPLICABLE_BECAUSE_ATTRIBUTE_IDS_ARE_RELATION_SCOPED"
+      validated_at: "2026-10-14T15:39:25-03:00"
+      evidence: "ENVELOPE_1_1_PASS; SPECIALIZED_LOGICAL_MODEL_VALIDATION_PASS; ENTITY_COVERAGE_29_OF_29; CONCEPTUAL_RELATIONSHIP_COVERAGE_46_OF_46; APPROVED_LOGICAL_REFINEMENT_1_OF_1; FK_ENDPOINTS_AND_ATTRIBUTES_PASS; NULLABILITY_AND_DELETE_SEMANTICS_PASS; RULE_AND_EVIDENCE_REFERENCES_PASS; NO_PLACEHOLDERS; DETERMINISTIC_REBUILD_IDENTICAL; CAMPINAS_CHILE_RANKING_ISSUE_RESOLVED; ONE_NON_BLOCKING_HISTORICAL_DATA_ISSUE_REMAINS; GENERIC_VALIDATOR_NOT_APPLICABLE_BECAUSE_ATTRIBUTE_IDS_ARE_RELATION_SCOPED"
     approval:
       required: true
       decision: "PENDING"

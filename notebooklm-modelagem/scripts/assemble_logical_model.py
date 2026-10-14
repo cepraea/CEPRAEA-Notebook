@@ -70,7 +70,10 @@ def validate_model(
     conceptual_relationship_ids: set[str],
     rule_ids: set[str],
     evidence_ids: set[str],
+    approved_logical_relationship_ids: set[str] | None = None,
 ) -> dict[str, int]:
+    approved_logical_relationship_ids = approved_logical_relationship_ids or set()
+    allowed_relationship_ids = conceptual_relationship_ids | approved_logical_relationship_ids
     if set(model) != {"relations", "foreign_keys", "normalization_decisions", "open_issues"}:
         raise ValueError("seções lógicas inválidas")
 
@@ -166,13 +169,13 @@ def validate_model(
             raise ValueError(f"ON DELETE inválido em {foreign_key['id']}")
         if foreign_key["on_update_semantics"] not in {"RESTRICT", "CASCADE", "NO_ACTION"}:
             raise ValueError(f"ON UPDATE inválido em {foreign_key['id']}")
-        if foreign_key["relationship_id"] not in conceptual_relationship_ids:
-            raise ValueError(f"relacionamento conceitual inválido na FK {foreign_key['id']}")
+        if foreign_key["relationship_id"] not in allowed_relationship_ids:
+            raise ValueError(f"relacionamento conceitual ou refinamento lógico inválido na FK {foreign_key['id']}")
         covered_relationships.add(foreign_key["relationship_id"])
         used_rules.update(foreign_key["rule_ids"])
 
-    if covered_relationships != conceptual_relationship_ids:
-        raise ValueError("FKs não cobrem exatamente os relacionamentos conceituais")
+    if covered_relationships != allowed_relationship_ids:
+        raise ValueError("FKs não cobrem exatamente os relacionamentos conceituais e refinamentos lógicos aprovados")
     if used_rules - rule_ids:
         raise ValueError(f"regras desconhecidas: {sorted(used_rules - rule_ids)}")
     if used_evidence - evidence_ids:
@@ -191,7 +194,8 @@ def validate_model(
         "normalization_decisions": len(decisions),
         "open_issues": len(issues),
         "covered_conceptual_entities": len(covered_entities),
-        "covered_conceptual_relationships": len(covered_relationships),
+        "covered_conceptual_relationships": len(covered_relationships & conceptual_relationship_ids),
+        "approved_logical_relationships": len(covered_relationships & approved_logical_relationship_ids),
     }
 
 
