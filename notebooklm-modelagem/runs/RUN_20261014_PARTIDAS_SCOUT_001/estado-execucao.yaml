@@ -344,6 +344,66 @@ stages:
       status: "PROMOTED"
       promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
 
+  - id: "STAGE_01"
+    prompt_file: "notebooklm-modelagem/prompts/01-consolidar-semantica.md"
+    template_file: "notebooklm-modelagem/templates/01-registro-semantico.template.yaml"
+    template_source_id: "9137eb71-eadd-43c7-91c6-408db821b1c4"
+    selected_source_ids:
+      - "d0a81644-ae48-4ac8-9954-676602780417"
+      - "9137eb71-eadd-43c7-91c6-408db821b1c4"
+      - "991b26f0-0d26-4cfe-935d-81b92dee7c76"
+      - "cf663fd6-cb2a-4c03-82a0-a31023023f1c"
+      - "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+      - "236e788c-9c85-4133-93c8-4650a26e867a"
+      - "0d48291e-32ab-449e-8f86-ea43244c921c"
+      - "9c553f24-6f99-4a21-b63c-9cbfda6552c1"
+      - "e593c4e6-903a-4169-a1c5-7f551bbe5b9d"
+      - "bb8b9ba4-cd24-452a-aa2b-2a3a3854e0a0"
+      - "f68c1687-7153-4283-a6a0-5e33b814fe00"
+      - "049d2bf2-ac90-44f8-951a-ae9a32c0cc64"
+      - "a44eece7-56e3-407c-9348-23b35ab0efa4"
+      - "162256e7-41bf-40ac-b77f-7b892250771f"
+      - "605ea05f-b931-405d-984f-4773065aa6c8"
+      - "74cb7983-decc-42de-86eb-f691d8e00d53"
+      - "d8076ca2-b651-48af-be4e-b14dd524c377"
+      - "de6241bc-cad8-42a5-80db-015ef2c1a780"
+      - "a3068def-bef6-49bd-b063-c8593116298f"
+      - "9b742f2e-0d21-4fb1-bca9-33411d6c6ec2"
+      - "36d92b57-69c1-4563-a2a4-71a7bd357dc7"
+      - "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+      - "3bb0c332-947d-494f-a6fa-85493b579464"
+      - "aef04d7f-4e75-4597-8f96-acc3b87f945d"
+      - "fef688f6-d141-475d-87c0-abbeaffe46fb"
+      - "475ce51f-f4bd-44ca-8194-31d42ea308e8"
+      - "2cea376b-08be-4969-b2e4-d66189ca0935"
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "e9e4272e-d302-4ce3-bf80-b1c9bdc84060"
+      - "49ceb0ca-9160-4d36-a8ac-b58470c73f80"
+    input_artifacts:
+      - document_id: "SOURCE_MANIFEST"
+        version: "0.1.0"
+        sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+        promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
+    generation:
+      mechanism: "REPORT_CUSTOM"
+      status: "NOT_STARTED"
+      task_id: null
+      artifact_id: null
+    attempts: []
+    validation:
+      status: "NOT_STARTED"
+      validated_at: null
+      evidence: null
+    approval:
+      required: true
+      decision: "PENDING"
+      approved_by: null
+      approved_at: null
+      evidence: null
+    promotion:
+      status: "NOT_STARTED"
+      promoted_source_id: null
+
 incidents:
   - id: "INC_AUTH_001"
     operation: "AUTH_CHECK_BEFORE_SINGLE_SOURCE_ENRICHMENT"
