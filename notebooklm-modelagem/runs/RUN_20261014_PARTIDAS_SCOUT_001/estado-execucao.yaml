@@ -462,12 +462,18 @@ stages:
   - id: "STAGE_02"
     prompt_file: "notebooklm-modelagem/prompts/02-gerar-modelo-conceitual.md"
     prompt_sha256: "d347e2c4af427df5b785a1405c1e15f2521e287a5d45ba1fd96ea15db56ca932"
+    correction_prompt_file: "notebooklm-modelagem/prompts/02-corrigir-modelo-conceitual.md"
+    correction_prompt_sha256: "082cde947c9a47206d7a727971361615ff4ed55aeb1481a2d1e6ade7d0f4e452"
+    critical_review_prompt_file: "notebooklm-modelagem/prompts/02-revisar-conceitos-criticos.md"
+    critical_review_prompt_sha256: "0b24fecbb50a301c4cf3ccaf5e650000b8862af7ff0270dbd39f9ab0c65b02bf"
     template_file: "notebooklm-modelagem/templates/02-modelo-conceitual.template.yaml"
     template_sha256: "60e6d10cb0128c0ee49e5c1733a6537a5bbc63292ee39664c9cdfcc9fcef0f40"
     template_wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/02-modelo-conceitual.template.md"
     template_wrapper_sha256: "3cc4b6e90a02c0eba6d8df5a1649456128d08391bcc9587c8772ea6a043ad3ce"
     template_source_id: "5b1b7d1e-db33-444e-b47b-0aabed042042"
     selected_source_ids:
+      - "7885e035-8517-4c04-8378-403e59ea4123"
+      - "039f387a-d685-439e-ac05-24f774c8f425"
       - "b9ddf059-9d06-4373-a828-61f409e30113"
       - "d0a81644-ae48-4ac8-9954-676602780417"
       - "5b1b7d1e-db33-444e-b47b-0aabed042042"
@@ -479,21 +485,68 @@ stages:
         sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
         promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
     generation:
-      mechanism: "REPORT_CUSTOM"
-      status: "PENDING"
-      task_id: "0434e6b7-896e-4fc4-aa84-df01fe7b5ca0"
-      artifact_id: "0434e6b7-896e-4fc4-aa84-df01fe7b5ca0"
+      mechanism: "REPORT_CUSTOM_CRITICAL_REVIEW"
+      status: "CANDIDATE_READY"
+      task_id: "19ba9b82-1c04-430b-898c-e1d0cfabb7db"
+      artifact_id: "19ba9b82-1c04-430b-898c-e1d0cfabb7db"
     attempts:
       - task_id: "0434e6b7-896e-4fc4-aa84-df01fe7b5ca0"
         artifact_id: "0434e6b7-896e-4fc4-aa84-df01fe7b5ca0"
         mechanism: "REPORT_CUSTOM"
-        status: "PENDING"
+        status: "REJECTED"
         started_at: "2026-10-14T10:09:31-03:00"
+        completed_at: "2026-10-14T10:46:12-03:00"
         prompt_file: "notebooklm-modelagem/prompts/02-gerar-modelo-conceitual.md"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.report-001.md"
+        sha256: "38e4c225f570e307cc70a692e6b30d0b65834c2119d07f0cb9d4942d7e30a0c6"
+        rejection_reason: "STRUCTURE_DIVERGES_FROM_STAGE_02_TEMPLATE; PROMOTED_CONCEPT_IDS_NOT_REFERENCED; COVERAGE_IDS_INVENTED; INVARIANT_IDS_NOT_UPPER_SNAKE_CASE"
+        work_source_id: "039f387a-d685-439e-ac05-24f774c8f425"
+        work_source_status: "READY"
+      - task_id: "a593a958-d196-4936-8e06-9e4502150389"
+        artifact_id: "a593a958-d196-4936-8e06-9e4502150389"
+        mechanism: "REPORT_CUSTOM_CORRECTION"
+        status: "ACCEPTED_FOR_ASSEMBLY"
+        started_at: "2026-10-14T13:05:04-03:00"
+        completed_at: "2026-10-14T13:11:31-03:00"
+        prompt_file: "notebooklm-modelagem/prompts/02-corrigir-modelo-conceitual.md"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.correction-001.md"
+        sha256: "a674bac3a4e1e565a5059e64dd41afe955e47f1a0aabb85d56be01a9a1494216"
+        acceptance_evidence: "TEMPLATE_FIELDS_PASS; PROMOTED_IDS_PASS; EVIDENCE_REFS_PASS; COVERAGE_47_OF_47; THREE_CARDINALITIES_NORMALIZED_BY_OPERATOR"
+      - task_id: "19ba9b82-1c04-430b-898c-e1d0cfabb7db"
+        artifact_id: "19ba9b82-1c04-430b-898c-e1d0cfabb7db"
+        mechanism: "REPORT_CUSTOM_CRITICAL_REVIEW"
+        status: "ACCEPTED_FOR_ASSEMBLY"
+        started_at: "2026-10-14T14:14:49-03:00"
+        completed_at: "2026-10-14T14:19:15-03:00"
+        prompt_file: "notebooklm-modelagem/prompts/02-revisar-conceitos-criticos.md"
+        work_source_id: "7885e035-8517-4c04-8378-403e59ea4123"
+        work_source_status: "READY"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.critical-review-001.md"
+        sha256: "f543bb905f8283120c5a93402dc79dc58afd004cd96272c8e04c393fd6976160"
+        acceptance_evidence: "EXACT_10_CRITICAL_ENTITIES; ENDPOINTS_AND_EVIDENCE_PASS; COVERAGE_UPDATES_PASS; LEGACY_RULE_IDS_REMOVED_BY_OPERATOR; SNAPSHOT_TEMPORALITY_NORMALIZED"
+    operator_assembly:
+      status: "CANDIDATE_READY"
+      script: "notebooklm-modelagem/scripts/merge_conceptual_critical_review.py"
+      base_assembly_script: "notebooklm-modelagem/scripts/assemble_conceptual_model.py"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.yaml"
+      sha256: "211c443c6db456b2db07c4225308fa66fe13cc159ca26ca417eef70a6efcd903"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.critical-review-audit.yaml"
+      audit_sha256: "b251dbf0a5d640c34d80c7531ad3778cc65b16dbac0d936abec1632e5f86250e"
+      assembled_at: "2026-10-14T14:19:15-03:00"
+      previous_candidate_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.pre-critical-review.yaml"
+      previous_candidate_sha256: "5f738b55f649c8aa4d5b6911a8b1394f9825d17c80cf9a1cdc9925d5a5758a7b"
+      counts:
+        entities: 23
+        relationships: 32
+        domain_invariants: 17
+        open_issues: 6
+        required_concept_ids: 47
+        covered_concept_ids: 41
+        excluded_concept_ids: 6
     validation:
-      status: "NOT_STARTED"
-      validated_at: null
-      evidence: null
+      status: "PASS"
+      validated_at: "2026-10-14T14:19:15-03:00"
+      evidence: "ENVELOPE_1_1_PASS; EXACT_10_CRITICAL_CONCEPTS_PROMOTED; PROMOTED_REFERENCES_PASS; CARDINALITY_CONTRACT_PASS; COVERAGE_PARTITION_47_OF_47; CRITICAL_OPEN_ISSUES_REMOVED; DETERMINISTIC_REBUILD_IDENTICAL"
     approval:
       required: true
       decision: "PENDING"
