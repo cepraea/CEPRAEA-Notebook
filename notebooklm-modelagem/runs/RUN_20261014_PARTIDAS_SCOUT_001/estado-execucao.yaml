@@ -459,6 +459,51 @@ stages:
       status: "PROMOTED"
       promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
 
+  - id: "STAGE_02"
+    prompt_file: "notebooklm-modelagem/prompts/02-gerar-modelo-conceitual.md"
+    prompt_sha256: "d347e2c4af427df5b785a1405c1e15f2521e287a5d45ba1fd96ea15db56ca932"
+    template_file: "notebooklm-modelagem/templates/02-modelo-conceitual.template.yaml"
+    template_sha256: "60e6d10cb0128c0ee49e5c1733a6537a5bbc63292ee39664c9cdfcc9fcef0f40"
+    template_wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/02-modelo-conceitual.template.md"
+    template_wrapper_sha256: "3cc4b6e90a02c0eba6d8df5a1649456128d08391bcc9587c8772ea6a043ad3ce"
+    template_source_id: "5b1b7d1e-db33-444e-b47b-0aabed042042"
+    selected_source_ids:
+      - "b9ddf059-9d06-4373-a828-61f409e30113"
+      - "d0a81644-ae48-4ac8-9954-676602780417"
+      - "5b1b7d1e-db33-444e-b47b-0aabed042042"
+      - "991b26f0-0d26-4cfe-935d-81b92dee7c76"
+      - "cf663fd6-cb2a-4c03-82a0-a31023023f1c"
+    input_artifacts:
+      - document_id: "SEMANTIC_REGISTRY"
+        version: "0.1.0"
+        sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+        promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
+    generation:
+      mechanism: "REPORT_CUSTOM"
+      status: "PENDING"
+      task_id: "0434e6b7-896e-4fc4-aa84-df01fe7b5ca0"
+      artifact_id: "0434e6b7-896e-4fc4-aa84-df01fe7b5ca0"
+    attempts:
+      - task_id: "0434e6b7-896e-4fc4-aa84-df01fe7b5ca0"
+        artifact_id: "0434e6b7-896e-4fc4-aa84-df01fe7b5ca0"
+        mechanism: "REPORT_CUSTOM"
+        status: "PENDING"
+        started_at: "2026-10-14T10:09:31-03:00"
+        prompt_file: "notebooklm-modelagem/prompts/02-gerar-modelo-conceitual.md"
+    validation:
+      status: "NOT_STARTED"
+      validated_at: null
+      evidence: null
+    approval:
+      required: true
+      decision: "PENDING"
+      approved_by: null
+      approved_at: null
+      evidence: null
+    promotion:
+      status: "NOT_STARTED"
+      promoted_source_id: null
+
 incidents:
   - id: "INC_AUTH_001"
     operation: "AUTH_CHECK_BEFORE_SINGLE_SOURCE_ENRICHMENT"
