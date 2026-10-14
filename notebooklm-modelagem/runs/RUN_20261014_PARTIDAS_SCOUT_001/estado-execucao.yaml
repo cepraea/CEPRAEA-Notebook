@@ -385,10 +385,10 @@ stages:
         sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
         promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
     generation:
-      mechanism: "REPORT_CUSTOM_CORRECTION"
-      status: "PENDING"
-      task_id: "c29c2cee-c17f-4907-b32c-2295d99b95f6"
-      artifact_id: "c29c2cee-c17f-4907-b32c-2295d99b95f6"
+      mechanism: "REPORT_CUSTOM_GAP_SUPPLEMENT"
+      status: "CANDIDATE_READY"
+      task_id: "042a32e6-0b05-4e43-bc2c-3bbe38844522"
+      artifact_id: "042a32e6-0b05-4e43-bc2c-3bbe38844522"
     attempts:
       - task_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
         artifact_id: "acb82f0e-a454-4e81-928a-97ca774536fa"
@@ -411,21 +411,53 @@ stages:
       - task_id: "c29c2cee-c17f-4907-b32c-2295d99b95f6"
         artifact_id: "c29c2cee-c17f-4907-b32c-2295d99b95f6"
         mechanism: "REPORT_CUSTOM_CORRECTION"
-        status: "PENDING"
+        status: "REJECTED"
         prompt_file: "notebooklm-modelagem/prompts/01-corrigir-registro-semantico.md"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.report-002.md"
+        sha256: "5c17bf36dd955e3c834e15d591421395b0be157892d3be55142c45e5e8efde21"
+        rejection_reason: "ENUMS_INVALIDOS; CAMPOS_LISTA_COMO_TEXTO; DUAS_EVIDENCIAS_USAM_SOURCE_ID; COBERTURA_FACTUAL_INCOMPLETA"
+      - task_id: "042a32e6-0b05-4e43-bc2c-3bbe38844522"
+        artifact_id: "042a32e6-0b05-4e43-bc2c-3bbe38844522"
+        mechanism: "REPORT_CUSTOM_GAP_SUPPLEMENT"
+        status: "ACCEPTED_FOR_ASSEMBLY"
+        prompt_file: "notebooklm-modelagem/prompts/01-completar-lacunas-registro-semantico.md"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.supplement-001.md"
+        sha256: "05ed04f2a44c28f7df0082e674b0a6edab81d00ee8ad09b6bbb60bcadb537ac5"
+        acceptance_evidence: "21_CONCEITOS_E_9_REGRAS_CONFORMES; 2_QUESTOES_DE_INFRAESTRUTURA_OMITIDAS_POR_EVIDENCIA_INVALIDA"
+    operator_assembly:
+      status: "PROMOTED"
+      script: "notebooklm-modelagem/scripts/assemble_semantic_registry.py"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+      sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.assembly-audit.yaml"
+      audit_sha256: "60d227713859fe05f025cdd6ed3a22f7a9c3a7927ae5bb8a37c7be3cbe65c083"
+      assembled_at: "2026-10-14T10:00:11-03:00"
+      counts:
+        concepts: 47
+        rules: 11
+        decisions: 3
+        open_issues: 1
+      promoted_artifact:
+        artifact_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+        artifact_sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+        wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/01-registro-semantico.promoted.md"
+        wrapper_sha256: "128b74a595a5bd6fbfc6597ca915133196c50faf01406b0ef67af8d1bd30739b"
+        promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
+        notebook_status: "READY"
+        promoted_at: "2026-10-14T10:06:46-03:00"
     validation:
-      status: "NOT_STARTED"
-      validated_at: null
-      evidence: null
+      status: "PASS"
+      validated_at: "2026-10-14T10:00:11-03:00"
+      evidence: "ENVELOPE_1_1_PASS; STRUCTURE_ENUM_LIST_PASS; EVIDENCE_REFS_PASS; INTERNAL_REFERENCES_PASS; REQUIRED_SPORT_COVERAGE_PASS; DETERMINISTIC_REBUILD_IDENTICAL"
     approval:
       required: true
-      decision: "PENDING"
-      approved_by: null
-      approved_at: null
-      evidence: null
+      decision: "APPROVED"
+      approved_by: "USER"
+      approved_at: "2026-10-14T10:06:46-03:00"
+      evidence: "Solicitação explícita do usuário para criar o wrapper, enviar ao NotebookLM, registrar o promoted_source_id e iniciar o estágio 02."
     promotion:
-      status: "NOT_STARTED"
-      promoted_source_id: null
+      status: "PROMOTED"
+      promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
 
 incidents:
   - id: "INC_AUTH_001"
