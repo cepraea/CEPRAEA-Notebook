@@ -332,6 +332,82 @@ entities:
     rule_ids: []
     evidence_ref_ids:
       - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+  - id: "SPIN_SHOT"
+    name: "Execução de Spin Shot"
+    concept_id: "SPIN_SHOT"
+    definition: "Ocorrência observada de arremesso em que o atleta completa rotação corporal de 360 graus no ar antes de liberar\
+      \ a bola."
+    identity_rule: "Identificada pelo evento de scout que registra uma execução específica na partida."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+  - id: "IN_FLIGHT_SHOT"
+    name: "Execução de In-flight Shot"
+    concept_id: "IN_FLIGHT_SHOT"
+    definition: "Ocorrência observada em que o atleta recebe a bola suspenso e arremessa antes de tocar a areia."
+    identity_rule: "Identificada pelo evento de scout que registra uma execução específica na partida."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_014"
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+  - id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    name: "Desqualificação por Segunda Exclusão"
+    concept_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    definition: "Evento disciplinar que afasta definitivamente o atleta da partida após a segunda exclusão no mesmo jogo."
+    identity_rule: "Identificada pela partida, pelo atleta sancionado e pela sequência disciplinar que alcança a segunda exclusão."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "CARTAO_AZUL_SUSPENSAO"
+    name: "Cartão Azul e Suspensão"
+    concept_id: "CARTAO_AZUL_SUSPENSAO"
+    definition: "Evento disciplinar de desqualificação direta acompanhado de relatório escrito e suspensão automática mínima\
+      \ de uma partida."
+    identity_rule: "Identificado pela partida, pelo infrator e pelo relatório disciplinar associado ao cartão azul."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_017"
+  - id: "SISTEMA_TATICO"
+    name: "Snapshot de Sistema Tático"
+    concept_id: "SISTEMA_TATICO"
+    definition: "Registro versionado da organização espacial coletiva adotada por uma equipe em uma fase e intervalo determinados\
+      \ da partida."
+    identity_rule: "Identificado pela partida, equipe, fase tática, intervalo de vigência e versão da observação."
+    temporality: "VERSIONADA"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_007"
+      - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_004"
+  - id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    name: "Atribuição de Papel Esportivo ou Operacional"
+    concept_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    definition: "Atribuição temporal de uma função formal a uma pessoa na comissão técnica, arbitragem ou organização de uma\
+      \ partida."
+    identity_rule: "Identificada pela partida, referência da pessoa, código do papel e intervalo de vigência."
+    temporality: "INTERVALO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+      - "EVID_REGULAMENTO_CBHB_2026_PDF_818BCC8B_005"
 relationships:
   - id: "COMPETICAO_POSSUI_PARTIDA"
     name: "Competicao possui Partida"
@@ -997,6 +1073,278 @@ relationships:
     evidence_ref_ids:
       - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
     temporality: "ATEMPORAL"
+  - id: "EVENTO_SCOUT_CLASSIFICA_SPIN_SHOT"
+    name: "Evento de Scout classifica Spin Shot"
+    from_entity_id: "EVENTO_SCOUT"
+    to_entity_id: "SPIN_SHOT"
+    meaning: "Vincula a ocorrência especializada de spin shot ao evento observável que preserva ator, timecode, resultado\
+      \ e proveniência."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+  - id: "EVENTO_SCOUT_CLASSIFICA_IN_FLIGHT_SHOT"
+    name: "Evento de Scout classifica In-flight Shot"
+    from_entity_id: "EVENTO_SCOUT"
+    to_entity_id: "IN_FLIGHT_SHOT"
+    meaning: "Vincula a ocorrência especializada de in-flight shot ao evento observável que preserva ator, timecode, resultado\
+      \ e proveniência."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_014"
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+  - id: "DESQUALIFICACAO_REGISTRADA_EM_EVENTO_SCOUT"
+    name: "Desqualificação registrada em Evento de Scout"
+    from_entity_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    to_entity_id: "EVENTO_SCOUT"
+    meaning: "Preserva o registro observacional que originou a desqualificação por segunda exclusão."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: 1
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "DESQUALIFICACAO_ATINGE_ATLETA"
+    name: "Desqualificação atinge Atleta"
+    from_entity_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    to_entity_id: "ATLETA"
+    meaning: "Identifica o atleta definitivamente afastado após acumular a segunda exclusão na partida."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "DESQUALIFICACAO_OCORRE_EM_PARTIDA"
+    name: "Desqualificação ocorre em Partida"
+    from_entity_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    to_entity_id: "PARTIDA"
+    meaning: "Delimita a partida na qual as duas exclusões acumuladas produzem a desqualificação."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "CARTAO_AZUL_REGISTRADO_EM_EVENTO_SCOUT"
+    name: "Cartão Azul registrado em Evento de Scout"
+    from_entity_id: "CARTAO_AZUL_SUSPENSAO"
+    to_entity_id: "EVENTO_SCOUT"
+    meaning: "Preserva o registro observacional da exibição do cartão azul e da desqualificação correspondente."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: 1
+    relationship_attributes:
+      - "referencia_relatorio_arbitragem"
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+  - id: "CARTAO_AZUL_OCORRE_EM_PARTIDA"
+    name: "Cartão Azul ocorre em Partida"
+    from_entity_id: "CARTAO_AZUL_SUSPENSAO"
+    to_entity_id: "PARTIDA"
+    meaning: "Delimita a partida de origem do cartão azul e da suspensão administrativa subsequente."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_017"
+  - id: "CARTAO_AZUL_ATINGE_ATLETA"
+    name: "Cartão Azul atinge Atleta"
+    from_entity_id: "CARTAO_AZUL_SUSPENSAO"
+    to_entity_id: "ATLETA"
+    meaning: "Identifica o atleta infrator quando o destinatário do cartão azul participa como atleta."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules:
+      - "Cada cartão azul deve atingir exatamente um atleta ou uma atribuição de papel esportivo/operacional."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+  - id: "CARTAO_AZUL_ATINGE_PAPEL_OPERACIONAL"
+    name: "Cartão Azul atinge Papel Operacional"
+    from_entity_id: "CARTAO_AZUL_SUSPENSAO"
+    to_entity_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    meaning: "Identifica o oficial ou membro de comissão técnica infrator por sua atribuição válida na partida."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules:
+      - "Cada cartão azul deve atingir exatamente um atleta ou uma atribuição de papel esportivo/operacional."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+  - id: "SISTEMA_TATICO_CONTEXTUALIZA_POSSE"
+    name: "Sistema Tático contextualiza Posse de Bola"
+    from_entity_id: "SISTEMA_TATICO"
+    to_entity_id: "POSSE_DE_BOLA"
+    meaning: "Delimita a posse ou fração de posse durante a qual a organização coletiva observada esteve vigente."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "fase_tatica"
+      - "inicio_vigencia"
+      - "fim_vigencia"
+    temporality: "INTERVALO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+  - id: "SISTEMA_TATICO_ADOTADO_POR_EQUIPE"
+    name: "Sistema Tático adotado por Equipe"
+    from_entity_id: "SISTEMA_TATICO"
+    to_entity_id: "EQUIPE"
+    meaning: "Identifica a equipe cuja organização coletiva foi registrada no snapshot tático."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "codigo_sistema_tatico"
+    temporality: "VERSIONADA"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_007"
+  - id: "SISTEMA_DEFENSIVO_ESPECIALIZA_SISTEMA_TATICO"
+    name: "Sistema Defensivo especializa Sistema Tático"
+    from_entity_id: "SISTEMA_DEFENSIVO"
+    to_entity_id: "SISTEMA_TATICO"
+    meaning: "Declara que uma configuração defensiva observada é uma especialização do snapshot tático coletivo."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: 1
+    relationship_attributes: []
+    temporality: "VERSIONADA"
+    exclusivity_rules:
+      - "Somente snapshots de fase defensiva podem especializar-se como Sistema Defensivo."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_007"
+  - id: "PAPEL_OPERACIONAL_ATRIBUIDO_EM_PARTIDA"
+    name: "Papel Operacional atribuído em Partida"
+    from_entity_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    to_entity_id: "PARTIDA"
+    meaning: "Delimita a partida em cuja súmula ou organização a função foi atribuída."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "pessoa_ref"
+      - "codigo_papel"
+      - "inicio_vigencia"
+      - "fim_vigencia"
+    temporality: "INTERVALO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+      - "EVID_REGULAMENTO_CBHB_2026_PDF_818BCC8B_005"
+  - id: "PAPEL_OPERACIONAL_VINCULADO_A_EQUIPE"
+    name: "Papel Operacional vinculado a Equipe"
+    from_entity_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    to_entity_id: "EQUIPE"
+    meaning: "Vincula à equipe os papéis de comissão técnica; funções de arbitragem e organização permanecem sem equipe."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "INTERVALO"
+    exclusivity_rules:
+      - "Papéis de arbitragem, delegado, secretário ou cronometrista não podem ser vinculados a uma equipe."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
 domain_invariants:
   - id: "INV_LIMITE_JOGADORES_SUMULA"
     statement: "Cada equipe pode relacionar no maximo 10 atletas uniformizados em sumula por partida, devendo manter exatamente\
@@ -1185,6 +1533,65 @@ domain_invariants:
       - "EVID_IHF_RULES_2026_EN_002"
       - "EVID_IHF_RULES_2026_EN_004"
       - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_026"
+  - id: "INV_EVENTO_TECNICA_ARREMESSO"
+    statement: "Cada ocorrência de Spin Shot ou In-flight Shot deve corresponder a exatamente um Evento de Scout com atleta,\
+      \ partida, timecode, resultado e proveniência rastreáveis."
+    affected_entity_ids:
+      - "SPIN_SHOT"
+      - "IN_FLIGHT_SHOT"
+      - "EVENTO_SCOUT"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_014"
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+  - id: "INV_DESQUALIFICACAO_POR_SEGUNDA_EXCLUSAO"
+    statement: "A segunda exclusão disciplinar do mesmo atleta na mesma partida deve produzir uma desqualificação própria\
+      \ e o afastamento definitivo do atleta daquele jogo."
+    affected_entity_ids:
+      - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+      - "ATLETA"
+      - "PARTIDA"
+      - "EVENTO_SCOUT"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "INV_CARTAO_AZUL_RELATORIO_E_SUSPENSAO"
+    statement: "Todo Cartão Azul deve possuir relatório escrito da arbitragem, destinatário único e suspensão automática mínima\
+      \ de uma partida subsequente."
+    affected_entity_ids:
+      - "CARTAO_AZUL_SUSPENSAO"
+      - "ATLETA"
+      - "PAPEL_ESPORTIVO_OPERACIONAL"
+      - "PARTIDA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_017"
+  - id: "INV_VIGENCIA_SISTEMA_TATICO"
+    statement: "Cada snapshot de Sistema Tático deve informar equipe, fase ofensiva ou defensiva, posse contextual, código\
+      \ de sistema e intervalo de vigência sem sobreposição contraditória."
+    affected_entity_ids:
+      - "SISTEMA_TATICO"
+      - "SISTEMA_DEFENSIVO"
+      - "POSSE_DE_BOLA"
+      - "EQUIPE"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_007"
+  - id: "INV_ESCOPO_PAPEL_OPERACIONAL"
+    statement: "Cada atribuição de papel esportivo ou operacional deve identificar pessoa, partida, código do papel e vigência;\
+      \ o vínculo com equipe é obrigatório apenas para funções de comissão técnica."
+    affected_entity_ids:
+      - "PAPEL_ESPORTIVO_OPERACIONAL"
+      - "PARTIDA"
+      - "EQUIPE"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+      - "EVID_REGULAMENTO_CBHB_2026_PDF_818BCC8B_005"
 coverage:
   required_concept_ids:
     - "PARTIDA"
@@ -1276,73 +1683,11 @@ coverage:
     - "ESTADO_DE_REVISAO"
     - "PROVENIENCIA_OBSERVACAO"
     - "TRECHO_OBSERVADO"
-  excluded_concept_ids:
     - "SPIN_SHOT"
     - "IN_FLIGHT_SHOT"
     - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
     - "CARTAO_AZUL_SUSPENSAO"
     - "SISTEMA_TATICO"
     - "PAPEL_ESPORTIVO_OPERACIONAL"
-open_issues:
-  - id: "ISSUE_COVERAGE_SPIN_SHOT"
-    status: "ABERTA"
-    question: "A exclusão de SPIN_SHOT como entidade conceitual independente deve ser mantida?"
-    affected_ids:
-      - "SPIN_SHOT"
-    impact: "SPIN_SHOT permanece representado apenas como atributo, projeção, regra ou aspecto de outra entidade até validação."
-    required_evidence: "O conceito SPIN_SHOT e tratado no modelo conceitual como um valor enumerado especifico do atributo\
-      \ de subtipo de arremesso da entidade EVENTO_SCOUT no dicionario P1, nao justificando materializacao como entidade top-level\
-      \ independente."
-    owner: "OPERADOR"
-  - id: "ISSUE_COVERAGE_IN_FLIGHT_SHOT"
-    status: "ABERTA"
-    question: "A exclusão de IN_FLIGHT_SHOT como entidade conceitual independente deve ser mantida?"
-    affected_ids:
-      - "IN_FLIGHT_SHOT"
-    impact: "IN_FLIGHT_SHOT permanece representado apenas como atributo, projeção, regra ou aspecto de outra entidade até\
-      \ validação."
-    required_evidence: "O conceito IN_FLIGHT_SHOT e tratado no modelo conceitual como um valor enumerado especifico do atributo\
-      \ de subtipo de arremesso da entidade EVENTO_SCOUT no dicionario P1, nao justificando materializacao como entidade top-level\
-      \ independente."
-    owner: "OPERADOR"
-  - id: "ISSUE_COVERAGE_DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
-    status: "ABERTA"
-    question: "A exclusão de DESQUALIFICACAO_SEGUNDA_EXCLUSAO como entidade conceitual independente deve ser mantida?"
-    affected_ids:
-      - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
-    impact: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO permanece representado apenas como atributo, projeção, regra ou aspecto de outra\
-      \ entidade até validação."
-    required_evidence: "A desqualificacao por segunda exclusao e uma regra de derivacao automatica exercida sobre o historico\
-      \ disciplinar do atleta em jogo, modelada como uma consequencia regulamentar de transicao de estado e nao como entidade\
-      \ isolada."
-    owner: "OPERADOR"
-  - id: "ISSUE_COVERAGE_CARTAO_AZUL_SUSPENSAO"
-    status: "ABERTA"
-    question: "A exclusão de CARTAO_AZUL_SUSPENSAO como entidade conceitual independente deve ser mantida?"
-    affected_ids:
-      - "CARTAO_AZUL_SUSPENSAO"
-    impact: "CARTAO_AZUL_SUSPENSAO permanece representado apenas como atributo, projeção, regra ou aspecto de outra entidade\
-      \ até validação."
-    required_evidence: "O Cartao Azul representa um valor atributivo do resultado de uma sançao disciplinar associado a um\
-      \ EVENTO_SCOUT, com efeitos administrativos tratados fora da camada top-level de eventos de partida."
-    owner: "OPERADOR"
-  - id: "ISSUE_COVERAGE_SISTEMA_TATICO"
-    status: "ABERTA"
-    question: "A exclusão de SISTEMA_TATICO como entidade conceitual independente deve ser mantida?"
-    affected_ids:
-      - "SISTEMA_TATICO"
-    impact: "SISTEMA_TATICO permanece representado apenas como atributo, projeção, regra ou aspecto de outra entidade até\
-      \ validação."
-    required_evidence: "A categorizacao de sistemas táticos ofensivos (ex. 3x1, 4x0) e uma propriedade atributiva do contexto\
-      \ da UNIDADE_BASICA_ATAQUE_BOU, postergada para detalhamento no dicionario de dados logico."
-    owner: "OPERADOR"
-  - id: "ISSUE_COVERAGE_PAPEL_ESPORTIVO_OPERACIONAL"
-    status: "ABERTA"
-    question: "A exclusão de PAPEL_ESPORTIVO_OPERACIONAL como entidade conceitual independente deve ser mantida?"
-    affected_ids:
-      - "PAPEL_ESPORTIVO_OPERACIONAL"
-    impact: "PAPEL_ESPORTIVO_OPERACIONAL permanece representado apenas como atributo, projeção, regra ou aspecto de outra\
-      \ entidade até validação."
-    required_evidence: "O papel esportivo/operacional e capturado como atributo de relacionamento (ex. papel_equipe em PARTIDA_DISPUTADA_POR_EQUIPE\
-      \ ou papel_no_evento em EVENTO_SCOUT_ENVOLVE_ATLETA)."
-    owner: "OPERADOR"
+  excluded_concept_ids: []
+open_issues: []

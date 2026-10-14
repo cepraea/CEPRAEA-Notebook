@@ -525,37 +525,47 @@ stages:
         sha256: "f543bb905f8283120c5a93402dc79dc58afd004cd96272c8e04c393fd6976160"
         acceptance_evidence: "EXACT_10_CRITICAL_ENTITIES; ENDPOINTS_AND_EVIDENCE_PASS; COVERAGE_UPDATES_PASS; LEGACY_RULE_IDS_REMOVED_BY_OPERATOR; SNAPSHOT_TEMPORALITY_NORMALIZED"
     operator_assembly:
-      status: "CANDIDATE_READY"
+      status: "PROMOTED"
       script: "notebooklm-modelagem/scripts/merge_conceptual_critical_review.py"
       base_assembly_script: "notebooklm-modelagem/scripts/assemble_conceptual_model.py"
+      finalization_script: "notebooklm-modelagem/scripts/apply_conceptual_exclusion_review.py"
+      finalization_script_sha256: "d1141a0d973e6e50f24c69b771938e61b94615679f505b15dabb08a7d769da9e"
+      exclusion_review_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.exclusion-review.yaml"
+      exclusion_review_sha256: "9a83d2d50b8e9641ea06c1f9fdf8dac9ba4eb9a9a8ce8a07f561bdd18389383e"
+      exclusion_review_audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.exclusion-review-audit.yaml"
+      exclusion_review_audit_sha256: "073cc53bce9172de469d0f17734f1aeccd2d3b555e5d82c8bcb321ad99a97b7c"
       output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.yaml"
-      sha256: "211c443c6db456b2db07c4225308fa66fe13cc159ca26ca417eef70a6efcd903"
+      sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
       audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.critical-review-audit.yaml"
       audit_sha256: "b251dbf0a5d640c34d80c7531ad3778cc65b16dbac0d936abec1632e5f86250e"
-      assembled_at: "2026-10-14T14:19:15-03:00"
+      assembled_at: "2026-10-14T14:35:04-03:00"
       previous_candidate_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.pre-critical-review.yaml"
       previous_candidate_sha256: "5f738b55f649c8aa4d5b6911a8b1394f9825d17c80cf9a1cdc9925d5a5758a7b"
       counts:
-        entities: 23
-        relationships: 32
-        domain_invariants: 17
-        open_issues: 6
+        entities: 29
+        relationships: 46
+        domain_invariants: 22
+        open_issues: 0
         required_concept_ids: 47
-        covered_concept_ids: 41
-        excluded_concept_ids: 6
+        covered_concept_ids: 47
+        excluded_concept_ids: 0
     validation:
       status: "PASS"
-      validated_at: "2026-10-14T14:19:15-03:00"
-      evidence: "ENVELOPE_1_1_PASS; EXACT_10_CRITICAL_CONCEPTS_PROMOTED; PROMOTED_REFERENCES_PASS; CARDINALITY_CONTRACT_PASS; COVERAGE_PARTITION_47_OF_47; CRITICAL_OPEN_ISSUES_REMOVED; DETERMINISTIC_REBUILD_IDENTICAL"
+      validated_at: "2026-10-14T14:35:04-03:00"
+      evidence: "ENVELOPE_1_1_PASS; EXACT_16_CRITICAL_CONCEPTS_PROMOTED; PROMOTED_REFERENCES_PASS; CARDINALITY_CONTRACT_PASS; COVERAGE_47_OF_47_WITH_ZERO_EXCLUSIONS; OPEN_ISSUES_ZERO; DETERMINISTIC_REBUILD_IDENTICAL; WRAPPER_MARKDOWN_READY"
     approval:
       required: true
-      decision: "PENDING"
-      approved_by: null
-      approved_at: null
-      evidence: null
+      decision: "APPROVED"
+      approved_by: "USER"
+      approved_at: "2026-10-14T14:35:04-03:00"
+      evidence: "USER_REQUEST_2026_10_14_REVIEW_SIX_EXCLUSIONS_AND_CONDITIONAL_APPROVAL; OPERATOR_REVIEW_PROMOTED_ALL_SIX_AS_OWN_EVENTS_SNAPSHOT_OR_TEMPORAL_ASSIGNMENT; VALIDATION_PASS_WITH_ZERO_EXCLUSIONS"
     promotion:
-      status: "NOT_STARTED"
-      promoted_source_id: null
+      status: "PROMOTED"
+      promoted_source_id: "912812ce-78c6-4acf-85a6-6c0339ce0838"
+      promoted_source_status: "READY"
+      promoted_at: "2026-10-14T14:35:04-03:00"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/02-modelo-conceitual.promoted.md"
+      wrapper_sha256: "cedcbd6c3eafac5b6dc2162c62f100327890c2b5823bad8af8d7b98b26808027"
 
 incidents:
   - id: "INC_AUTH_001"
