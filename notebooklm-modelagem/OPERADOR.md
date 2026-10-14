@@ -35,6 +35,18 @@ notebooklm ask \
 
 O operador conserva a resposta e `references` como candidato, verifica se todas as referências pertencem à fonte selecionada e somente então associa o enriquecimento ao `notebook_source_id` já registrado. O gerador de relatório não é usado para essa subetapa.
 
+Quando `references` vier vazio, não considere os excertos verificados. Obtenha o texto indexado da mesma fonte e exija correspondência dos fragmentos durante a mesclagem:
+
+```bash
+python3 notebooklm-modelagem/scripts/merge_source_assessment.py \
+  caminho/00-manifesto-fontes.yaml \
+  caminho/resposta-chat.json \
+  caminho/00-manifesto-fontes.candidate.yaml \
+  --notebook-source-id SOURCE_DOCUMENTAL \
+  --fulltext caminho/texto-indexado.txt \
+  --evidence-prefix FONTE_SEMANTICA
+```
+
 Nunca envie `.yaml` ou `.yml` diretamente. Antes do upload, derive uma fonte aceita:
 
 ```bash

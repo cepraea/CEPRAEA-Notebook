@@ -3,7 +3,7 @@ run:
   id: "RUN_20261014_PARTIDAS_SCOUT_001"
   domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
   notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
-  status: "BLOQUEADA"
+  status: "EM_EXECUCAO"
   started_at: "2026-10-14T05:23:23-03:00"
   completed_at: null
   operator: "CODEX"
@@ -233,7 +233,7 @@ stages:
         sha256: "26593d23bff68e47e0deda8ec1f2c58e467278f8946dfdf170a6393cdd7b7378"
         rejection_reason: "YAML_E_ENVELOPE_VALIDOS_MAS_ZERO_DE_30_NOTEBOOK_SOURCE_IDS_CORRESPONDEM_AO_MAPA_OBRIGATORIO"
     operator_assembly:
-      status: "BASE_READY"
+      status: "PROMOTED"
       script: "notebooklm-modelagem/scripts/build_source_manifest.py"
       output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.yaml"
       sha256: "dd14ca629dd19b887ab804115d052440cf0f45b9ceb82a374950279e3fab216e"
@@ -242,8 +242,74 @@ stages:
         status: "PASS"
         evidence: "SCHEMA_PASS; SOURCE_ID_COVERAGE_PASS: 30/30; DETERMINISTIC_REBUILD_IDENTICAL"
       semantic_enrichment:
-        status: "PILOT_REJECTED"
-        completed_source_ids: []
+        status: "CROSS_SOURCE_RECONCILIATION_COMPLETE"
+        conversation:
+          reset_authorized: true
+          backup_path: "notebooklm-modelagem/histórico-Banco-de-dados-notebook-202-14-10.json"
+          backup_sha256: "8a07cfdffc3f53a6d09cf1126190da222301704eb8e45e38d169e4cf1707e4ae"
+          backup_size_bytes: 281624
+          previous_turn_count: 2
+          conversation_id: "447c36d8-e262-4c37-add6-e7a0347d91fb"
+        candidate_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+        candidate_sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+        ledger_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/enrichment/ledger.json"
+        ledger_sha256: "dabbe716ee1bf4a4e50968ca48de55e6c008fc2faa87569c92a6a53945cb84ac"
+        documentary_source_count: 26
+        preserved_response_count: 26
+        evidence_ref_count: 290
+        cross_source_reconciliation:
+          status: "OPERATOR_REVIEWED"
+          completed_at: "2026-10-14T08:51:02-03:00"
+          first_response_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/enrichment/corpus-reconciliation.chat-001.json"
+          first_response_sha256: "b7135a3e6a9c2306dccab839988a28e26ddff2e3dc2d66429f827ee5b7dbb3cb"
+          corrected_response_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/enrichment/corpus-reconciliation.chat-002.json"
+          corrected_response_sha256: "73a7c749aab3a03055b3f793875b59aa0f5e13574a0c5c356685715cce7173e6"
+          operator_review_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/enrichment/corpus-reconciliation.operator-review.yaml"
+          operator_review_sha256: "1503612358a1f94081d65919b7d7aae9a91ac09e6e3bc2fd9a52b25a1655991c"
+          accepted_precedence_count: 2
+          accepted_conflict_count: 4
+          resolved_issue_count: 16
+          remaining_open_issue_count: 44
+        reconciliation_input:
+          local_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/00-manifesto-fontes.candidate.md"
+          local_sha256: "aba265d528c05ef7146a299e6dd87fa314545e2438d112331afaccacd5a05ed4"
+          notebook_source_id: "8f3f5de7-6592-4c8c-95fa-811a83067f19"
+          notebook_status: "READY"
+        promoted_artifact:
+          artifact_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+          artifact_sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+          wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/00-manifesto-fontes.promoted.md"
+          wrapper_sha256: "95f90c990f05dd3fbccc321fddfd8819c54d7319d27e91684b37dd65ed15a25f"
+          promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
+          notebook_status: "READY"
+          promoted_at: "2026-10-14T09:10:27-03:00"
+        verified_source_ids:
+          - "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+          - "236e788c-9c85-4133-93c8-4650a26e867a"
+          - "0d48291e-32ab-449e-8f86-ea43244c921c"
+          - "9c553f24-6f99-4a21-b63c-9cbfda6552c1"
+          - "e593c4e6-903a-4169-a1c5-7f551bbe5b9d"
+          - "bb8b9ba4-cd24-452a-aa2b-2a3a3854e0a0"
+          - "f68c1687-7153-4283-a6a0-5e33b814fe00"
+          - "049d2bf2-ac90-44f8-951a-ae9a32c0cc64"
+          - "a44eece7-56e3-407c-9348-23b35ab0efa4"
+          - "162256e7-41bf-40ac-b77f-7b892250771f"
+          - "605ea05f-b931-405d-984f-4773065aa6c8"
+          - "74cb7983-decc-42de-86eb-f691d8e00d53"
+          - "d8076ca2-b651-48af-be4e-b14dd524c377"
+          - "de6241bc-cad8-42a5-80db-015ef2c1a780"
+          - "a3068def-bef6-49bd-b063-c8593116298f"
+          - "9b742f2e-0d21-4fb1-bca9-33411d6c6ec2"
+          - "36d92b57-69c1-4563-a2a4-71a7bd357dc7"
+          - "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+          - "3bb0c332-947d-494f-a6fa-85493b579464"
+          - "aef04d7f-4e75-4597-8f96-acc3b87f945d"
+          - "fef688f6-d141-475d-87c0-abbeaffe46fb"
+          - "475ce51f-f4bd-44ca-8194-31d42ea308e8"
+          - "2cea376b-08be-4969-b2e4-d66189ca0935"
+          - "c30b6966-654c-4682-84d5-41b0d15febb0"
+          - "e9e4272e-d302-4ce3-bf80-b1c9bdc84060"
+          - "49ceb0ca-9160-4d36-a8ac-b58470c73f80"
         attempts:
           - source_id: "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
             task_id: "3ec95ece-7330-43ab-97bb-28a13635dfc2"
@@ -252,6 +318,15 @@ stages:
             output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/enrichment/ihf-rules-2026-en.assessment.rejected-001.md"
             sha256: "dda31047c947f2ecea52998d1e609f7cae3b793238165d1300fb496dd38daa3b"
             rejection_reason: "REPORT_GENERATOR_RETURNED_MARKDOWN_PLAN_AND_INVENTED_SEMANTIC_IDS_INSTEAD_OF_REQUESTED_YAML_FRAGMENT"
+          - source_id: "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+            conversation_id: "447c36d8-e262-4c37-add6-e7a0347d91fb"
+            turn_id: "c59256e6-8847-4731-94ce-13b23e42ea3b"
+            status: "VERIFIED_CANDIDATE"
+            output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/enrichment/ihf-rules-2026-en.chat-001.json"
+            sha256: "b60e0dbf652081e33dcd37d96c6a326b9380920dd771bbb2bdc45f8f57059c9c"
+            api_reference_count: 0
+            fulltext_verification: "PASS_14_OF_14_CONTIGUOUS_FRAGMENTS"
+            merged_candidate_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
     download:
       path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.rejected-003.yaml"
       sha256: "26593d23bff68e47e0deda8ec1f2c58e467278f8946dfdf170a6393cdd7b7378"
@@ -261,13 +336,13 @@ stages:
       evidence: "SCHEMA_PASS; SOURCE_ID_COVERAGE_FAIL: 0/30 UUIDs esperados; 30/30 notebook_source_id não correspondem às fontes selecionadas"
     approval:
       required: true
-      decision: "PENDING"
-      approved_by: null
-      approved_at: null
-      evidence: null
+      decision: "APPROVED"
+      approved_by: "USER"
+      approved_at: "2026-10-14T09:10:27-03:00"
+      evidence: "Aprovação explícita do usuário: 'Sim aprovo'."
     promotion:
-      status: "NOT_STARTED"
-      promoted_source_id: null
+      status: "PROMOTED"
+      promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
 
 incidents:
   - id: "INC_AUTH_001"
@@ -313,21 +388,21 @@ blockers:
     description: "A terceira geração respeitou o YAML e o envelope 1.1, mas inventou todos os 30 notebook_source_id apesar do mapa literal fornecido no prompt."
     resolution: "MANIFESTO_BASE_MONTADO_DETERMINISTICAMENTE_PELO_OPERADOR_COM_COBERTURA_30_DE_30"
   - id: "BLOCK_STAGE_00_SEMANTIC_ENRICHMENT"
-    status: "OPEN"
+    status: "RESOLVED"
     affected_stage_id: "STAGE_00"
-    description: "O manifesto-base possui identidade e classificação inicial, mas ainda não contém evidências, precedências e conflitos revisados por fonte."
-    resolution: null
+    description: "As 26 fontes documentais foram enriquecidas e verificadas individualmente, e a reconciliação cruzada foi revisada pelo operador. Permanecem 44 questões específicas abertas e a aprovação humana necessária antes da promoção do manifesto."
+    resolution: "MANIFESTO_RECONCILIADO_APROVADO_E_PROMOVIDO_COM_44_QUESTOES_ESPECIFICAS_PRESERVADAS"
   - id: "BLOCK_STAGE_00_NOTEBOOK_AUTH"
     status: "RESOLVED"
     affected_stage_id: "STAGE_00"
     description: "As verificações ativa (60 s) e passiva (20 s) de autenticação do NotebookLM expiraram; o piloto de enriquecimento não foi iniciado."
     resolution: "AUTENTICACAO_CONFIRMADA_FORA_DA_RESTRICAO_DE_REDE_DO_SANDBOX"
   - id: "BLOCK_STAGE_00_ENRICHMENT_TRANSPORT"
-    status: "OPEN"
+    status: "RESOLVED"
     affected_stage_id: "STAGE_00"
     description: "O gerador de relatório não obedeceu ao fragmento YAML. A conversa atual do notebook contém dois turnos anteriores; usar chat estruturado isolado exige preservar e depois reinicializar essa conversa."
     decision_required: "AUTORIZAR_SALVAR_HISTORICO_COMO_NOTA_E_REINICIAR_CHAT|MANTER_HISTORICO_E_INTERROMPER_ENRIQUECIMENTO"
-    resolution: null
+    resolution: "HISTORICO_LOCAL_VALIDADO; CHAT_REINICIADO; RESPOSTA_JSON_PRESERVADA; EXCERTOS_VERIFICADOS_CONTRA_FULLTEXT"
 
 physical_gate:
   recommendation_artifact_id: null

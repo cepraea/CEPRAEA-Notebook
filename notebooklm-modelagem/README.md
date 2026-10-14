@@ -34,6 +34,8 @@ notebooklm-modelagem/
 ├── scripts/
 │   ├── validate_yaml.py
 │   ├── build_source_manifest.py
+│   ├── merge_source_assessment.py
+│   ├── run_source_enrichment_batch.py
 │   ├── yaml_to_markdown.py
 │   └── yaml_to_json.py
 ├── templates/

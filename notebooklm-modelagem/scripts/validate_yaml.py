@@ -14,7 +14,7 @@ import jsonschema
 import yaml
 
 
-PLACEHOLDER_RE = re.compile(r"(?:\bTBD\b|\bTODO\b|\.\.\.|a definir)", re.IGNORECASE)
+PLACEHOLDER_RE = re.compile(r"(?:\b(?i:TBD)\b|\bTODO\b|\.\.\.|(?i:a definir))")
 
 REQUIRED_BODY_KEYS = {
     "SOURCE_MANIFEST": {"scope", "sources", "evidence_refs", "conflicts", "open_issues"},
@@ -125,6 +125,28 @@ def main() -> int:
                         f"correspondentes={matched}/{len(expected_ids)}, "
                         f"ausentes={len(missing_ids)}, inesperadas={len(unexpected_ids)}"
                     )
+            if artifact_kind == "SOURCE_MANIFEST":
+                source_ids = {item.get("id") for item in data.get("sources", []) if isinstance(item, dict)}
+                evidence_ids = {
+                    item.get("id") for item in data.get("evidence_refs", []) if isinstance(item, dict)
+                }
+                for evidence in data.get("evidence_refs", []):
+                    if evidence.get("source_id") not in source_ids:
+                        raise ValueError(f"evidência referencia fonte inexistente: {evidence.get('id')}")
+                for rule in data.get("precedence_rules", []):
+                    referenced_sources = {
+                        rule.get("higher_authority_source_id"),
+                        rule.get("lower_authority_source_id"),
+                    }
+                    if not referenced_sources <= source_ids:
+                        raise ValueError(f"precedência referencia fonte inexistente: {rule.get('id')}")
+                    if not set(rule.get("evidence_ref_ids", [])) <= evidence_ids:
+                        raise ValueError(f"precedência referencia evidência inexistente: {rule.get('id')}")
+                for conflict in data.get("conflicts", []):
+                    if not set(conflict.get("source_ids", [])) <= source_ids:
+                        raise ValueError(f"conflito referencia fonte inexistente: {conflict.get('id')}")
+                    if not set(conflict.get("evidence_ref_ids", [])) <= evidence_ids:
+                        raise ValueError(f"conflito referencia evidência inexistente: {conflict.get('id')}")
     except (OSError, ValueError, yaml.YAMLError, jsonschema.ValidationError) as exc:
         print(f"ERRO {args.path}: {exc}", file=sys.stderr)
         return 1
