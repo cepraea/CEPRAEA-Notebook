@@ -1,0 +1,16 @@
+status: "PASS"
+review_id: "STAGE_05_OPERATOR_REVIEW_001"
+base_candidate_sha256: "875e9f4d03ba39ca476460761435c45aff9d7b86a9cf26352d6c3137b519cbec"
+output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.yaml"
+output_sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
+review_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.operator-review.yaml"
+review_sha256: "190901d354e914e2f0c62d2ff737b68c4402640834097eb01d7ac4f3ff7513c5"
+checks:
+  reviewed_total: 79
+  accepted_structural_derivations: 68
+  formalized_conditionals: 9
+  reconciled_divergences: 2
+  final_traces: 113
+  unresolved_decisions: 0
+  tests_without_semantic_rule: 79
+  open_issues: 2

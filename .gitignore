@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# VS Code
+.vscode/extensions.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Fontes externas (PDFs, JSONs brutos do NotebookLM — não versionados)
+src-notebookLM/
+
+# OS
+.DS_Store
+Thumbs.db
