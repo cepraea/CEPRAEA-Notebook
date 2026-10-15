@@ -1,0 +1,4496 @@
+schema_version: "1.1"
+document:
+  id: "LOGICAL_MODEL"
+  artifact_kind: "LOGICAL_MODEL"
+  title: "Modelo lógico relacional"
+  version: "0.1.1"
+  status: "PROPOSTO"
+  run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
+  domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
+  notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
+  generated_at: "2026-10-15T14:06:57-03:00"
+  supersedes: "LOGICAL_MODEL@0.1.0"
+  input_artifacts:
+    - document_id: "SEMANTIC_REGISTRY"
+      version: "0.1.0"
+      sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+      promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
+    - document_id: "CONCEPTUAL_MODEL"
+      version: "0.1.2"
+      sha256: "0d3e0979f83106f51e675227eb00ad4614b3beb4a4f71ff5357de84812c0b2d0"
+      promoted_source_id: "45331362-3d09-4652-848f-25432d1480da"
+    - document_id: "TRACEABILITY_MATRIX"
+      version: "0.1.0"
+      sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
+      promoted_source_id: "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+relations:
+  - id: "COMPETICAO"
+    logical_name: "Competição Esportiva"
+    physical_name_candidate: "competicao"
+    conceptual_entity_ids:
+      - "COMPETICAO"
+    purpose: "Armazenar dados cadastrais e regulamentares das competições e circuitos esportivos de Beach Handball."
+    grain: "Uma linha representa uma única competição ou circuito esportivo."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Competição"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+        evidence_ref_ids:
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_005"
+      - id: "NOME"
+        logical_name: "Nome da Competição"
+        physical_name_candidate: "nome"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_002"
+      - id: "CODIGO"
+        logical_name: "Código Canônico"
+        physical_name_candidate: "codigo"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EDICAO"
+        logical_name: "Edição ou Ano"
+        physical_name_candidate: "edicao"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Edição não especificada ou competição em formato contínuo"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DATA_INICIO"
+        logical_name: "Data de Início"
+        physical_name_candidate: "data_inicio"
+        semantic_type: "DATA_HORA"
+        nullable: true
+        null_meaning: "Data de início da competição ainda não agendada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DATA_FIM"
+        logical_name: "Data de Término"
+        physical_name_candidate: "data_fim"
+        semantic_type: "DATA_HORA"
+        nullable: true
+        null_meaning: "Data de término da competição ainda não agendada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_COMPETICAO_CODIGO"
+        attribute_ids:
+          - "CODIGO"
+    unique_constraints: []
+    checks: []
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "PARTIDA"
+    logical_name: "Partida de Beach Handball"
+    physical_name_candidate: "partida"
+    conceptual_entity_ids:
+      - "PARTIDA"
+    purpose: "Registrar os dados operacionais e de agendamento de uma partida oficial de Beach Handball."
+    grain: "Uma linha representa um confronto esportivo estruturado entre duas equipes."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_IHF_VIGENCIA_2026"
+          - "RN_TETO_PARTICIPANTES_SUMULA"
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_002"
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_007"
+      - id: "COMPETICAO_ID"
+        logical_name: "Identificador da Competição"
+        physical_name_candidate: "competicao_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "NUMERO_PARTIDA"
+        logical_name: "Número da Partida"
+        physical_name_candidate: "numero_partida"
+        semantic_type: "INTEIRO"
+        nullable: true
+        null_meaning: "Número da partida não atribuído no calendário oficial"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ETAPA"
+        logical_name: "Etapa / Fase da Competição"
+        physical_name_candidate: "etapa"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Etapa da competição não especificada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DATA_HORA_INICIO"
+        logical_name: "Data e Hora de Início"
+        physical_name_candidate: "data_hora_inicio"
+        semantic_type: "DATA_HORA"
+        nullable: true
+        null_meaning: "Horário oficial de início não registrado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "LOCAL_QUADRA"
+        logical_name: "Local / Quadra"
+        physical_name_candidate: "local_quadra"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Quadra ou local do jogo não informado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "STATUS_PARTIDA"
+        logical_name: "Status da Partida"
+        physical_name_candidate: "status_partida"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: "AGENDADA"
+        domain_values:
+          - "AGENDADA"
+          - "EM_ANDAMENTO"
+          - "CONCLUIDA"
+          - "CANCELADA"
+          - "INTERROMPIDA"
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks:
+      - id: "CHK_PARTIDA_VIGENCIA_2026"
+        expression_semantics: "Data de realização da partida deve respeitar a vigência das regras IHF 2026 a partir de 01/04/2026."
+        rule_ids:
+          - "RN_IHF_VIGENCIA_2026"
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "EQUIPE"
+    logical_name: "Equipe Esportiva"
+    physical_name_candidate: "equipe"
+    conceptual_entity_ids:
+      - "EQUIPE"
+    purpose: "Manter o cadastro mestre das equipes participantes de competições de Beach Handball."
+    grain: "Uma linha representa um clube, time ou coletivo esportivo cadastrado."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Equipe"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_TETO_PARTICIPANTES_SUMULA"
+          - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+        evidence_ref_ids:
+          - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_007"
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+      - id: "NOME"
+        logical_name: "Nome da Equipe"
+        physical_name_candidate: "nome"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SIGLA"
+        logical_name: "Sigla da Equipe"
+        physical_name_candidate: "sigla"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Sigla de identificação da equipe não cadastrada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "CIDADE"
+        logical_name: "Cidade de Origem"
+        physical_name_candidate: "cidade"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Cidade de origem da equipe não informada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "UF"
+        logical_name: "Estado / UF"
+        physical_name_candidate: "uf"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "UF de origem da equipe não informada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_EQUIPE_NOME"
+        attribute_ids:
+          - "NOME"
+    unique_constraints: []
+    checks: []
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "ATLETA"
+    logical_name: "Atleta"
+    physical_name_candidate: "atleta"
+    conceptual_entity_ids:
+      - "ATLETA"
+    purpose: "Cadastrar a pessoa física praticante elegível para atuar em partidas, incorporando conceitualmente a posição\
+      \ de goleira."
+    grain: "Uma linha representa um atleta individual cadastrado no sistema mestre."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Atleta"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_SEMANTICA_GOLEIRA"
+          - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_005"
+      - id: "NOME_COMPLETO"
+        logical_name: "Nome Completo"
+        physical_name_candidate: "nome_completo"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "NOME_CAMISA"
+        logical_name: "Nome na Camisa"
+        physical_name_candidate: "nome_camisa"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Nome preferencial na camisa não especificado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "NUMERO_REGISTRO"
+        logical_name: "Número de Registro / Inscrição"
+        physical_name_candidate: "numero_registro"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Número de registro oficial na federação não informado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "POSICAO_PRINCIPAL"
+        logical_name: "Posição Tática Principal"
+        physical_name_candidate: "posicao_principal"
+        semantic_type: "ENUM"
+        nullable: true
+        null_meaning: "Posição tática primária não declarada no cadastro"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "GOLEIRA"
+          - "ESPECIALISTA"
+          - "PIVO"
+          - "ALA_DIREITA"
+          - "ALA_ESQUERDA"
+          - "DEFENSORA"
+        rule_ids:
+          - "RN_SEMANTICA_GOLEIRA"
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_007"
+    candidate_keys:
+      - id: "CK_ATLETA_REGISTRO"
+        attribute_ids:
+          - "NUMERO_REGISTRO"
+    unique_constraints: []
+    checks:
+      - id: "CHK_ATLETA_SEMANTICA_GOLEIRA"
+        expression_semantics: "GOLEIRA é uma posição de jogo pertencente à função DEFESA e não uma função tática isolada."
+        rule_ids:
+          - "RN_SEMANTICA_GOLEIRA"
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "PARTIDA_EQUIPE"
+    logical_name: "Participação de Equipe na Partida"
+    physical_name_candidate: "partida_equipe"
+    conceptual_entity_ids:
+      - "PARTIDA"
+      - "EQUIPE"
+    purpose: "Relação associativa que vincula exatamente duas equipes a uma partida, separando papéis regulamentares de mando\
+      \ de campo."
+    grain: "Uma linha representa o papel regulamentar e condição de mando de uma equipe em uma partida específica."
+    identity:
+      strategy: "COMPOSITE"
+      attribute_ids:
+        - "PARTIDA_ID"
+        - "EQUIPE_ID"
+    attributes:
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_ID"
+        logical_name: "Identificador da Equipe"
+        physical_name_candidate: "equipe_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PAPEL_REGULAMENTAR"
+        logical_name: "Papel Regulamentar na Súmula"
+        physical_name_candidate: "papel_regulamentar"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "EQUIPE_A"
+          - "EQUIPE_B"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "CONDICAO_MANDO"
+        logical_name: "Condição de Mando de Campo"
+        physical_name_candidate: "condicao_mando"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "MANDANTE"
+          - "VISITANTE"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "COR_UNIFORME"
+        logical_name: "Cor do Uniforme"
+        physical_name_candidate: "cor_uniforme"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Cor do uniforme utilizado na partida não especificada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_PARTIDA_PAPEL_REGULAMENTAR"
+        attribute_ids:
+          - "PARTIDA_ID"
+          - "PAPEL_REGULAMENTAR"
+      - id: "UQ_PARTIDA_CONDICAO_MANDO"
+        attribute_ids:
+          - "PARTIDA_ID"
+          - "CONDICAO_MANDO"
+    checks:
+      - id: "CHK_TETO_PARTICIPANTES_SUMULA"
+        expression_semantics: "Respeitar o limite de até 10 atletas e 4 oficiais por equipe relacionados na súmula da partida."
+        rule_ids:
+          - "RN_TETO_PARTICIPANTES_SUMULA"
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "EQUIPE_ATLETA_INSCRICAO"
+    logical_name: "Inscrição de Atleta na Equipe"
+    physical_name_candidate: "equipe_atleta_inscricao"
+    conceptual_entity_ids:
+      - "EQUIPE"
+      - "ATLETA"
+    purpose: "Relação associativa para gerenciar o vínculo formal, número de camisa e elegibilidade do atleta na equipe."
+    grain: "Uma linha representa o registro de inscrição de um atleta por uma equipe em um torneio/período."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Inscrição"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_ID"
+        logical_name: "Identificador da Equipe"
+        physical_name_candidate: "equipe_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ATLETA_ID"
+        logical_name: "Identificador do Atleta"
+        physical_name_candidate: "atleta_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "COMPETICAO_ID"
+        logical_name: "Identificador da Competição"
+        physical_name_candidate: "competicao_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Inscrição geral ou permanente não restrita a uma única competição"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DATA_INSCRICAO"
+        logical_name: "Data de Inscrição"
+        physical_name_candidate: "data_inscricao"
+        semantic_type: "DATA_HORA"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+        evidence_ref_ids:
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+      - id: "NUMERO_CAMISA"
+        logical_name: "Número da Camisa"
+        physical_name_candidate: "numero_camisa"
+        semantic_type: "INTEIRO"
+        nullable: true
+        null_meaning: "Número de camisa não fixado na inscrição"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "STATUS_ELEGIBILIDADE"
+        logical_name: "Status de Elegibilidade"
+        physical_name_candidate: "status_elegibilidade"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: "ELEGIVEL"
+        domain_values:
+          - "ELEGIVEL"
+          - "SUSPENSO"
+          - "INATIVO"
+          - "PENDENTE_DOCUMENTACAO"
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_EQUIPE_ATLETA_COMPETICAO"
+        attribute_ids:
+          - "EQUIPE_ID"
+          - "ATLETA_ID"
+          - "COMPETICAO_ID"
+    checks:
+      - id: "CHK_PRAZO_INSCRICAO_72H"
+        expression_semantics: "A inscrição formal deve ser realizada com antecedência mínima de 72 horas em relação à partida."
+        rule_ids:
+          - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "PERIODO_SET"
+    logical_name: "Período / Set de Jogo"
+    physical_name_candidate: "periodo_set"
+    conceptual_entity_ids:
+      - "PERIODO_SET"
+    purpose: "Registrar a unidade temporal autônoma de jogo de 10 minutos corridos com pontuação própria (Set 1 ou Set 2)."
+    grain: "Uma linha representa um período/set regulamentar de uma partida."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Set"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_IHF_VIGENCIA_2026"
+          - "RN_SANCAO_FINAL_15_SEGUNDOS"
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_002"
+          - "EVID_IHF_RULES_2026_EN_012"
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "NUMERO_SET"
+        logical_name: "Número do Set"
+        physical_name_candidate: "numero_set"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TEMPO_DURACAO_SEGUNDOS"
+        logical_name: "Duração Real em Segundos"
+        physical_name_candidate: "tempo_duracao_segundos"
+        semantic_type: "INTEIRO"
+        nullable: true
+        null_meaning: "Set em andamento ou duração exata não computada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "HOUVE_GOL_DE_OURO"
+        logical_name: "Houve Gol de Ouro"
+        physical_name_candidate: "houve_gol_de_ouro"
+        semantic_type: "BOOLEANO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: false
+        domain_values: []
+        rule_ids:
+          - "RN_SANCAO_FINAL_15_SEGUNDOS"
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_003"
+      - id: "EQUIPE_VENCEDORA_ID"
+        logical_name: "Identificador da Equipe Vencedora do Set"
+        physical_name_candidate: "equipe_vencedora_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Set em andamento ou não concluído"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_PARTIDA_NUMERO_SET"
+        attribute_ids:
+          - "PARTIDA_ID"
+          - "NUMERO_SET"
+    checks:
+      - id: "CHK_NUMERO_SET_VALIDO"
+        expression_semantics: "O número do set deve ser estritamente 1 ou 2 para os períodos regulamentares."
+        rule_ids:
+          - "RN_IHF_VIGENCIA_2026"
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "SHOOT_OUT"
+    logical_name: "Disputa de Shoot-out"
+    physical_name_candidate: "shoot_out"
+    conceptual_entity_ids:
+      - "SHOOT_OUT"
+    purpose: "Registrar a fase especial de desempate da partida realizada quando cada equipe vence um set (1x1)."
+    grain: "Uma linha representa a sessão completa de Shoot-out de uma partida."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Shoot-out"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_IHF_VIGENCIA_2026"
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_004"
+          - "EVID_IHF_RULES_2026_EN_009"
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PONTOS_EQUIPE_A"
+        logical_name: "Pontos Convertidos Equipe A"
+        physical_name_candidate: "pontos_equipe_a"
+        semantic_type: "INTEIRO"
+        nullable: true
+        null_meaning: "Shoot-out confirmado, mas pontuação detalhada da equipe A não documentada na evidência disponível"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PONTOS_EQUIPE_B"
+        logical_name: "Pontos Convertidos Equipe B"
+        physical_name_candidate: "pontos_equipe_b"
+        semantic_type: "INTEIRO"
+        nullable: true
+        null_meaning: "Shoot-out confirmado, mas pontuação detalhada da equipe B não documentada na evidência disponível"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "HOUVE_MORTE_SUDITA"
+        logical_name: "Houve Morte Súdita"
+        physical_name_candidate: "houve_morte_sudita"
+        semantic_type: "BOOLEANO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: false
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_VENCEDORA_ID"
+        logical_name: "Identificador da Equipe Vencedora do Shoot-out"
+        physical_name_candidate: "equipe_vencedora_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Disputa de Shoot-out em andamento ou não concluída"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "STATUS_COMPLETUDE"
+        logical_name: "Estado de Completude do Shoot-out"
+        physical_name_candidate: "status_completude"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "COMPLETO"
+          - "PARCIAL"
+          - "NAO_DOCUMENTADO"
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_008"
+      - id: "MOTIVO_INCOMPLETUDE"
+        logical_name: "Motivo da Incompletude"
+        physical_name_candidate: "motivo_incompletude"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Registro completo ou ausência de justificativa adicional"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_008"
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_SHOOT_OUT_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+    checks:
+      - id: "CHK_SHOOT_OUT_COMPLETUDE"
+        expression_semantics: "STATUS_COMPLETUDE=COMPLETO exige as duas pontuações; estado PARCIAL ou NAO_DOCUMENTADO exige\
+          \ motivo de incompletude e permite pontuações nulas."
+        rule_ids: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "POSSE_DE_BOLA"
+    logical_name: "Posse de Bola (UNT-003)"
+    physical_name_candidate: "posse_de_bola"
+    conceptual_entity_ids:
+      - "POSSE_DE_BOLA"
+    purpose: "Delimitar o intervalo temporal contínuo em que uma equipe possui o controle funcional ou direito da bola."
+    grain: "Uma linha representa uma única unidade ininterrupta de posse de bola por uma equipe em um set."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Posse de Bola"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_PASSIVO_QUATRO_PASSES"
+          - "RN_PROIBICAO_RETARDO_REPETIDO"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+          - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_004"
+      - id: "PERIODO_SET_ID"
+        logical_name: "Identificador do Set"
+        physical_name_candidate: "periodo_set_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_POSSUIDORA_ID"
+        logical_name: "Identificador da Equipe em Posse"
+        physical_name_candidate: "equipe_possuidora_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SEQUENCIAL_POSSE"
+        logical_name: "Sequencial da Posse no Set"
+        physical_name_candidate: "sequencial_posse"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMECODE_INICIO"
+        logical_name: "Timecode de Início"
+        physical_name_candidate: "timecode_inicio"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Timecode de início da posse não registrado na observação"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMECODE_FIM"
+        logical_name: "Timecode de Fim"
+        physical_name_candidate: "timecode_fim"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Posse de bola em andamento ou timecode de término não capturado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "FASE_OFENSIVA_DOMINANTE"
+        logical_name: "Fase Ofensiva Dominante"
+        physical_name_candidate: "fase_ofensiva_dominante"
+        semantic_type: "ENUM"
+        nullable: true
+        null_meaning: "Fase ofensiva dominante não classificada na observação"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "TRANSICAO_OFENSIVA"
+          - "ATAQUE_POSICIONAL"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "MOTIVO_TERMINO"
+        logical_name: "Motivo do Término da Posse"
+        physical_name_candidate: "motivo_termino"
+        semantic_type: "ENUM"
+        nullable: true
+        null_meaning: "Posse em andamento ou desfecho não categorizado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "GOL"
+          - "DEFESA_GOLEIRA"
+          - "ERRO_TECNICO"
+          - "FALTA_REVERSAO"
+          - "BOLA_FORA"
+          - "FIM_PERIODO"
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_POSSE_PERIODO_SEQ"
+        attribute_ids:
+          - "PERIODO_SET_ID"
+          - "SEQUENCIAL_POSSE"
+    unique_constraints:
+      - id: "UQ_POSSE_PERIODO_SEQ"
+        attribute_ids:
+          - "PERIODO_SET_ID"
+          - "SEQUENCIAL_POSSE"
+    checks:
+      - id: "CHK_PASSIVO_QUATRO_PASSES"
+        expression_semantics: "Após o sinal de jogo passivo, a equipe dispõe de no máximo 4 passes para arremessar antes da\
+          \ reversão."
+        rule_ids:
+          - "RN_PASSIVO_QUATRO_PASSES"
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "UNIDADE_BASICA_ATAQUE_BOU"
+    logical_name: "Unidade Básica de Ataque (BOU)"
+    physical_name_candidate: "unidade_basica_ataque_bou"
+    conceptual_entity_ids:
+      - "UNIDADE_BASICA_ATAQUE_BOU"
+    purpose: "Registrar o intervalo do ataque posicionado organizado diante de uma defesa estabelecida."
+    grain: "Uma linha representa uma Unidade Básica de Ataque (BOU) no âmbito de uma posse de bola."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da BOU"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_004"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+      - id: "POSSE_DE_BOLA_ID"
+        logical_name: "Identificador da Posse de Bola"
+        physical_name_candidate: "posse_de_bola_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SEQUENCIAL_BOU"
+        logical_name: "Sequencial da BOU na Posse"
+        physical_name_candidate: "sequencial_bou"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMECODE_INICIO"
+        logical_name: "Timecode de Início"
+        physical_name_candidate: "timecode_inicio"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Timecode de início da BOU não registrado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMECODE_FIM"
+        logical_name: "Timecode de Fim"
+        physical_name_candidate: "timecode_fim"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "BOU em andamento ou timecode de término não capturado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "FASE_TATICA"
+        logical_name: "Fase Tática"
+        physical_name_candidate: "fase_tatica"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "TO"
+          - "AP"
+          - "TD"
+          - "DP"
+          - "F_IND"
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_BOU_POSSE_SEQ"
+        attribute_ids:
+          - "POSSE_DE_BOLA_ID"
+          - "SEQUENCIAL_BOU"
+    unique_constraints:
+      - id: "UQ_BOU_POSSE_SEQ"
+        attribute_ids:
+          - "POSSE_DE_BOLA_ID"
+          - "SEQUENCIAL_BOU"
+    checks:
+      - id: "CHK_BOU_REJEICAO_INFERENCIAIS"
+        expression_semantics: "A codificação de BOU deve basear-se estritamente em critérios observáveis e sem variáveis inferenciais."
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "EVENTO_SCOUT"
+    logical_name: "Evento de Scout"
+    physical_name_candidate: "evento_scout"
+    conceptual_entity_ids:
+      - "EVENTO_SCOUT"
+    purpose: "Registrar a ocorrência discreta de uma ação técnica, tática, de pontuação ou disciplina durante o jogo."
+    grain: "Uma linha representa um evento pontual de scout associado a um timecode e a uma sessão de observação."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Evento"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_PROTECAO_CABECA_GOLEIRA"
+          - "RN_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+        evidence_ref_ids:
+          - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_009"
+          - "EVID_IHF_RULES_2026_EN_011"
+      - id: "OBSERVACAO_DE_SCOUT_ID"
+        logical_name: "Identificador da Observação de Scout"
+        physical_name_candidate: "observacao_de_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "UNIDADE_BASICA_ATAQUE_BOU_ID"
+        logical_name: "Identificador da BOU"
+        physical_name_candidate: "unidade_basica_ataque_bou_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Evento ocorrido fora do contexto de uma BOU (ex.: cobrança direta de tiro de meta, paralisação)"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ATLETA_EXECUTOR_ID"
+        logical_name: "Identificador do Atleta Executor"
+        physical_name_candidate: "atleta_executor_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Evento sem atleta executor individualizado (ex.: tempo técnico, falta de equipe)"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ATLETA_ALVO_ID"
+        logical_name: "Identificador do Atleta Alvo / Receptor"
+        physical_name_candidate: "atleta_alvo_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Evento sem segundo atleta envolvido (ex.: arremesso direto para fora, falta pessoal sem receptor)"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMECODE_EXATO"
+        logical_name: "Timecode Exato de Vídeo"
+        physical_name_candidate: "timecode_exato"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ZONA_ANALITICA"
+        logical_name: "Zona Analítica da Quadra"
+        physical_name_candidate: "zona_analitica"
+        semantic_type: "ENUM"
+        nullable: true
+        null_meaning: "Zona da quadra não aplicável ao tipo de evento registrado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "ZE"
+          - "ZCE"
+          - "ZCD"
+          - "ZD"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIPO_ACAO_OBSERVADA"
+        logical_name: "Tipo da Ação Observada"
+        physical_name_candidate: "tipo_acao_observada"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "PONTUACAO_SIMPLES"
+          - "PONTUACAO_DUPLA"
+          - "ARREMESSO_SPIN"
+          - "ARREMESSO_IN_FLIGHT"
+          - "ARREMESSO_SIMPLES"
+          - "TIRO_SEIS_METROS"
+          - "PASSE"
+          - "RECEPCAO"
+          - "DESARME"
+          - "BLOQUEIO"
+          - "DEFESA_GOLEIRA"
+          - "FALTA_COMETIDA"
+          - "FALTA_SOFRIDA"
+          - "EXCLUSAO_DISCIPLINAR"
+          - "CARTAO_AZUL"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "RESULTADO_ACAO"
+        logical_name: "Resultado da Ação"
+        physical_name_candidate: "resultado_acao"
+        semantic_type: "ENUM"
+        nullable: true
+        null_meaning: "Ação em andamento ou sem resultado discreto categorizado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "GOL"
+          - "DEFESA"
+          - "FORA"
+          - "TRAVE"
+          - "ERRO_TECNICO"
+          - "FALTA_SOFRIDA"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ACAO_GOLEIRA"
+        logical_name: "Ação da Goleira"
+        physical_name_candidate: "acao_goleira"
+        semantic_type: "ENUM"
+        nullable: true
+        null_meaning: "Evento não envolveu intervenção ou ação direta da posição de goleira"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "DEFESA_PARADA"
+          - "DEFESA_COUNTER_SPIN"
+          - "DEFESA_COUNTER_FLY"
+          - "PASSE_TRANSICAO_T4"
+          - "ARREMESSO_DIRETO_GOLEIRA"
+          - "INTERVENCAO_SHOOTOUT"
+        rule_ids:
+          - "RN_SEMANTICA_GOLEIRA"
+        evidence_ref_ids: []
+      - id: "PUNICAO_DISCIPLINAR"
+        logical_name: "Punição Disciplinar"
+        physical_name_candidate: "punicao_disciplinar"
+        semantic_type: "ENUM"
+        nullable: true
+        null_meaning: "Evento ordinário de jogo sem aplicação de sanção disciplinar"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "ADVERTENCIA"
+          - "EXCLUSAO_TEMPORARIA"
+          - "DESQUALIFICACAO_DIRETA"
+          - "CARTAO_AZUL"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "CONSEQUENCIA_DISCIPLINAR"
+        logical_name: "Consequência Disciplinar"
+        physical_name_candidate: "consequencia_disciplinar"
+        semantic_type: "ENUM"
+        nullable: true
+        null_meaning: "Nenhuma consequência disciplinar decorrente do evento"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "REDUCAO_NUMERICA_QUADRA"
+          - "SUSPENSAO_PROXIMA_PARTIDA"
+          - "CONCESSAO_TIRO_SIX_METROS"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PONTOS_GERADOS"
+        logical_name: "Pontos Gerados"
+        physical_name_candidate: "pontos_gerados"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: 0
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks:
+      - id: "CHK_PROTECAO_CABECA_GOLEIRA"
+        expression_semantics: "Arremesso desmarcado atingindo diretamente a cabeça da goleira exige exclusão do arremessador;\
+          \ simulação da goleira gera sanção à mesma."
+        rule_ids:
+          - "RN_PROTECAO_CABECA_GOLEIRA"
+      - id: "CHK_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+        expression_semantics: "Tiro de 6m deve ser executado direto ao gol em até 3s, respeitando distância defensiva de 1m."
+        rule_ids:
+          - "RN_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+    history_strategy: "APPEND_ONLY"
+    retention_rule_ids: []
+  - id: "OBSERVACAO_DE_SCOUT"
+    logical_name: "Observação de Scout"
+    physical_name_candidate: "observacao_de_scout"
+    conceptual_entity_ids:
+      - "OBSERVACAO_DE_SCOUT"
+    purpose: "Representar a sessão de codificação e captura dos eventos de jogo efetuada por um analista."
+    grain: "Uma linha representa uma sessão de codificação de scout realizada para uma partida."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Observação"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ANALISTA_OBSERVADOR_ID"
+        logical_name: "Identificador do Analista"
+        physical_name_candidate: "analista_observador_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PROTOCOLO_SCOUT_ID"
+        logical_name: "Identificador do Protocolo"
+        physical_name_candidate: "protocolo_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "MIDIA_VIDEO_ID"
+        logical_name: "Identificador da Mídia de Vídeo"
+        physical_name_candidate: "midia_video_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DATA_HORA_CODIFICACAO"
+        logical_name: "Data e Hora da Codificação"
+        physical_name_candidate: "data_hora_codificacao"
+        semantic_type: "DATA_HORA"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIPO_OBSERVACAO"
+        logical_name: "Tipo da Observação"
+        physical_name_candidate: "tipo_observacao"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: "PRIMARIA_P1"
+        domain_values:
+          - "PRIMARIA_P1"
+          - "REVISAO_AUDITORIA"
+          - "AUTOMATIZADA_IA"
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks:
+      - id: "CHK_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        expression_semantics: "Proibido registrar na camada primária de observação variáveis que exijam julgamento subjetivo."
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "ANALISTA_OBSERVADOR"
+    logical_name: "Analista Observador de Scout"
+    physical_name_candidate: "analista_observador"
+    conceptual_entity_ids:
+      - "ANALISTA_OBSERVADOR"
+    purpose: "Manter o cadastro e status de habilitação dos analistas responsáveis pelo registro de scout."
+    grain: "Uma linha representa um analista observador cadastrado no sistema."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Analista"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+      - id: "NOME"
+        logical_name: "Nome Completo"
+        physical_name_candidate: "nome"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EMAIL"
+        logical_name: "Correio Eletrônico"
+        physical_name_candidate: "email"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "STATUS_HABILITACAO"
+        logical_name: "Status de Habilitação"
+        physical_name_candidate: "status_habilitacao"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: "HABILITADO"
+        domain_values:
+          - "HABILITADO"
+          - "EM_TREINAMENTO"
+          - "DESABILITADO"
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_ANALISTA_EMAIL"
+        attribute_ids:
+          - "EMAIL"
+    unique_constraints: []
+    checks: []
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "PROTOCOLO_SCOUT"
+    logical_name: "Protocolo Metodológico de Scout"
+    physical_name_candidate: "protocolo_scout"
+    conceptual_entity_ids:
+      - "PROTOCOLO_SCOUT"
+    purpose: "Armazenar os parâmetros, taxonomias e diretrizes das versões do protocolo metodológico de scout."
+    grain: "Uma linha representa uma versão congelada do protocolo metodológico de scout."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Protocolo"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+      - id: "CODIGO_PROTOCOLO"
+        logical_name: "Código do Protocolo"
+        physical_name_candidate: "codigo_protocolo"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "VERSAO"
+        logical_name: "Número da Versão"
+        physical_name_candidate: "versao"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DESCRICAO"
+        logical_name: "Descrição Metodológica"
+        physical_name_candidate: "descricao"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Sem descrição detalhada cadastrada para esta versão"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DATA_CONGELAMENTO"
+        logical_name: "Data de Congelamento"
+        physical_name_candidate: "data_congelamento"
+        semantic_type: "DATA_HORA"
+        nullable: true
+        null_meaning: "Protocolo em elaboração ou sem data de congelamento formalizada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_PROTOCOLO_COD_VERSAO"
+        attribute_ids:
+          - "CODIGO_PROTOCOLO"
+          - "VERSAO"
+    unique_constraints: []
+    checks: []
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "MIDIA_VIDEO"
+    logical_name: "Mídia / Vídeo de Transmissão"
+    physical_name_candidate: "midia_video"
+    conceptual_entity_ids:
+      - "MIDIA_VIDEO"
+    purpose: "Registrar os arquivos audiovisuais e transmissões utilizados como fonte primária do scout."
+    grain: "Uma linha representa um arquivo físico ou fluxo de gravação de vídeo de uma partida."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Mídia"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Arquivo de mídia bruto ainda não vinculado a uma partida cadastrada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "URI_STORAGE"
+        logical_name: "URI de Armazenamento"
+        physical_name_candidate: "uri_storage"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "CHECKSUM_SHA256"
+        logical_name: "Checksum SHA256"
+        physical_name_candidate: "checksum_sha256"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Hash SHA256 do arquivo audiovisual não verificado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIPO_MIDIA"
+        logical_name: "Tipo da Mídia"
+        physical_name_candidate: "tipo_midia"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: "BROADCAST_P0"
+        domain_values:
+          - "BROADCAST_P0"
+          - "CAMARA_ALTA_TATICA"
+          - "CORTE_CLIPE"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DURACAO_SEGUNDOS"
+        logical_name: "Duração Total em Segundos"
+        physical_name_candidate: "duracao_segundos"
+        semantic_type: "DECIMAL"
+        nullable: true
+        null_meaning: "Duração exata do vídeo não calculada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_MIDIA_SHA256"
+        attribute_ids:
+          - "CHECKSUM_SHA256"
+    unique_constraints: []
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "SEGMENTO_OBSERVADO"
+    logical_name: "Segmento Observado"
+    physical_name_candidate: "segmento_observado"
+    conceptual_entity_ids:
+      - "SEGMENTO_OBSERVADO"
+    purpose: "Delimitar trechos contínuos do arquivo de vídeo para recortes táticos e análise."
+    grain: "Uma linha representa um trecho contínuo delimitado de vídeo de uma partida."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Segmento"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_002"
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "MIDIA_VIDEO_ID"
+        logical_name: "Identificador da Mídia"
+        physical_name_candidate: "midia_video_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMECODE_INICIO"
+        logical_name: "Timecode de Início"
+        physical_name_candidate: "timecode_inicio"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMECODE_FIM"
+        logical_name: "Timecode de Fim"
+        physical_name_candidate: "timecode_fim"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ORDEM_INTERVALO"
+        logical_name: "Ordem do Intervalo"
+        physical_name_candidate: "ordem_intervalo"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_SEGMENTO_ORDEM"
+        attribute_ids:
+          - "PARTIDA_ID"
+          - "ORDEM_INTERVALO"
+    unique_constraints:
+      - id: "UQ_SEGMENTO_ORDEM"
+        attribute_ids:
+          - "PARTIDA_ID"
+          - "ORDEM_INTERVALO"
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "PLACAR_JOGO"
+    logical_name: "Placar do Jogo"
+    physical_name_candidate: "placar_jogo"
+    conceptual_entity_ids:
+      - "PLACAR_JOGO"
+    purpose: "Armazenar o estado global e a contagem consolidada de sets e vitória de uma partida."
+    grain: "Uma linha representa o resultado consolidado e estado de placar de uma partida."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Placar"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_002"
+          - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_003"
+          - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_026"
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SETS_VENCIDOS_EQUIPE_A"
+        logical_name: "Sets Vencidos Equipe A"
+        physical_name_candidate: "sets_vencidos_equipe_a"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: 0
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SETS_VENCIDOS_EQUIPE_B"
+        logical_name: "Sets Vencidos Equipe B"
+        physical_name_candidate: "sets_vencidos_equipe_b"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: 0
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "RESULTADO_FINAL_SETS"
+        logical_name: "Resultado Final em Sets"
+        physical_name_candidate: "resultado_final_sets"
+        semantic_type: "ENUM"
+        nullable: true
+        null_meaning: "Partida em andamento sem resultado final consolidado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "VITORIA_2_0"
+          - "VITORIA_2_1"
+          - "DERROTA_0_2"
+          - "DERROTA_1_2"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_VENCEDORA_ID"
+        logical_name: "Identificador da Equipe Vencedora da Partida"
+        physical_name_candidate: "equipe_vencedora_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Partida em andamento ou sem vencedor homologado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_PLACAR_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+    checks: []
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "ESTADO_DO_PLACAR"
+    logical_name: "Estado do Placar"
+    physical_name_candidate: "estado_do_placar"
+    conceptual_entity_ids:
+      - "ESTADO_DO_PLACAR"
+    purpose: "Registrar a situação relacional momentânea de pontuação durante a partida."
+    grain: "Uma linha representa a pontuação e vantagem em um determinado instante do set."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Estado"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56_004"
+          - "EVID_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E_007"
+      - id: "PLACAR_JOGO_ID"
+        logical_name: "Identificador do Placar do Jogo"
+        physical_name_candidate: "placar_jogo_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PERIODO_SET_ID"
+        logical_name: "Identificador do Set"
+        physical_name_candidate: "periodo_set_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PONTOS_EQUIPE_A"
+        logical_name: "Pontos do Set Equipe A"
+        physical_name_candidate: "pontos_equipe_a"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: 0
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PONTOS_EQUIPE_B"
+        logical_name: "Pontos do Set Equipe B"
+        physical_name_candidate: "pontos_equipe_b"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: 0
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SITUACAO_VANTAGEM"
+        logical_name: "Situação de Vantagem"
+        physical_name_candidate: "situacao_vantagem"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: "EMPATADO"
+        domain_values:
+          - "EMPATADO"
+          - "FAVORAVEL"
+          - "DESFAVORAVEL"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMESTAMP_INSTANTE"
+        logical_name: "Timestamp do Instante"
+        physical_name_candidate: "timestamp_instante"
+        semantic_type: "DATA_HORA"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "EVOLUCAO_DO_PLACAR"
+    logical_name: "Evolução do Placar"
+    physical_name_candidate: "evolucao_do_placar"
+    conceptual_entity_ids:
+      - "EVOLUCAO_DO_PLACAR"
+    purpose: "Manter a sequência cronológica auditável de alterações na pontuação da partida."
+    grain: "Uma linha representa uma alteração incremental de pontuação motivada por um evento de gol."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Evolução"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_002"
+          - "EVID_SOURCE_04C_DICIONARIO_DE_DADOS_MD_6B0D9716_009"
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EVENTO_SCOUT_ID"
+        logical_name: "Identificador do Evento de Scout"
+        physical_name_candidate: "evento_scout_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Pontuação registrada via súmula oficial sem correspondente em vídeo/scout"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_BENEFICIADA_ID"
+        logical_name: "Identificador da Equipe Beneficiada"
+        physical_name_candidate: "equipe_beneficiada_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SEQUENCIAL_PONTUACAO"
+        logical_name: "Sequencial da Pontuação"
+        physical_name_candidate: "sequencial_pontuacao"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "VALOR_INCREMENTO"
+        logical_name: "Valor do Incremento"
+        physical_name_candidate: "valor_incremento"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - 1
+          - 2
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PLACAR_EQUIPE_A_AFT"
+        logical_name: "Placar Equipe A Após Evento"
+        physical_name_candidate: "placar_equipe_a_aft"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PLACAR_EQUIPE_B_AFT"
+        logical_name: "Placar Equipe B Após Evento"
+        physical_name_candidate: "placar_equipe_b_aft"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_EVOLUCAO_PARTIDA_SEQ"
+        attribute_ids:
+          - "PARTIDA_ID"
+          - "SEQUENCIAL_PONTUACAO"
+    unique_constraints:
+      - id: "UQ_EVOLUCAO_PARTIDA_SEQ"
+        attribute_ids:
+          - "PARTIDA_ID"
+          - "SEQUENCIAL_PONTUACAO"
+    checks: []
+    history_strategy: "APPEND_ONLY"
+    retention_rule_ids: []
+  - id: "SISTEMA_DEFENSIVO"
+    logical_name: "Sistema Defensivo"
+    physical_name_candidate: "sistema_defensivo"
+    conceptual_entity_ids:
+      - "SISTEMA_DEFENSIVO"
+    purpose: "Mapear a disposição espacial, atitude e configuração dos defensores em quadra."
+    grain: "Uma linha representa a atitude/sistema defensivo adotado em uma posse de bola."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Sistema Defensivo"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_005"
+          - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - id: "POSSE_DE_BOLA_ID"
+        logical_name: "Identificador da Posse de Bola"
+        physical_name_candidate: "posse_de_bola_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_ID"
+        logical_name: "Identificador da Equipe Defensora"
+        physical_name_candidate: "equipe_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SISTEMA_TATICO_ID"
+        logical_name: "Identificador do Snapshot Tático"
+        physical_name_candidate: "sistema_tatico_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Sem especialização direta de um snapshot tático genérico"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "CODIGO_SISTEMA_DEFENSIVO"
+        logical_name: "Código do Sistema Defensivo"
+        physical_name_candidate: "codigo_sistema_defensivo"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "SIS_3_0"
+          - "SIS_2_1_CENTRAL"
+          - "SIS_2_1_LATERAL"
+          - "SIS_1_2"
+          - "SIS_AVANCADO_7M"
+          - "SIS_REATIVO"
+          - "SIS_PROATIVO"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EM_DESVANTAGEM_NUMERICA"
+        logical_name: "Em Desvantagem Numérica"
+        physical_name_candidate: "em_desvantagem_numerica"
+        semantic_type: "BOOLEANO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: false
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "CONFIABILIDADE_OBSERVADOR"
+    logical_name: "Confiabilidade do Observador"
+    physical_name_candidate: "confiabilidade_observador"
+    conceptual_entity_ids:
+      - "CONFIABILIDADE_OBSERVADOR"
+    purpose: "Registrar a qualificação técnica e índices de concordância (Kappa) do analista de scout."
+    grain: "Uma linha representa um evento de teste e calibração de um analista observador."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Registro de Confiabilidade"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+      - id: "ANALISTA_OBSERVADOR_ID"
+        logical_name: "Identificador do Analista"
+        physical_name_candidate: "analista_observador_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DATA_AVALIACAO"
+        logical_name: "Data da Avaliação"
+        physical_name_candidate: "data_avaliacao"
+        semantic_type: "DATA_HORA"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "VERSAO_TESTE"
+        logical_name: "Versão do Teste"
+        physical_name_candidate: "versao_teste"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PERCENTUAL_ACERTO"
+        logical_name: "Percentual de Acerto"
+        physical_name_candidate: "percentual_acerto"
+        semantic_type: "DECIMAL"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ERROS_CRITICOS_QTD"
+        logical_name: "Quantidade de Erros Críticos"
+        physical_name_candidate: "erros_criticos_qtd"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: 0
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "KAPPA_COHEN"
+        logical_name: "Índice Kappa de Cohen"
+        physical_name_candidate: "kappa_cohen"
+        semantic_type: "DECIMAL"
+        nullable: true
+        null_meaning: "Kappa de Cohen não calculado para o teste em questão"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "STATUS_QUALIFICACAO"
+        logical_name: "Status da Qualificação"
+        physical_name_candidate: "status_qualificacao"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "QUALIFICADO"
+          - "NAO_QUALIFICADO"
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks: []
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "REVISAO_DA_OBSERVACAO"
+    logical_name: "Revisão da Observação"
+    physical_name_candidate: "revisao_da_observacao"
+    conceptual_entity_ids:
+      - "REVISAO_DA_OBSERVACAO"
+    purpose: "Registrar eventos de auditoria ou segunda checagem do scout para garantia de qualidade dos dados."
+    grain: "Uma linha representa um evento formal de revisão efetuado sobre uma observação de scout."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Revisão"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+          - "EVID_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC_007"
+      - id: "OBSERVACAO_DE_SCOUT_ID"
+        logical_name: "Identificador da Observação"
+        physical_name_candidate: "observacao_de_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ANALISTA_REVISOR_ID"
+        logical_name: "Identificador do Analista Revisor"
+        physical_name_candidate: "analista_revisor_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMESTAMP_REVISAO"
+        logical_name: "Timestamp da Revisão"
+        physical_name_candidate: "timestamp_revisao"
+        semantic_type: "DATA_HORA"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "MOTIVO_REVISAO"
+        logical_name: "Motivo da Revisão"
+        physical_name_candidate: "motivo_revisao"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Revisão periódica de rotina sem motivo específico apontado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "CAMPO_ALTERADO"
+        logical_name: "Campo Alterado"
+        physical_name_candidate: "campo_alterado"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Revisão confirmatória sem alteração de campos realizada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks: []
+    history_strategy: "APPEND_ONLY"
+    retention_rule_ids: []
+  - id: "ESTADO_DE_REVISAO"
+    logical_name: "Estado de Revisão"
+    physical_name_candidate: "estado_de_revisao"
+    conceptual_entity_ids:
+      - "ESTADO_DE_REVISAO"
+    purpose: "Gerenciar a situação no fluxo de homologação e validação da observação de scout."
+    grain: "Uma linha representa o status corrente de revisão de uma observação de scout."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Estado de Revisão"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_SOURCE_04C_DICIONARIO_DE_DADOS_MD_6B0D9716_006"
+          - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_022"
+      - id: "OBSERVACAO_DE_SCOUT_ID"
+        logical_name: "Identificador da Observação"
+        physical_name_candidate: "observacao_de_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "REVISAO_DA_OBSERVACAO_ID"
+        logical_name: "Identificador da Revisão"
+        physical_name_candidate: "revisao_da_observacao_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Estado inicial antes de qualquer evento de auditoria"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "STATUS_CORRENTE"
+        logical_name: "Status Corrente"
+        physical_name_candidate: "status_corrente"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: "PENDENTE"
+        domain_values:
+          - "PENDENTE"
+          - "APROVADO"
+          - "REJEITADO"
+          - "EM_AUDITORIA"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DATA_ULTIMA_ATUALIZACAO"
+        logical_name: "Data da Última Atualização"
+        physical_name_candidate: "data_ultima_atualizacao"
+        semantic_type: "DATA_HORA"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_ESTADO_REVISAO_OBSERVA"
+        attribute_ids:
+          - "OBSERVACAO_DE_SCOUT_ID"
+    checks: []
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "PROVENIENCIA_OBSERVACAO"
+    logical_name: "Proveniência da Observação"
+    physical_name_candidate: "proveniencia_observacao"
+    conceptual_entity_ids:
+      - "PROVENIENCIA_OBSERVACAO"
+    purpose: "Garantir o registro imutável da linhagem de dados, protocolo e mídia fonte da observação de scout."
+    grain: "Uma linha representa os metadados fixos de proveniência de uma observação de scout."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Proveniência"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_001"
+      - id: "OBSERVACAO_DE_SCOUT_ID"
+        logical_name: "Identificador da Observação"
+        physical_name_candidate: "observacao_de_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PROTOCOLO_SCOUT_ID"
+        logical_name: "Identificador do Protocolo"
+        physical_name_candidate: "protocolo_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "MIDIA_VIDEO_ID"
+        logical_name: "Identificador da Mídia de Vídeo"
+        physical_name_candidate: "midia_video_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "FERRAMENTA_SOFTWARE"
+        logical_name: "Ferramenta / Software Utilizado"
+        physical_name_candidate: "ferramenta_software"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ORIGEM_DADO"
+        logical_name: "Origem da Extração do Dado"
+        physical_name_candidate: "origem_dado"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "CODIFICACAO_HUMANA_P1"
+          - "SUMULA_OFICIAL"
+          - "EXTRACAO_AUTOMATIZADA"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "CHECKSUM_MIDIA"
+        logical_name: "Checksum do Vídeo Fonte"
+        physical_name_candidate: "checksum_midia"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Hash SHA256 não calculated para o arquivo de mídia"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_PROVENIENCIA_OBS"
+        attribute_ids:
+          - "OBSERVACAO_DE_SCOUT_ID"
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "TRECHO_OBSERVADO"
+    logical_name: "Trecho Observado"
+    physical_name_candidate: "trecho_observado"
+    conceptual_entity_ids:
+      - "TRECHO_OBSERVADO"
+    purpose: "Mapear o recorte temporal exato de vídeo correspondente a um evento de scout."
+    grain: "Uma linha representa o recorte de timecode de vídeo de um evento específico."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Trecho"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+      - id: "EVENTO_SCOUT_ID"
+        logical_name: "Identificador do Evento"
+        physical_name_candidate: "evento_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "MIDIA_VIDEO_ID"
+        logical_name: "Identificador da Mídia"
+        physical_name_candidate: "midia_video_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMECODE_INICIO"
+        logical_name: "Timecode de Início"
+        physical_name_candidate: "timecode_inicio"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIMECODE_FIM"
+        logical_name: "Timecode de Fim"
+        physical_name_candidate: "timecode_fim"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "OFFSET_MILISSEGUNDOS"
+        logical_name: "Offset em Milissegundos"
+        physical_name_candidate: "offset_milissegundos"
+        semantic_type: "INTEIRO"
+        nullable: true
+        null_meaning: "Offset preciso em milissegundos não calculado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "SPIN_SHOT"
+    logical_name: "Execução de Spin Shot"
+    physical_name_candidate: "spin_shot"
+    conceptual_entity_ids:
+      - "SPIN_SHOT"
+    purpose: "Especialização tática para detalhamento da técnica de arremesso com giro de 360° no ar."
+    grain: "Uma linha representa a caracterização especializada de um Spin Shot efetuado em um evento."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Spin Shot"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+      - id: "EVENTO_SCOUT_ID"
+        logical_name: "Identificador do Evento"
+        physical_name_candidate: "evento_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ROTACAO_COMPLETA_360"
+        logical_name: "Rotação Completa de 360°"
+        physical_name_candidate: "rotacao_completa_360"
+        semantic_type: "BOOLEANO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: true
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SALTO_PE_DIRECIONADO"
+        logical_name: "Salto com Pés Direcionados ao Gol"
+        physical_name_candidate: "salto_pe_direcionado"
+        semantic_type: "BOOLEANO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: true
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "VALOR_PONTOS"
+        logical_name: "Valor em Pontos"
+        physical_name_candidate: "valor_pontos"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: 2
+        domain_values:
+          - 2
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_SPIN_SHOT_EVENTO"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "IN_FLIGHT_SHOT"
+    logical_name: "Execução de In-flight Shot"
+    physical_name_candidate: "in_flight_shot"
+    conceptual_entity_ids:
+      - "IN_FLIGHT_SHOT"
+    purpose: "Especialização tática para detalhamento da técnica de arremesso aéreo (ponte aérea)."
+    grain: "Uma linha representa a caracterização especializada de um In-flight Shot efetuado."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do In-flight Shot"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_014"
+          - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+      - id: "EVENTO_SCOUT_ID"
+        logical_name: "Identificador do Evento"
+        physical_name_candidate: "evento_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "RECEPCAO_NO_AR"
+        logical_name: "Recepção Suspenso no Ar"
+        physical_name_candidate: "recepcao_no_ar"
+        semantic_type: "BOOLEANO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: true
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SEM_CONTATO_AREIA"
+        logical_name: "Sem Contato com a Areia no Lançamento"
+        physical_name_candidate: "sem_contato_areia"
+        semantic_type: "BOOLEANO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: true
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "VALOR_PONTOS"
+        logical_name: "Valor em Pontos"
+        physical_name_candidate: "valor_pontos"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: 2
+        domain_values:
+          - 2
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_IN_FLIGHT_EVENTO"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    logical_name: "Desqualificação por 2ª Exclusão"
+    physical_name_candidate: "desqualificacao_segunda_exclusao"
+    conceptual_entity_ids:
+      - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    purpose: "Registrar a desqualificação e o afastamento definitivo do atleta pelo acúmulo da segunda exclusão."
+    grain: "Uma linha representa a ocorrência de desqualificação por acúmulo de duas exclusões em uma partida."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Desqualificação"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+      - id: "EVENTO_SCOUT_ID"
+        logical_name: "Identificador do Evento"
+        physical_name_candidate: "evento_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ATLETA_ID"
+        logical_name: "Identificador do Atleta Sancionado"
+        physical_name_candidate: "atleta_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "SAIDA_IMEDIATA_QUADRA"
+        logical_name: "Saída Imediata da Quadra"
+        physical_name_candidate: "saida_imediata_quadra"
+        semantic_type: "BOOLEANO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: true
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_DESQ_EXC_EVENTO"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "CARTAO_AZUL_SUSPENSAO"
+    logical_name: "Cartão Azul e Suspensão"
+    physical_name_candidate: "cartao_azul_suspensao"
+    conceptual_entity_ids:
+      - "CARTAO_AZUL_SUSPENSAO"
+    purpose: "Registrar a desqualificação direta gravíssima com relatório por escrito e suspensão administrativa."
+    grain: "Uma linha representa um evento de exibição de Cartão Azul e relatório formal da arbitragem."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Cartão Azul"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_017"
+      - id: "EVENTO_SCOUT_ID"
+        logical_name: "Identificador do Evento"
+        physical_name_candidate: "evento_scout_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "ATLETA_ID"
+        logical_name: "Identificador do Atleta Infrator"
+        physical_name_candidate: "atleta_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Cartão azul aplicado a oficial de comissão técnica e não a atleta"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "PAPEL_OPERACIONAL_ID"
+        logical_name: "Identificador do Papel Operacional / Oficial"
+        physical_name_candidate: "papel_operacional_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Cartão azul aplicado a atleta e não a oficial de comissão técnica"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "RELATORIO_ARBITRAGEM"
+        logical_name: "Relatório de Arbitragem"
+        physical_name_candidate: "relatorio_arbitragem"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "JOGOS_SUSPENSAO_AUTOMATICA"
+        logical_name: "Jogos de Suspensão Automática"
+        physical_name_candidate: "jogos_suspensao_automatica"
+        semantic_type: "INTEIRO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: 1
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints:
+      - id: "UQ_CARTAO_AZUL_EVENTO"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "SISTEMA_TATICO"
+    logical_name: "Snapshot de Sistema Tático"
+    physical_name_candidate: "sistema_tatico"
+    conceptual_entity_ids:
+      - "SISTEMA_TATICO"
+    purpose: "Registrar a disposição espacial coletiva e formação tática adotada em um intervalo do jogo."
+    grain: "Uma linha representa a configuração tática adotada por uma equipe durante uma posse/intervalo."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Sistema Tático"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+          - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - id: "POSSE_DE_BOLA_ID"
+        logical_name: "Identificador da Posse de Bola"
+        physical_name_candidate: "posse_de_bola_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_ID"
+        logical_name: "Identificador da Equipe"
+        physical_name_candidate: "equipe_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "CODIGO_SISTEMA_TATICO"
+        logical_name: "Código do Sistema Tático"
+        physical_name_candidate: "codigo_sistema_tatico"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "ATAQUE_3_1"
+          - "ATAQUE_2_2"
+          - "ATAQUE_4_0"
+          - "DEFESA_3_0"
+          - "DEFESA_2_1"
+          - "DEFESA_1_2"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "FASE_TATICA"
+        logical_name: "Fase Tática Contextual"
+        physical_name_candidate: "fase_tatica"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "TO"
+          - "AP"
+          - "TD"
+          - "DP"
+          - "F_IND"
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks: []
+    history_strategy: "VERSIONED_ROW"
+    retention_rule_ids: []
+  - id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    logical_name: "Atribuição de Papel Esportivo ou Operacional"
+    physical_name_candidate: "papel_esportivo_operacional"
+    conceptual_entity_ids:
+      - "PAPEL_ESPORTIVO_OPERACIONAL"
+    purpose: "Registrar as funções formais de comissão técnica, arbitragem e organização na súmula da partida."
+    grain: "Uma linha representa a atribuição de um papel operacional a uma pessoa em uma partida."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador do Papel Operacional"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+          - "EVID_REGULAMENTO_CBHB_2026_PDF_818BCC8B_005"
+      - id: "PARTIDA_ID"
+        logical_name: "Identificador da Partida"
+        physical_name_candidate: "partida_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_ID"
+        logical_name: "Identificador da Equipe"
+        physical_name_candidate: "equipe_id"
+        semantic_type: "ID"
+        nullable: true
+        null_meaning: "Papéis neutros de arbitragem, delegados e oficiais de mesa não possuem vínculo com equipe"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "NOME_PESSOA"
+        logical_name: "Nome da Pessoa"
+        physical_name_candidate: "nome_pessoa"
+        semantic_type: "TEXTO"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "CODIGO_PAPEL"
+        logical_name: "Código da Função / Papel"
+        physical_name_candidate: "codigo_papel"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "TECNICO"
+          - "AUXILIAR_TECNICO"
+          - "MEDICO"
+          - "FISIOTERAPEUTA"
+          - "DELEGADO_A"
+          - "DELEGADO_B"
+          - "SECRETARIO"
+          - "CRONOMETRISTA"
+          - "OFICIAL_ARBITRAGEM"
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys: []
+    unique_constraints: []
+    checks: []
+    history_strategy: "NONE"
+    retention_rule_ids: []
+  - id: "PARTICIPACAO_EQUIPE_COMPETICAO"
+    logical_name: "Participação da Equipe na Competição"
+    physical_name_candidate: "participacao_equipe_competicao"
+    conceptual_entity_ids:
+      - "EQUIPE"
+      - "COMPETICAO"
+    purpose: "Registrar participação e elegibilidade para o ranking final no contexto de uma edição de competição, sem alterar\
+      \ o cadastro global da equipe."
+    grain: "Uma linha representa a situação de participação e elegibilidade de uma equipe em uma competição durante um intervalo\
+      \ de vigência."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Participação"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "COMPETICAO_ID"
+        logical_name: "Identificador da Competição"
+        physical_name_candidate: "competicao_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_ID"
+        logical_name: "Identificador da Equipe"
+        physical_name_candidate: "equipe_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIPO_PARTICIPACAO"
+        logical_name: "Tipo de Participação"
+        physical_name_candidate: "tipo_participacao"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "REGULAR"
+          - "CONVIDADA"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "STATUS_ELEGIBILIDADE_RANKING"
+        logical_name: "Elegibilidade para o Ranking Final"
+        physical_name_candidate: "status_elegibilidade_ranking"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "ELEGIVEL"
+          - "INELEGIVEL_POR_DECISAO_COLETIVA"
+          - "PENDENTE_DELIBERACAO"
+        rule_ids:
+          - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+        evidence_ref_ids:
+          - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+      - id: "MOTIVO_DECISAO"
+        logical_name: "Motivo da Decisão de Elegibilidade"
+        physical_name_candidate: "motivo_decisao"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Participação regular sem exceção específica ou decisão ainda sem justificativa registrada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DECISAO_REF"
+        logical_name: "Referência da Decisão"
+        physical_name_candidate: "decisao_ref"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Participação regular sem decisão excepcional associada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+      - id: "VALIDO_DESDE"
+        logical_name: "Início da Vigência"
+        physical_name_candidate: "valido_desde"
+        semantic_type: "DATA_HORA"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "VALIDO_ATE"
+        logical_name: "Fim da Vigência"
+        physical_name_candidate: "valido_ate"
+        semantic_type: "DATA_HORA"
+        nullable: true
+        null_meaning: "Participação ou decisão vigente sem término registrado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_PARTICIPACAO_EQUIPE_COMPETICAO_VIGENCIA"
+        attribute_ids:
+          - "COMPETICAO_ID"
+          - "EQUIPE_ID"
+          - "VALIDO_DESDE"
+    unique_constraints:
+      - id: "UQ_PARTICIPACAO_EQUIPE_COMPETICAO_VIGENCIA"
+        attribute_ids:
+          - "COMPETICAO_ID"
+          - "EQUIPE_ID"
+          - "VALIDO_DESDE"
+    checks:
+      - id: "CHK_ELEGIBILIDADE_RANKING_CONTEXTUAL"
+        expression_semantics: "STATUS_ELEGIBILIDADE_RANKING=INELEGIVEL_POR_DECISAO_COLETIVA exige MOTIVO_DECISAO e DECISAO_REF;\
+          \ a elegibilidade nunca é inferida por UF ou país."
+        rule_ids:
+          - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+      - id: "CHK_INTERVALO_VIGENCIA_PARTICIPACAO"
+        expression_semantics: "VALIDO_ATE deve ser nulo ou posterior a VALIDO_DESDE na mesma linha."
+        rule_ids: []
+    history_strategy: "VALID_TIME"
+    retention_rule_ids: []
+foreign_keys:
+  - id: "FK_PARTIDA_COMPETICAO"
+    from_relation_id: "PARTIDA"
+    from_attribute_ids:
+      - "COMPETICAO_ID"
+    to_relation_id: "COMPETICAO"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "COMPETICAO_POSSUI_PARTIDA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PARTIDA_EQUIPE_PARTIDA"
+    from_relation_id: "PARTIDA_EQUIPE"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PARTIDA_DISPUTADA_POR_EQUIPE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PARTIDA_EQUIPE_EQUIPE"
+    from_relation_id: "PARTIDA_EQUIPE"
+    from_attribute_ids:
+      - "EQUIPE_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PARTIDA_DISPUTADA_POR_EQUIPE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_INSCRICAO_EQUIPE"
+    from_relation_id: "EQUIPE_ATLETA_INSCRICAO"
+    from_attribute_ids:
+      - "EQUIPE_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EQUIPE_INSCREVE_ATLETA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_INSCRICAO_ATLETA"
+    from_relation_id: "EQUIPE_ATLETA_INSCRICAO"
+    from_attribute_ids:
+      - "ATLETA_ID"
+    to_relation_id: "ATLETA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EQUIPE_INSCREVE_ATLETA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_INSCRICAO_COMPETICAO"
+    from_relation_id: "EQUIPE_ATLETA_INSCRICAO"
+    from_attribute_ids:
+      - "COMPETICAO_ID"
+    to_relation_id: "COMPETICAO"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "SET_NULL"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EQUIPE_INSCREVE_ATLETA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PERIODO_SET_PARTIDA"
+    from_relation_id: "PERIODO_SET"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PARTIDA_POSSUI_PERIODO_SET"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PERIODO_SET_EQUIPE_VENCEDORA"
+    from_relation_id: "PERIODO_SET"
+    from_attribute_ids:
+      - "EQUIPE_VENCEDORA_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PERIODO_SET_VENCIDO_POR_EQUIPE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SHOOT_OUT_PARTIDA"
+    from_relation_id: "SHOOT_OUT"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PARTIDA_POSSUI_SHOOT_OUT"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SHOOT_OUT_EQUIPE_VENCEDORA"
+    from_relation_id: "SHOOT_OUT"
+    from_attribute_ids:
+      - "EQUIPE_VENCEDORA_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "SHOOT_OUT_VENCIDO_POR_EQUIPE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_POSSE_DE_BOLA_PERIODO_SET"
+    from_relation_id: "POSSE_DE_BOLA"
+    from_attribute_ids:
+      - "PERIODO_SET_ID"
+    to_relation_id: "PERIODO_SET"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PERIODO_SET_CONTEM_POSSE_DE_BOLA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_POSSE_DE_BOLA_EQUIPE"
+    from_relation_id: "POSSE_DE_BOLA"
+    from_attribute_ids:
+      - "EQUIPE_POSSUIDORA_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "POSSE_DE_BOLA_DETIDA_POR_EQUIPE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_BOU_POSSE_DE_BOLA"
+    from_relation_id: "UNIDADE_BASICA_ATAQUE_BOU"
+    from_attribute_ids:
+      - "POSSE_DE_BOLA_ID"
+    to_relation_id: "POSSE_DE_BOLA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "POSSE_DE_BOLA_CONTEM_BOU"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_EVENTO_SCOUT_OBSERVACAO"
+    from_relation_id: "EVENTO_SCOUT"
+    from_attribute_ids:
+      - "OBSERVACAO_DE_SCOUT_ID"
+    to_relation_id: "OBSERVACAO_DE_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "OBSERVACAO_DE_SCOUT_CONTEM_EVENTO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_EVENTO_SCOUT_BOU"
+    from_relation_id: "EVENTO_SCOUT"
+    from_attribute_ids:
+      - "UNIDADE_BASICA_ATAQUE_BOU_ID"
+    to_relation_id: "UNIDADE_BASICA_ATAQUE_BOU"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "SET_NULL"
+    on_update_semantics: "CASCADE"
+    relationship_id: "UNIDADE_BASICA_ATAQUE_BOU_GERA_EVENTO_SCOUT"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_EVENTO_SCOUT_ATLETA_EXEC"
+    from_relation_id: "EVENTO_SCOUT"
+    from_attribute_ids:
+      - "ATLETA_EXECUTOR_ID"
+    to_relation_id: "ATLETA"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EVENTO_SCOUT_ENVOLVE_ATLETA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_EVENTO_SCOUT_ATLETA_ALVO"
+    from_relation_id: "EVENTO_SCOUT"
+    from_attribute_ids:
+      - "ATLETA_ALVO_ID"
+    to_relation_id: "ATLETA"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EVENTO_SCOUT_ENVOLVE_ATLETA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_OBSERVACAO_SCOUT_PARTIDA"
+    from_relation_id: "OBSERVACAO_DE_SCOUT"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "OBSERVACAO_DE_SCOUT_REGISTRA_PARTIDA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_OBSERVACAO_SCOUT_ANALISTA"
+    from_relation_id: "OBSERVACAO_DE_SCOUT"
+    from_attribute_ids:
+      - "ANALISTA_OBSERVADOR_ID"
+    to_relation_id: "ANALISTA_OBSERVADOR"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "OBSERVACAO_DE_SCOUT_EXECUTADA_POR_ANALISTA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_OBSERVACAO_SCOUT_PROTOCOLO"
+    from_relation_id: "OBSERVACAO_DE_SCOUT"
+    from_attribute_ids:
+      - "PROTOCOLO_SCOUT_ID"
+    to_relation_id: "PROTOCOLO_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "OBSERVACAO_DE_SCOUT_UTILIZA_PROTOCOLO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_OBSERVACAO_SCOUT_MIDIA"
+    from_relation_id: "OBSERVACAO_DE_SCOUT"
+    from_attribute_ids:
+      - "MIDIA_VIDEO_ID"
+    to_relation_id: "MIDIA_VIDEO"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "OBSERVACAO_DE_SCOUT_BASEADA_EM_MIDIA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_MIDIA_VIDEO_PARTIDA"
+    from_relation_id: "MIDIA_VIDEO"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "SET_NULL"
+    on_update_semantics: "CASCADE"
+    relationship_id: "MIDIA_VIDEO_REGISTRA_PARTIDA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SEGMENTO_OBSERVADO_PARTIDA"
+    from_relation_id: "SEGMENTO_OBSERVADO"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PARTIDA_POSSUI_SEGMENTO_OBSERVADO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SEGMENTO_OBSERVADO_MIDIA"
+    from_relation_id: "SEGMENTO_OBSERVADO"
+    from_attribute_ids:
+      - "MIDIA_VIDEO_ID"
+    to_relation_id: "MIDIA_VIDEO"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "SEGMENTO_OBSERVADO_MAPPED_TO_MIDIA_VIDEO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PLACAR_JOGO_PARTIDA"
+    from_relation_id: "PLACAR_JOGO"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PARTIDA_POSSUI_PLACAR_JOGO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PLACAR_JOGO_EQUIPE_VENCEDORA"
+    from_relation_id: "PLACAR_JOGO"
+    from_attribute_ids:
+      - "EQUIPE_VENCEDORA_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PLACAR_JOGO_INDICA_EQUIPE_VENCEDORA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_ESTADO_PLACAR_PLACAR_JOGO"
+    from_relation_id: "ESTADO_DO_PLACAR"
+    from_attribute_ids:
+      - "PLACAR_JOGO_ID"
+    to_relation_id: "PLACAR_JOGO"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PLACAR_JOGO_REGISTRA_ESTADO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_ESTADO_PLACAR_PERIODO_SET"
+    from_relation_id: "ESTADO_DO_PLACAR"
+    from_attribute_ids:
+      - "PERIODO_SET_ID"
+    to_relation_id: "PERIODO_SET"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "ESTADO_DO_PLACAR_PERTENCE_A_PERIODO_SET"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_EVOLUCAO_PLACAR_PARTIDA"
+    from_relation_id: "EVOLUCAO_DO_PLACAR"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PARTIDA_REGISTRA_EVOLUCAO_PLACAR"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_EVOLUCAO_PLACAR_EVENTO_SCOUT"
+    from_relation_id: "EVOLUCAO_DO_PLACAR"
+    from_attribute_ids:
+      - "EVENTO_SCOUT_ID"
+    to_relation_id: "EVENTO_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "SET_NULL"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EVOLUCAO_PLACAR_ORIGINADA_POR_EVENTO_SCOUT"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_EVOLUCAO_PLACAR_EQUIPE"
+    from_relation_id: "EVOLUCAO_DO_PLACAR"
+    from_attribute_ids:
+      - "EQUIPE_BENEFICIADA_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EVOLUCAO_PLACAR_BENEFICIA_EQUIPE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SISTEMA_DEFENSIVO_POSSE"
+    from_relation_id: "SISTEMA_DEFENSIVO"
+    from_attribute_ids:
+      - "POSSE_DE_BOLA_ID"
+    to_relation_id: "POSSE_DE_BOLA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "POSSE_DE_BOLA_POSSUI_SISTEMA_DEFENSIVO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SISTEMA_DEFENSIVO_EQUIPE"
+    from_relation_id: "SISTEMA_DEFENSIVO"
+    from_attribute_ids:
+      - "EQUIPE_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "SISTEMA_DEFENSIVO_PERTENCE_A_EQUIPE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SISTEMA_DEFENSIVO_SISTEMA_TATICO"
+    from_relation_id: "SISTEMA_DEFENSIVO"
+    from_attribute_ids:
+      - "SISTEMA_TATICO_ID"
+    to_relation_id: "SISTEMA_TATICO"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "SET_NULL"
+    on_update_semantics: "CASCADE"
+    relationship_id: "SISTEMA_DEFENSIVO_ESPECIALIZA_SISTEMA_TATICO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_CONFIABILIDADE_ANALISTA"
+    from_relation_id: "CONFIABILIDADE_OBSERVADOR"
+    from_attribute_ids:
+      - "ANALISTA_OBSERVADOR_ID"
+    to_relation_id: "ANALISTA_OBSERVADOR"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "ANALISTA_OBSERVADOR_POSSUI_CONFIABILIDADE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_REVISAO_OBSERVACAO_OBS"
+    from_relation_id: "REVISAO_DA_OBSERVACAO"
+    from_attribute_ids:
+      - "OBSERVACAO_DE_SCOUT_ID"
+    to_relation_id: "OBSERVACAO_DE_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "OBSERVACAO_DE_SCOUT_SOFRE_REVISAO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_REVISAO_OBSERVACAO_ANALISTA"
+    from_relation_id: "REVISAO_DA_OBSERVACAO"
+    from_attribute_ids:
+      - "ANALISTA_REVISOR_ID"
+    to_relation_id: "ANALISTA_OBSERVADOR"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "REVISAO_DA_OBSERVACAO_EXECUTADA_POR_ANALISTA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_ESTADO_REVISAO_OBSERVACAO"
+    from_relation_id: "ESTADO_DE_REVISAO"
+    from_attribute_ids:
+      - "OBSERVACAO_DE_SCOUT_ID"
+    to_relation_id: "OBSERVACAO_DE_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "OBSERVACAO_DE_SCOUT_POSSUI_ESTADO_DE_REVISAO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_ESTADO_REVISAO_REVISAO"
+    from_relation_id: "ESTADO_DE_REVISAO"
+    from_attribute_ids:
+      - "REVISAO_DA_OBSERVACAO_ID"
+    to_relation_id: "REVISAO_DA_OBSERVACAO"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "SET_NULL"
+    on_update_semantics: "CASCADE"
+    relationship_id: "REVISAO_DA_OBSERVACAO_GERA_ESTADO_DE_REVISAO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PROVENIENCIA_OBSERVACAO_OBS"
+    from_relation_id: "PROVENIENCIA_OBSERVACAO"
+    from_attribute_ids:
+      - "OBSERVACAO_DE_SCOUT_ID"
+    to_relation_id: "OBSERVACAO_DE_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "OBSERVACAO_DE_SCOUT_TEM_PROVENIENCIA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PROVENIENCIA_PROTOCOLO"
+    from_relation_id: "PROVENIENCIA_OBSERVACAO"
+    from_attribute_ids:
+      - "PROTOCOLO_SCOUT_ID"
+    to_relation_id: "PROTOCOLO_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PROVENIENCIA_OBSERVACAO_VINCULA_PROTOCOLO_SCOUT"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PROVENIENCIA_MIDIA"
+    from_relation_id: "PROVENIENCIA_OBSERVACAO"
+    from_attribute_ids:
+      - "MIDIA_VIDEO_ID"
+    to_relation_id: "MIDIA_VIDEO"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PROVENIENCIA_OBSERVACAO_REFERENCIA_MIDIA_VIDEO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_TRECHO_OBSERVADO_EVENTO"
+    from_relation_id: "TRECHO_OBSERVADO"
+    from_attribute_ids:
+      - "EVENTO_SCOUT_ID"
+    to_relation_id: "EVENTO_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EVENTO_SCOUT_VINCULA_TRECHO_OBSERVADO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_TRECHO_OBSERVADO_MIDIA"
+    from_relation_id: "TRECHO_OBSERVADO"
+    from_attribute_ids:
+      - "MIDIA_VIDEO_ID"
+    to_relation_id: "MIDIA_VIDEO"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "TRECHO_OBSERVADO_PERTENCE_A_MIDIA_VIDEO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SPIN_SHOT_EVENTO"
+    from_relation_id: "SPIN_SHOT"
+    from_attribute_ids:
+      - "EVENTO_SCOUT_ID"
+    to_relation_id: "EVENTO_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EVENTO_SCOUT_CLASSIFICA_SPIN_SHOT"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_IN_FLIGHT_SHOT_EVENTO"
+    from_relation_id: "IN_FLIGHT_SHOT"
+    from_attribute_ids:
+      - "EVENTO_SCOUT_ID"
+    to_relation_id: "EVENTO_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EVENTO_SCOUT_CLASSIFICA_IN_FLIGHT_SHOT"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_DESQUALIFICACAO_EVENTO"
+    from_relation_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    from_attribute_ids:
+      - "EVENTO_SCOUT_ID"
+    to_relation_id: "EVENTO_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "DESQUALIFICACAO_REGISTRADA_EM_EVENTO_SCOUT"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_DESQUALIFICACAO_ATLETA"
+    from_relation_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    from_attribute_ids:
+      - "ATLETA_ID"
+    to_relation_id: "ATLETA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "DESQUALIFICACAO_ATINGE_ATLETA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_DESQUALIFICACAO_PARTIDA"
+    from_relation_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "DESQUALIFICACAO_OCORRE_EM_PARTIDA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_CARTAO_AZUL_EVENTO"
+    from_relation_id: "CARTAO_AZUL_SUSPENSAO"
+    from_attribute_ids:
+      - "EVENTO_SCOUT_ID"
+    to_relation_id: "EVENTO_SCOUT"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "CARTAO_AZUL_REGISTRADO_EM_EVENTO_SCOUT"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_CARTAO_AZUL_PARTIDA"
+    from_relation_id: "CARTAO_AZUL_SUSPENSAO"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "CARTAO_AZUL_OCORRE_EM_PARTIDA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_CARTAO_AZUL_ATLETA"
+    from_relation_id: "CARTAO_AZUL_SUSPENSAO"
+    from_attribute_ids:
+      - "ATLETA_ID"
+    to_relation_id: "ATLETA"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "CARTAO_AZUL_ATINGE_ATLETA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_CARTAO_AZUL_PAPEL_OPERACIONAL"
+    from_relation_id: "CARTAO_AZUL_SUSPENSAO"
+    from_attribute_ids:
+      - "PAPEL_OPERACIONAL_ID"
+    to_relation_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "CARTAO_AZUL_ATINGE_PAPEL_OPERACIONAL"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SISTEMA_TATICO_POSSE"
+    from_relation_id: "SISTEMA_TATICO"
+    from_attribute_ids:
+      - "POSSE_DE_BOLA_ID"
+    to_relation_id: "POSSE_DE_BOLA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "SISTEMA_TATICO_CONTEXTUALIZA_POSSE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_SISTEMA_TATICO_EQUIPE"
+    from_relation_id: "SISTEMA_TATICO"
+    from_attribute_ids:
+      - "EQUIPE_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "SISTEMA_TATICO_ADOTADO_POR_EQUIPE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PAPEL_OPERACIONAL_PARTIDA"
+    from_relation_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    from_attribute_ids:
+      - "PARTIDA_ID"
+    to_relation_id: "PARTIDA"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "CASCADE"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PAPEL_OPERACIONAL_ATRIBUIDO_EM_PARTIDA"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PAPEL_OPERACIONAL_EQUIPE"
+    from_relation_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    from_attribute_ids:
+      - "EQUIPE_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: false
+    on_delete_semantics: "SET_NULL"
+    on_update_semantics: "CASCADE"
+    relationship_id: "PAPEL_OPERACIONAL_VINCULADO_A_EQUIPE"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PARTICIPACAO_EQUIPE_COMPETICAO_COMPETICAO"
+    from_relation_id: "PARTICIPACAO_EQUIPE_COMPETICAO"
+    from_attribute_ids:
+      - "COMPETICAO_ID"
+    to_relation_id: "COMPETICAO"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EQUIPE_PARTICIPA_COMPETICAO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PARTICIPACAO_EQUIPE_COMPETICAO_EQUIPE"
+    from_relation_id: "PARTICIPACAO_EQUIPE_COMPETICAO"
+    from_attribute_ids:
+      - "EQUIPE_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EQUIPE_PARTICIPA_COMPETICAO"
+    supporting_index_required: true
+    rule_ids: []
+normalization_decisions:
+  - id: "NORM_DECISION_001"
+    affected_relation_ids:
+      - "PARTIDA"
+      - "PERIODO_SET"
+      - "SHOOT_OUT"
+      - "PLACAR_JOGO"
+      - "ESTADO_DO_PLACAR"
+      - "EVOLUCAO_DO_PLACAR"
+    decision: "Isolamento estrito das estruturas de placar, sets, shoot-out e variação temporal da pontuação fora da tabela\
+      \ PARTIDA."
+    rationale: "Garantia da Terceira Forma Normal (3FN) e cumprimento dos comandos de não-agregação, permitindo auditoria\
+      \ detalhada de cada período e alteração monotônica de pontuação."
+    accepted_tradeoffs:
+      - "Aumento na necessidade de Junções (JOINs) em consultas de alto nível para consolidação do resultado final da partida."
+  - id: "NORM_DECISION_002"
+    affected_relation_ids:
+      - "ATLETA"
+    decision: "Isolamento da semântica de Goleira em atributo posicional da relação ATLETA ao invés de entidade separada."
+    rationale: "Alinhamento direto com a Regra de Governança Semântica RN_SEMANTICA_GOLEIRA, fixando que Goleira é uma posição\
+      \ tática restrita à fase defensiva e não uma função isolada ou entidade separada."
+    accepted_tradeoffs:
+      - "Exigência de validações de integridade posicional em nível de aplicação/check constraints ao registrar formações\
+        \ de quadra."
+  - id: "NORM_DECISION_003"
+    affected_relation_ids:
+      - "EVENTO_SCOUT"
+      - "SPIN_SHOT"
+      - "IN_FLIGHT_SHOT"
+      - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+      - "CARTAO_AZUL_SUSPENSAO"
+    decision: "Decomposição em BCNF dos eventos táticos e disciplinares especializados a partir da relação base EVENTO_SCOUT."
+    rationale: "Preservação do grão atômico de eventos observacionais, evitando colunas esparsas ou nulas e isolando particularidades\
+      \ técnicas (ex.: rotação 360°, ponte aérea, relatório escrito) em tabelas especializadas 1:1."
+    accepted_tradeoffs:
+      - "Multiplicação de tabelas de especialização e necessidade de consultas com junção condicional baseadas no tipo de\
+        \ ação."
+  - id: "NORM_DECISION_004"
+    affected_relation_ids:
+      - "OBSERVACAO_DE_SCOUT"
+      - "REVISAO_DA_OBSERVACAO"
+      - "ESTADO_DE_REVISAO"
+      - "PROVENIENCIA_OBSERVACAO"
+      - "CONFIABILIDADE_OBSERVADOR"
+    decision: "Isolamento e normalização do ciclo de vida, revisões e proveniência epistemológica da observação de scout."
+    rationale: "Garantia da imutabilidade da proveniência de dados (ferramenta, arquivo fonte e protocolo) e controle rigoroso\
+      \ de qualidade e concordância inter-observador (índices Kappa)."
+    accepted_tradeoffs:
+      - "Aumento da complexidade da camada de governança e auditoria dos registros primários de scout."
+  - id: "NORM_DECISION_005"
+    affected_relation_ids:
+      - "PARTIDA_EQUIPE"
+      - "PAPEL_ESPORTIVO_OPERACIONAL"
+    decision: "Normalização da comissão técnica, arbitragem e delegados na relação PAPEL_ESPORTIVO_OPERACIONAL com referência\
+      \ opcional (nullable) para equipe."
+    rationale: "Descouplamento estrutural entre papéis neutros da partida (arbitragem, mesa, delegados) e papéis vinculados\
+      \ a clubes (técnicos, médicos), evitando polimorfismo ou tabelas esparsas e garantindo 3FN na gestão da súmula."
+    accepted_tradeoffs:
+      - "Necessidade de check constraints ou validação em nível de regra de negócio para assegurar que papéis de comissão\
+        \ técnica tenham equipe_id preenchido e papéis neutros mantenham equipe_id nulo."
+  - id: "NORM_DECISION_006"
+    affected_relation_ids:
+      - "EQUIPE"
+      - "COMPETICAO"
+      - "PARTICIPACAO_EQUIPE_COMPETICAO"
+    decision: "Separar participação esportiva de elegibilidade para o ranking final em uma relação temporal equipe-competição."
+    rationale: "Campinas e Chile podem disputar etapas e partidas sem pontuar no ranking final; a decisão é contextual e não\
+      \ constitui propriedade permanente da equipe."
+    accepted_tradeoffs:
+      - "O serviço de ranking deve consultar a participação vigente antes de agregar pontos."
+  - id: "NORM_DECISION_007"
+    affected_relation_ids:
+      - "PERIODO_SET"
+      - "SHOOT_OUT"
+      - "POSSE_DE_BOLA"
+      - "MIDIA_VIDEO"
+      - "PLACAR_JOGO"
+      - "EVOLUCAO_DO_PLACAR"
+      - "EQUIPE"
+      - "EVENTO_SCOUT"
+    decision: "Vincular sete FKs condicionais a relacionamentos conceituais específicos, preservando ator e contexto da partida."
+    rationale: "Relacionamentos genéricos não expressavam o papel semântico de equipe vencedora, equipe possuidora, mídia\
+      \ da partida, evento originador e equipe beneficiada."
+    accepted_tradeoffs:
+      - "A integridade de pertencimento à mesma partida exigirá validação física compatível com o contexto relacional."
+  - id: "NORM_DECISION_008"
+    affected_relation_ids:
+      - "PARTIDA_EQUIPE"
+    decision: "Preservar unicidade de papel regulamentar e condição de mando no contexto de cada partida."
+    rationale: "As duas restrições representam identidade contextual da participação de equipe na partida."
+    accepted_tradeoffs:
+      - "Papéis ou condições adicionais exigem revisão explícita dos respectivos domínios."
+  - id: "NORM_DECISION_009"
+    affected_relation_ids:
+      - "EVENTO_SCOUT"
+      - "TRECHO_OBSERVADO"
+    decision: "Remover UQ_TRECHO_EVENTO e preservar cardinalidade de zero a muitos trechos por evento de scout."
+    rationale: "Um mesmo evento pode exigir múltiplos recortes audiovisuais sem duplicar o evento observado."
+    accepted_tradeoffs:
+      - "Consultas devem ordenar e agrupar os trechos do evento explicitamente."
+  - id: "NORM_DECISION_010"
+    affected_relation_ids:
+      - "PARTICIPACAO_EQUIPE_COMPETICAO"
+    decision: "Separar a validade interna do intervalo da regra de não sobreposição entre linhas."
+    rationale: "CHECK valida uma linha; a não sobreposição temporal requer restrição relacional própria no PostgreSQL."
+    accepted_tradeoffs:
+      - "A etapa física deverá validar btree_gist antes de propor EXCLUDE USING gist."
+open_issues:
+  - id: "ISSUE_LACUNA_PLACAR_SHOOTOUT_E_ETAPAS"
+    status: "ABERTA"
+    question: "Como completar a lacuna de documentação de placar detalhado de shoot-out em jogos específicos da Etapa Final\
+      \ (ex.: J71) e parciais de sets da 4ª Etapa Estadual?"
+    affected_ids:
+      - "PLACAR_JOGO"
+      - "EVOLUCAO_DO_PLACAR"
+      - "PARTIDA"
+      - "SHOOT_OUT"
+    impact: "Incompletude no histórico cronológico e auditável do placar em partidas passadas específicas sem registro de\
+      \ vídeo em arquivo."
+    required_evidence: "Súmula física impressa assinada ou boletim impresso oficial expedido pela FHERJ/CBHb."
+    owner: "OPERADOR"

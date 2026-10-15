@@ -1,0 +1,422 @@
+status: "REJECTED"
+stage_id: "STAGE_08"
+artifact_id: "c5daabd6-1192-4d09-b79c-9408661dc1b7"
+sql_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-002.md"
+sql_sha256: "4e134a0886048cd2fac18f0cde23066f82e0122afbd457e3b78f0b3a7efc2acc"
+validated_at: "2026-10-15T18:20:00-03:00"
+input_artifacts:
+  logical_model:
+    version: "0.1.2"
+    sha256: "7a82bd2235897e67338036ba5be67f222ac3fdcf19a05bb919ecb1787824b1cb"
+  data_dictionary:
+    version: "0.1.1"
+    sha256: "82ed6eb37a7872bb1eb66c6d853dd3e9d96b53f5a93b4670b67bd489a44c348e"
+coverage:
+  tables: 32
+  public_tables: 10
+  private_tables: 22
+  expected_columns: 204
+  covered_columns: 199
+  foreign_keys: 59
+  unique_constraints: 17
+  direct_checks: 5
+  explicit_fk_indexes: 50
+  fk_indexes_covered_by_pk_or_unique_prefix: 9
+  temporal_exclusion: true
+findings:
+  - id: "FORMAT_NOT_SQL_ONLY"
+    evidence: "A saída deve começar com comentário SQL e não conter Markdown."
+  - id: "TABLE_OR_SCHEMA_COVERAGE_MISMATCH"
+    evidence:
+      missing:
+        - "private.atleta"
+      unexpected:
+        - "public.atleta"
+  - id: "UNIQUE_CONFORMANCE_MISMATCH"
+    evidence:
+      missing_or_changed:
+        - "UQ_SEGMENTO_ORDEM"
+      unexpected: []
+  - id: "FOREIGN_KEY_CONFORMANCE_MISMATCH"
+    evidence:
+      errors:
+        - foreign_key_id: "FK_PARTIDA_COMPETICAO"
+          expected:
+            source:
+              - public
+              - partida
+            source_columns:
+              - "competicao_id"
+            target:
+              - public
+              - competicao
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - public
+              - partida
+            source_columns:
+              - "competicao_id"
+            target:
+              - public
+              - competicao
+            target_columns:
+              - "id"
+            on_delete: "NO ACTION"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_INSCRICAO_EQUIPE"
+          expected:
+            source:
+              - private
+              - equipe_atleta_inscricao
+            source_columns:
+              - "equipe_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - equipe_atleta_inscricao
+            source_columns:
+              - "equipe_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_INSCRICAO_ATLETA"
+          expected:
+            source:
+              - private
+              - equipe_atleta_inscricao
+            source_columns:
+              - "atleta_id"
+            target:
+              - private
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - equipe_atleta_inscricao
+            source_columns:
+              - "atleta_id"
+            target:
+              - public
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_PERIODO_SET_EQUIPE_VENCEDORA"
+          expected:
+            source:
+              - public
+              - periodo_set
+            source_columns:
+              - "equipe_vencedora_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - public
+              - periodo_set
+            source_columns:
+              - "equipe_vencedora_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_SHOOT_OUT_EQUIPE_VENCEDORA"
+          expected:
+            source:
+              - public
+              - shoot_out
+            source_columns:
+              - "equipe_vencedora_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - public
+              - shoot_out
+            source_columns:
+              - "equipe_vencedora_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_EVENTO_SCOUT_ATLETA_EXEC"
+          expected:
+            source:
+              - private
+              - evento_scout
+            source_columns:
+              - "atleta_executor_id"
+            target:
+              - private
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - evento_scout
+            source_columns:
+              - "atleta_executor_id"
+            target:
+              - public
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_EVENTO_SCOUT_ATLETA_ALVO"
+          expected:
+            source:
+              - private
+              - evento_scout
+            source_columns:
+              - "atleta_alvo_id"
+            target:
+              - private
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - evento_scout
+            source_columns:
+              - "atleta_alvo_id"
+            target:
+              - public
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_SEGMENTO_OBSERVADO_MIDIA"
+          expected:
+            source:
+              - private
+              - segmento_observado
+            source_columns:
+              - "midia_video_id"
+            target:
+              - private
+              - midia_video
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - segmento_observado
+            source_columns:
+              - "midia_video_id"
+            target:
+              - private
+              - midia_video
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_PLACAR_JOGO_EQUIPE_VENCEDORA"
+          expected:
+            source:
+              - public
+              - placar_jogo
+            source_columns:
+              - "equipe_vencedora_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - public
+              - placar_jogo
+            source_columns:
+              - "equipe_vencedora_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_TRECHO_OBSERVADO_MIDIA"
+          expected:
+            source:
+              - private
+              - trecho_observado
+            source_columns:
+              - "midia_video_id"
+            target:
+              - private
+              - midia_video
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - trecho_observado
+            source_columns:
+              - "midia_video_id"
+            target:
+              - private
+              - midia_video
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_DESQUALIFICACAO_ATLETA"
+          expected:
+            source:
+              - private
+              - desqualificacao_segunda_exclusao
+            source_columns:
+              - "atleta_id"
+            target:
+              - private
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - desqualificacao_segunda_exclusao
+            source_columns:
+              - "atleta_id"
+            target:
+              - public
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_CARTAO_AZUL_ATLETA"
+          expected:
+            source:
+              - private
+              - cartao_azul_suspensao
+            source_columns:
+              - "atleta_id"
+            target:
+              - private
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - cartao_azul_suspensao
+            source_columns:
+              - "atleta_id"
+            target:
+              - public
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_CARTAO_AZUL_PAPEL_OPERACIONAL"
+          expected:
+            source:
+              - private
+              - cartao_azul_suspensao
+            source_columns:
+              - "papel_operacional_id"
+            target:
+              - private
+              - papel_esportivo_operacional
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - cartao_azul_suspensao
+            source_columns:
+              - "papel_operacional_id"
+            target:
+              - private
+              - papel_esportivo_operacional
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+        - foreign_key_id: "FK_PARTICIPACAO_EQUIPE_COMPETICAO_COMPETICAO"
+          expected:
+            source:
+              - private
+              - participacao_equipe_competicao
+            source_columns:
+              - "competicao_id"
+            target:
+              - public
+              - competicao
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual:
+            source:
+              - private
+              - participacao_equipe_competicao
+            source_columns:
+              - "competicao_id"
+            target:
+              - public
+              - competicao
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+      unexpected: []
+execution: "NOT_PERFORMED"

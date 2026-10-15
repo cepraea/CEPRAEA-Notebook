@@ -1,0 +1,16 @@
+status: "PASS"
+review_id: "STAGE_06_OPERATOR_REVIEW_001"
+base_candidate_sha256: "1a3aec71a294618a3a5c9a63cdb331ff7e4a407b6e1f9213b32d8b9d1ee16809"
+output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.yaml"
+output_sha256: "bafce57a9d71ef3ea0ba54c79fac585f075d8d0efe5fe22967e62bde6c424c92"
+review_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.operator-review.yaml"
+review_sha256: "9cd3d26ef3b49e69eb8a2f3f3e78a66eb0d8d81ca68dbb2c7bb3eeed6ce2aeab"
+checks:
+  roles: 5
+  resources: 32
+  permissions: 55
+  positive_tests: 55
+  negative_tests: 55
+  data_api_exposed_resources: 9
+  data_api_closed_resources: 23
+  open_issues: 0
