@@ -925,19 +925,47 @@ stages:
         unresolved_traces: 79
         tests_without_rule: 79
         open_issues: 3
+    operator_review:
+      status: "APPROVED"
+      script: "notebooklm-modelagem/scripts/apply_traceability_operator_review.py"
+      script_sha256: "3a895dac55d77514dddf25ee85eb3792429d378035778da34b7cb8143edbba5d"
+      base_candidate_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.candidate.yaml"
+      base_candidate_sha256: "875e9f4d03ba39ca476460761435c45aff9d7b86a9cf26352d6c3137b519cbec"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.yaml"
+      sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
+      review_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.operator-review.yaml"
+      review_sha256: "190901d354e914e2f0c62d2ff737b68c4402640834097eb01d7ac4f3ff7513c5"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.operator-review-audit.yaml"
+      audit_sha256: "5d4aead9ec7fb7f5f5016dc556b033b53d6553d8e66b628ca66cf7e05a4a8a5f"
+      reviewed_at: "2026-10-15T12:22:06-03:00"
+      counts:
+        reviewed_structural_derivations: 79
+        accepted_structural_derivations: 68
+        formalized_conditionals: 9
+        reconciled_divergences: 2
+        unresolved_structural_decisions: 0
+        tests_without_semantic_rule: 79
+        open_issues: 2
+      downstream_requirement: "BACKPORT_9_FORMALIZATIONS_AND_2_RECONCILIATIONS_BEFORE_PHYSICAL_STOP_GATE"
     validation:
       status: "PASS"
-      validated_at: "2026-10-15T00:02:57-03:00"
-      evidence: "YAML_STRICT_PASS; TRACEABILITY_SPECIALIZED_VALIDATION_PASS; PROMOTED_INPUT_ARTIFACTS_5_OF_5; SOURCE_RULE_COVERAGE_11_OF_11; LOGICAL_MAPPING_11_OF_11; PHYSICAL_CANDIDATE_MAPPING_11_OF_11; MATERIAL_CONSTRAINTS_101_WITH_TESTS_101; LOGICAL_CONSTRAINT_TRACES_90; ATTRIBUTE_IDS_SCOPED_AND_VALID; VERIFICATION_STATUS_NAO_EXECUTADO_ONLY; IMPLEMENTED_STATUS_ABSENT; THREE_OPEN_ISSUES_PRESERVED; 79_STRUCTURAL_CONSTRAINT_TRACES_WITHOUT_SEMANTIC_RULE_EXPOSED_AS_UNRESOLVED"
+      validated_at: "2026-10-15T12:22:06-03:00"
+      evidence: "YAML_STRICT_PASS; TRACEABILITY_SPECIALIZED_VALIDATION_PASS; DETERMINISTIC_REBUILD_IDENTICAL; PROMOTED_INPUT_ARTIFACTS_5_OF_5; SOURCE_RULE_COVERAGE_11_OF_11; LOGICAL_MAPPING_11_OF_11; PHYSICAL_CANDIDATE_MAPPING_11_OF_11; MATERIAL_CONSTRAINTS_101_WITH_TESTS_101; LOGICAL_CONSTRAINT_TRACES_90; 68_STRUCTURAL_DERIVATIONS_ACCEPTED; 9_CONDITIONALS_FORMALIZED; 2_DIVERGENCES_RECONCILED; ZERO_STRUCTURAL_DECISIONS_UNRESOLVED; 79_TESTS_WITHOUT_SEMANTIC_RULE_PRESERVED_AS_DIAGNOSTIC; TWO_OPEN_ISSUES_PRESERVED"
     approval:
       required: true
-      decision: "PENDING"
-      approved_by: null
-      approved_at: null
-      evidence: null
+      decision: "APPROVED"
+      approved_by: "USER"
+      approved_at: "2026-10-15T12:22:06-03:00"
+      evidence: "USER_AUTHORIZED_ACCEPTANCE_OF_68_DERIVATIONS_FORMALIZATION_OF_9_CONDITIONALS_RECONCILIATION_OF_2_DIVERGENCES_AND_STAGE_05_APPROVAL_AND_PROMOTION"
     promotion:
-      status: "NOT_STARTED"
-      promoted_source_id: null
+      status: "PROMOTED"
+      promoted_source_id: "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+      source_status: "READY"
+      source_type: "MARKDOWN"
+      title: "PROMOTED — Matriz de rastreabilidade planejada v0.1.0 — 6bd813a8eb95"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/05-matriz-rastreabilidade.promoted.md"
+      wrapper_sha256: "6bd813a8eb9546b286e0cece607d8e7c40c3d8714e3292b8f058ae83799a93f1"
+      promoted_at: "2026-10-15T12:23:41-03:00"
 
 incidents:
   - id: "INC_AUTH_001"
