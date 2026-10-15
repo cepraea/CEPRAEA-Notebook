@@ -61,7 +61,7 @@ Para tarefas em várias etapas, descreva um plano breve:
 
 Critérios de sucesso fortes permitem que você repita de forma independente. Critérios fracos (“faça funcionar”) exigem constante esclarecimento.
 
-Ao finalizar uma ação, entregue a próxima ação recomendada com nível de decomposição,
+Ao finalizar uma ação, entregue a próxima ação recomendada com 4 níveis de decomposição dos conceitos, 
 
 ---
 

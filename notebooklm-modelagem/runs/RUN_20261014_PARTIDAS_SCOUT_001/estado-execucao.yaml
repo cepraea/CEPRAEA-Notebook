@@ -1072,19 +1072,52 @@ stages:
         positive_tests: 56
         negative_tests: 56
         open_issues: 4
+    operator_review:
+      status: "APPROVED"
+      script: "notebooklm-modelagem/scripts/apply_access_operator_review.py"
+      script_sha256: "0bbf932bd34ed2fa997f7974889cbc4214f721dec621325599ace1e4815df71e"
+      base_candidate_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.candidate.yaml"
+      base_candidate_sha256: "1a3aec71a294618a3a5c9a63cdb331ff7e4a407b6e1f9213b32d8b9d1ee16809"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.yaml"
+      sha256: "bafce57a9d71ef3ea0ba54c79fac585f075d8d0efe5fe22967e62bde6c424c92"
+      review_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.operator-review.yaml"
+      review_sha256: "9cd3d26ef3b49e69eb8a2f3f3e78a66eb0d8d81ca68dbb2c7bb3eeed6ce2aeab"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.operator-review-audit.yaml"
+      audit_sha256: "886cfcc2f88419bc146c2fcfcb9e419755fb7f9ffe8bbcf1ea3db4707c71d670"
+      reviewed_at: "2026-10-15T13:12:13-03:00"
+      decisions:
+        athlete_self_access: "DEFERRED_AND_EXCLUDED_UNTIL_TRUSTED_IDENTITY_LINK"
+        role_assignment_governance: "DATABASE_MEMBERSHIP_AUDITED_WITH_VALIDITY_AND_NO_SELF_ASSIGNMENT"
+        scout_review_separation: "DISTINCT_REVIEWER_ROLE_AND_NO_SELF_REVIEW"
+        data_api_exposure: "PUBLIC_RESOURCES_ONLY"
+      counts:
+        roles: 5
+        resources: 32
+        permissions: 55
+        positive_tests: 55
+        negative_tests: 55
+        data_api_exposed_resources: 9
+        data_api_closed_resources: 23
+        open_issues: 0
     validation:
       status: "PASS"
-      validated_at: "2026-10-15T12:50:01-03:00"
-      evidence: "YAML_STRICT_PASS; ACCESS_SPECIALIZED_VALIDATION_PASS; DETERMINISTIC_REBUILD_IDENTICAL; PROMOTED_INPUT_ARTIFACTS_6_OF_6; RESOURCE_COVERAGE_32_OF_32; CLASSIFICATION_PUBLICO_9_INTERNO_19_RESTRITO_4; PERMISSIONS_56_WITH_POSITIVE_AND_NEGATIVE_TESTS; DEFAULT_DENY_COMPLETE; PLATFORM_SPECIFIC_AUTH_EXPRESSIONS_ABSENT; UNKNOWN_RULE_IDS_ABSENT; FOUR_HUMAN_DECISIONS_PRESERVED"
+      validated_at: "2026-10-15T13:12:13-03:00"
+      evidence: "YAML_STRICT_PASS; ACCESS_SPECIALIZED_VALIDATION_PASS; DETERMINISTIC_REBUILD_IDENTICAL; PROMOTED_INPUT_ARTIFACTS_6_OF_6; RESOURCE_COVERAGE_32_OF_32; CLASSIFICATION_PUBLICO_9_INTERNO_19_RESTRITO_4; PERMISSIONS_55_WITH_POSITIVE_AND_NEGATIVE_TESTS; DEFAULT_DENY_COMPLETE; ATHLETE_SELF_ACCESS_EXCLUDED; DISTINCT_REVIEWER_ROLE; NO_SELF_REVIEW_CONDITION; AUDITED_DATABASE_MEMBERSHIP_REQUIRED; DATA_API_PUBLIC_ONLY_9_EXPOSED_23_CLOSED; ZERO_OPEN_ISSUES"
     approval:
       required: true
-      decision: "PENDING"
-      approved_by: null
-      approved_at: null
-      evidence: null
+      decision: "APPROVED"
+      approved_by: "USER"
+      approved_at: "2026-10-15T13:12:13-03:00"
+      evidence: "USER_AUTHORIZED_REVIEW_OF_FOUR_ACCESS_DECISIONS_AND_SUBSEQUENT_STAGE_06_APPROVAL_AND_PROMOTION"
     promotion:
-      status: "NOT_STARTED"
-      promoted_source_id: null
+      status: "PROMOTED"
+      promoted_source_id: "c7f18856-d7c7-4b77-8feb-3266d60337c0"
+      source_status: "READY"
+      source_type: "MARKDOWN"
+      title: "PROMOTED — Requisitos de acesso v0.1.0 — 019fcf89fc49"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/06-requisitos-acesso.promoted.md"
+      wrapper_sha256: "019fcf89fc49d912d5b8b0bf8b4e4dcc462f0f45d543d766d291e80a0a30e6c0"
+      promoted_at: "2026-10-15T13:12:56-03:00"
 
 incidents:
   - id: "INC_AUTH_001"
