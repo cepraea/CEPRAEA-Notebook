@@ -1347,7 +1347,80 @@ stages:
         evidence: "YAML_STRICT_PASS; STOP_GATE_SPECIALIZED_CHECK_PASS; SEVEN_PROMOTED_INPUTS_PINNED; SEVEN_CRITERIA_PASS; READY_WITH_RESTRICTIONS_RECOMMENDATION; THIRTY_TWO_RELATION_SCOPE_DELIMITED; AUTHORIZED_SCOPE_REMAINS_EMPTY_PENDING_HUMAN_DECISION"
     approval:
       required: true
-      decision: "PENDING"
+      decision: "APPROVED_WITH_RESTRICTIONS"
+      approved_by: "USER"
+      approved_at: "2026-10-15T16:00:15-03:00"
+      evidence: "USER_EXPLICITLY_APPROVED_AND_AUTHORIZED_STAGE_08_ONLY_FOR_POSTGRESQL_SCHEMA_CANDIDATE_GENERATION"
+      operator_decision_source_id: "167b105a-d750-4d7e-bc53-3da5d56e10f4"
+      operator_decision_source_status: "READY"
+      operator_decision_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/07-stop-gate.operator-decision.md"
+      operator_decision_sha256: "95861272d84e896a0ba82793b63788d8ec070efa284d4100da47b773e1657c66"
+    promotion:
+      status: "PROMOTED"
+      version: "0.2.0"
+      sha256: "8034fc8290a814a2cb63d7d43138c8552ea087d787f44566b94393449a2d09f0"
+      promoted_source_id: "8347d2e6-f0fd-4872-a5f6-b23adae009f3"
+      source_status: "READY"
+      source_type: "MARKDOWN"
+      title: "PROMOTED — STOP GATE físico v0.2.0 — 81fb2ff7b275"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/07-stop-gate.promoted.md"
+      wrapper_sha256: "81fb2ff7b2751da714f3a80ddb70a402879cbd920fe742c1c409d86eeb8f9d67"
+      promoted_at: "2026-10-15T16:00:15-03:00"
+  - id: "STAGE_08"
+    started_at: "2026-10-15T16:16:55-03:00"
+    prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-08-run-001.md"
+    prompt_sha256: "731c377925b69e90c35f4f22c1f707d0d67f82755a97d83ee8b1aacba9b2b109"
+    base_prompt_file: "notebooklm-modelagem/prompts/08-gerar-schema-postgresql-candidato.md"
+    base_prompt_sha256: "5b5ea7c8044b946b31e6bd546ae3c3d4774768357de957c266fb2738f9c04834"
+    selected_source_ids:
+      - "e2ba2453-a22f-4784-b90d-34173898d6ed"
+      - "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+      - "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+      - "c7f18856-d7c7-4b77-8feb-3266d60337c0"
+      - "8347d2e6-f0fd-4872-a5f6-b23adae009f3"
+      - "167b105a-d750-4d7e-bc53-3da5d56e10f4"
+    input_artifacts:
+      - document_id: "LOGICAL_MODEL"
+        version: "0.1.1"
+        sha256: "aebdbd4c7b725a25ce1b89d632ae56e94ee25d5529e8ce7c82ab87387ef2e492"
+        promoted_source_id: "e2ba2453-a22f-4784-b90d-34173898d6ed"
+      - document_id: "DATA_DICTIONARY"
+        version: "0.1.0"
+        sha256: "969b7479813c97f5b2da95631b185211495b509cf86147a0337a53dcbb909c2f"
+        promoted_source_id: "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+      - document_id: "TRACEABILITY_MATRIX"
+        version: "0.1.0"
+        sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
+        promoted_source_id: "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+      - document_id: "ACCESS_REQUIREMENTS"
+        version: "0.1.0"
+        sha256: "bafce57a9d71ef3ea0ba54c79fac585f075d8d0efe5fe22967e62bde6c424c92"
+        promoted_source_id: "c7f18856-d7c7-4b77-8feb-3266d60337c0"
+      - document_id: "STOP_GATE_PARTIDAS_SCOUT_ANALISE_TATICA"
+        version: "0.2.0"
+        sha256: "8034fc8290a814a2cb63d7d43138c8552ea087d787f44566b94393449a2d09f0"
+        promoted_source_id: "8347d2e6-f0fd-4872-a5f6-b23adae009f3"
+      - document_id: "STAGE_07_OPERATOR_DECISION"
+        version: "1"
+        sha256: "95861272d84e896a0ba82793b63788d8ec070efa284d4100da47b773e1657c66"
+        promoted_source_id: "167b105a-d750-4d7e-bc53-3da5d56e10f4"
+    generation:
+      mechanism: "REPORT_CUSTOM"
+      status: "REJECTED_AFTER_VALIDATION"
+      task_id: "c5fad8ec-2f6e-4d75-a0a4-1d8f59fd0772"
+      artifact_id: "c5fad8ec-2f6e-4d75-a0a4-1d8f59fd0772"
+      artifact_status: "COMPLETED"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-001.md"
+      output_sha256: "b6e88b5b436b2f2cd275695fb9821aebc0f897095b1ac4e21db566570e6e3a1a"
+    validation:
+      status: "FAIL"
+      validated_at: "2026-10-15T16:30:01-03:00"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-001.audit.yaml"
+      audit_sha256: "88693d17ae3974aa843e801f419030da1f748b89a9392d3edb5f3956cbb7b2b5"
+      evidence: "TABLES_32_OF_32; COLUMNS_AND_TYPES_204_OF_204; FK_IDS_59_OF_59; FK_INDEX_SUPPORT_59_OF_59; FK_DELETE_UPDATE_ACTIONS_0_OF_59; LOGICAL_UNIQUES_16_OF_17; LOGICAL_CHECK_IDS_3_OF_13; EXCLUSION_CONSTRAINT_NOT_EMITTED; SEVEN_RULES_LACK_IMPLEMENTABLE_PHYSICAL_INPUTS; MARKDOWN_H1_PRESENT"
+    approval:
+      required: true
+      decision: "NOT_STARTED"
       approved_by: null
       approved_at: null
       evidence: null
@@ -1355,8 +1428,6 @@ stages:
       status: "NOT_STARTED"
       promoted_source_id: null
       source_status: null
-      source_type: null
-      title: null
       wrapper_path: null
       wrapper_sha256: null
       promoted_at: null
@@ -1426,19 +1497,58 @@ blockers:
     description: "As 9 formalizações condicionais e as 2 reconciliações aprovadas no STAGE_05 ainda não foram retropropagadas aos modelos conceitual e lógico promovidos."
     decision_required: "REVISAR_APROVAR_E_PROMOVER_CONCEPTUAL_MODEL_E_LOGICAL_MODEL_COM_AS_11_DECISOES"
     resolution: "CONCEPTUAL_MODEL_0_1_2_AND_LOGICAL_MODEL_0_1_1_APPROVED_PROMOTED_AND_USED_IN_STAGE_07_REEXECUTION"
+  - id: "BLOCK_STAGE_08_PHYSICAL_ENFORCEABILITY"
+    status: "ACTIVE"
+    affected_stage_id: "STAGE_08"
+    description: "A geração física expôs sete regras sem suporte suficiente para uma implementação SQL fiel; nesse conjunto, duas regras inferenciais não possuem responsabilidade de enforcement definida. O relatório também omitiu ações referenciais das 59 FKs e constraints diretamente implementáveis."
+    decision_required: "RECONCILIAR_ENFORCEMENT_COMO_CONSTRAINT_TRIGGER_VALIDACAO_INGESTAO_OU_INVARIANTE_E_RETROPROPAGAR_MODELO_DICIONARIO_RASTREABILIDADE"
+    resolution: null
 
 physical_gate:
   recommendation_artifact_id: "STOP_GATE_PARTIDAS_SCOUT_ANALISE_TATICA@0.2.0"
   recommendation: "READY_WITH_RESTRICTIONS"
-  operator_decision: "PENDING"
-  authorized_scope: []
+  operator_decision: "APPROVED_WITH_RESTRICTIONS"
+  authorized_scope:
+    - "COMPETICAO"
+    - "PARTIDA"
+    - "EQUIPE"
+    - "ATLETA"
+    - "PARTIDA_EQUIPE"
+    - "EQUIPE_ATLETA_INSCRICAO"
+    - "PERIODO_SET"
+    - "SHOOT_OUT"
+    - "POSSE_DE_BOLA"
+    - "UNIDADE_BASICA_ATAQUE_BOU"
+    - "EVENTO_SCOUT"
+    - "OBSERVACAO_DE_SCOUT"
+    - "ANALISTA_OBSERVADOR"
+    - "PROTOCOLO_SCOUT"
+    - "MIDIA_VIDEO"
+    - "SEGMENTO_OBSERVADO"
+    - "PLACAR_JOGO"
+    - "ESTADO_DO_PLACAR"
+    - "EVOLUCAO_DO_PLACAR"
+    - "SISTEMA_DEFENSIVO"
+    - "CONFIABILIDADE_OBSERVADOR"
+    - "REVISAO_DA_OBSERVACAO"
+    - "ESTADO_DE_REVISAO"
+    - "PROVENIENCIA_OBSERVACAO"
+    - "TRECHO_OBSERVADO"
+    - "SPIN_SHOT"
+    - "IN_FLIGHT_SHOT"
+    - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    - "CARTAO_AZUL_SUSPENSAO"
+    - "SISTEMA_TATICO"
+    - "PAPEL_ESPORTIVO_OPERACIONAL"
+    - "PARTICIPACAO_EQUIPE_COMPETICAO"
   restrictions:
-    - "A recomendação não autoriza STAGE_08 nem geração de SQL até decisão humana explícita."
-    - "Se autorizada, limita-se à geração de candidatos físicos para as 32 relações do LOGICAL_MODEL v0.1.1."
+    - "A autorização limita-se ao STAGE_08 para geração do schema PostgreSQL candidato das 32 relações do LOGICAL_MODEL v0.1.1."
+    - "Não autoriza aplicação de DDL, migration, implantação, carga de dados nem início dos STAGE_09 a STAGE_13."
     - "UQ_TRECHO_EVENTO e CHK_VIGENCIA_PARTICIPACAO do DATA_DICTIONARY v0.1.0 devem ser ignorados; prevalecem LOGICAL_MODEL v0.1.1 e TRACEABILITY_MATRIX v0.1.0."
-  decided_by: null
-  decided_at: null
+  decided_by: "USER"
+  decided_at: "2026-10-15T16:00:15-03:00"
   evidence: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/07-stop-gate.candidate-002.yaml"
+  downstream_status: "STAGE_08_BLOCKED_AFTER_PHYSICAL_ENFORCEABILITY_REVIEW"
 
 implementation:
   migration_path: null

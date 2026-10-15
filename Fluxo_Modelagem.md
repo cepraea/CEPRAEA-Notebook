@@ -140,7 +140,7 @@ Neste quadro, `[x]` significa que o artefato do estágio foi validado, aprovado 
 - [x] **STAGE_04 — Dicionário de dados:** tabelas, colunas, tipos PostgreSQL candidatos e classificações de acesso promovidos.
 - [x] **STAGE_05 — Matriz de rastreabilidade planejada:** 68 derivações aceitas, 9 condicionais formalizadas, 2 divergências reconciliadas e artefato promovido.
 - [x] **STAGE_06 — Requisitos de acesso:** papéis, recursos, permissões, testes e política de negação padrão aprovados e promovidos.
-- [ ] **STAGE_07 — Recomendação do `STOP GATE`:** avaliar critérios e delimitar o escopo físico autorizado.
+- [x] **STAGE_07 — Recomendação do `STOP GATE`:** `READY_WITH_RESTRICTIONS` aprovado, promovido e limitado à geração do schema PostgreSQL candidato no `STAGE_08`.
 - [ ] **STAGE_08 — Schema PostgreSQL candidato:** gerar o modelo físico somente para o escopo liberado.
 - [ ] **STAGE_09 — Políticas RLS candidatas:** derivar grants e policies do artefato de acesso promovido.
 - [ ] **STAGE_10 — Seeds simulados candidatos:** preparar dados exclusivamente fictícios.
@@ -152,7 +152,7 @@ Neste quadro, `[x]` significa que o artefato do estágio foi validado, aprovado 
 
 **Restrições preservadas antes do modelo físico:**
 
-- [ ] Retropropagar no modelo conceitual e lógico as 9 formalizações e as 2 reconciliações registradas no estágio 05.
+- [x] Retropropagar no modelo conceitual e lógico as 9 formalizações e as 2 reconciliações registradas no estágio 05.
 - [ ] Manter a autoconsulta da atleta fora do escopo até existir vínculo confiável entre identidade autenticada e `ATLETA`.
 - [ ] Implementar atribuições de papel auditáveis, temporais e sem autoatribuição.
 - [ ] Garantir revisor distinto do analista original nas políticas e testes de revisão.
