@@ -1,0 +1,94 @@
+schema_version: "1.0"
+review_id: "STAGE_06_OPERATOR_REVIEW_001"
+run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
+stage_id: "STAGE_06"
+status: "APROVADO"
+reviewed_at: "2026-10-15T13:12:13-03:00"
+base_candidate:
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.candidate.yaml"
+  sha256: "1a3aec71a294618a3a5c9a63cdb331ff7e4a407b6e1f9213b32d8b9d1ee16809"
+decision_authority:
+  actor: "USUARIO"
+  authorization: "Revisar as quatro decisões e, depois, aprovar e promover o estágio 06."
+decisions:
+  - decision_id: "DEC_ACCESS_001_DEFERIR_AUTOCONSULTA_ATLETA"
+    status: "ACEITA"
+    decision: "Excluir ROLE_ATLETA e PERM_047 do escopo aprovado até existir vínculo confiável entre conta e ATLETA."
+    rationale: "O modelo promovido não possui associação de identidade capaz de garantir isolamento SELF."
+    affected_ids:
+      - "ROLE_ATLETA"
+      - "PERM_047"
+      - "ATLETA"
+  - decision_id: "DEC_ACCESS_002_GOVERNANCA_MEMBROS_BANCO"
+    status: "ACEITA"
+    decision: "Autorizações dependem de associação no banco, com vigência, auditoria e proibição de autoatribuição."
+    rationale: "Metadados controláveis pelo cliente não constituem fonte confiável de autorização."
+    affected_ids:
+      - "ROLE_ADMIN_DADOS"
+      - "ROLE_TREINADOR"
+      - "ROLE_ANALISTA_SCOUT"
+      - "ROLE_REVISOR_SCOUT"
+  - decision_id: "DEC_ACCESS_003_SEPARAR_REVISOR_ANALISTA"
+    status: "ACEITA"
+    decision: "Criar ROLE_REVISOR_SCOUT e impedir que o autor da observação revise o próprio registro."
+    rationale: "A separação preserva independência e confiabilidade da observação."
+    affected_ids:
+      - "PERM_029"
+      - "PERM_031"
+      - "PERM_032"
+      - "PERM_033"
+      - "ROLE_REVISOR_SCOUT"
+  - decision_id: "DEC_ACCESS_004_DATA_API_PUBLICA_APENAS"
+    status: "ACEITA"
+    decision: "Expor diretamente pela Data API somente os nove recursos classificados como PUBLICO."
+    rationale: "Fechar recursos internos e restritos reduz a superfície de ataque até existir necessidade de cliente demonstrada."
+    affected_ids:
+      - "RES_EQUIPE_ATLETA_INSCRICAO"
+      - "RES_POSSE_DE_BOLA"
+      - "RES_UNIDADE_BASICA_ATAQUE_BOU"
+      - "RES_EVENTO_SCOUT"
+      - "RES_OBSERVACAO_DE_SCOUT"
+      - "RES_PROTOCOLO_SCOUT"
+      - "RES_MIDIA_VIDEO"
+      - "RES_SEGMENTO_OBSERVADO"
+      - "RES_SISTEMA_DEFENSIVO"
+      - "RES_CONFIABILIDADE_OBSERVADOR"
+      - "RES_REVISAO_DA_OBSERVACAO"
+      - "RES_ESTADO_DE_REVISAO"
+      - "RES_PROVENIENCIA_OBSERVACAO"
+      - "RES_TRECHO_OBSERVADO"
+      - "RES_SPIN_SHOT"
+      - "RES_IN_FLIGHT_SHOT"
+      - "RES_SISTEMA_TATICO"
+      - "RES_PAPEL_ESPORTIVO_OPERACIONAL"
+      - "RES_PARTICIPACAO_EQUIPE_COMPETICAO"
+      - "RES_ATLETA"
+      - "RES_ANALISTA_OBSERVADOR"
+      - "RES_DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+      - "RES_CARTAO_AZUL_SUSPENSAO"
+result:
+  roles: 5
+  resources: 32
+  permissions: 55
+  positive_tests: 55
+  negative_tests: 55
+  data_api_exposed_resources: 9
+  data_api_closed_resources: 23
+  open_issues: 0
+downstream_requirements:
+  - requirement: "Modelar vínculo único, revogável e auditável entre identidade autenticada e ATLETA antes de reintroduzir\
+      \ autoconsulta."
+    deadline: "ANTES_DE_PERMISSAO_SELF_ATLETA"
+    status: "OBRIGATORIO"
+  - requirement: "Modelar atribuições de papel e escopo com início, fim, responsável e trilha de auditoria."
+    deadline: "ANTES_DA_IMPLEMENTACAO_RBAC_RLS"
+    status: "OBRIGATORIO"
+  - requirement: "Implementar e testar a regra revisor diferente do analista original."
+    deadline: "ANTES_DA_IMPLEMENTACAO_DA_REVISAO"
+    status: "OBRIGATORIO"
+  - requirement: "Criar índices nas colunas usadas pelos escopos RLS e validar os planos das consultas."
+    deadline: "ESTAGIO_FISICO_POSTGRESQL"
+    status: "PLANEJADO"
+  - requirement: "Qualquer futura exposição de recurso INTERNO ou RESTRITO pela Data API exige revisão explícita deste artefato."
+    deadline: "ANTES_DE_NOVA_EXPOSICAO_DATA_API"
+    status: "OBRIGATORIO"

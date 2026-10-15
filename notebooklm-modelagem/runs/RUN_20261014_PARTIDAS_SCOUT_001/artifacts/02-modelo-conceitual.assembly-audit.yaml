@@ -1,0 +1,47 @@
+status: "PASS"
+inputs:
+  semantic_registry:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+    sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+  source_manifest:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+    sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+  notebook_correction:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.correction-001.md"
+    sha256: "a674bac3a4e1e565a5059e64dd41afe955e47f1a0aabb85d56be01a9a1494216"
+normalization:
+  cardinality:
+    PARTIDA_DISPUTADA_POR_EQUIPE:
+      expected:
+        min: 2
+        max: 2
+      replacement:
+        min: 1
+        max: "N"
+      constraint: "Cada partida deve relacionar exatamente duas equipes."
+    EQUIPE_INSCREVE_ATLETA:
+      expected:
+        min: 6
+        max: "N"
+      replacement:
+        min: 1
+        max: "N"
+      constraint: "No contexto da partida, a equipe deve possuir no mínimo seis atletas inscritos para iniciar o jogo."
+    PARTIDA_POSSUI_PERIODO_SET:
+      expected:
+        min: 2
+        max: 2
+      replacement:
+        min: 1
+        max: "N"
+      constraint: "Cada partida regulamentar deve possuir exatamente dois períodos ou sets."
+  open_issues: "16 justificativas de exclusão convertidas para o contrato de pendências."
+  semantic_content_added: false
+counts:
+  entities: 13
+  relationships: 14
+  domain_invariants: 9
+  open_issues: 16
+  required_concept_ids: 47
+  covered_concept_ids: 31
+  excluded_concept_ids: 16

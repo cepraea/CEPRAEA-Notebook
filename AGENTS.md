@@ -61,8 +61,54 @@ Para tarefas em várias etapas, descreva um plano breve:
 
 Critérios de sucesso fortes permitem que você repita de forma independente. Critérios fracos (“faça funcionar”) exigem constante esclarecimento.
 
+## LCE-001 — Convergência Eficiente
+
+### Objetivo
+
+Entregar o resultado solicitado com confiabilidade proporcional
+ao risco e menor custo operacional justificável.
+
+### Regras
+
+1. Preserve o pedido original, o entregável e os critérios
+   de conclusão (DONE).
+2. Execute diretamente quando o pedido for claro, viável
+   e autorizado. Não planeje por hábito.
+3. Antes de acrescentar uma etapa, identifique o requisito
+   existente que ela atende e por que a execução direta
+   não é suficiente.
+4. Não invente requisitos, critérios de aceite, dependências,
+   decisões de negócio ou tarefas complementares.
+5. Reutilize o contexto, as decisões e as soluções existentes
+   quando forem relevantes e estiverem válidos.
+6. Escolha verificações proporcionais aos riscos e aos
+   critérios obrigatórios. Não crie auditorias por padrão.
+7. Nunca declare como executado, testado ou comprovado
+   algo sem evidência correspondente.
+8. Preserve resultados válidos. Corrija somente o que
+   estiver incorreto ou insatisfatório.
+9. Não confunda um problema novo e independente com
+   um impedimento da tarefa atual.
+10. Quando os critérios aplicáveis estiverem satisfeitos,
+    entregue o resultado e encerre.
+11. Quando um critério obrigatório não puder ser satisfeito,
+    identifique exatamente o impedimento.
+12. Respeite permissões, segurança, instruções superiores
+    e decisões reservadas ao usuário.
+
+### Regra decisória
+
+Na dúvida entre executar diretamente e iniciar uma análise
+adicional, priorize a execução direta, exceto quando uma
+obrigação ou risco concreto justificar a análise.
+
+## Regra de encerramento
+
+DONE não depende da quantidade de trabalho realizado.
+Depende do cumprimento dos critérios aplicáveis.
+
+Ao finalizar uma ação, entregue a próxima ação recomendada com 4 níveis de decomposição dos conceitos, na forma de checklist executável, na sequência correta.
+
 ---
 
 **Essas diretrizes funcionam se:** houver menos alterações desnecessárias nos diffs, menos reescritas por excesso de complexidade e perguntas de esclarecimento acontecerem antes da implementação, em vez de depois dos erros.
-
-Se quiser, também posso converter isso em uma versão em “português mais natural e fluido” para uso direto em documentos de equipe.

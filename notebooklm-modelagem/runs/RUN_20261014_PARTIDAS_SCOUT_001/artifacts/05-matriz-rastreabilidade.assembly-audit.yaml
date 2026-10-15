@@ -1,0 +1,26 @@
+status: "PASS"
+proposal_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.report-002.md"
+proposal_sha256: "703760dbae66e028029842f816d4af15049d757005378cad792c2c99df2b8b37"
+accepted_proposal_evidence:
+  covered_rule_ids:
+    - "RN_IHF_VIGENCIA_2026"
+    - "RN_PASSIVO_QUATRO_PASSES"
+    - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+    - "RN_PROIBICAO_RETARDO_REPETIDO"
+    - "RN_PROTECAO_CABECA_GOLEIRA"
+    - "RN_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+    - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    - "RN_SANCAO_FINAL_15_SEGUNDOS"
+    - "RN_SEMANTICA_GOLEIRA"
+    - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+    - "RN_TETO_PARTICIPANTES_SUMULA"
+  normalization: "RULE_AND_EVIDENCE_COVERAGE_ACCEPTED; STRUCTURE_AND_REFERENCES_REBUILT_FROM_PROMOTED_ARTIFACTS"
+output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.candidate.yaml"
+output_sha256: "875e9f4d03ba39ca476460761435c45aff9d7b86a9cf26352d6c3137b519cbec"
+counts:
+  traces: 113
+  rule_traces: 23
+  constraint_traces: 90
+  unresolved_traces: 79
+  tests_without_rule: 79
+  open_issues: 3
