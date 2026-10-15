@@ -1,0 +1,271 @@
+status: "PASS"
+reviewed_at: "2026-10-14"
+operator_decisions:
+  - id: "DEC_RANKING_CONVIDADOS_FHERJ_2026"
+    source: "USER_STATEMENT_2026_10_14"
+    decision: "A participação esportiva e a elegibilidade para o ranking final são fatos independentes e contextuais à competição."
+    confirmed_facts:
+      - "Campinas participa do Campeonato Carioca desde 2025 e não conta para o ranking final."
+      - "Chile participa de determinadas etapas e não conta para o ranking final."
+      - "A participação sem pontuação final decorre de decisão dos clubes apoiada pela FHERJ."
+    modeling_consequence: "Registrar a elegibilidade na participação equipe-competição, sem inferi-la por UF, país ou cadastro global da equipe."
+  - id: "DEC_PLACAR_HISTORICO_INCOMPLETO"
+    source: "OPERATOR_REVIEW_2026_10_14"
+    decision: "Placar detalhado desconhecido deve permanecer nulo e possuir estado explícito de completude; zero não representa ausência de evidência."
+    confirmed_facts: []
+    modeling_consequence: "Permitir shoot-out confirmado com pontuação detalhada desconhecida, sem fabricar valores."
+
+shoot_out_changes:
+  relation_id: "SHOOT_OUT"
+  attribute_updates:
+    - attribute_id: "PONTOS_EQUIPE_A"
+      nullable: true
+      null_meaning: "Shoot-out confirmado, mas pontuação detalhada da equipe A não documentada na evidência disponível"
+      default_semantics: null
+    - attribute_id: "PONTOS_EQUIPE_B"
+      nullable: true
+      null_meaning: "Shoot-out confirmado, mas pontuação detalhada da equipe B não documentada na evidência disponível"
+      default_semantics: null
+  added_attributes:
+    - id: "STATUS_COMPLETUDE"
+      logical_name: "Estado de Completude do Shoot-out"
+      physical_name_candidate: "status_completude"
+      semantic_type: "ENUM"
+      nullable: false
+      null_meaning: null
+      multivalued: false
+      derived: false
+      derivation_rule_id: null
+      default_semantics: null
+      domain_values:
+        - "COMPLETO"
+        - "PARCIAL"
+        - "NAO_DOCUMENTADO"
+      rule_ids: []
+      evidence_ref_ids:
+        - "EVID_CEPRAEA_DATABASE_CCB2A718_008"
+    - id: "MOTIVO_INCOMPLETUDE"
+      logical_name: "Motivo da Incompletude"
+      physical_name_candidate: "motivo_incompletude"
+      semantic_type: "TEXTO"
+      nullable: true
+      null_meaning: "Registro completo ou ausência de justificativa adicional"
+      multivalued: false
+      derived: false
+      derivation_rule_id: null
+      default_semantics: null
+      domain_values: []
+      rule_ids: []
+      evidence_ref_ids:
+        - "EVID_CEPRAEA_DATABASE_CCB2A718_008"
+  added_checks:
+    - id: "CHK_SHOOT_OUT_COMPLETUDE"
+      expression_semantics: "STATUS_COMPLETUDE=COMPLETO exige as duas pontuações; estado PARCIAL ou NAO_DOCUMENTADO exige motivo de incompletude e permite pontuações nulas."
+      rule_ids: []
+
+added_relations:
+  - id: "PARTICIPACAO_EQUIPE_COMPETICAO"
+    logical_name: "Participação da Equipe na Competição"
+    physical_name_candidate: "participacao_equipe_competicao"
+    conceptual_entity_ids:
+      - "EQUIPE"
+      - "COMPETICAO"
+    purpose: "Registrar participação e elegibilidade para o ranking final no contexto de uma edição de competição, sem alterar o cadastro global da equipe."
+    grain: "Uma linha representa a situação de participação e elegibilidade de uma equipe em uma competição durante um intervalo de vigência."
+    identity:
+      strategy: "SURROGATE"
+      attribute_ids:
+        - "ID"
+    attributes:
+      - id: "ID"
+        logical_name: "Identificador da Participação"
+        physical_name_candidate: "id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "COMPETICAO_ID"
+        logical_name: "Identificador da Competição"
+        physical_name_candidate: "competicao_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "EQUIPE_ID"
+        logical_name: "Identificador da Equipe"
+        physical_name_candidate: "equipe_id"
+        semantic_type: "ID"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "TIPO_PARTICIPACAO"
+        logical_name: "Tipo de Participação"
+        physical_name_candidate: "tipo_participacao"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "REGULAR"
+          - "CONVIDADA"
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "STATUS_ELEGIBILIDADE_RANKING"
+        logical_name: "Elegibilidade para o Ranking Final"
+        physical_name_candidate: "status_elegibilidade_ranking"
+        semantic_type: "ENUM"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values:
+          - "ELEGIVEL"
+          - "INELEGIVEL_POR_DECISAO_COLETIVA"
+          - "PENDENTE_DELIBERACAO"
+        rule_ids:
+          - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+        evidence_ref_ids:
+          - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+      - id: "MOTIVO_DECISAO"
+        logical_name: "Motivo da Decisão de Elegibilidade"
+        physical_name_candidate: "motivo_decisao"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Participação regular sem exceção específica ou decisão ainda sem justificativa registrada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "DECISAO_REF"
+        logical_name: "Referência da Decisão"
+        physical_name_candidate: "decisao_ref"
+        semantic_type: "TEXTO"
+        nullable: true
+        null_meaning: "Participação regular sem decisão excepcional associada"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+      - id: "VALIDO_DESDE"
+        logical_name: "Início da Vigência"
+        physical_name_candidate: "valido_desde"
+        semantic_type: "DATA_HORA"
+        nullable: false
+        null_meaning: null
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+      - id: "VALIDO_ATE"
+        logical_name: "Fim da Vigência"
+        physical_name_candidate: "valido_ate"
+        semantic_type: "DATA_HORA"
+        nullable: true
+        null_meaning: "Participação ou decisão vigente sem término registrado"
+        multivalued: false
+        derived: false
+        derivation_rule_id: null
+        default_semantics: null
+        domain_values: []
+        rule_ids: []
+        evidence_ref_ids: []
+    candidate_keys:
+      - id: "CK_PARTICIPACAO_EQUIPE_COMPETICAO_VIGENCIA"
+        attribute_ids:
+          - "COMPETICAO_ID"
+          - "EQUIPE_ID"
+          - "VALIDO_DESDE"
+    unique_constraints:
+      - id: "UQ_PARTICIPACAO_EQUIPE_COMPETICAO_VIGENCIA"
+        attribute_ids:
+          - "COMPETICAO_ID"
+          - "EQUIPE_ID"
+          - "VALIDO_DESDE"
+    checks:
+      - id: "CHK_ELEGIBILIDADE_RANKING_CONTEXTUAL"
+        expression_semantics: "STATUS_ELEGIBILIDADE_RANKING=INELEGIVEL_POR_DECISAO_COLETIVA exige MOTIVO_DECISAO e DECISAO_REF; a elegibilidade nunca é inferida por UF ou país."
+        rule_ids:
+          - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+      - id: "CHK_VIGENCIA_PARTICIPACAO"
+        expression_semantics: "VALIDO_ATE deve ser nulo ou posterior a VALIDO_DESDE, sem intervalos contraditórios para a mesma equipe e competição."
+        rule_ids: []
+    history_strategy: "VALID_TIME"
+    retention_rule_ids: []
+
+added_foreign_keys:
+  - id: "FK_PARTICIPACAO_EQUIPE_COMPETICAO_COMPETICAO"
+    from_relation_id: "PARTICIPACAO_EQUIPE_COMPETICAO"
+    from_attribute_ids:
+      - "COMPETICAO_ID"
+    to_relation_id: "COMPETICAO"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EQUIPE_PARTICIPA_COMPETICAO"
+    supporting_index_required: true
+    rule_ids: []
+  - id: "FK_PARTICIPACAO_EQUIPE_COMPETICAO_EQUIPE"
+    from_relation_id: "PARTICIPACAO_EQUIPE_COMPETICAO"
+    from_attribute_ids:
+      - "EQUIPE_ID"
+    to_relation_id: "EQUIPE"
+    to_attribute_ids:
+      - "ID"
+    required: true
+    on_delete_semantics: "RESTRICT"
+    on_update_semantics: "CASCADE"
+    relationship_id: "EQUIPE_PARTICIPA_COMPETICAO"
+    supporting_index_required: true
+    rule_ids: []
+
+added_normalization_decisions:
+  - id: "NORM_DECISION_006"
+    affected_relation_ids:
+      - "EQUIPE"
+      - "COMPETICAO"
+      - "PARTICIPACAO_EQUIPE_COMPETICAO"
+    decision: "Separar participação esportiva de elegibilidade para o ranking final em uma relação temporal equipe-competição."
+    rationale: "Campinas e Chile podem disputar etapas e partidas sem pontuar no ranking final; a decisão é contextual e não constitui propriedade permanente da equipe."
+    accepted_tradeoffs:
+      - "O serviço de ranking deve consultar a participação vigente antes de agregar pontos."
+      - "A relação EQUIPE_PARTICIPA_COMPETICAO é um refinamento lógico aprovado que deverá ser reconciliado no próximo versionamento conceitual."
+
+approved_logical_relationship_ids:
+  - "EQUIPE_PARTICIPA_COMPETICAO"
+resolved_open_issue_ids:
+  - "ISSUE_EXCECAO_CAMPINAS_FHERJ_2026"

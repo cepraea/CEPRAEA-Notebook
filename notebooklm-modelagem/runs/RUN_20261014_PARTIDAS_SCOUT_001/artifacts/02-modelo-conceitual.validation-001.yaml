@@ -1,0 +1,56 @@
+artifact:
+  artifact_id: "0434e6b7-896e-4fc4-aa84-df01fe7b5ca0"
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.report-001.md"
+  sha256: "38e4c225f570e307cc70a692e6b30d0b65834c2119d07f0cb9d4942d7e30a0c6"
+  size_bytes: 19167
+  line_count: 327
+validation:
+  status: "REJECTED"
+  validated_at: "2026-10-14T10:46:12-03:00"
+  checks:
+    yaml_parse:
+      status: "PASS"
+      evidence: "Raiz conceptual_model carregada sem erro."
+    required_sections:
+      status: "PASS"
+      evidence: "entities, relationships, domain_invariants, coverage e open_issues presentes."
+    evidence_references:
+      status: "PASS"
+      evidence: "66 de 66 ocorrências de evidence_ref_ids existem no manifesto promovido."
+    entity_schema:
+      status: "FAIL"
+      evidence: "10 de 10 entidades divergem do template; concept_id, definition, identity_rule, history_required, aggregate_root e rule_ids estão ausentes."
+    relationship_schema:
+      status: "FAIL"
+      evidence: "10 de 10 relacionamentos divergem do template; endpoints, cardinalidade estruturada, temporalidade, atributos e rule_ids usam campos diferentes ou estão ausentes."
+    invariant_schema:
+      status: "FAIL"
+      evidence: "12 de 12 invariantes divergem do template; statement, affected_entity_ids e rule_ids estão ausentes."
+    identifier_format:
+      status: "FAIL"
+      evidence: "Os 12 invariantes usam IDs com hífen ou ponto, fora de UPPER_SNAKE_CASE."
+    semantic_registry_references:
+      status: "FAIL"
+      evidence: "Nenhuma das 10 entidades contém concept_id; a cobertura não usa nenhum dos 47 concept_ids promovidos."
+    relationship_endpoints:
+      status: "FAIL"
+      evidence: "Os 10 relacionamentos usam source_entity e target_entity em vez de from_entity_id e to_entity_id."
+    coverage:
+      status: "FAIL"
+      evidence: "required_concept_ids contém 14 IDs CPT_* inexistentes e omite os 47 concept_ids reais do registro semântico."
+  counts:
+    entities: 10
+    relationships: 10
+    domain_invariants: 12
+    open_issues: 4
+    evidence_reference_occurrences: 66
+    unknown_evidence_reference_occurrences: 0
+    promoted_concept_ids: 47
+    covered_promoted_concept_ids: 0
+    invented_coverage_ids: 14
+  rejection_reasons:
+    - "STRUCTURE_DIVERGES_FROM_STAGE_02_TEMPLATE"
+    - "PROMOTED_CONCEPT_IDS_NOT_REFERENCED"
+    - "COVERAGE_IDS_INVENTED"
+    - "INVARIANT_IDS_NOT_UPPER_SNAKE_CASE"
+  recommended_next_action: "Executar correção limitada ao template e aos IDs promovidos, preservando o relatório rejeitado como fonte de trabalho."
