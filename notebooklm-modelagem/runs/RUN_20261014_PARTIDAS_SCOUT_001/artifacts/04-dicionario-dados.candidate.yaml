@@ -52,7 +52,7 @@ tables:
       - attribute_id: "NOME"
         column_candidate: "nome"
         description: "Nome oficial completo da competição ou torneio de handebol de praia."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -71,7 +71,7 @@ tables:
       - attribute_id: "CODIGO"
         column_candidate: "codigo"
         description: "Código canônico identificador alfanumérico da competição."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -89,7 +89,7 @@ tables:
       - attribute_id: "EDICAO"
         column_candidate: "edicao"
         description: "Identificação da edição ou ano de realização da competição."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Edição não especificada ou competição em formato contínuo"
         default_candidate: null
@@ -107,7 +107,7 @@ tables:
       - attribute_id: "DATA_INICIO"
         column_candidate: "data_inicio"
         description: "Data e hora com fuso horário do início oficial do evento esportivo."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: true
         null_meaning: "Data de início da competição ainda não agendada"
         default_candidate: null
@@ -125,7 +125,7 @@ tables:
       - attribute_id: "DATA_FIM"
         column_candidate: "data_fim"
         description: "Data e hora com fuso horário do encerramento oficial do evento esportivo."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: true
         null_meaning: "Data de término da competição ainda não agendada"
         default_candidate: null
@@ -216,7 +216,7 @@ tables:
       - attribute_id: "ETAPA"
         column_candidate: "etapa"
         description: "Identificação da fase ou etapa da competição na qual o jogo é realizado."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Etapa da competição não especificada"
         default_candidate: null
@@ -234,7 +234,7 @@ tables:
       - attribute_id: "DATA_HORA_INICIO"
         column_candidate: "data_hora_inicio"
         description: "Data e hora programada ou efetiva do apito inicial do confronto."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: true
         null_meaning: "Horário oficial de início não registrado"
         default_candidate: null
@@ -252,7 +252,7 @@ tables:
       - attribute_id: "LOCAL_QUADRA"
         column_candidate: "local_quadra"
         description: "Denominação da quadra, arena ou local onde é realizada a partida."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Quadra ou local do jogo não informado"
         default_candidate: null
@@ -270,7 +270,7 @@ tables:
       - attribute_id: "STATUS_PARTIDA"
         column_candidate: "status_partida"
         description: "Situação operacional atual do confronto no ciclo de vida de realização."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: "AGENDADA"
@@ -337,7 +337,7 @@ tables:
       - attribute_id: "NOME"
         column_candidate: "nome"
         description: "Nome oficial do clube, associação ou time esportivo."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -355,7 +355,7 @@ tables:
       - attribute_id: "SIGLA"
         column_candidate: "sigla"
         description: "Sigla de identificação abreviada da equipe."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Sigla de identificação da equipe não cadastrada"
         default_candidate: null
@@ -373,7 +373,7 @@ tables:
       - attribute_id: "CIDADE"
         column_candidate: "cidade"
         description: "Cidade de origem ou sede da equipe."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Cidade de origem da equipe não informada"
         default_candidate: null
@@ -391,7 +391,7 @@ tables:
       - attribute_id: "UF"
         column_candidate: "uf"
         description: "Unidade da Federação / Estado de origem da equipe."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "UF de origem da equipe não informada"
         default_candidate: null
@@ -434,7 +434,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -447,7 +447,7 @@ tables:
       - attribute_id: "NOME_COMPLETO"
         column_candidate: "nome_completo"
         description: "Nome civil completo do atleta cadastrado."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -465,7 +465,7 @@ tables:
       - attribute_id: "NOME_CAMISA"
         column_candidate: "nome_camisa"
         description: "Nome preferencial de exibição e identificação na camisa do atleta."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Nome preferencial na camisa não especificado"
         default_candidate: null
@@ -483,7 +483,7 @@ tables:
       - attribute_id: "NUMERO_REGISTRO"
         column_candidate: "numero_registro"
         description: "Número do registro formal de atleta perante a federação ou confederação."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Número de registro oficial na federação não informado"
         default_candidate: null
@@ -501,7 +501,7 @@ tables:
       - attribute_id: "POSICAO_PRINCIPAL"
         column_candidate: "posicao_principal"
         description: "Posição tática primária de atuação do atleta (incorporando goleira no escopo defensivo)."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Posição tática primária não declarada no cadastro"
         default_candidate: null
@@ -581,7 +581,7 @@ tables:
       - attribute_id: "PAPEL_REGULAMENTAR"
         column_candidate: "papel_regulamentar"
         description: "Atribuição formal de designação na súmula oficial (Equipe A ou Equipe B)."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -601,7 +601,7 @@ tables:
       - attribute_id: "CONDICAO_MANDO"
         column_candidate: "condicao_mando"
         description: "Classificação funcional quanto ao mando de campo (Mandante ou Visitante)."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -621,7 +621,7 @@ tables:
       - attribute_id: "COR_UNIFORME"
         column_candidate: "cor_uniforme"
         description: "Cor principal do uniforme utilizado pela equipe no jogo."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Cor do uniforme utilizado na partida não especificada"
         default_candidate: null
@@ -715,7 +715,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -742,7 +742,7 @@ tables:
       - attribute_id: "DATA_INSCRICAO"
         column_candidate: "data_inscricao"
         description: "Data e hora do protocolo formal de inscrição do atleta."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -780,7 +780,7 @@ tables:
       - attribute_id: "STATUS_ELEGIBILIDADE"
         column_candidate: "status_elegibilidade"
         description: "Situação administrativa quanto à elegibilidade do atleta para atuar."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: "ELEGIVEL"
@@ -1092,7 +1092,7 @@ tables:
       - attribute_id: "STATUS_COMPLETUDE"
         column_candidate: "status_completude"
         description: "Classificação do estado de completude do registro de dados da disputa."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -1157,7 +1157,7 @@ tables:
     description: "Delimitar o intervalo temporal contínuo em que uma equipe possui o controle funcional ou direito da bola."
     grain: "Uma linha representa uma única unidade ininterrupta de posse de bola por uma equipe em um set."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "INTERNO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -1238,7 +1238,7 @@ tables:
       - attribute_id: "TIMECODE_INICIO"
         column_candidate: "timecode_inicio"
         description: "Timecode de vídeo no formato HH:MM:SS:FF indicando o início da posse de bola."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Timecode de início da posse não registrado na observação"
         default_candidate: null
@@ -1256,7 +1256,7 @@ tables:
       - attribute_id: "TIMECODE_FIM"
         column_candidate: "timecode_fim"
         description: "Timecode de vídeo no formato HH:MM:SS:FF indicando o encerramento da posse de bola."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Posse de bola em andamento ou timecode de término não capturado"
         default_candidate: null
@@ -1274,7 +1274,7 @@ tables:
       - attribute_id: "FASE_OFENSIVA_DOMINANTE"
         column_candidate: "fase_ofensiva_dominante"
         description: "Macro-fase ofensiva predominante durante a posse."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Fase ofensiva dominante não classificada na observação"
         default_candidate: null
@@ -1294,7 +1294,7 @@ tables:
       - attribute_id: "MOTIVO_TERMINO"
         column_candidate: "motivo_termino"
         description: "Evento ou circunstância responsável pelo término da posse."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Posse em andamento ou desfecho não categorizado"
         default_candidate: null
@@ -1342,7 +1342,7 @@ tables:
     description: "Registrar o intervalo do ataque posicionado organizado diante de uma defesa estabelecida."
     grain: "Uma linha representa uma Unidade Básica de Ataque (BOU) no âmbito de uma posse de bola."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "INTERNO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -1404,7 +1404,7 @@ tables:
       - attribute_id: "TIMECODE_INICIO"
         column_candidate: "timecode_inicio"
         description: "Timecode de vídeo no formato HH:MM:SS:FF indicando o início da organização estruturada do ataque."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Timecode de início da BOU não registrado"
         default_candidate: null
@@ -1422,7 +1422,7 @@ tables:
       - attribute_id: "TIMECODE_FIM"
         column_candidate: "timecode_fim"
         description: "Timecode de vídeo no formato HH:MM:SS:FF indicando o encerramento da BOU."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "BOU em andamento ou timecode de término não capturado"
         default_candidate: null
@@ -1440,7 +1440,7 @@ tables:
       - attribute_id: "FASE_TATICA"
         column_candidate: "fase_tatica"
         description: "Classificação da fase tática observada na BOU."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -1481,7 +1481,7 @@ tables:
     description: "Registrar a ocorrência discreta de uma ação técnica, tática, de pontuação ou disciplina durante o jogo."
     grain: "Uma linha representa um evento pontual de scout associado a um timecode e a uma sessão de observação."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "INTERNO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -1553,7 +1553,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -1571,7 +1571,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -1580,7 +1580,7 @@ tables:
       - attribute_id: "TIMECODE_EXATO"
         column_candidate: "timecode_exato"
         description: "Timecode de alta precisão no formato HH:MM:SS:FF registrando o instante exato do evento na mídia."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -1598,7 +1598,7 @@ tables:
       - attribute_id: "ZONA_ANALITICA"
         column_candidate: "zona_analitica"
         description: "Zona analítica de origem/execução da ação no espaço geomético da quadra."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Zona da quadra não aplicável ao tipo de evento registrado"
         default_candidate: null
@@ -1620,7 +1620,7 @@ tables:
       - attribute_id: "TIPO_ACAO_OBSERVADA"
         column_candidate: "tipo_acao_observada"
         description: "Classificação técnica/tática do tipo de ação efetuada."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -1653,7 +1653,7 @@ tables:
       - attribute_id: "RESULTADO_ACAO"
         column_candidate: "resultado_acao"
         description: "Desfecho imediato ou eficácia técnica observada na ação."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Ação em andamento ou sem resultado discreto categorizado"
         default_candidate: null
@@ -1677,7 +1677,7 @@ tables:
       - attribute_id: "ACAO_GOLEIRA"
         column_candidate: "acao_goleira"
         description: "Detalhamento motor/tático quando a ação é executada pela posição de goleira."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Evento não envolveu intervenção ou ação direta da posição de goleira"
         default_candidate: null
@@ -1702,7 +1702,7 @@ tables:
       - attribute_id: "PUNICAO_DISCIPLINAR"
         column_candidate: "punicao_disciplinar"
         description: "Sanção disciplinar pessoal aplicada pela arbitragem no evento."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Evento ordinário de jogo sem aplicação de sanção disciplinar"
         default_candidate: null
@@ -1724,7 +1724,7 @@ tables:
       - attribute_id: "CONSEQUENCIA_DISCIPLINAR"
         column_candidate: "consequencia_disciplinar"
         description: "Medida ou efeito operacional decorrente da sanção disciplinar."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Nenhuma consequência disciplinar decorrente do evento"
         default_candidate: null
@@ -1852,7 +1852,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -1897,7 +1897,7 @@ tables:
       - attribute_id: "DATA_HORA_CODIFICACAO"
         column_candidate: "data_hora_codificacao"
         description: "Data e hora com fuso horário em que a sessão de codificação foi executada pelo analista."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -1915,7 +1915,7 @@ tables:
       - attribute_id: "TIPO_OBSERVACAO"
         column_candidate: "tipo_observacao"
         description: "Classificação do tipo de observação (Primária P1, Auditoria ou IA)."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: "PRIMARIA_P1"
@@ -1985,7 +1985,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -1996,7 +1996,7 @@ tables:
       - attribute_id: "NOME"
         column_candidate: "nome"
         description: "Nome completo do analista observador."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -2014,7 +2014,7 @@ tables:
       - attribute_id: "EMAIL"
         column_candidate: "email"
         description: "Endereço de e-mail institucional/pessoal do analista observador."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -2032,7 +2032,7 @@ tables:
       - attribute_id: "STATUS_HABILITACAO"
         column_candidate: "status_habilitacao"
         description: "Situação da certificação de confiabilidade técnica do analista."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: "HABILITADO"
@@ -2089,7 +2089,7 @@ tables:
       - attribute_id: "CODIGO_PROTOCOLO"
         column_candidate: "codigo_protocolo"
         description: "Código identificador do protocolo metodológico."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -2107,7 +2107,7 @@ tables:
       - attribute_id: "VERSAO"
         column_candidate: "versao"
         description: "Número da versão formal congelada do protocolo (ex.: v0.9.2)."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -2143,7 +2143,7 @@ tables:
       - attribute_id: "DATA_CONGELAMENTO"
         column_candidate: "data_congelamento"
         description: "Data e hora com fuso horário de congelamento oficial da versão para uso em produção."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: true
         null_meaning: "Protocolo em elaboração ou sem data de congelamento formalizada"
         default_candidate: null
@@ -2232,7 +2232,7 @@ tables:
       - attribute_id: "CHECKSUM_SHA256"
         column_candidate: "checksum_sha256"
         description: "Hash de integridade SHA256 do arquivo de vídeo."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Hash SHA256 do arquivo audiovisual não verificado"
         default_candidate: null
@@ -2250,7 +2250,7 @@ tables:
       - attribute_id: "TIPO_MIDIA"
         column_candidate: "tipo_midia"
         description: "Tipo e enquadramento da gravação de vídeo (Broadcast P0, Câmara Alta, Clipe)."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: "BROADCAST_P0"
@@ -2366,7 +2366,7 @@ tables:
       - attribute_id: "TIMECODE_INICIO"
         column_candidate: "timecode_inicio"
         description: "Timecode inicial no formato HH:MM:SS:FF do recorte de vídeo."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -2384,7 +2384,7 @@ tables:
       - attribute_id: "TIMECODE_FIM"
         column_candidate: "timecode_fim"
         description: "Timecode final no formato HH:MM:SS:FF do recorte de vídeo."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -2523,7 +2523,7 @@ tables:
       - attribute_id: "RESULTADO_FINAL_SETS"
         column_candidate: "resultado_final_sets"
         description: "Placar final consolidado da partida expresso em sets."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Partida em andamento sem resultado final consolidado"
         default_candidate: null
@@ -2683,7 +2683,7 @@ tables:
       - attribute_id: "SITUACAO_VANTAGEM"
         column_candidate: "situacao_vantagem"
         description: "Condição de vantagem da equipe de referência (Empatado, Favorável, Desfavorável)."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: "EMPATADO"
@@ -2704,7 +2704,7 @@ tables:
       - attribute_id: "TIMESTAMP_INSTANTE"
         column_candidate: "timestamp_instante"
         description: "Timestamp com fuso horário da captura exata do estado do placar."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -2926,7 +2926,7 @@ tables:
     description: "Mapear a disposição espacial, atitude e configuração dos defensores em quadra."
     grain: "Uma linha representa a atitude/sistema defensivo adotado em uma posse de bola."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "INTERNO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -3005,7 +3005,7 @@ tables:
       - attribute_id: "CODIGO_SISTEMA_DEFENSIVO"
         column_candidate: "codigo_sistema_defensivo"
         description: "Código do esquema defensivo específico empregado."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3109,7 +3109,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -3118,7 +3118,7 @@ tables:
       - attribute_id: "DATA_AVALIACAO"
         column_candidate: "data_avaliacao"
         description: "Data e hora com fuso horário de realização da prova de confiabilidade."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3136,7 +3136,7 @@ tables:
       - attribute_id: "VERSAO_TESTE"
         column_candidate: "versao_teste"
         description: "Código da versão do gabarito ou bateria de testes aplicada."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3208,7 +3208,7 @@ tables:
       - attribute_id: "STATUS_QUALIFICACAO"
         column_candidate: "status_qualificacao"
         description: "Resultado final de homologação técnica do observador."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3296,7 +3296,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -3305,7 +3305,7 @@ tables:
       - attribute_id: "TIMESTAMP_REVISAO"
         column_candidate: "timestamp_revisao"
         description: "Timestamp com fuso horário de execução do processo de revisão."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3341,7 +3341,7 @@ tables:
       - attribute_id: "CAMPO_ALTERADO"
         column_candidate: "campo_alterado"
         description: "Nome do atributo retificado durante o evento de revisão."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Revisão confirmatória sem alteração de campos realizada"
         default_candidate: null
@@ -3442,7 +3442,7 @@ tables:
       - attribute_id: "STATUS_CORRENTE"
         column_candidate: "status_corrente"
         description: "Situação atual da validação da observação (Pendente, Aprovado, Rejeitado, Em Auditoria)."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: "PENDENTE"
@@ -3464,7 +3464,7 @@ tables:
       - attribute_id: "DATA_ULTIMA_ATUALIZACAO"
         column_candidate: "data_ultima_atualizacao"
         description: "Data e hora com fuso horário da alteração mais recente do status de revisão."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3584,7 +3584,7 @@ tables:
       - attribute_id: "FERRAMENTA_SOFTWARE"
         column_candidate: "ferramenta_software"
         description: "Denominação e versão do software utilizado na codificação dos dados."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3602,7 +3602,7 @@ tables:
       - attribute_id: "ORIGEM_DADO"
         column_candidate: "origem_dado"
         description: "Origem epistemológica da extração (Codificação Humana P1, Súmula Oficial, IA)."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3623,7 +3623,7 @@ tables:
       - attribute_id: "CHECKSUM_MIDIA"
         column_candidate: "checksum_midia"
         description: "Checksum verificado do arquivo de vídeo processado."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Hash SHA256 não calculated para o arquivo de mídia"
         default_candidate: null
@@ -3670,7 +3670,7 @@ tables:
     description: "Mapear o recorte temporal exato de vídeo correspondente a um evento de scout."
     grain: "Uma linha representa o recorte de timecode de vídeo de um evento específico."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "INTERNO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -3731,7 +3731,7 @@ tables:
       - attribute_id: "TIMECODE_INICIO"
         column_candidate: "timecode_inicio"
         description: "Timecode de início no formato HH:MM:SS:FF do clipe do evento."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3749,7 +3749,7 @@ tables:
       - attribute_id: "TIMECODE_FIM"
         column_candidate: "timecode_fim"
         description: "Timecode de término no formato HH:MM:SS:FF do clipe do evento."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -3808,7 +3808,7 @@ tables:
     description: "Especialização tática para detalhamento da técnica de arremesso com giro de 360° no ar."
     grain: "Uma linha representa a caracterização especializada de um Spin Shot efetuado em um evento."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "INTERNO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -3922,7 +3922,7 @@ tables:
     description: "Especialização tática para detalhamento da técnica de arremesso aéreo (ponte aérea)."
     grain: "Uma linha representa a caracterização especializada de um In-flight Shot efetuado."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "INTERNO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -4037,7 +4037,7 @@ tables:
     description: "Registrar a desqualificação e o afastamento definitivo do atleta pelo acúmulo da segunda exclusão."
     grain: "Uma linha representa a ocorrência de desqualificação por acúmulo de duas exclusões em uma partida."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "RESTRITO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -4088,7 +4088,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -4162,7 +4162,7 @@ tables:
     description: "Registrar a desqualificação directa gravíssima com relatório por escrito e suspensão administrativa."
     grain: "Uma linha representa um evento de exibição de Cartão Azul e relatório formal da arbitragem."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "RESTRITO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -4232,7 +4232,7 @@ tables:
         allowed_values: []
         min_value: null
         max_value: null
-        pii: false
+        pii: true
         sensitive: false
         generated: false
         derivation_rule_id: null
@@ -4330,7 +4330,7 @@ tables:
     description: "Registrar a disposição espacial coletiva e formação tática adotada em um intervalo do jogo."
     grain: "Uma linha representa a configuração tática adotada por uma equipe durante uma posse/intervalo."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "INTERNO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -4391,7 +4391,7 @@ tables:
       - attribute_id: "CODIGO_SISTEMA_TATICO"
         column_candidate: "codigo_sistema_tatico"
         description: "Código do arranjo e disposição coletiva do sistema tático."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -4415,7 +4415,7 @@ tables:
       - attribute_id: "FASE_TATICA"
         column_candidate: "fase_tatica"
         description: "Fase tática contextual em que a formação é executada."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -4460,7 +4460,7 @@ tables:
     description: "Registrar as funções formais de comissão técnica, arbitragem e organização na súmula da partida."
     grain: "Uma linha representa a atribuição de um papel operacional a uma pessoa em uma partida."
     ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
-    access_classification: "PUBLICO"
+    access_classification: "INTERNO"
     columns:
       - attribute_id: "ID"
         column_candidate: "id"
@@ -4521,7 +4521,7 @@ tables:
       - attribute_id: "NOME_PESSOA"
         column_candidate: "nome_pessoa"
         description: "Nome completo da pessoa física atuando no papel operacional."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -4539,7 +4539,7 @@ tables:
       - attribute_id: "CODIGO_PAPEL"
         column_candidate: "codigo_papel"
         description: "Código do papel esportivo ou operacional desempenhado na partida."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -4649,7 +4649,7 @@ tables:
       - attribute_id: "TIPO_PARTICIPACAO"
         column_candidate: "tipo_participacao"
         description: "Categorização do formato de participação da equipe na competição."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -4669,7 +4669,7 @@ tables:
       - attribute_id: "STATUS_ELEGIBILIDADE_RANKING"
         column_candidate: "status_elegibilidade_ranking"
         description: "Situação regulamentar de elegibilidade para acumulação de pontos no ranking geral."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -4710,7 +4710,7 @@ tables:
       - attribute_id: "DECISAO_REF"
         column_candidate: "decisao_ref"
         description: "Referência documental ou ata homologatória da decisão regulamentar."
-        postgresql_type_candidate: "varchar"
+        postgresql_type_candidate: "text"
         nullable: true
         null_meaning: "Participação regular sem decisão excepcional associada"
         default_candidate: null
@@ -4729,7 +4729,7 @@ tables:
       - attribute_id: "VALIDO_DESDE"
         column_candidate: "valido_desde"
         description: "Início da janela temporal de vigência da condição de participação."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: false
         null_meaning: null
         default_candidate: null
@@ -4747,7 +4747,7 @@ tables:
       - attribute_id: "VALIDO_ATE"
         column_candidate: "valido_ate"
         description: "Término da janela temporal de vigência da condição de participação."
-        postgresql_type_candidate: "timestamp with time zone"
+        postgresql_type_candidate: "timestamptz"
         nullable: true
         null_meaning: "Participação ou decisão vigente sem término registrado"
         default_candidate: null

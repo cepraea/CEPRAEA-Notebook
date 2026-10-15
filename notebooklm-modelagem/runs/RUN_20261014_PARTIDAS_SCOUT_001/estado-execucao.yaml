@@ -770,12 +770,19 @@ stages:
       validation_script_sha256: "762955f509c0f01eb72c9464603fa0f22d300e474ba9c68b75aef603b63b6b5e"
       normalization_script: "notebooklm-modelagem/scripts/normalize_data_dictionary.py"
       normalization_script_sha256: "b7e3a26d70dab9a35bb703f0bcca8c737d7ed8ed6ba6fc9f56e6b1ccbf235b42"
+      operator_review_script: "notebooklm-modelagem/scripts/apply_data_dictionary_operator_review.py"
+      operator_review_script_sha256: "8d48c4a5c5a9de3e0987ce1ad193869db18982a3e361864382e59d296399a600"
+      operator_review_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.operator-review.yaml"
+      operator_review_sha256: "99d517d2e7091fa6aeef61e1c44e4aa2f2b2e19bdc72b054f6126f0fef43ed42"
+      operator_review_audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.operator-review-audit.yaml"
+      operator_review_audit_sha256: "dfe0804115e9a0d57fee935730d9f6b03469559a0486e1758bf99cccb257039c"
       output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.candidate.yaml"
-      sha256: "7e463236b87039e1aa79a2c6be68fb6fe1129a7e53a8fd770adf0326f1bc47fb"
+      sha256: "969b7479813c97f5b2da95631b185211495b509cf86147a0337a53dcbb909c2f"
       audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.assembly-audit.yaml"
       audit_sha256: "cf87014be4ce3569652a4cf888113eb803525fec576a8001cfe2a0b883395689"
       assembled_at: "2026-10-14T16:35:01-03:00"
-      normalization: "NOTEBOOK_ENVELOPE_IGNORED; LOGICAL_STRUCTURE_AND_TRACEABILITY_RESTORED; FK_INDEXES_AND_CATALOGS_GENERATED_DETERMINISTICALLY; UNSUPPORTED_UUID_DEFAULT_DESCRIPTIONS_NEUTRALIZED"
+      finalized_at: "2026-10-14T23:19:12-03:00"
+      normalization: "NOTEBOOK_ENVELOPE_IGNORED; LOGICAL_STRUCTURE_AND_TRACEABILITY_RESTORED; FK_INDEXES_AND_CATALOGS_GENERATED_DETERMINISTICALLY; UNSUPPORTED_UUID_DEFAULT_DESCRIPTIONS_NEUTRALIZED; VARCHAR_NORMALIZED_TO_TEXT; TIMESTAMP_WITH_TIME_ZONE_NORMALIZED_TO_TIMESTAMPTZ; LEAST_PRIVILEGE_ACCESS_REVIEW_APPLIED; INDIRECT_IDENTIFIERS_CLASSIFIED_AS_PII"
       counts:
         tables: 32
         columns: 204
@@ -785,19 +792,28 @@ stages:
         index_candidates: 59
         catalogs: 32
         open_issues: 1
+        public_tables: 9
+        internal_tables: 19
+        restricted_tables: 4
+        pii_columns: 16
+        sensitive_columns: 0
     validation:
       status: "PASS"
-      validated_at: "2026-10-14T16:35:01-03:00"
-      evidence: "YAML_STRICT_PASS; SPECIALIZED_DATA_DICTIONARY_VALIDATION_PASS; RELATION_COVERAGE_32_OF_32; ATTRIBUTE_COVERAGE_204_OF_204; FK_IDS_59_OF_59_EXACT; UNIQUE_CONSTRAINT_IDS_18_OF_18_EXACT; CHECK_IDS_13_OF_13_EXACT; FK_INDEX_COVERAGE_59_OF_59; CONTROLLED_DOMAIN_CATALOG_COVERAGE_EXACT; RULE_AND_EVIDENCE_REFERENCES_PASS; DETERMINISTIC_REBUILD_IDENTICAL; ONE_NON_BLOCKING_HISTORICAL_DATA_ISSUE_PRESERVED"
+      validated_at: "2026-10-14T23:19:12-03:00"
+      evidence: "YAML_STRICT_PASS; SPECIALIZED_DATA_DICTIONARY_VALIDATION_PASS; RELATION_COVERAGE_32_OF_32; ATTRIBUTE_COVERAGE_204_OF_204; FK_IDS_59_OF_59_EXACT; UNIQUE_CONSTRAINT_IDS_18_OF_18_EXACT; CHECK_IDS_13_OF_13_EXACT; FK_INDEX_COVERAGE_59_OF_59; CONTROLLED_DOMAIN_CATALOG_COVERAGE_EXACT; RULE_AND_EVIDENCE_REFERENCES_PASS; DETERMINISTIC_REVIEW_OUTPUT_IDENTICAL; POSTGRESQL_TYPE_REVIEW_PASS_TEXT_68_TIMESTAMPTZ_12_NUMERIC_3; ACCESS_REVIEW_PASS_PUBLICO_9_INTERNO_19_RESTRITO_4; PII_REVIEW_PASS_16_COLUMNS; SENSITIVE_CLASSIFICATION_REMAINS_ZERO_WITHOUT_UNSUPPORTED_LEGAL_INFERENCE; ONE_NON_BLOCKING_HISTORICAL_DATA_ISSUE_PRESERVED"
     approval:
       required: true
-      decision: "PENDING"
-      approved_by: null
-      approved_at: null
-      evidence: null
+      decision: "APPROVED"
+      approved_by: "USER"
+      approved_at: "2026-10-14T23:19:12-03:00"
+      evidence: "USER_REQUEST_2026_10_14_REVIEW_ACCESS_CLASSIFICATIONS_AND_POSTGRESQL_TYPES_THEN_APPROVE_AND_PROMOTE_STAGE_04; SPECIALIZED_VALIDATION_PASS; LEAST_PRIVILEGE_ACCESS_REVIEW_APPLIED; POSTGRESQL_TYPE_REVIEW_PASS"
     promotion:
-      status: "NOT_STARTED"
-      promoted_source_id: null
+      status: "PROMOTED"
+      promoted_source_id: "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+      promoted_source_status: "READY"
+      promoted_at: "2026-10-14T23:19:12-03:00"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/04-dicionario-dados.promoted.md"
+      wrapper_sha256: "36c53e547fae221d4f05c63155f933b84b3d31a8db030cbbcad63ca456def6f6"
 
 incidents:
   - id: "INC_AUTH_001"
