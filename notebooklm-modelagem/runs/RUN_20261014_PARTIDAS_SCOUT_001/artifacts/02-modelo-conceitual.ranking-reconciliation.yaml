@@ -1,0 +1,53 @@
+status: "PASS"
+reviewed_at: "2026-10-14"
+operator_decision:
+  id: "DEC_RANKING_CONVIDADOS_FHERJ_2026"
+  source: "USER_STATEMENT_2026_10_14"
+  decision: "A participação esportiva e a elegibilidade para o ranking final são fatos independentes e contextuais à competição."
+  confirmed_facts:
+    - "Campinas participa do Campeonato Carioca desde 2025 e não conta para o ranking final."
+    - "Chile participa de determinadas etapas e não conta para o ranking final."
+    - "A participação sem pontuação final decorre de decisão dos clubes apoiada pela FHERJ."
+  modeling_consequence: "Registrar a elegibilidade na participação equipe-competição, sem inferi-la por UF, país ou cadastro global da equipe."
+
+relationship:
+  id: "EQUIPE_PARTICIPA_COMPETICAO"
+  name: "Equipe Participa de Competição"
+  from_entity_id: "EQUIPE"
+  to_entity_id: "COMPETICAO"
+  meaning: "Associação temporal que registra a participação esportiva de uma equipe em uma competição e sua elegibilidade independente para o ranking final."
+  cardinality:
+    from_to:
+      min: 0
+      max: "N"
+    to_from:
+      min: 0
+      max: "N"
+  relationship_attributes:
+    - "tipo_participacao"
+    - "status_elegibilidade_ranking"
+    - "motivo_decisao"
+    - "decisao_ref"
+    - "valido_desde"
+    - "valido_ate"
+  temporality: "VERSIONADA"
+  exclusivity_rules:
+    - "A inelegibilidade para o ranking final não pode ser inferida por UF, país ou cadastro global da equipe."
+    - "A inelegibilidade para o ranking final não invalida partidas, placares ou estatísticas esportivas da equipe."
+    - "Uma decisão de inelegibilidade exige motivo, referência e intervalo de vigência auditáveis."
+  rule_ids:
+    - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+  evidence_ref_ids:
+    - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+
+invariant:
+  id: "INV_ELEGIBILIDADE_RANKING_CONTEXTUAL"
+  statement: "Participação esportiva e elegibilidade para o ranking final são independentes: equipes inelegíveis por decisão contextual mantêm válidos seus jogos, placares e estatísticas e são excluídas somente da agregação do ranking final; a elegibilidade não é inferida por origem geográfica."
+  affected_entity_ids:
+    - "EQUIPE"
+    - "COMPETICAO"
+    - "PARTIDA"
+  rule_ids:
+    - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+  evidence_ref_ids:
+    - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"

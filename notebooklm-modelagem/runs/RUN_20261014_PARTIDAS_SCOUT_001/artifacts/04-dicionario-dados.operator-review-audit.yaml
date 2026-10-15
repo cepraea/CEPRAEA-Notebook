@@ -1,0 +1,125 @@
+status: "PASS"
+inputs:
+  base_candidate:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.candidate.yaml"
+    sha256: "7e463236b87039e1aa79a2c6be68fb6fe1129a7e53a8fd770adf0326f1bc47fb"
+  operator_review:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.operator-review.yaml"
+    sha256: "99d517d2e7091fa6aeef61e1c44e4aa2f2b2e19bdc72b054f6126f0fef43ed42"
+  logical_model:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.candidate.yaml"
+    sha256: "d49ca992ba7e1ab5b2378bc24867bf876cd67f940e819be57bad297993b79712"
+  semantic_registry:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+    sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+  source_manifest:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+    sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+changes:
+  type_replacements:
+    - from: "timestamp with time zone"
+      to: "timestamptz"
+      columns: 12
+    - from: "varchar"
+      to: "text"
+      columns: 62
+  access_overrides:
+    - relation_id: "POSSE_DE_BOLA"
+      from: "PUBLICO"
+      to: "INTERNO"
+    - relation_id: "UNIDADE_BASICA_ATAQUE_BOU"
+      from: "PUBLICO"
+      to: "INTERNO"
+    - relation_id: "EVENTO_SCOUT"
+      from: "PUBLICO"
+      to: "INTERNO"
+    - relation_id: "SISTEMA_DEFENSIVO"
+      from: "PUBLICO"
+      to: "INTERNO"
+    - relation_id: "TRECHO_OBSERVADO"
+      from: "PUBLICO"
+      to: "INTERNO"
+    - relation_id: "SPIN_SHOT"
+      from: "PUBLICO"
+      to: "INTERNO"
+    - relation_id: "IN_FLIGHT_SHOT"
+      from: "PUBLICO"
+      to: "INTERNO"
+    - relation_id: "SISTEMA_TATICO"
+      from: "PUBLICO"
+      to: "INTERNO"
+    - relation_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+      from: "PUBLICO"
+      to: "INTERNO"
+    - relation_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+      from: "PUBLICO"
+      to: "RESTRITO"
+    - relation_id: "CARTAO_AZUL_SUSPENSAO"
+      from: "PUBLICO"
+      to: "RESTRITO"
+  pii_additions:
+    - relation_id: "ATLETA"
+      attribute_id: "ID"
+    - relation_id: "EQUIPE_ATLETA_INSCRICAO"
+      attribute_id: "ATLETA_ID"
+    - relation_id: "EVENTO_SCOUT"
+      attribute_id: "ATLETA_EXECUTOR_ID"
+    - relation_id: "EVENTO_SCOUT"
+      attribute_id: "ATLETA_ALVO_ID"
+    - relation_id: "OBSERVACAO_DE_SCOUT"
+      attribute_id: "ANALISTA_OBSERVADOR_ID"
+    - relation_id: "ANALISTA_OBSERVADOR"
+      attribute_id: "ID"
+    - relation_id: "CONFIABILIDADE_OBSERVADOR"
+      attribute_id: "ANALISTA_OBSERVADOR_ID"
+    - relation_id: "REVISAO_DA_OBSERVACAO"
+      attribute_id: "ANALISTA_REVISOR_ID"
+    - relation_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+      attribute_id: "ATLETA_ID"
+    - relation_id: "CARTAO_AZUL_SUSPENSAO"
+      attribute_id: "ATLETA_ID"
+  sensitive_changes: []
+distributions:
+  before:
+    access_classification:
+      PUBLICO: 20
+      RESTRITO: 2
+      INTERNO: 10
+    postgresql_types:
+      uuid: 90
+      varchar: 62
+      timestamp with time zone: 12
+      integer: 23
+      boolean: 8
+      text: 6
+      numeric: 3
+    pii_columns: 6
+    sensitive_columns: 0
+  after:
+    access_classification:
+      PUBLICO: 9
+      RESTRITO: 4
+      INTERNO: 19
+    postgresql_types:
+      uuid: 90
+      text: 68
+      timestamptz: 12
+      integer: 23
+      boolean: 8
+      numeric: 3
+    pii_columns: 16
+    sensitive_columns: 0
+counts:
+  tables: 32
+  columns: 204
+  foreign_keys: 59
+  unique_constraints: 18
+  checks: 13
+  index_candidates: 59
+  catalogs: 32
+  open_issues: 1
+validation:
+  specialized_dictionary_validation: "PASS"
+  logical_structure_changed: false
+  logical_traceability_changed: false
+  foreign_key_index_coverage: "PASS"
