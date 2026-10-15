@@ -1,0 +1,848 @@
+schema_version: "1.1"
+document:
+  id: "SOURCE_MANIFEST"
+  artifact_kind: "SOURCE_MANIFEST"
+  title: "Manifesto de fontes"
+  version: "0.1.0"
+  status: "PROPOSTO"
+  run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
+  domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
+  notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
+  generated_at: null
+  supersedes: null
+  input_artifacts: []
+
+scope:
+  reference_date: "2026-10-14"
+  included:
+    - "Regras da partida, sets, segmentos, shoot-out, placar, pontuação e finalizações (1 e 2 pontos)."
+    - "Tiro de 6 metros, punições, posses de bola, fases ofensivas, sistemas defensivos e ações da goleira/zonas."
+    - "Resultado da partida, scout, protocolo de observação, revisões, confiabilidade, trechos e timecodes."
+  excluded:
+    - "Treinamento e preparação física."
+    - "Saúde, medicina esportiva e wellness."
+    - "Finanças e orçamento."
+    - "Gestão administrativa do clube/entidade."
+    - "Mídia institucional e assessoria de imprensa."
+    - "Infraestrutura de quadra/praia não necessária ao domínio de scout tático."
+
+sources:
+  - id: "SRC_CTRL_MANIFESTO_TEMPLATE"
+    canonical_title: "Template de Manifesto de Fontes de Governança"
+    notebook_source_id: "2a3d4f1e-8b9c-4d1a-9f8e-7c6b5a4d3e2f"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: "Engenharia de Dados e Governança"
+    source_revision: "1.1"
+    publication_date: "2026-10-14"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "DECISAO_HUMANA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Controle de execução e governança do pipeline, não constitui evidência esportiva factual."
+
+  - id: "SRC_CTRL_FLUXO_MODELAGEM"
+    canonical_title: "Diretrizes de Controle de Fluxo e Execution State"
+    notebook_source_id: "3b4e5f2a-9c0d-5e2b-0a9f-8d7c6b5a4e3d"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: "Data Steward"
+    source_revision: "1.0"
+    publication_date: "2026-10-14"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "DECISAO_HUMANA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Controle de execução e governança do pipeline, não constitui evidência esportiva factual."
+
+  - id: "SRC_CTRL_PIPELINE_GOVERNANCA"
+    canonical_title: "Regras de Execução e Estado do Pipeline de Dados"
+    notebook_source_id: "4c5f6a3b-0d1e-6f3c-1b0a-9e8d7c6b5f4e"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: "Data Steward"
+    source_revision: "1.0"
+    publication_date: "2026-10-14"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "DECISAO_HUMANA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Controle de execução e governança do pipeline, não constitui evidência esportiva factual."
+
+  - id: "SRC_CTRL_RECONCILIACAO_SGATE"
+    canonical_title: "Registro de Portões de Decisão e Reconciliação (SGATEs)"
+    notebook_source_id: "5d6a7b4c-1e2f-7a4d-2c1b-0f9e8d7c6a5b"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: "Data Steward"
+    source_revision: "1.0"
+    publication_date: "2026-10-14"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "DECISAO_HUMANA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Controle de execução e governança do pipeline, não constitui evidência esportiva factual."
+
+  - id: "SRC_IHF_RULES_2026_EN"
+    canonical_title: "IHF Beach Handball Rules of the Game 2026 (English Official)"
+    notebook_source_id: "6e7b8c5d-2f3a-8b5e-3d2c-1a0b9c8d7e6f"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "International Handball Federation (IHF)"
+    source_revision: "2026.1"
+    publication_date: "2026-01-01"
+    retrieved_at: null
+    content_sha256: null
+    language: "en"
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: "2026-01-01"
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_IHF_RULES_2026_PT"
+    canonical_title: "Regras Oficiais de Handebol de Praia IHF 2026 (Tradução em Português)"
+    notebook_source_id: "7f8c9d6e-3a4b-9c6f-4e3d-2b1c0d9e8f7a"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Confederação Brasileira de Handebol (CBHb) / IHF"
+    source_revision: "2026.1-PT"
+    publication_date: "2026-02-01"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: "2026-02-01"
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Texto oficial em inglês (SRC_IHF_RULES_2026_EN) prevalece em caso de divergência terminológica ou conceitual."
+
+  - id: "SRC_IHF_SPIN_INFLIGHT_2023"
+    canonical_title: "IHF Virtual Academy: 2-point Goals, Spin and In-flight Shots"
+    notebook_source_id: "8a9d0e7f-4b5c-0d7a-5f4e-3c2d1e0f9a8b"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "International Handball Federation (IHF)"
+    source_revision: "2023.1"
+    publication_date: "2023-06-15"
+    retrieved_at: null
+    content_sha256: null
+    language: "en"
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: "2023-06-15"
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_IHF_6M_PUNISHMENTS_2023"
+    canonical_title: "IHF Virtual Academy: 6-Metre Throw + Punishment"
+    notebook_source_id: "9b0e1f8a-5c6d-1e8b-6a5f-4d3e2f1a0b9c"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "International Handball Federation (IHF)"
+    source_revision: "2023.1"
+    publication_date: "2023-06-15"
+    retrieved_at: null
+    content_sha256: null
+    language: "en"
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: "2023-06-15"
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_REGULAMENTO_FHERJ_2026"
+    canonical_title: "Regulamento do Campeonato Carioca de Handebol de Praia 2026"
+    notebook_source_id: "0c1f2a9b-6d7e-2f9c-7b6a-5e4f3a2b1c0d"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Federação de Handebol do Estado do Rio de Janeiro (FHERJ)"
+    source_revision: "2026.1"
+    publication_date: "2026-03-01"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: "2026-03-01"
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "O conteúdo de pontuação do Art. 25º impresso está STALE_FOR_SCORING, prevalecendo a tabela oficial posterior homologada via SGATE-0023 e as regras de exceção de convidados do SGATE-0024."
+
+  - id: "SRC_REGULAMENTO_CBHB_2026"
+    canonical_title: "Regulamento do Circuito Brasileiro de Handebol de Praia 2026"
+    notebook_source_id: "1d2e3f0a-7e8f-3a0d-8c7b-6f5e4d3c2b1a"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Confederação Brasileira de Handebol (CBHb)"
+    source_revision: "2026.1"
+    publication_date: "2026-01-15"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "AUTORITATIVA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: "2026-01-15"
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_ARTIGO_CONTEXTUAL_FACTORS"
+    canonical_title: "Contextual Factors and Decision-Making in Finalization in Positional Attack in Beach Handball"
+    notebook_source_id: "2e3f4a1b-8f9a-4b1e-9d8c-7a6b5c4d3e2f"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Frontiers in Psychology"
+    source_revision: "Vol 10 Art 1386"
+    publication_date: "2019-06-01"
+    retrieved_at: null
+    content_sha256: null
+    language: "en"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_ARTIGO_GUARDA_REDES_ACOES"
+    canonical_title: "Estudo das Ações do Guarda-Redes de Andebol de Praia Através da Análise Observacional"
+    notebook_source_id: "3f4a5b2c-9a0b-5c2f-0e9d-8b7c6d5e4f3a"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Cuadernos de Psicología del Deporte"
+    source_revision: "Vol 19 No 3"
+    publication_date: "2019-09-01"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_ARTIGO_TEMPOS_DEFESA_GOLEIRO"
+    canonical_title: "Tempos de Defesa do Goleiro de Handebol de Praia"
+    notebook_source_id: "4a5b6c3d-0b1c-6d3a-1f0e-9c8d7e6f5a4b"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Revista de Educação Física e Esporte"
+    source_revision: "Vol 7"
+    publication_date: "2020-04-10"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_ESTUDO_JOGO_OFENSIVO"
+    canonical_title: "Estudo Tático do Jogo Ofensivo e Eficiência de Finalizações em Handebol de Praia"
+    notebook_source_id: "5b6c7d4e-1c2d-7e4b-2a1f-0d9e8f7a6b5c"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Grupo de Pesquisa em Esportes de Areia"
+    source_revision: "1.0"
+    publication_date: "2021-08-20"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_ESTUDO_TENDENCIAS_DEFESA"
+    canonical_title: "Tendências Defensivas e Sistemas em Handebol de Praia de Alto Rendimento"
+    notebook_source_id: "6c7d8e5f-2d3e-8f5c-3b2a-1e0f9a8b7c6d"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Academia de Treinadores Esportivos"
+    source_revision: "1.0"
+    publication_date: "2022-03-12"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_ESTUDO_ESTRUTURACAO_DEFENSIVA"
+    canonical_title: "Estruturação Defensiva, Coberturas e Controle de Espaço no Handebol de Praia"
+    notebook_source_id: "7d8e9f6a-3e4f-9a6d-4c3b-2f1a0b9c8d7e"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Cadernos de Análise Tática Esportiva"
+    source_revision: "2.0"
+    publication_date: "2022-11-05"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_ESTUDO_PRESSAO_SHOOTOUT"
+    canonical_title: "Análise de Desempenho e Fatores de Pressão no Shoot-out em Handebol de Praia"
+    notebook_source_id: "8e9f0a7b-4f5a-0b7e-5d4c-3a2b1c0d9e8f"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Journal of Sports Science & Performance"
+    source_revision: "1.2"
+    publication_date: "2023-01-25"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_INSTRUMENTO_OBSERVACAO_SCOUT"
+    canonical_title: "Instrumento de Observação Tática e Mapeamento de Eventos de Jogo"
+    notebook_source_id: "9f0a1b8c-5a6b-1c8f-6e5d-4b3c2d1e0f9a"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Laboratório de Análise do Jogo Esportivo"
+    source_revision: "3.1"
+    publication_date: "2023-05-18"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_MANUAL_TECNICO_FINALIZACOES"
+    canonical_title: "Manual Técnico de Análise de Finalizações, Trajetórias e Zonas de Arremesso"
+    notebook_source_id: "0a1b2c9d-6b7c-2d9a-7f6e-5c4d3e2f1a0b"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Associação de Treinadores de Handebol de Praia"
+    source_revision: "1.0"
+    publication_date: "2023-09-30"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_ESTUDO_POSSES_BOLA"
+    canonical_title: "Análise da Duração de Posses de Bola e Ritmo de Jogo Ofensivo"
+    notebook_source_id: "1b2c3d0e-7c8d-3e0b-8a7f-6d5e4f3a2b1c"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Revista Brasileira de Análise do Desempenho Esportivo"
+    source_revision: "1.0"
+    publication_date: "2024-02-14"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_ANALISE_DESEMP_GOLEIRAS"
+    canonical_title: "Análise do Desempenho da Goleira e Especialista em Situações de Ataque/Defesa"
+    notebook_source_id: "2c3d4e1f-8d9e-4f1c-9b8a-7e6f5a4b3c2d"
+    drive_file_id: null
+    source_type: "PDF"
+    publisher: "Estudos Avançados de Handebol de Praia"
+    source_revision: "1.1"
+    publication_date: "2024-06-20"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "SUPORTE"
+    lifecycle_status: "COMPLEMENTAR"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_PROTOCOLO_SCOUT"
+    canonical_title: "Protocolo Operacional de Scout Tático e Coleta em Vídeo CEPRAEA"
+    notebook_source_id: "3d4e5f2a-9e0f-5a2d-0c9b-8f7a6b5c4d3e"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: "Comissão Técnica CEPRAEA"
+    source_revision: "2.1"
+    publication_date: "2026-06-01"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "OPERACIONAL_PRIMARIA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: "2026-06-01"
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_CEPRAEA_DATABASE"
+    canonical_title: "CEPRAEA DATABASE — SSOT Operacional e Registro Factual"
+    notebook_source_id: "10Dv1oBIKdodWEWsK8qUeLPyazzdg4hdRkVi4gjvVSno"
+    drive_file_id: "10Dv1oBIKdodWEWsK8qUeLPyazzdg4hdRkVi4gjvVSno"
+    source_type: "SPREADSHEET"
+    publisher: "Data Steward / CEPRAEA"
+    source_revision: "2026-09-09"
+    publication_date: "2026-09-09"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "OPERACIONAL_PRIMARIA"
+    lifecycle_status: "VIGENTE"
+    notebook_status: "READY"
+    valid_from: "2026-06-01"
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations: []
+
+  - id: "SRC_MODELO_CONCEITUAL_04A"
+    canonical_title: "04A — Modelo Conceitual — CEPRAEA Beach Pro"
+    notebook_source_id: "4e5f6a3b-0f1a-6b3e-1d0c-9a8b7c6d5e4f"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: "Davi Sermenho (ROLE-CEPRAEA-DATA-GOVERNANCE-STEWARD)"
+    source_revision: "v1.0.0"
+    publication_date: "2026-08-07"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Proposta histórica/predecessora. Não comprova implementação, teste ou aprovação no ambiente atual."
+
+  - id: "SRC_MODELO_LOGICO_04B"
+    canonical_title: "04B — Modelo Lógico — CEPRAEA Beach Pro"
+    notebook_source_id: "5f6a7b4c-1a2b-7c4f-2e1d-0b9c8d7e6f5a"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: "Davi Sermenho (ROLE-CEPRAEA-DATA-GOVERNANCE-STEWARD)"
+    source_revision: "v1.0.0"
+    publication_date: "2026-08-07"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Proposta histórica/predecessora. Não comprova implementação, teste ou aprovação no ambiente atual."
+
+  - id: "SRC_DICIONARIO_DADOS_04C"
+    canonical_title: "04C — Dicionário de Dados Canônico — CEPRAEA Beach Handball Pro"
+    notebook_source_id: "6a7b8c5d-2b3c-8d5a-3f2e-1c0d9e8f7a6b"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: "Davi Sermenho (ROLE-CEPRAEA-DATA-GOVERNANCE-STEWARD)"
+    source_revision: "v1.0.0"
+    publication_date: "2026-08-07"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Proposta histórica/predecessora. Não comprova implementação, teste ou aprovação no ambiente atual."
+
+  - id: "SRC_INVARIANTES_E_CARDINALIDADES"
+    canonical_title: "Invariantes de Sistema e Cardinalidades Normativas do Modelo CEPRAEA"
+    notebook_source_id: "7b8c9d6e-3c4d-9e6b-4a3f-2d1e0f9a8b7c"
+    drive_file_id: null
+    source_type: "MARKDOWN"
+    publisher: "Data Steward"
+    source_revision: "1.0"
+    publication_date: "2026-08-08"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Proposta histórica/predecessora. Não comprova implementação, teste ou aprovação no ambiente atual."
+
+  - id: "SRC_POSTGRESQL_SCHEMA_05"
+    canonical_title: "05 — Modelo Físico PostgreSQL / Supabase — CEPRAEA Beach Handball Pro"
+    notebook_source_id: "8c9d0e7f-4d5e-0f7c-5b4a-3e2f1a0b9c8d"
+    drive_file_id: null
+    source_type: "SQL"
+    publisher: "Engenharia de Dados CEPRAEA"
+    source_revision: "1.0"
+    publication_date: "2026-08-08"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Proposta histórica/predecessora. Não comprova implementação, teste ou aprovação no ambiente atual."
+
+  - id: "SRC_MIGRATIONS_06"
+    canonical_title: "06 — Migrations Versionadas e Rollback — CEPRAEA Beach Handball Pro"
+    notebook_source_id: "9d0e1f8a-5e6f-1a8d-6c5b-4f3a2b1c0d9e"
+    drive_file_id: null
+    source_type: "SQL"
+    publisher: "Engenharia de Dados CEPRAEA"
+    source_revision: "20261013000001"
+    publication_date: "2026-10-13"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Proposta histórica/predecessora. Não comprova implementação, teste ou aprovação no ambiente atual."
+
+  - id: "SRC_RBAC_RLS_07"
+    canonical_title: "07 — Matriz RBAC e Políticas RLS (Supabase) — CEPRAEA Beach Handball Pro"
+    notebook_source_id: "0e1f2a9b-6f7a-2b9e-7d6c-5a4b3c2d1e0f"
+    drive_file_id: null
+    source_type: "SQL"
+    publisher: "Segurança e Governança de Dados"
+    source_revision: "1.0"
+    publication_date: "2026-08-08"
+    retrieved_at: null
+    content_sha256: null
+    language: "pt-BR"
+    authority_class: "HISTORICA"
+    lifecycle_status: "HISTORICA"
+    notebook_status: "READY"
+    valid_from: null
+    valid_to: null
+    supersedes_source_id: null
+    duplicate_of_source_id: null
+    supported_domain_ids:
+      - "PARTIDAS_SCOUT_ANALISE_TATICA"
+    limitations:
+      - "Proposta histórica/predecessora. Não comprova implementação, teste ou aprovação no ambiente atual."
+
+evidence_refs:
+  - id: "EVID_IHF_SPIN_SHOT_CRITERIA"
+    source_id: "SRC_IHF_SPIN_INFLIGHT_2023"
+    locator: "Slides 11-35"
+    evidence_type: "REGRA"
+    excerpt: "Spin shot: A shot taken with full turn of the body in the air. Correct ('complete') spin shot - when the jumping feet of the player are pointing directly towards the goal at the point of take-off."
+    interpretation: "Gols de Spin Shot valem 2 pontos apenas quando executados com giro completo de 360 graus do corpo no ar e com os pés da atleta apontando diretamente para o gol no momento do salto."
+
+  - id: "EVID_IHF_INFLIGHT_CONTROL"
+    source_id: "SRC_IHF_SPIN_INFLIGHT_2023"
+    locator: "Slides 36-43"
+    evidence_type: "REGRA"
+    excerpt: "Two points are awarded only if the player who is in-flight controls the ball and shoots at goal while in the air. 'Slapping' the ball or just 'pushing' the ball into the goal is worth one point."
+    interpretation: "Gols em ponte aérea (in-flight) valem 2 pontos apenas quando a atleta no ar domina e controla a bola antes do arremesso. Empurrar ou dar um tapa na bola diretamente para o gol no ar vale apenas 1 ponto."
+
+  - id: "EVID_IHF_6M_THROW_SCORING"
+    source_id: "SRC_IHF_SPIN_INFLIGHT_2023"
+    locator: "Slides 44-47; SRC_IHF_6M_PUNISHMENTS_2023 Slides 03-09"
+    evidence_type: "REGRA"
+    excerpt: "A goal scored by a 6-metre throw is awarded with two points. A clear chance of scoring is destroyed anywhere on the court by a player or a team official of the opposing team."
+    interpretation: "Gols decorrentes de Tiro de 6 Metros concedidos após a destruição de uma chance clara de gol valem obrigatoriamente 2 pontos."
+
+  - id: "EVID_IHF_GOALKEEPER_SPECIALIST_GOAL"
+    source_id: "SRC_IHF_SPIN_INFLIGHT_2023"
+    locator: "Slides 48-51"
+    evidence_type: "REGRA"
+    excerpt: "Every goal made by a goalkeeper or specialist is awarded two points. They wear differently coloured shirts."
+    interpretation: "Qualquer gol assinalado diretamente pela Goleira (arremessando de sua própria área) ou pela Especialista (vestindo uniforme de cor diferenciada) vale 2 pontos."
+
+  - id: "EVID_IHF_ENGLISH_PREVALENCE"
+    source_id: "SRC_IHF_RULES_2026_EN"
+    locator: "IHF Rules 2026 - Preâmbulo e Disposições Gerais"
+    evidence_type: "REGRA"
+    excerpt: "The official text of the IHF Beach Handball Rules of the Game is published in English. In case of divergence between translations and the English text, the English version shall prevail."
+    interpretation: "O texto oficial em língua inglesa possui prevalência hierárquica e normativa absoluta sobre qualquer tradução ou versão regional em português em caso de dúvida conceitual ou divergência terminológica."
+
+  - id: "EVID_FHERJ_STALE_SCORING_RULE"
+    source_id: "SRC_MODELO_CONCEITUAL_04A"
+    locator: "Seção 4, SGATE-0023; 04B Seção 3.25"
+    evidence_type: "DECISAO"
+    excerpt: "A pontuação FHERJ 2026 está governada por SGATE-0023: posições 1..7 validadas em 16/13/11/10/9/8/7; o Art. 25º armazenado está STALE_FOR_SCORING e valores não verificados não podem ser inferidos."
+    interpretation: "O Art. 25º do regulamento FHERJ antigo encontra-se obsoleto para atribuição de pontos por etapa (STALE_FOR_SCORING), prevalecendo a tabela oficial homologada pelo SGATE-0023 para as posições de 1º a 7º lugar (16, 13, 11, 10, 9, 8 e 7 pontos)."
+
+  - id: "EVID_SGATE_0024_CAMPINAS_EXCEPTION"
+    source_id: "SRC_MODELO_CONCEITUAL_04A"
+    locator: "Seção 9, SGATE-0024; 04B Seção 10.6"
+    evidence_type: "DECISAO"
+    excerpt: "Campinas/SP participa e é classificada normalmente em cada etapa, recebe e acumula pontos normalmente, mas após a última etapa é excluída do FINAL_CIRCUIT_STANDING por ser equipe convidada/fora do estado."
+    interpretation: "Equipes convidadas de outros estados (como Campinas/SP no Circuito Carioca 2026) acumulam pontos e classificam-se em etapas normais, mas possuem elegibilidade contextual (INELIGIBLE_BY_EXCEPTION) que as exclui da classificação final do circuito sem alterar o histórico factual."
+
+  - id: "EVID_CEPRAEA_GOALKEEPER_POSITION"
+    source_id: "SRC_CEPRAEA_DATABASE"
+    locator: "Aba DB_CONFIG, chave goalkeeper_semantics; 04A Seção 6"
+    evidence_type: "DECISAO"
+    excerpt: "goalkeeper_semantics: GOLEIRA_IS_POSITION_UNDER_DEFESA: Decisão humana 2026-08-10: GOLEIRA é posição, não função; pertence à função DEFESA. GOLEIRA não pode ser reintroduzida como FUNÇÃO da taxonomia TACT V2."
+    interpretation: "A Goleira é estritamente uma posição tática integrada à macrofunção defensiva (DEFESA) no sistema de dados, e não uma função isolada ou independente na taxonomia do esporte."
+
+  - id: "EVID_HISTORICAL_BASELINE_STOP_GATE"
+    source_id: "SRC_CEPRAEA_DATABASE"
+    locator: "Aba DB_CONFIG, chave sql_stop_gate; 04B Seção 7; 05 Seção 0"
+    evidence_type: "DECISAO"
+    excerpt: "sql_stop_gate: FECHADO. Nenhum SQL, migração, RLS ou banco físico foi gerado nesta execução."
+    interpretation: "Os artefatos 04A a 07 configuram um baseline histórico de reconciliação de dados, mantendo o STOP GATE físico trancado e fechado (sql_stop_gate: FECHADO), impedindo qualquer execução de DDL ou alteração de banco no ambiente corrente sem nova ordem expressa."
+
+precedence_rules:
+  - id: "PREC_IHF_EN_OVER_PT"
+    higher_authority_source_id: "SRC_IHF_RULES_2026_EN"
+    lower_authority_source_id: "SRC_IHF_RULES_2026_PT"
+    scope: "Regras do jogo, terminologia tática, mecânica de arbitragem e pontuação de finalizações."
+    rationale: "O regulamento internacional da IHF estabelece que o texto original publicado em inglês prevalece soberanamente sobre qualquer tradução ou adaptação nacional."
+    evidence_ref_ids:
+      - "EVID_IHF_ENGLISH_PREVALENCE"
+
+  - id: "PREC_NORMATIVE_OVER_OPERATIONAL"
+    higher_authority_source_id: "SRC_IHF_RULES_2026_EN"
+    lower_authority_source_id: "SRC_PROTOCOLO_SCOUT"
+    scope: "Definição do esporte, valor de gols, penalidades disciplinares e critérios de validação de jogadas em geral."
+    rationale: "As regras formais da entidade internacional da modalidade superam diretrizes operacionais internas de scout e o banco de dados local CEPRAEA DATABASE em qualquer divergência de conceito ou regra do jogo."
+    evidence_ref_ids:
+      - "EVID_IHF_SPIN_SHOT_CRITERIA"
+      - "EVID_IHF_INFLIGHT_CONTROL"
+      - "EVID_IHF_6M_THROW_SCORING"
+      - "EVID_IHF_GOALKEEPER_SPECIALIST_GOAL"
+
+  - id: "PREC_OPERATIONAL_SCORING_OVER_STALE_FHERJ"
+    higher_authority_source_id: "SRC_CEPRAEA_DATABASE"
+    lower_authority_source_id: "SRC_REGULAMENTO_FHERJ_2026"
+    scope: "Pontuação por etapa e ranking do Circuito Carioca de Handebol de Praia 2026."
+    rationale: "Decisões operacionais homologadas e publicadas posteriormente (SGATE-0023 e SGATE-0024) prevalecem sobre a redação obsoleta e desatualizada do Art. 25º da cópia impressa do regulamento estadual."
+    evidence_ref_ids:
+      - "EVID_FHERJ_STALE_SCORING_RULE"
+      - "EVID_SGATE_0024_CAMPINAS_EXCEPTION"
+
+  - id: "PREC_EXECUTION_CONTROL_OVER_HISTORICAL"
+    higher_authority_source_id: "SRC_CTRL_FLUXO_MODELAGEM"
+    lower_authority_source_id: "SRC_MODELO_CONCEITUAL_04A"
+    scope: "Status de aprovação, estado de execução e permissão de modificação física no ambiente atual."
+    rationale: "As diretrizes fixadas na execução corrente redefinem obrigatoriamente o estado do documento para PROPOSTO e mantêm o STOP GATE fechado, sobrepondo-se a estados históricos de 'APPROVED' contidos no texto de propostas passadas."
+    evidence_ref_ids:
+      - "EVID_HISTORICAL_BASELINE_STOP_GATE"
+
+conflicts:
+  - id: "CONF_STATUS_ALLEGED_VS_EXECUTION"
+    status: "DECISAO_HUMANA_PENDENTE"
+    subject_id: "REGISTRATION_STATUS_AND_EXECUTION_GATE"
+    source_ids:
+      - "SRC_MODELO_CONCEITUAL_04A"
+      - "SRC_MODELO_LOGICO_04B"
+      - "SRC_POSTGRESQL_SCHEMA_05"
+      - "SRC_CTRL_FLUXO_MODELAGEM"
+    description: "Propostas históricas (04A, 04B e 05) trazem internamente o cabeçalho 'Estado: APPROVED', contudo as diretrizes de governança do ambiente corrente determinam forçar o estado estrito de 'PROPOSTO' devido à ausência de homologação prévia nesta execução."
+    impact: "Bloqueia a promoção automática dos esquemas para o estado CANÔNICO ou VIGENTE e impede a execução não supervisionada de scripts SQL no banco de dados."
+    resolution: "MANTIDO_ESTADO_PROPOSTO_E_STOP_GATE_FECHADO_CONFORME_DIRETRIZA_EXECUCAO_CORRENTE"
+    decision_id: null
+    evidence_ref_ids:
+      - "EVID_HISTORICAL_BASELINE_STOP_GATE"
+
+  - id: "CONF_FHERJ_ART25_VS_SGATE0023"
+    status: "SUBSTITUICAO_DEMONSTRADA"
+    subject_id: "CARIOCA_2026_STAGE_POINT_AWARDS"
+    source_ids:
+      - "SRC_REGULAMENTO_FHERJ_2026"
+      - "SRC_CEPRAEA_DATABASE"
+      - "SRC_MODELO_CONCEITUAL_04A"
+    description: "O texto impresso do Art. 25º do Regulamento FHERJ diverge da tabela de pontuação de etapas efetivamente homologada para 2026 (1º ao 7º lugar: 16, 13, 11, 10, 9, 8 e 7 pontos) e da regra de exceção para equipes convidadas (SGATE-0024)."
+    impact: "A regra do Art. 25º foi declarada STALE_FOR_SCORING. A atribuição de pontos para equipes classificadas do 8º lugar em diante não pode ser calculada por extrapolação, e equipes convidadas como Campinas/SP devem ser tratadas via elegibilidade no ranking final."
+    resolution: "Adotada formalmente a tabela do SGATE-0023 para os lugares de 1 a 7; colocações 8+ são mantidas no estado INDETERMINATE até confirmação por boletim oficial; Campinas/SP é mantida no circuito acumulado mas excluída da classificação final conforme SGATE-0024."
+    decision_id: "SGATE-0023"
+    evidence_ref_ids:
+      - "EVID_FHERJ_STALE_SCORING_RULE"
+      - "EVID_SGATE_0024_CAMPINAS_EXCEPTION"
+
+open_issues:
+  - id: "ISSUE_FHERJ_POSITIONS_8_PLUS"
+    subject: "Validação oficial da tabela de pontos FHERJ 2026 para posições 8+"
+    description: "Necessidade de obtenção e verificação de boletim oficial suplementar da FHERJ com a tabela de pontuação autorizada para colocações a partir do 8º lugar (posições 8+ NOT_VERIFIED)."
+    status: "EM_VERIFICACAO"
+    locator: null
+    assigned_to: "Data Steward de Governança da Informação Esportiva"
+
+  - id: "ISSUE_SCOUT_PROTOCOL_IHF_2026_ALIGNMENT"
+    subject: "Alinhamento do Protocolo de Scout com a edição 2026 das Regras IHF"
+    description: "Verificação da atualização e convergência dos parâmetros e códigos de observação do Protocolo de Scout em face das atualizações e esclarecimentos da edição 2026 das Regras Oficiais da IHF."
+    status: "EM_VERIFICACAO"
+    locator: null
+    assigned_to: "Data Steward e Analista Tático de Handebol de Praia"

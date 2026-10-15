@@ -1,0 +1,42 @@
+status: "PASS"
+inputs:
+  base_candidate:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.candidate.yaml"
+    sha256: "86a8deb4bf33e81336c2efc5db322407172535a826d4e58f5ef3f02c0f415deb"
+  semantic_registry:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+    sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+  conceptual_model:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.yaml"
+    version: "0.1.1"
+    sha256: "8f3b83a34f960c4c4387462cecafec2ae6c651046e1f56e3de7710c7c2ddecff"
+    promoted_source_id: "5107f1a8-c307-4203-9694-545689d7d353"
+  source_manifest:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+    sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+changes:
+  previous_conceptual_input:
+    document_id: "CONCEPTUAL_MODEL"
+    version: "0.1.0"
+    sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
+    promoted_source_id: "912812ce-78c6-4acf-85a6-6c0339ce0838"
+  current_conceptual_input:
+    document_id: "CONCEPTUAL_MODEL"
+    version: "0.1.1"
+    sha256: "8f3b83a34f960c4c4387462cecafec2ae6c651046e1f56e3de7710c7c2ddecff"
+    promoted_source_id: "5107f1a8-c307-4203-9694-545689d7d353"
+  removed_pending_reconciliation_note: true
+  logical_structure_changed: false
+  approved_logical_relationship_ids: []
+upstream_reconciliation:
+  required: false
+  relationship_id: "EQUIPE_PARTICIPA_COMPETICAO"
+  resolved_in_conceptual_version: "0.1.1"
+counts:
+  relations: 32
+  foreign_keys: 59
+  normalization_decisions: 6
+  open_issues: 1
+  covered_conceptual_entities: 29
+  covered_conceptual_relationships: 47
+  approved_logical_relationships: 0
