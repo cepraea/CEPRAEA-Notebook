@@ -744,6 +744,23 @@ stages:
         open_issues: 1
         formalizations_backported: 9
         reconciliations_backported: 2
+    enforcement_reconciliation:
+      status: "APPROVED_AND_PROMOTED"
+      decision_source_id: "4761f1cf-bf81-463f-bd36-a78ab24786de"
+      script: "notebooklm-modelagem/scripts/reconcile_stage08_enforcement.py"
+      script_sha256: "82874b404d47b65d828d4ee75b58bd5dbbaca54690919b4f2ed3945b16d2fb37"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.v0.1.2.yaml"
+      output_sha256: "7a82bd2235897e67338036ba5be67f222ac3fdcf19a05bb919ecb1787824b1cb"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.v0.1.2.enforcement-audit.yaml"
+      audit_sha256: "7e8631785613e8294d706991a7fee1f7eaaa2615e155f56b1ebe1f19b5a64e73"
+      reviewed_at: "2026-10-15T17:04:38-03:00"
+      counts:
+        relations: 32
+        columns: 204
+        foreign_keys: 59
+        declarative_checks: 5
+        structural_invariants: 3
+        deferred_rules: 5
     promotion_history:
       - version: "0.1.0"
         sha256: "d49ca992ba7e1ab5b2378bc24867bf876cd67f940e819be57bad297993b79712"
@@ -752,15 +769,22 @@ stages:
         promoted_at: "2026-10-14T15:52:45-03:00"
         wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/03-modelo-logico.promoted.md"
         wrapper_sha256: "63d1c00efeb91dc59615054c9a759b688c414f84d7575644bd2276effda35a4f"
+      - version: "0.1.1"
+        sha256: "aebdbd4c7b725a25ce1b89d632ae56e94ee25d5529e8ce7c82ab87387ef2e492"
+        promoted_source_id: "e2ba2453-a22f-4784-b90d-34173898d6ed"
+        promoted_source_status: "READY"
+        promoted_at: "2026-10-15T14:12:55-03:00"
+        wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/03-modelo-logico.v0.1.1.promoted.md"
+        wrapper_sha256: "4545c087367ac8bf46108d2da5502ba6527d680950d769d32d662787f34642ce"
     promotion:
       status: "PROMOTED"
-      version: "0.1.1"
-      sha256: "aebdbd4c7b725a25ce1b89d632ae56e94ee25d5529e8ce7c82ab87387ef2e492"
-      promoted_source_id: "e2ba2453-a22f-4784-b90d-34173898d6ed"
+      version: "0.1.2"
+      sha256: "7a82bd2235897e67338036ba5be67f222ac3fdcf19a05bb919ecb1787824b1cb"
+      promoted_source_id: "1689f311-fd8c-420e-bf53-593d7d90cd1d"
       promoted_source_status: "READY"
-      promoted_at: "2026-10-15T14:12:55-03:00"
-      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/03-modelo-logico.v0.1.1.promoted.md"
-      wrapper_sha256: "4545c087367ac8bf46108d2da5502ba6527d680950d769d32d662787f34642ce"
+      promoted_at: "2026-10-15T17:09:08-03:00"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/03-modelo-logico.v0.1.2.promoted.md"
+      wrapper_sha256: "df0670dfa3f66cc72e5ecd53095c6ce98b4f34d965cfa0582ecb6c7310327940"
   - id: "STAGE_04"
     started_at: "2026-10-14T16:04:15-03:00"
     prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-04-run-001.md"
@@ -874,13 +898,41 @@ stages:
       approved_by: "USER"
       approved_at: "2026-10-14T23:19:12-03:00"
       evidence: "USER_REQUEST_2026_10_14_REVIEW_ACCESS_CLASSIFICATIONS_AND_POSTGRESQL_TYPES_THEN_APPROVE_AND_PROMOTE_STAGE_04; SPECIALIZED_VALIDATION_PASS; LEAST_PRIVILEGE_ACCESS_REVIEW_APPLIED; POSTGRESQL_TYPE_REVIEW_PASS"
+    enforcement_reconciliation:
+      status: "APPROVED_AND_PROMOTED"
+      decision_source_id: "4761f1cf-bf81-463f-bd36-a78ab24786de"
+      script: "notebooklm-modelagem/scripts/reconcile_stage08_enforcement.py"
+      script_sha256: "82874b404d47b65d828d4ee75b58bd5dbbaca54690919b4f2ed3945b16d2fb37"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.v0.1.1.yaml"
+      output_sha256: "82ed6eb37a7872bb1eb66c6d853dd3e9d96b53f5a93b4670b67bd489a44c348e"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.v0.1.1.enforcement-audit.yaml"
+      audit_sha256: "2d122101b2cde5628e369678e6effb9a83bfb6e7a0064d215b74760c7265b087"
+      reviewed_at: "2026-10-15T17:12:00-03:00"
+      counts:
+        tables: 32
+        columns: 204
+        foreign_keys: 59
+        unique_constraints: 17
+        checks: 5
+        index_candidates: 59
+        open_issues: 6
+    promotion_history:
+      - version: "0.1.0"
+        sha256: "969b7479813c97f5b2da95631b185211495b509cf86147a0337a53dcbb909c2f"
+        promoted_source_id: "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+        promoted_source_status: "READY"
+        promoted_at: "2026-10-14T23:19:12-03:00"
+        wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/04-dicionario-dados.promoted.md"
+        wrapper_sha256: "36c53e547fae221d4f05c63155f933b84b3d31a8db030cbbcad63ca456def6f6"
     promotion:
       status: "PROMOTED"
-      promoted_source_id: "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+      version: "0.1.1"
+      sha256: "82ed6eb37a7872bb1eb66c6d853dd3e9d96b53f5a93b4670b67bd489a44c348e"
+      promoted_source_id: "0f1d2800-6195-4758-be73-a61da4546429"
       promoted_source_status: "READY"
-      promoted_at: "2026-10-14T23:19:12-03:00"
-      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/04-dicionario-dados.promoted.md"
-      wrapper_sha256: "36c53e547fae221d4f05c63155f933b84b3d31a8db030cbbcad63ca456def6f6"
+      promoted_at: "2026-10-15T17:38:22-03:00"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/04-dicionario-dados.v0.1.1.promoted.md"
+      wrapper_sha256: "ba73d2724e549b95ee40ac495561a3062dcb5acea9e500a9f7c6648597f0f17d"
   - id: "STAGE_05"
     started_at: "2026-10-14T23:46:35-03:00"
     prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-05-run-001.md"
@@ -1036,15 +1088,44 @@ stages:
       approved_by: "USER"
       approved_at: "2026-10-15T12:22:06-03:00"
       evidence: "USER_AUTHORIZED_ACCEPTANCE_OF_68_DERIVATIONS_FORMALIZATION_OF_9_CONDITIONALS_RECONCILIATION_OF_2_DIVERGENCES_AND_STAGE_05_APPROVAL_AND_PROMOTION"
+    enforcement_reconciliation:
+      status: "APPROVED_AND_PROMOTED"
+      decision_source_id: "4761f1cf-bf81-463f-bd36-a78ab24786de"
+      script: "notebooklm-modelagem/scripts/reconcile_stage08_enforcement.py"
+      script_sha256: "82874b404d47b65d828d4ee75b58bd5dbbaca54690919b4f2ed3945b16d2fb37"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.v0.1.1.yaml"
+      output_sha256: "e2d497b0f96bcc74e9287561a2432d821a0dbd5349b01699acb2d2b50042959e"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.v0.1.1.enforcement-audit.yaml"
+      audit_sha256: "6b5e681a0785ef1cdea5ef82c5e3225894014d410702f1f9bb7b5bc329bbbae3"
+      reviewed_at: "2026-10-15T17:18:00-03:00"
+      counts:
+        traces: 113
+        material_constraints: 93
+        declarative_checks: 5
+        structural_invariants: 3
+        deferred_rules: 5
+        open_issues: 6
+    promotion_history:
+      - version: "0.1.0"
+        sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
+        promoted_source_id: "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+        source_status: "READY"
+        source_type: "MARKDOWN"
+        title: "PROMOTED — Matriz de rastreabilidade planejada v0.1.0 — 6bd813a8eb95"
+        wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/05-matriz-rastreabilidade.promoted.md"
+        wrapper_sha256: "6bd813a8eb9546b286e0cece607d8e7c40c3d8714e3292b8f058ae83799a93f1"
+        promoted_at: "2026-10-15T12:23:41-03:00"
     promotion:
       status: "PROMOTED"
-      promoted_source_id: "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+      version: "0.1.1"
+      sha256: "e2d497b0f96bcc74e9287561a2432d821a0dbd5349b01699acb2d2b50042959e"
+      promoted_source_id: "8b83dda5-dc87-4562-a1d0-ea2e89558b10"
       source_status: "READY"
       source_type: "MARKDOWN"
-      title: "PROMOTED — Matriz de rastreabilidade planejada v0.1.0 — 6bd813a8eb95"
-      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/05-matriz-rastreabilidade.promoted.md"
-      wrapper_sha256: "6bd813a8eb9546b286e0cece607d8e7c40c3d8714e3292b8f058ae83799a93f1"
-      promoted_at: "2026-10-15T12:23:41-03:00"
+      title: "05-matriz-rastreabilidade.v0.1.1.promoted.md"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/05-matriz-rastreabilidade.v0.1.1.promoted.md"
+      wrapper_sha256: "0163d6cd95d49ec64eb19d3d4286f3c18272bcb429ac57790c84bd19f5ffe80b"
+      promoted_at: "2026-10-15T17:46:24-03:00"
   - id: "STAGE_06"
     started_at: "2026-10-15T12:33:21-03:00"
     prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-06-run-001.md"
@@ -1368,30 +1449,33 @@ stages:
       promoted_at: "2026-10-15T16:00:15-03:00"
   - id: "STAGE_08"
     started_at: "2026-10-15T16:16:55-03:00"
-    prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-08-run-001.md"
-    prompt_sha256: "731c377925b69e90c35f4f22c1f707d0d67f82755a97d83ee8b1aacba9b2b109"
+    prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-08-run-002.md"
+    prompt_sha256: "c3f9a593c86a83fff7a2684428c44d66a74dbacefe3eb1db057505d6f794b7a0"
+    correction_prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-08-correction-002.md"
+    correction_prompt_sha256: "3326735e20bbdfa53bc22ab2c923ab28b73c0220604fa2877db7f057f55a2ee5"
     base_prompt_file: "notebooklm-modelagem/prompts/08-gerar-schema-postgresql-candidato.md"
     base_prompt_sha256: "5b5ea7c8044b946b31e6bd546ae3c3d4774768357de957c266fb2738f9c04834"
     selected_source_ids:
-      - "e2ba2453-a22f-4784-b90d-34173898d6ed"
-      - "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
-      - "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+      - "1689f311-fd8c-420e-bf53-593d7d90cd1d"
+      - "0f1d2800-6195-4758-be73-a61da4546429"
+      - "8b83dda5-dc87-4562-a1d0-ea2e89558b10"
       - "c7f18856-d7c7-4b77-8feb-3266d60337c0"
       - "8347d2e6-f0fd-4872-a5f6-b23adae009f3"
       - "167b105a-d750-4d7e-bc53-3da5d56e10f4"
+      - "4761f1cf-bf81-463f-bd36-a78ab24786de"
     input_artifacts:
       - document_id: "LOGICAL_MODEL"
-        version: "0.1.1"
-        sha256: "aebdbd4c7b725a25ce1b89d632ae56e94ee25d5529e8ce7c82ab87387ef2e492"
-        promoted_source_id: "e2ba2453-a22f-4784-b90d-34173898d6ed"
+        version: "0.1.2"
+        sha256: "7a82bd2235897e67338036ba5be67f222ac3fdcf19a05bb919ecb1787824b1cb"
+        promoted_source_id: "1689f311-fd8c-420e-bf53-593d7d90cd1d"
       - document_id: "DATA_DICTIONARY"
-        version: "0.1.0"
-        sha256: "969b7479813c97f5b2da95631b185211495b509cf86147a0337a53dcbb909c2f"
-        promoted_source_id: "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+        version: "0.1.1"
+        sha256: "82ed6eb37a7872bb1eb66c6d853dd3e9d96b53f5a93b4670b67bd489a44c348e"
+        promoted_source_id: "0f1d2800-6195-4758-be73-a61da4546429"
       - document_id: "TRACEABILITY_MATRIX"
-        version: "0.1.0"
-        sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
-        promoted_source_id: "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+        version: "0.1.1"
+        sha256: "e2d497b0f96bcc74e9287561a2432d821a0dbd5349b01699acb2d2b50042959e"
+        promoted_source_id: "8b83dda5-dc87-4562-a1d0-ea2e89558b10"
       - document_id: "ACCESS_REQUIREMENTS"
         version: "0.1.0"
         sha256: "bafce57a9d71ef3ea0ba54c79fac585f075d8d0efe5fe22967e62bde6c424c92"
@@ -1404,26 +1488,73 @@ stages:
         version: "1"
         sha256: "95861272d84e896a0ba82793b63788d8ec070efa284d4100da47b773e1657c66"
         promoted_source_id: "167b105a-d750-4d7e-bc53-3da5d56e10f4"
+      - document_id: "STAGE_08_ENFORCEMENT_REVIEW"
+        version: "1.0.0"
+        sha256: "8931793affb327caf64a69d6508d97a6e9cee0c178b756c59e82837e704d1d75"
+        promoted_source_id: "4761f1cf-bf81-463f-bd36-a78ab24786de"
+    reconciliation:
+      status: "COMPLETE"
+      decision_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/08-enforcement.operator-decision.md"
+      decision_sha256: "8931793affb327caf64a69d6508d97a6e9cee0c178b756c59e82837e704d1d75"
+      decision_source_id: "4761f1cf-bf81-463f-bd36-a78ab24786de"
+      declarative_checks: 5
+      structural_invariants: 3
+      deferred_rules: 5
+      relations_added: 0
+      columns_added: 0
     generation:
-      mechanism: "REPORT_CUSTOM"
-      status: "REJECTED_AFTER_VALIDATION"
-      task_id: "c5fad8ec-2f6e-4d75-a0a4-1d8f59fd0772"
-      artifact_id: "c5fad8ec-2f6e-4d75-a0a4-1d8f59fd0772"
+      mechanism: "REPORT_CUSTOM_WITH_DETERMINISTIC_OPERATOR_NORMALIZATION"
+      status: "CANDIDATE_READY"
+      task_id: "c5daabd6-1192-4d09-b79c-9408661dc1b7"
+      artifact_id: "c5daabd6-1192-4d09-b79c-9408661dc1b7"
       artifact_status: "COMPLETED"
-      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-001.md"
-      output_sha256: "b6e88b5b436b2f2cd275695fb9821aebc0f897095b1ac4e21db566570e6e3a1a"
+      notebook_output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-002.md"
+      notebook_output_sha256: "4e134a0886048cd2fac18f0cde23066f82e0122afbd457e3b78f0b3a7efc2acc"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.candidate.sql"
+      output_sha256: "f5224887f8dd85b82542e3645e0c68fbad77c336a5f0509c229a6f7867694828"
+      normalization_script: "notebooklm-modelagem/scripts/normalize_stage08_schema.py"
+      normalization_script_sha256: "34256c1b1d285a4f40bd34cfe7fb6c308aaa58f54146827b94d668f93f9b5a8f"
+      normalization_audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.normalization-audit.yaml"
+      normalization_audit_sha256: "54004d9e5244e4f6fb7f59691db624a50259c232b2e689eccc9eb3b4333e3fb3"
+    attempts:
+      - task_id: "c5fad8ec-2f6e-4d75-a0a4-1d8f59fd0772"
+        status: "REJECTED_AFTER_VALIDATION"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-001.md"
+        output_sha256: "b6e88b5b436b2f2cd275695fb9821aebc0f897095b1ac4e21db566570e6e3a1a"
+        rejection_reason: "ENFORCEMENT_NOT_RECONCILED; FK_ACTIONS_MISSING; CONSTRAINTS_MISSING; MARKDOWN_H1"
+      - task_id: null
+        status: "FAILED_BEFORE_TASK_CREATION"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-08-run-002.md"
+        language: "pt-BR"
+        failure_reason: "VALIDATION_ERROR_UNKNOWN_LANGUAGE_CODE"
+      - task_id: "c5daabd6-1192-4d09-b79c-9408661dc1b7"
+        status: "ACCEPTED_FOR_OPERATOR_NORMALIZATION"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-08-run-002.md"
+        language: "pt_BR"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-002.md"
+        output_sha256: "4e134a0886048cd2fac18f0cde23066f82e0122afbd457e3b78f0b3a7efc2acc"
+        acceptance_evidence: "TABLES_32; COLUMNS_204; FKS_59; UNIQUES_17; CHECKS_5; EXCLUSION_PRESENT; 15_DETERMINISTIC_CORRECTIONS_REQUIRED"
+      - task_id: "f0f349f3-0e3d-4c9d-bba9-df36eafcc339"
+        status: "REJECTED_AFTER_VALIDATION"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-08-correction-002.md"
+        language: "pt_BR"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-003.md"
+        output_sha256: "085e52e4520eee812a50b0b6e3abe6425ee37503bff94fe6d72fa6afb2484edc"
+        rejection_reason: "CORRECTION_NOT_SURGICAL; ON_DELETE_REMOVED_FROM_47_FKS; INDEX_STRATEGY_CHANGED; EXCLUSION_ID_CHANGED"
     validation:
-      status: "FAIL"
-      validated_at: "2026-10-15T16:30:01-03:00"
-      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-001.audit.yaml"
-      audit_sha256: "88693d17ae3974aa843e801f419030da1f748b89a9392d3edb5f3956cbb7b2b5"
-      evidence: "TABLES_32_OF_32; COLUMNS_AND_TYPES_204_OF_204; FK_IDS_59_OF_59; FK_INDEX_SUPPORT_59_OF_59; FK_DELETE_UPDATE_ACTIONS_0_OF_59; LOGICAL_UNIQUES_16_OF_17; LOGICAL_CHECK_IDS_3_OF_13; EXCLUSION_CONSTRAINT_NOT_EMITTED; SEVEN_RULES_LACK_IMPLEMENTABLE_PHYSICAL_INPUTS; MARKDOWN_H1_PRESENT"
+      status: "PASS"
+      validated_at: "2026-10-15T18:33:00-03:00"
+      script: "notebooklm-modelagem/scripts/validate_stage08_schema.py"
+      script_sha256: "ea02fc9f96a5a329e91cf479cf6657b794331dc7d1992ba2a61f8d18862c55bc"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.candidate.audit.yaml"
+      audit_sha256: "63972284e3e87cebc41d2a5444db46080228985beedd012a69d3990ec085f8d7"
+      evidence: "SQL_ONLY_PASS; TABLES_32_OF_32; SCHEMAS_PUBLIC_9_PRIVATE_23; COLUMNS_TYPES_NULLABILITY_DEFAULTS_204_OF_204; PRIMARY_KEYS_32_OF_32; FKS_AND_ACTIONS_59_OF_59; UNIQUES_17_OF_17; DIRECT_CHECKS_AND_SEMANTICS_5_OF_5; TEMPORAL_EXCLUSION_PASS; FK_INDEXES_50_EXPLICIT_PLUS_9_COVERED; LEGACY_IDS_ABSENT; NO_SQL_EXECUTION"
     approval:
       required: true
-      decision: "NOT_STARTED"
+      decision: "AWAITING_HUMAN_DECISION"
       approved_by: null
       approved_at: null
-      evidence: null
+      evidence: "CANDIDATE_VALIDATION_PASS; USER_AUTHORIZATION_LIMITED_TO_SCHEMA_CANDIDATE_GENERATION"
     promotion:
       status: "NOT_STARTED"
       promoted_source_id: null
@@ -1498,11 +1629,11 @@ blockers:
     decision_required: "REVISAR_APROVAR_E_PROMOVER_CONCEPTUAL_MODEL_E_LOGICAL_MODEL_COM_AS_11_DECISOES"
     resolution: "CONCEPTUAL_MODEL_0_1_2_AND_LOGICAL_MODEL_0_1_1_APPROVED_PROMOTED_AND_USED_IN_STAGE_07_REEXECUTION"
   - id: "BLOCK_STAGE_08_PHYSICAL_ENFORCEABILITY"
-    status: "ACTIVE"
+    status: "RESOLVED"
     affected_stage_id: "STAGE_08"
     description: "A geração física expôs sete regras sem suporte suficiente para uma implementação SQL fiel; nesse conjunto, duas regras inferenciais não possuem responsabilidade de enforcement definida. O relatório também omitiu ações referenciais das 59 FKs e constraints diretamente implementáveis."
     decision_required: "RECONCILIAR_ENFORCEMENT_COMO_CONSTRAINT_TRIGGER_VALIDACAO_INGESTAO_OU_INVARIANTE_E_RETROPROPAGAR_MODELO_DICIONARIO_RASTREABILIDADE"
-    resolution: null
+    resolution: "ENFORCEMENT_CLASSIFIED_AS_5_DECLARATIVE_CHECKS_3_STRUCTURAL_INVARIANTS_AND_5_DEFERRED_RULES; LOGICAL_0_1_2_DICTIONARY_0_1_1_TRACEABILITY_0_1_1_PROMOTED; SCHEMA_CANDIDATE_VALIDATION_PASS"
 
 physical_gate:
   recommendation_artifact_id: "STOP_GATE_PARTIDAS_SCOUT_ANALISE_TATICA@0.2.0"

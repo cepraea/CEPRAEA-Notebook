@@ -141,7 +141,7 @@ Neste quadro, `[x]` significa que o artefato do estágio foi validado, aprovado 
 - [x] **STAGE_05 — Matriz de rastreabilidade planejada:** 68 derivações aceitas, 9 condicionais formalizadas, 2 divergências reconciliadas e artefato promovido.
 - [x] **STAGE_06 — Requisitos de acesso:** papéis, recursos, permissões, testes e política de negação padrão aprovados e promovidos.
 - [x] **STAGE_07 — Recomendação do `STOP GATE`:** `READY_WITH_RESTRICTIONS` aprovado, promovido e limitado à geração do schema PostgreSQL candidato no `STAGE_08`.
-- [ ] **STAGE_08 — Schema PostgreSQL candidato:** gerar o modelo físico somente para o escopo liberado.
+- [x] **STAGE_08 — Schema PostgreSQL candidato:** candidato gerado e validado estaticamente para o escopo liberado; aprovação e promoção permanecem pendentes, sem execução de SQL.
 - [ ] **STAGE_09 — Políticas RLS candidatas:** derivar grants e policies do artefato de acesso promovido.
 - [ ] **STAGE_10 — Seeds simulados candidatos:** preparar dados exclusivamente fictícios.
 - [ ] **STAGE_11 — Testes pgTAP candidatos:** materializar testes estruturais, positivos, negativos e de acesso.
