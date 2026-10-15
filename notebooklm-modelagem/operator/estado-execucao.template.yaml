@@ -1,0 +1,61 @@
+schema_version: "1.0"
+run:
+  id: "RUN_AAAAMMDD_DOMINIO_NNN"
+  domain_id: "DOMINIO_DELIMITADO"
+  notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
+  status: "PLANEJADA|EM_EXECUCAO|BLOQUEADA|CONCLUIDA"
+  started_at: null
+  completed_at: null
+  operator: "RESPONSAVEL"
+
+selected_sources:
+  - source_id: "NOTEBOOK_SOURCE_ID"
+    title: "TITULO"
+    role: "ORIGINAL|NORMATIVA|OPERACIONAL|ARTEFATO_PROMOVIDO|EVIDENCIA_EXECUCAO"
+    readiness: "READY|PROCESSING|FAILED"
+    content_sha256: null
+
+stages:
+  - id: "STAGE_00"
+    prompt_file: "notebooklm-modelagem/prompts/00-reconciliar-fontes.md"
+    selected_source_ids:
+      - "NOTEBOOK_SOURCE_ID"
+    input_artifacts: []
+    generation:
+      task_id: null
+      artifact_id: null
+      status: "NOT_STARTED|GENERATING|COMPLETED|FAILED"
+    download:
+      path: null
+      sha256: null
+    validation:
+      status: "NOT_RUN|PASS|FAIL"
+      validated_at: null
+      evidence: null
+    approval:
+      required: true
+      decision: "PENDING|APPROVED|REJECTED|NOT_REQUIRED"
+      approved_by: null
+      approved_at: null
+      evidence: null
+    promotion:
+      status: "NOT_STARTED|PROCESSING|READY|FAILED|NOT_APPLICABLE"
+      promoted_source_id: null
+
+physical_gate:
+  recommendation_artifact_id: null
+  recommendation: "PENDING|READY|READY_WITH_RESTRICTIONS|BLOCKED"
+  operator_decision: "PENDING|AUTHORIZED|AUTHORIZED_WITH_RESTRICTIONS|REJECTED"
+  authorized_scope: []
+  restrictions: []
+  decided_by: null
+  decided_at: null
+  evidence: null
+
+implementation:
+  migration_path: null
+  migration_sha256: null
+  rollback_path: null
+  local_reset_status: "NOT_RUN|PASS|FAIL"
+  database_test_status: "NOT_RUN|PASS|FAIL"
+  evidence_paths: []

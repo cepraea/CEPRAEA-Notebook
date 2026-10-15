@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Git: Auto-commit",
+      "type": "shell",
+      "command": "AGENT_ID=davis bash '${workspaceFolder}/auto-commit.sh'",
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    }
+  ]
+}
