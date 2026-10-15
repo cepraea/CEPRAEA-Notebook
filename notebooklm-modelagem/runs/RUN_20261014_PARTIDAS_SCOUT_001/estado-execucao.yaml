@@ -1118,6 +1118,103 @@ stages:
       wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/06-requisitos-acesso.promoted.md"
       wrapper_sha256: "019fcf89fc49d912d5b8b0bf8b4e4dcc462f0f45d543d766d291e80a0a30e6c0"
       promoted_at: "2026-10-15T13:12:56-03:00"
+  - id: "STAGE_07"
+    started_at: "2026-10-15T13:53:57-03:00"
+    prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-07-run-001.md"
+    prompt_sha256: "142a3c183daf37f890ab34392e5b1925ef333a737c0fa1cbdba7333993d05a50"
+    base_prompt_file: "notebooklm-modelagem/prompts/07-avaliar-stop-gate.md"
+    base_prompt_sha256: "5c682d4a403680dedd8b5c3e204acbdcd83b865d913059a5bb4425c54301b7c4"
+    template_file: "notebooklm-modelagem/templates/07-stop-gate.template.yaml"
+    template_sha256: "0b418b1f84b74dea38bcacf063443ba0579a7650f76af92d686af47d0fce6b89"
+    template_wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/07-stop-gate.template.md"
+    template_wrapper_sha256: "9e5187009399fdb1bc6516a17cd94b9d6b1b8481a48eebe677f285cf242c5229"
+    template_source_id: "9c58d8bf-773d-4bb3-9de6-fd147d370638"
+    selected_source_ids:
+      - "d0a81644-ae48-4ac8-9954-676602780417"
+      - "b9ddf059-9d06-4373-a828-61f409e30113"
+      - "5107f1a8-c307-4203-9694-545689d7d353"
+      - "fdf6c7d9-75c7-41f3-8935-39ffaf747bb1"
+      - "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+      - "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+      - "c7f18856-d7c7-4b77-8feb-3266d60337c0"
+      - "9c58d8bf-773d-4bb3-9de6-fd147d370638"
+    input_artifacts:
+      - document_id: "SOURCE_MANIFEST"
+        version: "0.1.0"
+        sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+        promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
+      - document_id: "SEMANTIC_REGISTRY"
+        version: "0.1.0"
+        sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+        promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
+      - document_id: "CONCEPTUAL_MODEL"
+        version: "0.1.1"
+        sha256: "8f3b83a34f960c4c4387462cecafec2ae6c651046e1f56e3de7710c7c2ddecff"
+        promoted_source_id: "5107f1a8-c307-4203-9694-545689d7d353"
+      - document_id: "LOGICAL_MODEL"
+        version: "0.1.0"
+        sha256: "d49ca992ba7e1ab5b2378bc24867bf876cd67f940e819be57bad297993b79712"
+        promoted_source_id: "fdf6c7d9-75c7-41f3-8935-39ffaf747bb1"
+      - document_id: "DATA_DICTIONARY"
+        version: "0.1.0"
+        sha256: "969b7479813c97f5b2da95631b185211495b509cf86147a0337a53dcbb909c2f"
+        promoted_source_id: "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+      - document_id: "TRACEABILITY_MATRIX"
+        version: "0.1.0"
+        sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
+        promoted_source_id: "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+      - document_id: "ACCESS_REQUIREMENTS"
+        version: "0.1.0"
+        sha256: "bafce57a9d71ef3ea0ba54c79fac585f075d8d0efe5fe22967e62bde6c424c92"
+        promoted_source_id: "c7f18856-d7c7-4b77-8feb-3266d60337c0"
+    generation:
+      mechanism: "REPORT_CUSTOM"
+      status: "REJECTED"
+      task_id: "f57ef692-4f06-4786-9faa-e69c8924b626"
+      artifact_id: "f57ef692-4f06-4786-9faa-e69c8924b626"
+    attempts:
+      - task_id: "f57ef692-4f06-4786-9faa-e69c8924b626"
+        artifact_id: "f57ef692-4f06-4786-9faa-e69c8924b626"
+        mechanism: "REPORT_CUSTOM"
+        status: "REJECTED"
+        completed_at: "2026-10-15T13:55:14-03:00"
+        language: "pt_BR"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-07-run-001.md"
+        prompt_sha256: "142a3c183daf37f890ab34392e5b1925ef333a737c0fa1cbdba7333993d05a50"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/07-stop-gate.report-001.md"
+        sha256: "a8fe315ee38b21dda3fd21681fb6ba29e5fec7109f88b8a82d5f01a78d28ed30"
+        rejection_reason: "TEMPLATE_FIELD_DIVERGENCE; MARKDOWN_H1_PRESENT; HISTORICAL_AND_CROSS_DOMAIN_PHYSICAL_OBJECTS_REINTRODUCED; NONEXISTENT_EVIDENCE_ALIASES"
+    operator_assessment:
+      status: "CANDIDATE_READY"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/07-stop-gate.candidate.yaml"
+      sha256: "db700bbedb94b2fd3ff6a791cf1a67e9fceaeb6f244adde196879c27a80aaf89"
+      assessed_at: "2026-10-15T13:55:14-03:00"
+      recommendation: "BLOCKED"
+      normalization: "NOTEBOOK_RECOMMENDATION_PRESERVED; TEMPLATE_STRUCTURE_REBUILT; HISTORICAL_AND_CROSS_DOMAIN_OBJECTS_DISCARDED; SEVEN_PROMOTED_INPUTS_PINNED; PHYSICAL_SCOPE_SET_TO_EMPTY; STAGE_05_BACKPORT_REGISTERED_AS_BLOCKING"
+      criteria_counts:
+        pass: 5
+        blocked: 2
+        fail: 0
+        not_applicable: 0
+    validation:
+      status: "PASS"
+      validated_at: "2026-10-15T13:55:14-03:00"
+      evidence: "YAML_STRICT_PASS; STOP_GATE_SPECIALIZED_CHECK_PASS; SEVEN_PROMOTED_INPUTS_PINNED; SEVEN_CRITERIA_COMPLETE; FIVE_PASS_TWO_BLOCKED; BLOCKED_RECOMMENDATION; EMPTY_RECOMMENDED_SCOPE; THIRTY_TWO_LOGICAL_RELATIONS_EXCLUDED"
+    approval:
+      required: true
+      decision: "PENDING"
+      approved_by: null
+      approved_at: null
+      evidence: null
+    promotion:
+      status: "NOT_STARTED"
+      promoted_source_id: null
+      source_status: null
+      source_type: null
+      title: null
+      wrapper_path: null
+      wrapper_sha256: null
+      promoted_at: null
 
 incidents:
   - id: "INC_AUTH_001"
@@ -1178,16 +1275,24 @@ blockers:
     description: "O gerador de relatório não obedeceu ao fragmento YAML. A conversa atual do notebook contém dois turnos anteriores; usar chat estruturado isolado exige preservar e depois reinicializar essa conversa."
     decision_required: "AUTORIZAR_SALVAR_HISTORICO_COMO_NOTA_E_REINICIAR_CHAT|MANTER_HISTORICO_E_INTERROMPER_ENRIQUECIMENTO"
     resolution: "HISTORICO_LOCAL_VALIDADO; CHAT_REINICIADO; RESPOSTA_JSON_PRESERVADA; EXCERTOS_VERIFICADOS_CONTRA_FULLTEXT"
+  - id: "BLOCK_STAGE_07_BACKPORT_STAGE_05"
+    status: "ACTIVE"
+    affected_stage_id: "STAGE_07"
+    description: "As 9 formalizações condicionais e as 2 reconciliações aprovadas no STAGE_05 ainda não foram retropropagadas aos modelos conceitual e lógico promovidos."
+    decision_required: "REVISAR_APROVAR_E_PROMOVER_CONCEPTUAL_MODEL_E_LOGICAL_MODEL_COM_AS_11_DECISOES"
+    resolution: null
 
 physical_gate:
-  recommendation_artifact_id: null
-  recommendation: "PENDING"
+  recommendation_artifact_id: "STOP_GATE_PARTIDAS_SCOUT_ANALISE_TATICA@0.1.0"
+  recommendation: "BLOCKED"
   operator_decision: "PENDING"
   authorized_scope: []
-  restrictions: []
+  restrictions:
+    - "ISSUE_GATE_BACKPORT_STAGE_05 deve ser resolvida antes de qualquer escopo físico."
+    - "STAGE_08 e geração de SQL permanecem bloqueados."
   decided_by: null
   decided_at: null
-  evidence: null
+  evidence: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/07-stop-gate.candidate.yaml"
 
 implementation:
   migration_path: null
