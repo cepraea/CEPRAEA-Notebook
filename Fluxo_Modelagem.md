@@ -125,6 +125,39 @@ O Notebook Pro é o núcleo de análise, mas SQL escrito pela IA não é SQL exe
 - [ ] **CONCLUÍDO** — critérios de saída e evidências atendidos.
 - [ ] **NÃO APLICÁVEL** — item fora do escopo, com justificativa.
 
+### Progresso da execução atual
+
+**Execução:** `RUN_20261014_PARTIDAS_SCOUT_001`
+
+**Evidência operacional:** `notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/estado-execucao.yaml`
+
+Neste quadro, `[x]` significa que o artefato do estágio foi validado, aprovado pelo operador e promovido como fonte do NotebookLM. Não significa implementação ou teste no PostgreSQL.
+
+- [x] **STAGE_00 — Manifesto de fontes:** corpus delimitado, fontes reconciliadas e manifesto promovido.
+- [x] **STAGE_01 — Registro semântico:** conceitos, regras, decisões e evidências consolidados e promovidos.
+- [x] **STAGE_02 — Modelo conceitual:** entidades, eventos, estados, relações, cardinalidades e invariantes promovidos.
+- [x] **STAGE_03 — Modelo lógico:** relações, atributos, chaves e restrições lógicas promovidos.
+- [x] **STAGE_04 — Dicionário de dados:** tabelas, colunas, tipos PostgreSQL candidatos e classificações de acesso promovidos.
+- [x] **STAGE_05 — Matriz de rastreabilidade planejada:** 68 derivações aceitas, 9 condicionais formalizadas, 2 divergências reconciliadas e artefato promovido.
+- [x] **STAGE_06 — Requisitos de acesso:** papéis, recursos, permissões, testes e política de negação padrão aprovados e promovidos.
+- [ ] **STAGE_07 — Recomendação do `STOP GATE`:** avaliar critérios e delimitar o escopo físico autorizado.
+- [ ] **STAGE_08 — Schema PostgreSQL candidato:** gerar o modelo físico somente para o escopo liberado.
+- [ ] **STAGE_09 — Políticas RLS candidatas:** derivar grants e policies do artefato de acesso promovido.
+- [ ] **STAGE_10 — Seeds simulados candidatos:** preparar dados exclusivamente fictícios.
+- [ ] **STAGE_11 — Testes pgTAP candidatos:** materializar testes estruturais, positivos, negativos e de acesso.
+- [ ] **STAGE_12 — Migration de avanço candidata:** consolidar DDL, integridade e segurança autorizadas.
+- [ ] **STAGE_13 — Rollback candidato:** definir a estratégia de reversão correspondente.
+- [ ] **STAGE_14 — Rastreabilidade `AS_BUILT`:** reconciliar o implementado e o verificado com o planejado.
+- [ ] **STAGE_15 — Auditoria da entrega:** avaliar evidências, limitações e conclusão do domínio.
+
+**Restrições preservadas antes do modelo físico:**
+
+- [ ] Retropropagar no modelo conceitual e lógico as 9 formalizações e as 2 reconciliações registradas no estágio 05.
+- [ ] Manter a autoconsulta da atleta fora do escopo até existir vínculo confiável entre identidade autenticada e `ATLETA`.
+- [ ] Implementar atribuições de papel auditáveis, temporais e sem autoatribuição.
+- [ ] Garantir revisor distinto do analista original nas políticas e testes de revisão.
+- [ ] Manter os 23 recursos não públicos fora da Data API até revisão explícita do requisito.
+
 ### Regra de progressão
 
 - [ ] Trabalhar em uma fonte ou conjunto diretamente relacionado por vez.
