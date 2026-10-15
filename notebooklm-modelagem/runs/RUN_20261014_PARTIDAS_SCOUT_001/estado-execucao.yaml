@@ -814,6 +814,130 @@ stages:
       promoted_at: "2026-10-14T23:19:12-03:00"
       wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/04-dicionario-dados.promoted.md"
       wrapper_sha256: "36c53e547fae221d4f05c63155f933b84b3d31a8db030cbbcad63ca456def6f6"
+  - id: "STAGE_05"
+    started_at: "2026-10-14T23:46:35-03:00"
+    prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-05-run-001.md"
+    prompt_sha256: "bb5a5a2f2a71452074e5d00466bf6fa5b920b56baadfec8b433b9653b5f6b6bf"
+    correction_prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-05-correction-001.md"
+    correction_prompt_sha256: "bddc7b1c7c7d0d5e73ac7c8303d05d578d73edea88e47770f4249c84c214e2b7"
+    second_correction_prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-05-correction-002.md"
+    second_correction_prompt_sha256: "258c646f2d2bbaaae92b05b0656ce768d136ee6ec044960b49e423eba85a6d11"
+    base_prompt_file: "notebooklm-modelagem/prompts/05-gerar-rastreabilidade-planejada.md"
+    base_prompt_sha256: "ec1c5402e4e65d4f3bcf84589da395845af84bd33505e482d29dd47928f121c2"
+    template_file: "notebooklm-modelagem/templates/05-matriz-rastreabilidade.template.yaml"
+    template_sha256: "fe570c8886b9eedab6589407f2a21911be14d458a21c6bc5a48d2c23284fdcfa"
+    template_wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/05-matriz-rastreabilidade.template.md"
+    template_wrapper_sha256: "8884cbaeed194d9e2a23f4551ab481d9866de0c79148997c1930607f6d23875b"
+    template_source_id: "9d22ef0b-0ec9-467c-8bbe-4f4e8b5683bf"
+    selected_source_ids:
+      - "d0a81644-ae48-4ac8-9954-676602780417"
+      - "b9ddf059-9d06-4373-a828-61f409e30113"
+      - "5107f1a8-c307-4203-9694-545689d7d353"
+      - "fdf6c7d9-75c7-41f3-8935-39ffaf747bb1"
+      - "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+      - "9d22ef0b-0ec9-467c-8bbe-4f4e8b5683bf"
+      - "991b26f0-0d26-4cfe-935d-81b92dee7c76"
+      - "987b84b7-42e9-4c9d-a59c-f7fd292c437a"
+    input_artifacts:
+      - document_id: "SOURCE_MANIFEST"
+        version: "0.1.0"
+        sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+        promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
+      - document_id: "SEMANTIC_REGISTRY"
+        version: "0.1.0"
+        sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+        promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
+      - document_id: "CONCEPTUAL_MODEL"
+        version: "0.1.1"
+        sha256: "8f3b83a34f960c4c4387462cecafec2ae6c651046e1f56e3de7710c7c2ddecff"
+        promoted_source_id: "5107f1a8-c307-4203-9694-545689d7d353"
+      - document_id: "LOGICAL_MODEL"
+        version: "0.1.0"
+        sha256: "d49ca992ba7e1ab5b2378bc24867bf876cd67f940e819be57bad297993b79712"
+        promoted_source_id: "fdf6c7d9-75c7-41f3-8935-39ffaf747bb1"
+      - document_id: "DATA_DICTIONARY"
+        version: "0.1.0"
+        sha256: "969b7479813c97f5b2da95631b185211495b509cf86147a0337a53dcbb909c2f"
+        promoted_source_id: "1c227cde-1ffd-472f-b0ab-92594c05ec2b"
+    generation:
+      mechanism: "REPORT_CUSTOM_CORRECTION"
+      status: "CANDIDATE_READY"
+      task_id: "7e164f9c-fcf6-470c-a4a1-26684f75e4a6"
+      artifact_id: "7e164f9c-fcf6-470c-a4a1-26684f75e4a6"
+    attempts:
+      - task_id: "f1569d30-5516-4ea5-bf05-6b293069d0b6"
+        artifact_id: "f1569d30-5516-4ea5-bf05-6b293069d0b6"
+        mechanism: "REPORT_CUSTOM"
+        status: "REJECTED"
+        started_at: "2026-10-14T23:46:35-03:00"
+        completed_at: "2026-10-14T23:50:59-03:00"
+        language: "pt_BR"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-05-run-001.md"
+        prompt_sha256: "bb5a5a2f2a71452074e5d00466bf6fa5b920b56baadfec8b433b9653b5f6b6bf"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.report-001.md"
+        sha256: "0a161f132c172eca50d5557f6f9c43b304248b57c9fe674b61a5b72470e46945"
+        rejection_reason: "CROSS_DOMAIN_CONTAMINATION_AVAILABILITY_PRESENCE_TRAINING; UNKNOWN_RULE_CONCEPT_ENTITY_RELATION_AND_ATTRIBUTE_IDS; TEMPLATE_FIELD_DIVERGENCE; MARKDOWN_H1_PRESENT; HISTORICAL_PHYSICAL_OBJECTS_USED"
+      - task_id: "7e164f9c-fcf6-470c-a4a1-26684f75e4a6"
+        artifact_id: "7e164f9c-fcf6-470c-a4a1-26684f75e4a6"
+        mechanism: "REPORT_CUSTOM_CORRECTION"
+        status: "ACCEPTED_FOR_ASSEMBLY"
+        started_at: "2026-10-14T23:51:54-03:00"
+        completed_at: "2026-10-14T23:55:24-03:00"
+        language: "pt_BR"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-05-correction-001.md"
+        prompt_sha256: "bddc7b1c7c7d0d5e73ac7c8303d05d578d73edea88e47770f4249c84c214e2b7"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.report-002.md"
+        sha256: "703760dbae66e028029842f816d4af15049d757005378cad792c2c99df2b8b37"
+        acceptance_evidence: "DOMAIN_AND_RULE_COVERAGE_11_OF_11; EVIDENCE_IDS_VALID; STRUCTURE_AND_REFERENCES_REQUIRE_DETERMINISTIC_OPERATOR_ASSEMBLY"
+      - task_id: "ef9db60a-7b1a-4d45-a33f-91f5a1e97549"
+        artifact_id: "ef9db60a-7b1a-4d45-a33f-91f5a1e97549"
+        mechanism: "REPORT_CUSTOM_SECOND_CORRECTION"
+        status: "REJECTED"
+        started_at: "2026-10-14T23:56:11-03:00"
+        completed_at: "2026-10-15T00:02:57-03:00"
+        language: "pt_BR"
+        prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-05-correction-002.md"
+        prompt_sha256: "258c646f2d2bbaaae92b05b0656ce768d136ee6ec044960b49e423eba85a6d11"
+        output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.report-003.md"
+        sha256: "2ac438f26e17e5b3547ae7ed58b0425ebf3d4e4a9eaf4931e91a6f7b8155b77f"
+        rejection_reason: "TEMPLATE_STRUCTURE_PASS; CROSS_DOMAIN_CONTAMINATION_REINTRODUCED; UNKNOWN_RULE_CONCEPT_ENTITY_RELATION_AND_ATTRIBUTE_IDS; SOURCE_RULE_COUNT_12_INSTEAD_OF_11"
+    operator_assembly:
+      status: "CANDIDATE_READY"
+      script: "notebooklm-modelagem/scripts/assemble_traceability_matrix.py"
+      script_sha256: "06c81a1499ac495bb3d306c8a43956473e88ef45c45aa6dcef2699ff9d0bc0e2"
+      accepted_proposal_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.report-002.md"
+      accepted_proposal_sha256: "703760dbae66e028029842f816d4af15049d757005378cad792c2c99df2b8b37"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.candidate.yaml"
+      sha256: "875e9f4d03ba39ca476460761435c45aff9d7b86a9cf26352d6c3137b519cbec"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.assembly-audit.yaml"
+      audit_sha256: "50991fec40b49bbf11312fafeaeef2096574567c02abf94cc70fc95589f82446"
+      assembled_at: "2026-10-15T00:02:57-03:00"
+      normalization: "NOTEBOOK_RULE_AND_EVIDENCE_COVERAGE_ACCEPTED; CROSS_DOMAIN_CONTENT_DISCARDED; TEMPLATE_STRUCTURE_REBUILT; ALL_REFERENCES_RESOLVED_AGAINST_PROMOTED_ARTIFACTS; ATTRIBUTE_SCOPE_ENFORCED_PER_LOGICAL_RELATION; LOGICAL_CONSTRAINT_TRACES_GENERATED_DETERMINISTICALLY"
+      counts:
+        traces: 113
+        rule_traces: 23
+        constraint_traces: 90
+        source_rules: 11
+        source_rules_with_logical_mapping: 11
+        source_rules_with_physical_mapping: 11
+        material_constraints: 101
+        material_constraints_with_tests: 101
+        unresolved_traces: 79
+        tests_without_rule: 79
+        open_issues: 3
+    validation:
+      status: "PASS"
+      validated_at: "2026-10-15T00:02:57-03:00"
+      evidence: "YAML_STRICT_PASS; TRACEABILITY_SPECIALIZED_VALIDATION_PASS; PROMOTED_INPUT_ARTIFACTS_5_OF_5; SOURCE_RULE_COVERAGE_11_OF_11; LOGICAL_MAPPING_11_OF_11; PHYSICAL_CANDIDATE_MAPPING_11_OF_11; MATERIAL_CONSTRAINTS_101_WITH_TESTS_101; LOGICAL_CONSTRAINT_TRACES_90; ATTRIBUTE_IDS_SCOPED_AND_VALID; VERIFICATION_STATUS_NAO_EXECUTADO_ONLY; IMPLEMENTED_STATUS_ABSENT; THREE_OPEN_ISSUES_PRESERVED; 79_STRUCTURAL_CONSTRAINT_TRACES_WITHOUT_SEMANTIC_RULE_EXPOSED_AS_UNRESOLVED"
+    approval:
+      required: true
+      decision: "PENDING"
+      approved_by: null
+      approved_at: null
+      evidence: null
+    promotion:
+      status: "NOT_STARTED"
+      promoted_source_id: null
 
 incidents:
   - id: "INC_AUTH_001"
