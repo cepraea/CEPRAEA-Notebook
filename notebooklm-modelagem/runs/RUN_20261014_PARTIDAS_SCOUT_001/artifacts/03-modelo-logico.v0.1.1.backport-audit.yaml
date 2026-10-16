@@ -1,0 +1,30 @@
+status: "PASS"
+source_review_id: "STAGE_05_OPERATOR_REVIEW_001"
+base_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.candidate.yaml"
+base_sha256: "d49ca992ba7e1ab5b2378bc24867bf876cd67f940e819be57bad297993b79712"
+conceptual_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.v0.1.2.yaml"
+conceptual_sha256: "0d3e0979f83106f51e675227eb00ad4614b3beb4a4f71ff5357de84812c0b2d0"
+conceptual_promoted_source_id: "45331362-3d09-4652-848f-25432d1480da"
+output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.v0.1.1.yaml"
+output_sha256: "aebdbd4c7b725a25ce1b89d632ae56e94ee25d5529e8ce7c82ab87387ef2e492"
+version: "0.1.1"
+updated_foreign_key_ids:
+  - "FK_EVOLUCAO_PLACAR_EQUIPE"
+  - "FK_EVOLUCAO_PLACAR_EVENTO_SCOUT"
+  - "FK_MIDIA_VIDEO_PARTIDA"
+  - "FK_PERIODO_SET_EQUIPE_VENCEDORA"
+  - "FK_PLACAR_JOGO_EQUIPE_VENCEDORA"
+  - "FK_POSSE_DE_BOLA_EQUIPE"
+  - "FK_SHOOT_OUT_EQUIPE_VENCEDORA"
+removed_unique_constraint_ids:
+  - "UQ_TRECHO_EVENTO"
+replaced_check_constraint_ids:
+  removed: "CHK_VIGENCIA_PARTICIPACAO"
+  added: "CHK_INTERVALO_VIGENCIA_PARTICIPACAO"
+added_normalization_decision_ids:
+  - "NORM_DECISION_007"
+  - "NORM_DECISION_008"
+  - "NORM_DECISION_009"
+  - "NORM_DECISION_010"
+formalizations_backported: 9
+reconciliations_backported: 2

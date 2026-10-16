@@ -1,0 +1,5661 @@
+schema_version: "1.1"
+document:
+  id: "DATA_DICTIONARY"
+  artifact_kind: "DATA_DICTIONARY"
+  title: "Dicionário de dados"
+  version: "0.1.1"
+  status: "APROVADO"
+  run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
+  domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
+  notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
+  generated_at: "2026-10-15T17:12:00-03:00"
+  supersedes: "DATA_DICTIONARY@0.1.0"
+  input_artifacts:
+    - document_id: "SEMANTIC_REGISTRY"
+      version: "0.1.0"
+      sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+      promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
+    - document_id: "LOGICAL_MODEL"
+      version: "0.1.2"
+      sha256: "7a82bd2235897e67338036ba5be67f222ac3fdcf19a05bb919ecb1787824b1cb"
+      promoted_source_id: "1689f311-fd8c-420e-bf53-593d7d90cd1d"
+    - document_id: "STAGE_08_ENFORCEMENT_REVIEW"
+      version: "1.0.0"
+      sha256: "8931793affb327caf64a69d6508d97a6e9cee0c178b756c59e82837e704d1d75"
+      promoted_source_id: "4761f1cf-bf81-463f-bd36-a78ab24786de"
+tables:
+  - relation_id: "COMPETICAO"
+    schema_candidate: "public"
+    table_candidate: "competicao"
+    description: "Armazenar dados cadastrais e regulamentares das competições e circuitos esportivos de Beach Handball."
+    grain: "Uma linha representa uma única competição ou circuito esportivo."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "PUBLICO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Identificador de identificador da competição no grão da relação Competição Esportiva."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+        evidence_ref_ids:
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_005"
+      - attribute_id: "NOME"
+        column_candidate: "nome"
+        description: "Nome oficial completo da competição ou torneio de handebol de praia."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_002"
+      - attribute_id: "CODIGO"
+        column_candidate: "codigo"
+        description: "Código canônico identificador alfanumérico da competição."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EDICAO"
+        column_candidate: "edicao"
+        description: "Identificação da edição ou ano de realização da competição."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Edição não especificada ou competição em formato contínuo"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DATA_INICIO"
+        column_candidate: "data_inicio"
+        description: "Data e hora com fuso horário do início oficial do evento esportivo."
+        postgresql_type_candidate: "timestamptz"
+        nullable: true
+        null_meaning: "Data de início da competição ainda não agendada"
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DATA_FIM"
+        column_candidate: "data_fim"
+        description: "Data e hora com fuso horário do encerramento oficial do evento esportivo."
+        postgresql_type_candidate: "timestamptz"
+        nullable: true
+        null_meaning: "Data de término da competição ainda não agendada"
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids: []
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates: []
+    retention_rule_ids: []
+  - relation_id: "PARTIDA"
+    schema_candidate: "public"
+    table_candidate: "partida"
+    description: "Registrar os dados operacionais e de agendamento de uma partida oficial de Beach Handball."
+    grain: "Uma linha representa um confronto esportivo estruturado entre duas equipes."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "PUBLICO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Identificador de identificador da partida no grão da relação Partida de Beach Handball."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_IHF_VIGENCIA_2026"
+          - "RN_TETO_PARTICIPANTES_SUMULA"
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_002"
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_007"
+      - attribute_id: "COMPETICAO_ID"
+        column_candidate: "competicao_id"
+        description: "Chave estrangeira de vinculação do confronto à competição esportiva correspondente."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "NUMERO_PARTIDA"
+        column_candidate: "numero_partida"
+        description: "Número identificador da partida no calendário ou tabela oficial do torneio."
+        postgresql_type_candidate: "integer"
+        nullable: true
+        null_meaning: "Número da partida não atribuído no calendário oficial"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 1
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ETAPA"
+        column_candidate: "etapa"
+        description: "Identificação da fase ou etapa da competição na qual o jogo é realizado."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Etapa da competição não especificada"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DATA_HORA_INICIO"
+        column_candidate: "data_hora_inicio"
+        description: "Data e hora programada ou efetiva do apito inicial do confronto."
+        postgresql_type_candidate: "timestamptz"
+        nullable: true
+        null_meaning: "Horário oficial de início não registrado"
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "LOCAL_QUADRA"
+        column_candidate: "local_quadra"
+        description: "Denominação da quadra, arena ou local onde é realizada a partida."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Quadra ou local do jogo não informado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "STATUS_PARTIDA"
+        column_candidate: "status_partida"
+        description: "Situação operacional atual do confronto no ciclo de vida de realização."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: "AGENDADA"
+        unit: null
+        format: null
+        allowed_values:
+          - "AGENDADA"
+          - "EM_ANDAMENTO"
+          - "CONCLUIDA"
+          - "CANCELADA"
+          - "INTERROMPIDA"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_PARTIDA_COMPETICAO"
+    unique_constraint_ids: []
+    check_constraint_ids:
+      - "CHK_PARTIDA_VIGENCIA_2026"
+    index_candidates:
+      - id: "IDX_PARTIDA_COMPETICAO"
+        attribute_ids:
+          - "COMPETICAO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PARTIDA_COMPETICAO e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "EQUIPE"
+    schema_candidate: "public"
+    table_candidate: "equipe"
+    description: "Manter o cadastro mestre das equipes participantes de competições de Beach Handball."
+    grain: "Uma linha representa um clube, time ou coletivo esportivo cadastrado."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "PUBLICO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Identificador de identificador da equipe no grão da relação Equipe Esportiva."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_TETO_PARTICIPANTES_SUMULA"
+          - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+        evidence_ref_ids:
+          - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_007"
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+      - attribute_id: "NOME"
+        column_candidate: "nome"
+        description: "Nome oficial do clube, associação ou time esportivo."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SIGLA"
+        column_candidate: "sigla"
+        description: "Sigla de identificação abreviada da equipe."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Sigla de identificação da equipe não cadastrada"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "CIDADE"
+        column_candidate: "cidade"
+        description: "Cidade de origem ou sede da equipe."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Cidade de origem da equipe não informada"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "UF"
+        column_candidate: "uf"
+        description: "Unidade da Federação / Estado de origem da equipe."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "UF de origem da equipe não informada"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids: []
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates: []
+    retention_rule_ids: []
+  - relation_id: "ATLETA"
+    schema_candidate: "public"
+    table_candidate: "atleta"
+    description: "Cadastrar a pessoa física praticante elegível para atuar em partidas, incorporando conceitualmente a posição\
+      \ de goleira."
+    grain: "Uma linha representa um atleta individual cadastrado no sistema mestre."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "RESTRITO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do atleta no cadastro mestre."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_SEMANTICA_GOLEIRA"
+          - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_005"
+      - attribute_id: "NOME_COMPLETO"
+        column_candidate: "nome_completo"
+        description: "Nome civil completo do atleta cadastrado."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "NOME_CAMISA"
+        column_candidate: "nome_camisa"
+        description: "Nome preferencial de exibição e identificação na camisa do atleta."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Nome preferencial na camisa não especificado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "NUMERO_REGISTRO"
+        column_candidate: "numero_registro"
+        description: "Número do registro formal de atleta perante a federação ou confederação."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Número de registro oficial na federação não informado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "POSICAO_PRINCIPAL"
+        column_candidate: "posicao_principal"
+        description: "Posição tática primária de atuação do atleta (incorporando goleira no escopo defensivo)."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Posição tática primária não declarada no cadastro"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "GOLEIRA"
+          - "ESPECIALISTA"
+          - "PIVO"
+          - "ALA_DIREITA"
+          - "ALA_ESQUERDA"
+          - "DEFENSORA"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_SEMANTICA_GOLEIRA"
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_007"
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids: []
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates: []
+    retention_rule_ids: []
+  - relation_id: "PARTIDA_EQUIPE"
+    schema_candidate: "public"
+    table_candidate: "partida_equipe"
+    description: "Relação associativa que vincula exatamente duas equipes a uma partida, separando papéis regulamentares de\
+      \ mando de campo."
+    grain: "Uma linha representa o papel regulamentar e condição de mando de uma equipe em uma partida específica."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "PUBLICO"
+    columns:
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira e componente da PK identificando a partida disputada."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_ID"
+        column_candidate: "equipe_id"
+        description: "Chave estrangeira e componente da PK identificando a equipe participante."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PAPEL_REGULAMENTAR"
+        column_candidate: "papel_regulamentar"
+        description: "Atribuição formal de designação na súmula oficial (Equipe A ou Equipe B)."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "EQUIPE_A"
+          - "EQUIPE_B"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "CONDICAO_MANDO"
+        column_candidate: "condicao_mando"
+        description: "Classificação funcional quanto ao mando de campo (Mandante ou Visitante)."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "MANDANTE"
+          - "VISITANTE"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "COR_UNIFORME"
+        column_candidate: "cor_uniforme"
+        description: "Cor principal do uniforme utilizado pela equipe no jogo."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Cor do uniforme utilizado na partida não especificada"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "PARTIDA_ID"
+      - "EQUIPE_ID"
+    foreign_key_ids:
+      - "FK_PARTIDA_EQUIPE_PARTIDA"
+      - "FK_PARTIDA_EQUIPE_EQUIPE"
+    unique_constraint_ids:
+      - "UQ_PARTIDA_PAPEL_REGULAMENTAR"
+      - "UQ_PARTIDA_CONDICAO_MANDO"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_PARTIDA_EQUIPE_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PARTIDA_EQUIPE_PARTIDA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_PARTIDA_EQUIPE_EQUIPE"
+        attribute_ids:
+          - "EQUIPE_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PARTIDA_EQUIPE_EQUIPE e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "EQUIPE_ATLETA_INSCRICAO"
+    schema_candidate: "public"
+    table_candidate: "equipe_atleta_inscricao"
+    description: "Relação associativa para gerenciar o vínculo formal, número de camisa e elegibilidade do atleta na equipe."
+    grain: "Uma linha representa o registro de inscrição de um atleta por uma equipe em um torneio/período."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Identificador de identificador da inscrição no grão da relação Inscrição de Atleta na Equipe."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_ID"
+        column_candidate: "equipe_id"
+        description: "Chave estrangeira identificando a equipe detentora do registro de inscrição."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ATLETA_ID"
+        column_candidate: "atleta_id"
+        description: "Chave estrangeira identificando o atleta inscrito."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "COMPETICAO_ID"
+        column_candidate: "competicao_id"
+        description: "Chave estrangeira opcional vinculando a inscrição a uma competição específica."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Inscrição geral ou permanente não restrita a uma única competição"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DATA_INSCRICAO"
+        column_candidate: "data_inscricao"
+        description: "Data e hora do protocolo formal de inscrição do atleta."
+        postgresql_type_candidate: "timestamptz"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+        evidence_ref_ids:
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+      - attribute_id: "NUMERO_CAMISA"
+        column_candidate: "numero_camisa"
+        description: "Número atribuído na camisa do atleta para a vigência do registro."
+        postgresql_type_candidate: "integer"
+        nullable: true
+        null_meaning: "Número de camisa não fixado na inscrição"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 1
+        max_value: 99
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "STATUS_ELEGIBILIDADE"
+        column_candidate: "status_elegibilidade"
+        description: "Situação administrativa quanto à elegibilidade do atleta para atuar."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: "ELEGIVEL"
+        unit: null
+        format: null
+        allowed_values:
+          - "ELEGIVEL"
+          - "SUSPENSO"
+          - "INATIVO"
+          - "PENDENTE_DOCUMENTACAO"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_INSCRICAO_EQUIPE"
+      - "FK_INSCRICAO_ATLETA"
+      - "FK_INSCRICAO_COMPETICAO"
+    unique_constraint_ids:
+      - "UQ_EQUIPE_ATLETA_COMPETICAO"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_INSCRICAO_EQUIPE"
+        attribute_ids:
+          - "EQUIPE_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_INSCRICAO_EQUIPE e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_INSCRICAO_ATLETA"
+        attribute_ids:
+          - "ATLETA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_INSCRICAO_ATLETA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_INSCRICAO_COMPETICAO"
+        attribute_ids:
+          - "COMPETICAO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_INSCRICAO_COMPETICAO e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "PERIODO_SET"
+    schema_candidate: "public"
+    table_candidate: "periodo_set"
+    description: "Registrar a unidade temporal autônoma de jogo de 10 minutos corridos com pontuação própria (Set 1 ou Set\
+      \ 2)."
+    grain: "Uma linha representa um período/set regulamentar de uma partida."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "PUBLICO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do período/set regulamentar."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_IHF_VIGENCIA_2026"
+          - "RN_SANCAO_FINAL_15_SEGUNDOS"
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_002"
+          - "EVID_IHF_RULES_2026_EN_012"
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira de vinculação à partida correspondente."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "NUMERO_SET"
+        column_candidate: "numero_set"
+        description: "Número sequencial identificador do set (estritamente 1 ou 2)."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 1
+        max_value: 2
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TEMPO_DURACAO_SEGUNDOS"
+        column_candidate: "tempo_duracao_segundos"
+        description: "Tempo total de duração efetiva cronometrada do set em segundos."
+        postgresql_type_candidate: "integer"
+        nullable: true
+        null_meaning: "Set em andamento ou duração exata não computada"
+        default_candidate: null
+        unit: "segundos"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "HOUVE_GOL_DE_OURO"
+        column_candidate: "houve_gol_de_ouro"
+        description: "Indicador booleano de ocorrência de desempate por Gol de Ouro no set."
+        postgresql_type_candidate: "boolean"
+        nullable: false
+        null_meaning: null
+        default_candidate: false
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_SANCAO_FINAL_15_SEGUNDOS"
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_003"
+      - attribute_id: "EQUIPE_VENCEDORA_ID"
+        column_candidate: "equipe_vencedora_id"
+        description: "Chave estrangeira identificando a equipe vencedora do set."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Set em andamento ou não concluído"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_PERIODO_SET_PARTIDA"
+      - "FK_PERIODO_SET_EQUIPE_VENCEDORA"
+    unique_constraint_ids:
+      - "UQ_PARTIDA_NUMERO_SET"
+    check_constraint_ids:
+      - "CHK_NUMERO_SET_VALIDO"
+    index_candidates:
+      - id: "IDX_PERIODO_SET_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PERIODO_SET_PARTIDA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_PERIODO_SET_EQUIPE_VENCEDORA"
+        attribute_ids:
+          - "EQUIPE_VENCEDORA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PERIODO_SET_EQUIPE_VENCEDORA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "SHOOT_OUT"
+    schema_candidate: "public"
+    table_candidate: "shoot_out"
+    description: "Registrar a fase especial de desempate da partida realizada quando cada equipe vence um set (1x1)."
+    grain: "Uma linha representa a sessão completa de Shoot-out de uma partida."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "PUBLICO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora da disputa de shoot-out."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_IHF_VIGENCIA_2026"
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_004"
+          - "EVID_IHF_RULES_2026_EN_009"
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira identificando a partida correspondente."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PONTOS_EQUIPE_A"
+        column_candidate: "pontos_equipe_a"
+        description: "Total de pontos convertidos pela Equipe A na disputa de shoot-out."
+        postgresql_type_candidate: "integer"
+        nullable: true
+        null_meaning: "Shoot-out confirmado, mas pontuação detalhada da equipe A não documentada na evidência disponível"
+        default_candidate: null
+        unit: "pontos"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PONTOS_EQUIPE_B"
+        column_candidate: "pontos_equipe_b"
+        description: "Total de pontos convertidos pela Equipe B na disputa de shoot-out."
+        postgresql_type_candidate: "integer"
+        nullable: true
+        null_meaning: "Shoot-out confirmado, mas pontuação detalhada da equipe B não documentada na evidência disponível"
+        default_candidate: null
+        unit: "pontos"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "HOUVE_MORTE_SUDITA"
+        column_candidate: "houve_morte_sudita"
+        description: "Indicador booleano de necessidade de rodadas adicionais de morte súbita."
+        postgresql_type_candidate: "boolean"
+        nullable: false
+        null_meaning: null
+        default_candidate: false
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_VENCEDORA_ID"
+        column_candidate: "equipe_vencedora_id"
+        description: "Chave estrangeira identificando a equipe vencedora do shoot-out."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Disputa de Shoot-out em andamento ou não concluída"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "STATUS_COMPLETUDE"
+        column_candidate: "status_completude"
+        description: "Classificação do estado de completude do registro de dados da disputa."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "COMPLETO"
+          - "PARCIAL"
+          - "NAO_DOCUMENTADO"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_008"
+      - attribute_id: "MOTIVO_INCOMPLETUDE"
+        column_candidate: "motivo_incompletude"
+        description: "Justificativa auditável para ausência parcial ou total de dados do shoot-out."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Registro completo ou ausência de justificativa adicional"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_008"
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_SHOOT_OUT_PARTIDA"
+      - "FK_SHOOT_OUT_EQUIPE_VENCEDORA"
+    unique_constraint_ids:
+      - "UQ_SHOOT_OUT_PARTIDA"
+    check_constraint_ids:
+      - "CHK_SHOOT_OUT_COMPLETUDE"
+    index_candidates:
+      - id: "IDX_SHOOT_OUT_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SHOOT_OUT_PARTIDA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_SHOOT_OUT_EQUIPE_VENCEDORA"
+        attribute_ids:
+          - "EQUIPE_VENCEDORA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SHOOT_OUT_EQUIPE_VENCEDORA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "POSSE_DE_BOLA"
+    schema_candidate: "public"
+    table_candidate: "posse_de_bola"
+    description: "Delimitar o intervalo temporal contínuo em que uma equipe possui o controle funcional ou direito da bola."
+    grain: "Uma linha representa uma única unidade ininterrupta de posse de bola por uma equipe em um set."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora da unidade de posse de bola."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_PASSIVO_QUATRO_PASSES"
+          - "RN_PROIBICAO_RETARDO_REPETIDO"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+          - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_004"
+      - attribute_id: "PERIODO_SET_ID"
+        column_candidate: "periodo_set_id"
+        description: "Chave estrangeira identificando o set regulamentar em que ocorre a posse."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_POSSUIDORA_ID"
+        column_candidate: "equipe_possuidora_id"
+        description: "Chave estrangeira identificando a equipe com direito ou controle funcional da bola."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SEQUENCIAL_POSSE"
+        column_candidate: "sequencial_posse"
+        description: "Ordem cronológica sequencial da posse no âmbito do set."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 1
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMECODE_INICIO"
+        column_candidate: "timecode_inicio"
+        description: "Timecode de vídeo no formato HH:MM:SS:FF indicando o início da posse de bola."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Timecode de início da posse não registrado na observação"
+        default_candidate: null
+        unit: null
+        format: "HH:MM:SS:FF"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMECODE_FIM"
+        column_candidate: "timecode_fim"
+        description: "Timecode de vídeo no formato HH:MM:SS:FF indicando o encerramento da posse de bola."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Posse de bola em andamento ou timecode de término não capturado"
+        default_candidate: null
+        unit: null
+        format: "HH:MM:SS:FF"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "FASE_OFENSIVA_DOMINANTE"
+        column_candidate: "fase_ofensiva_dominante"
+        description: "Macro-fase ofensiva predominante durante a posse."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Fase ofensiva dominante não classificada na observação"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "TRANSICAO_OFENSIVA"
+          - "ATAQUE_POSICIONAL"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "MOTIVO_TERMINO"
+        column_candidate: "motivo_termino"
+        description: "Evento ou circunstância responsável pelo término da posse."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Posse em andamento ou desfecho não categorizado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "GOL"
+          - "DEFESA_GOLEIRA"
+          - "ERRO_TECNICO"
+          - "FALTA_REVERSAO"
+          - "BOLA_FORA"
+          - "FIM_PERIODO"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_POSSE_DE_BOLA_PERIODO_SET"
+      - "FK_POSSE_DE_BOLA_EQUIPE"
+    unique_constraint_ids:
+      - "UQ_POSSE_PERIODO_SEQ"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_POSSE_DE_BOLA_PERIODO_SET"
+        attribute_ids:
+          - "PERIODO_SET_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_POSSE_DE_BOLA_PERIODO_SET e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_POSSE_DE_BOLA_EQUIPE"
+        attribute_ids:
+          - "EQUIPE_POSSUIDORA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_POSSE_DE_BOLA_EQUIPE e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "UNIDADE_BASICA_ATAQUE_BOU"
+    schema_candidate: "public"
+    table_candidate: "unidade_basica_ataque_bou"
+    description: "Registrar o intervalo do ataque posicionado organizado diante de uma defesa estabelecida."
+    grain: "Uma linha representa uma Unidade Básica de Ataque (BOU) no âmbito de uma posse de bola."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora da Unidade Básica de Ataque."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_004"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+      - attribute_id: "POSSE_DE_BOLA_ID"
+        column_candidate: "posse_de_bola_id"
+        description: "Chave estrangeira identificando a posse de bola pai."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SEQUENCIAL_BOU"
+        column_candidate: "sequencial_bou"
+        description: "Número de ordem da BOU no âmbito da mesma posse de bola."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 1
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMECODE_INICIO"
+        column_candidate: "timecode_inicio"
+        description: "Timecode de vídeo no formato HH:MM:SS:FF indicando o início da organização estruturada do ataque."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Timecode de início da BOU não registrado"
+        default_candidate: null
+        unit: null
+        format: "HH:MM:SS:FF"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMECODE_FIM"
+        column_candidate: "timecode_fim"
+        description: "Timecode de vídeo no formato HH:MM:SS:FF indicando o encerramento da BOU."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "BOU em andamento ou timecode de término não capturado"
+        default_candidate: null
+        unit: null
+        format: "HH:MM:SS:FF"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "FASE_TATICA"
+        column_candidate: "fase_tatica"
+        description: "Classificação da fase tática observada na BOU."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "TO"
+          - "AP"
+          - "TD"
+          - "DP"
+          - "F_IND"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_BOU_POSSE_DE_BOLA"
+    unique_constraint_ids:
+      - "UQ_BOU_POSSE_SEQ"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_BOU_POSSE_DE_BOLA"
+        attribute_ids:
+          - "POSSE_DE_BOLA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_BOU_POSSE_DE_BOLA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "EVENTO_SCOUT"
+    schema_candidate: "public"
+    table_candidate: "evento_scout"
+    description: "Registrar a ocorrência discreta de uma ação técnica, tática, de pontuação ou disciplina durante o jogo."
+    grain: "Uma linha representa um evento pontual de scout associado a um timecode e a uma sessão de observação."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do evento pontual de scout."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_PROTECAO_CABECA_GOLEIRA"
+          - "RN_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+        evidence_ref_ids:
+          - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_009"
+          - "EVID_IHF_RULES_2026_EN_011"
+      - attribute_id: "OBSERVACAO_DE_SCOUT_ID"
+        column_candidate: "observacao_de_scout_id"
+        description: "Chave estrangeira vinculando o evento à sessão de codificação correspondente."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "UNIDADE_BASICA_ATAQUE_BOU_ID"
+        column_candidate: "unidade_basica_ataque_bou_id"
+        description: "Chave estrangeira opcional associando o evento a uma BOU especificada."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Evento ocorrido fora do contexto de uma BOU (ex.: cobrança direta de tiro de meta, paralisação)"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ATLETA_EXECUTOR_ID"
+        column_candidate: "atleta_executor_id"
+        description: "Chave estrangeira opcional do atleta realizador da ação principal do evento."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Evento sem atleta executor individualizado (ex.: tempo técnico, falta de equipe)"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ATLETA_ALVO_ID"
+        column_candidate: "atleta_alvo_id"
+        description: "Chave estrangeira opcional do atleta receptor, passador ou defensor envolvido."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Evento sem segundo atleta envolvido (ex.: arremesso direto para fora, falta pessoal sem receptor)"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMECODE_EXATO"
+        column_candidate: "timecode_exato"
+        description: "Timecode de alta precisão no formato HH:MM:SS:FF registrando o instante exato do evento na mídia."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "HH:MM:SS:FF"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ZONA_ANALITICA"
+        column_candidate: "zona_analitica"
+        description: "Zona analítica de origem/execução da ação no espaço geomético da quadra."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Zona da quadra não aplicável ao tipo de evento registrado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "ZE"
+          - "ZCE"
+          - "ZCD"
+          - "ZD"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIPO_ACAO_OBSERVADA"
+        column_candidate: "tipo_acao_observada"
+        description: "Classificação técnica/tática do tipo de ação efetuada."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "PONTUACAO_SIMPLES"
+          - "PONTUACAO_DUPLA"
+          - "ARREMESSO_SPIN"
+          - "ARREMESSO_IN_FLIGHT"
+          - "ARREMESSO_SIMPLES"
+          - "TIRO_SEIS_METROS"
+          - "PASSE"
+          - "RECEPCAO"
+          - "DESARME"
+          - "BLOQUEIO"
+          - "DEFESA_GOLEIRA"
+          - "FALTA_COMETIDA"
+          - "FALTA_SOFRIDA"
+          - "EXCLUSAO_DISCIPLINAR"
+          - "CARTAO_AZUL"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "RESULTADO_ACAO"
+        column_candidate: "resultado_acao"
+        description: "Desfecho imediato ou eficácia técnica observada na ação."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Ação em andamento ou sem resultado discreto categorizado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "GOL"
+          - "DEFESA"
+          - "FORA"
+          - "TRAVE"
+          - "ERRO_TECNICO"
+          - "FALTA_SOFRIDA"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ACAO_GOLEIRA"
+        column_candidate: "acao_goleira"
+        description: "Detalhamento motor/tático quando a ação é executada pela posição de goleira."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Evento não envolveu intervenção ou ação direta da posição de goleira"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "DEFESA_PARADA"
+          - "DEFESA_COUNTER_SPIN"
+          - "DEFESA_COUNTER_FLY"
+          - "PASSE_TRANSICAO_T4"
+          - "ARREMESSO_DIRETO_GOLEIRA"
+          - "INTERVENCAO_SHOOTOUT"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_SEMANTICA_GOLEIRA"
+        evidence_ref_ids: []
+      - attribute_id: "PUNICAO_DISCIPLINAR"
+        column_candidate: "punicao_disciplinar"
+        description: "Sanção disciplinar pessoal aplicada pela arbitragem no evento."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Evento ordinário de jogo sem aplicação de sanção disciplinar"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "ADVERTENCIA"
+          - "EXCLUSAO_TEMPORARIA"
+          - "DESQUALIFICACAO_DIRETA"
+          - "CARTAO_AZUL"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "CONSEQUENCIA_DISCIPLINAR"
+        column_candidate: "consequencia_disciplinar"
+        description: "Medida ou efeito operacional decorrente da sanção disciplinar."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Nenhuma consequência disciplinar decorrente do evento"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "REDUCAO_NUMERICA_QUADRA"
+          - "SUSPENSAO_PROXIMA_PARTIDA"
+          - "CONCESSAO_TIRO_SIX_METROS"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PONTOS_GERADOS"
+        column_candidate: "pontos_gerados"
+        description: "Quantidade de pontos alterados na partida diretamente por este evento."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: 0
+        unit: "pontos"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: 2
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_EVENTO_SCOUT_OBSERVACAO"
+      - "FK_EVENTO_SCOUT_BOU"
+      - "FK_EVENTO_SCOUT_ATLETA_EXEC"
+      - "FK_EVENTO_SCOUT_ATLETA_ALVO"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_EVENTO_SCOUT_OBSERVACAO"
+        attribute_ids:
+          - "OBSERVACAO_DE_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_EVENTO_SCOUT_OBSERVACAO e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_EVENTO_SCOUT_BOU"
+        attribute_ids:
+          - "UNIDADE_BASICA_ATAQUE_BOU_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_EVENTO_SCOUT_BOU e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_EVENTO_SCOUT_ATLETA_EXEC"
+        attribute_ids:
+          - "ATLETA_EXECUTOR_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_EVENTO_SCOUT_ATLETA_EXEC e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_EVENTO_SCOUT_ATLETA_ALVO"
+        attribute_ids:
+          - "ATLETA_ALVO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_EVENTO_SCOUT_ATLETA_ALVO e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "OBSERVACAO_DE_SCOUT"
+    schema_candidate: "public"
+    table_candidate: "observacao_de_scout"
+    description: "Representar a sessão de codificação e captura dos eventos de jogo efetuada por um analista."
+    grain: "Uma linha representa uma sessão de codificação de scout realizada para uma partida."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora da sessão de observação de scout."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira identificando a partida codificada."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ANALISTA_OBSERVADOR_ID"
+        column_candidate: "analista_observador_id"
+        description: "Chave estrangeira identificando o analista responsável pela gravação dos dados."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PROTOCOLO_SCOUT_ID"
+        column_candidate: "protocolo_scout_id"
+        description: "Chave estrangeira do protocolo metodológico utilizado na sessão."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "MIDIA_VIDEO_ID"
+        column_candidate: "midia_video_id"
+        description: "Chave estrangeira identificando a mídia primária consultada."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DATA_HORA_CODIFICACAO"
+        column_candidate: "data_hora_codificacao"
+        description: "Data e hora com fuso horário em que a sessão de codificação foi executada pelo analista."
+        postgresql_type_candidate: "timestamptz"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIPO_OBSERVACAO"
+        column_candidate: "tipo_observacao"
+        description: "Classificação do tipo de observação (Primária P1, Auditoria ou IA)."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: "PRIMARIA_P1"
+        unit: null
+        format: null
+        allowed_values:
+          - "PRIMARIA_P1"
+          - "REVISAO_AUDITORIA"
+          - "AUTOMATIZADA_IA"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_OBSERVACAO_SCOUT_PARTIDA"
+      - "FK_OBSERVACAO_SCOUT_ANALISTA"
+      - "FK_OBSERVACAO_SCOUT_PROTOCOLO"
+      - "FK_OBSERVACAO_SCOUT_MIDIA"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_OBSERVACAO_SCOUT_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_OBSERVACAO_SCOUT_PARTIDA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_OBSERVACAO_SCOUT_ANALISTA"
+        attribute_ids:
+          - "ANALISTA_OBSERVADOR_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_OBSERVACAO_SCOUT_ANALISTA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_OBSERVACAO_SCOUT_PROTOCOLO"
+        attribute_ids:
+          - "PROTOCOLO_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_OBSERVACAO_SCOUT_PROTOCOLO e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_OBSERVACAO_SCOUT_MIDIA"
+        attribute_ids:
+          - "MIDIA_VIDEO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_OBSERVACAO_SCOUT_MIDIA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "ANALISTA_OBSERVADOR"
+    schema_candidate: "public"
+    table_candidate: "analista_observador"
+    description: "Manter o cadastro e status de habilitação dos analistas responsáveis pelo registro de scout."
+    grain: "Uma linha representa um analista observador cadastrado no sistema."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "RESTRITO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do analista no sistema."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+      - attribute_id: "NOME"
+        column_candidate: "nome"
+        description: "Nome completo do analista observador."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EMAIL"
+        column_candidate: "email"
+        description: "Endereço de e-mail institucional/pessoal do analista observador."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "STATUS_HABILITACAO"
+        column_candidate: "status_habilitacao"
+        description: "Situação da certificação de confiabilidade técnica do analista."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: "HABILITADO"
+        unit: null
+        format: null
+        allowed_values:
+          - "HABILITADO"
+          - "EM_TREINAMENTO"
+          - "DESABILITADO"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids: []
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates: []
+    retention_rule_ids: []
+  - relation_id: "PROTOCOLO_SCOUT"
+    schema_candidate: "public"
+    table_candidate: "protocolo_scout"
+    description: "Armazenar os parâmetros, taxonomias e diretrizes das versões do protocolo metodológico de scout."
+    grain: "Uma linha representa uma versão congelada do protocolo metodológico de scout."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora da versão do protocolo metodológico."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+      - attribute_id: "CODIGO_PROTOCOLO"
+        column_candidate: "codigo_protocolo"
+        description: "Código identificador do protocolo metodológico."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "VERSAO"
+        column_candidate: "versao"
+        description: "Número da versão formal congelada do protocolo (ex.: v0.9.2)."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DESCRICAO"
+        column_candidate: "descricao"
+        description: "Descrição detalhada do escopo e alterações da versão metodológica."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Sem descrição detalhada cadastrada para esta versão"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DATA_CONGELAMENTO"
+        column_candidate: "data_congelamento"
+        description: "Data e hora com fuso horário de congelamento oficial da versão para uso em produção."
+        postgresql_type_candidate: "timestamptz"
+        nullable: true
+        null_meaning: "Protocolo em elaboração ou sem data de congelamento formalizada"
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids: []
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates: []
+    retention_rule_ids: []
+  - relation_id: "MIDIA_VIDEO"
+    schema_candidate: "public"
+    table_candidate: "midia_video"
+    description: "Registrar os arquivos audiovisuais e transmissões utilizados como fonte primária do scout."
+    grain: "Uma linha representa um arquivo físico ou fluxo de gravação de vídeo de uma partida."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do arquivo de mídia de vídeo."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira opcional vinculando o arquivo de vídeo à partida."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Arquivo de mídia bruto ainda não vinculado a uma partida cadastrada"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "URI_STORAGE"
+        column_candidate: "uri_storage"
+        description: "Endereço ou URI de localização do arquivo no repositório de armazenamento."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "CHECKSUM_SHA256"
+        column_candidate: "checksum_sha256"
+        description: "Hash de integridade SHA256 do arquivo de vídeo."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Hash SHA256 do arquivo audiovisual não verificado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIPO_MIDIA"
+        column_candidate: "tipo_midia"
+        description: "Tipo e enquadramento da gravação de vídeo (Broadcast P0, Câmara Alta, Clipe)."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: "BROADCAST_P0"
+        unit: null
+        format: null
+        allowed_values:
+          - "BROADCAST_P0"
+          - "CAMARA_ALTA_TATICA"
+          - "CORTE_CLIPE"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DURACAO_SEGUNDOS"
+        column_candidate: "duracao_segundos"
+        description: "Duração total exata do arquivo em segundos."
+        postgresql_type_candidate: "numeric"
+        nullable: true
+        null_meaning: "Duração exata do vídeo não calculada"
+        default_candidate: null
+        unit: "segundos"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_MIDIA_VIDEO_PARTIDA"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_MIDIA_VIDEO_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_MIDIA_VIDEO_PARTIDA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "SEGMENTO_OBSERVADO"
+    schema_candidate: "public"
+    table_candidate: "segmento_observado"
+    description: "Delimitar trechos contínuos do arquivo de vídeo para recortes táticos e análise."
+    grain: "Uma linha representa um trecho contínuo delimitado de vídeo de uma partida."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do segmento de vídeo observável."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_002"
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira de vinculação à partida."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "MIDIA_VIDEO_ID"
+        column_candidate: "midia_video_id"
+        description: "Chave estrangeira identificando a mídia de vídeo recortada."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMECODE_INICIO"
+        column_candidate: "timecode_inicio"
+        description: "Timecode inicial no formato HH:MM:SS:FF do recorte de vídeo."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "HH:MM:SS:FF"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMECODE_FIM"
+        column_candidate: "timecode_fim"
+        description: "Timecode final no formato HH:MM:SS:FF do recorte de vídeo."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "HH:MM:SS:FF"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ORDEM_INTERVALO"
+        column_candidate: "ordem_intervalo"
+        description: "Sequencial do segmento na ordem cronológica de recortes da partida."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 1
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_SEGMENTO_OBSERVADO_PARTIDA"
+      - "FK_SEGMENTO_OBSERVADO_MIDIA"
+    unique_constraint_ids:
+      - "UQ_SEGMENTO_ORDEM"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_SEGMENTO_OBSERVADO_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SEGMENTO_OBSERVADO_PARTIDA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_SEGMENTO_OBSERVADO_MIDIA"
+        attribute_ids:
+          - "MIDIA_VIDEO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SEGMENTO_OBSERVADO_MIDIA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "PLACAR_JOGO"
+    schema_candidate: "public"
+    table_candidate: "placar_jogo"
+    description: "Armazenar o estado global e a contagem consolidada de sets e vitória de uma partida."
+    grain: "Uma linha representa o resultado consolidado e estado de placar de uma partida."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "PUBLICO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do registro de placar do jogo."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_002"
+          - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_003"
+          - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_026"
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira identificando a partida associada."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SETS_VENCIDOS_EQUIPE_A"
+        column_candidate: "sets_vencidos_equipe_a"
+        description: "Quantidade total de sets vencidos pela Equipe A."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: 0
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: 2
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SETS_VENCIDOS_EQUIPE_B"
+        column_candidate: "sets_vencidos_equipe_b"
+        description: "Quantidade total de sets vencidos pela Equipe B."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: 0
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: 2
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "RESULTADO_FINAL_SETS"
+        column_candidate: "resultado_final_sets"
+        description: "Placar final consolidado da partida expresso em sets."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Partida em andamento sem resultado final consolidado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "VITORIA_2_0"
+          - "VITORIA_2_1"
+          - "DERROTA_0_2"
+          - "DERROTA_1_2"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_VENCEDORA_ID"
+        column_candidate: "equipe_vencedora_id"
+        description: "Chave estrangeira identificando a equipe vencedora do confronto."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Partida em andamento ou sem vencedor homologado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_PLACAR_JOGO_PARTIDA"
+      - "FK_PLACAR_JOGO_EQUIPE_VENCEDORA"
+    unique_constraint_ids:
+      - "UQ_PLACAR_PARTIDA"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_PLACAR_JOGO_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PLACAR_JOGO_PARTIDA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_PLACAR_JOGO_EQUIPE_VENCEDORA"
+        attribute_ids:
+          - "EQUIPE_VENCEDORA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PLACAR_JOGO_EQUIPE_VENCEDORA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "ESTADO_DO_PLACAR"
+    schema_candidate: "public"
+    table_candidate: "estado_do_placar"
+    description: "Registrar a situação relacional momentânea de pontuação durante a partida."
+    grain: "Uma linha representa a pontuação e vantagem em um determinado instante do set."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "PUBLICO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do estado do placar."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56_004"
+          - "EVID_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E_007"
+      - attribute_id: "PLACAR_JOGO_ID"
+        column_candidate: "placar_jogo_id"
+        description: "Chave estrangeira identificando o registro de placar do jogo associado."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PERIODO_SET_ID"
+        column_candidate: "periodo_set_id"
+        description: "Chave estrangeira identificando o set em andamento."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PONTOS_EQUIPE_A"
+        column_candidate: "pontos_equipe_a"
+        description: "Pontuação da Equipe A no instante registrado."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: 0
+        unit: "pontos"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PONTOS_EQUIPE_B"
+        column_candidate: "pontos_equipe_b"
+        description: "Pontuação da Equipe B no instante registrado."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: 0
+        unit: "pontos"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SITUACAO_VANTAGEM"
+        column_candidate: "situacao_vantagem"
+        description: "Condição de vantagem da equipe de referência (Empatado, Favorável, Desfavorável)."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: "EMPATADO"
+        unit: null
+        format: null
+        allowed_values:
+          - "EMPATADO"
+          - "FAVORAVEL"
+          - "DESFAVORAVEL"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMESTAMP_INSTANTE"
+        column_candidate: "timestamp_instante"
+        description: "Timestamp com fuso horário da captura exata do estado do placar."
+        postgresql_type_candidate: "timestamptz"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_ESTADO_PLACAR_PLACAR_JOGO"
+      - "FK_ESTADO_PLACAR_PERIODO_SET"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_ESTADO_PLACAR_PLACAR_JOGO"
+        attribute_ids:
+          - "PLACAR_JOGO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_ESTADO_PLACAR_PLACAR_JOGO e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_ESTADO_PLACAR_PERIODO_SET"
+        attribute_ids:
+          - "PERIODO_SET_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_ESTADO_PLACAR_PERIODO_SET e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "EVOLUCAO_DO_PLACAR"
+    schema_candidate: "public"
+    table_candidate: "evolucao_do_placar"
+    description: "Manter a sequência cronológica auditável de alterações na pontuação da partida."
+    grain: "Uma linha representa uma alteração incremental de pontuação motivada por um evento de gol."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "PUBLICO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora da alteração na evolução do placar."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_002"
+          - "EVID_SOURCE_04C_DICIONARIO_DE_DADOS_MD_6B0D9716_009"
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira identificando a partida correspondente."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EVENTO_SCOUT_ID"
+        column_candidate: "evento_scout_id"
+        description: "Chave estrangeira opcional vinculando a alteração de placar a um evento discreto de scout."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Pontuação registrada via súmula oficial sem correspondente em vídeo/scout"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_BENEFICIADA_ID"
+        column_candidate: "equipe_beneficiada_id"
+        description: "Chave estrangeira identificando a equipe que recebeu a pontuação."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SEQUENCIAL_PONTUACAO"
+        column_candidate: "sequencial_pontuacao"
+        description: "Número de ordem cronológica do ponto marcado na partida."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 1
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "VALOR_INCREMENTO"
+        column_candidate: "valor_incremento"
+        description: "Valor do ponto atribuído no evento (1 para gol simples/contra, 2 para gol duplo)."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: "pontos"
+        format: null
+        allowed_values:
+          - 1
+          - 2
+        min_value: 1
+        max_value: 2
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PLACAR_EQUIPE_A_AFT"
+        column_candidate: "placar_equipe_a_aft"
+        description: "Pontuação acumulada da Equipe A imediatamente após o evento."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: "pontos"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PLACAR_EQUIPE_B_AFT"
+        column_candidate: "placar_equipe_b_aft"
+        description: "Pontuação acumulada da Equipe B imediatamente após o evento."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: "pontos"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_EVOLUCAO_PLACAR_PARTIDA"
+      - "FK_EVOLUCAO_PLACAR_EVENTO_SCOUT"
+      - "FK_EVOLUCAO_PLACAR_EQUIPE"
+    unique_constraint_ids:
+      - "UQ_EVOLUCAO_PARTIDA_SEQ"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_EVOLUCAO_PLACAR_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_EVOLUCAO_PLACAR_PARTIDA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_EVOLUCAO_PLACAR_EVENTO_SCOUT"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_EVOLUCAO_PLACAR_EVENTO_SCOUT e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_EVOLUCAO_PLACAR_EQUIPE"
+        attribute_ids:
+          - "EQUIPE_BENEFICIADA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_EVOLUCAO_PLACAR_EQUIPE e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "SISTEMA_DEFENSIVO"
+    schema_candidate: "public"
+    table_candidate: "sistema_defensivo"
+    description: "Mapear a disposição espacial, atitude e configuração dos defensores em quadra."
+    grain: "Uma linha representa a atitude/sistema defensivo adotado em uma posse de bola."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do arranjo do sistema defensivo."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_005"
+          - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - attribute_id: "POSSE_DE_BOLA_ID"
+        column_candidate: "posse_de_bola_id"
+        description: "Chave estrangeira identificando a posse de bola defensiva."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_ID"
+        column_candidate: "equipe_id"
+        description: "Chave estrangeira identificando a equipe atuando na defesa."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SISTEMA_TATICO_ID"
+        column_candidate: "sistema_tatico_id"
+        description: "Chave estrangeira opcional vinculando ao snapshot de sistema tático geral."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Sem especialização direta de um snapshot tático genérico"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "CODIGO_SISTEMA_DEFENSIVO"
+        column_candidate: "codigo_sistema_defensivo"
+        description: "Código do esquema defensivo específico empregado."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "SIS_3_0"
+          - "SIS_2_1_CENTRAL"
+          - "SIS_2_1_LATERAL"
+          - "SIS_1_2"
+          - "SIS_AVANCADO_7M"
+          - "SIS_REATIVO"
+          - "SIS_PROATIVO"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EM_DESVANTAGEM_NUMERICA"
+        column_candidate: "em_desvantagem_numerica"
+        description: "Indicador de inferioridade numérica defensiva decorrente de exclusão disciplinar."
+        postgresql_type_candidate: "boolean"
+        nullable: false
+        null_meaning: null
+        default_candidate: false
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_SISTEMA_DEFENSIVO_POSSE"
+      - "FK_SISTEMA_DEFENSIVO_EQUIPE"
+      - "FK_SISTEMA_DEFENSIVO_SISTEMA_TATICO"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_SISTEMA_DEFENSIVO_POSSE"
+        attribute_ids:
+          - "POSSE_DE_BOLA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SISTEMA_DEFENSIVO_POSSE e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_SISTEMA_DEFENSIVO_EQUIPE"
+        attribute_ids:
+          - "EQUIPE_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SISTEMA_DEFENSIVO_EQUIPE e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_SISTEMA_DEFENSIVO_SISTEMA_TATICO"
+        attribute_ids:
+          - "SISTEMA_TATICO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SISTEMA_DEFENSIVO_SISTEMA_TATICO e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "CONFIABILIDADE_OBSERVADOR"
+    schema_candidate: "public"
+    table_candidate: "confiabilidade_observador"
+    description: "Registrar a qualificação técnica e índices de concordância (Kappa) do analista de scout."
+    grain: "Uma linha representa um evento de teste e calibração de um analista observador."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do teste de confiabilidade."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+      - attribute_id: "ANALISTA_OBSERVADOR_ID"
+        column_candidate: "analista_observador_id"
+        description: "Chave estrangeira do analista submetido ao teste de calibração."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DATA_AVALIACAO"
+        column_candidate: "data_avaliacao"
+        description: "Data e hora com fuso horário de realização da prova de confiabilidade."
+        postgresql_type_candidate: "timestamptz"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "VERSAO_TESTE"
+        column_candidate: "versao_teste"
+        description: "Código da versão do gabarito ou bateria de testes aplicada."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PERCENTUAL_ACERTO"
+        column_candidate: "percentual_acerto"
+        description: "Percentual obtido de acertos em relação ao gabarito padrão."
+        postgresql_type_candidate: "numeric"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: "%"
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: 100
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ERROS_CRITICOS_QTD"
+        column_candidate: "erros_criticos_qtd"
+        description: "Contagem de erros conceituais graves cometidos no teste."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: 0
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: 0
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "KAPPA_COHEN"
+        column_candidate: "kappa_cohen"
+        description: "Valor do índice de concordância estatística Kappa de Cohen obtido."
+        postgresql_type_candidate: "numeric"
+        nullable: true
+        null_meaning: "Kappa de Cohen não calculado para o teste em questão"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: -1.0
+        max_value: 1.0
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "STATUS_QUALIFICACAO"
+        column_candidate: "status_qualificacao"
+        description: "Resultado final de homologação técnica do observador."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "QUALIFICADO"
+          - "NAO_QUALIFICADO"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_CONFIABILIDADE_ANALISTA"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_CONFIABILIDADE_ANALISTA"
+        attribute_ids:
+          - "ANALISTA_OBSERVADOR_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_CONFIABILIDADE_ANALISTA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "REVISAO_DA_OBSERVACAO"
+    schema_candidate: "public"
+    table_candidate: "revisao_da_observacao"
+    description: "Registrar eventos de auditoria ou segunda checagem do scout para garantia de qualidade dos dados."
+    grain: "Uma linha representa um evento formal de revisão efetuado sobre uma observação de scout."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do evento de auditoria."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+          - "EVID_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC_007"
+      - attribute_id: "OBSERVACAO_DE_SCOUT_ID"
+        column_candidate: "observacao_de_scout_id"
+        description: "Chave estrangeira identificando a observação original auditada."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ANALISTA_REVISOR_ID"
+        column_candidate: "analista_revisor_id"
+        description: "Chave estrangeira identificando o analista responsável pela revisão."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMESTAMP_REVISAO"
+        column_candidate: "timestamp_revisao"
+        description: "Timestamp com fuso horário de execução do processo de revisão."
+        postgresql_type_candidate: "timestamptz"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "MOTIVO_REVISAO"
+        column_candidate: "motivo_revisao"
+        description: "Descrição da motivação do desencadeamento da auditoria."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Revisão periódica de rotina sem motivo específico apontado"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "CAMPO_ALTERADO"
+        column_candidate: "campo_alterado"
+        description: "Nome do atributo retificado durante o evento de revisão."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Revisão confirmatória sem alteração de campos realizada"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_REVISAO_OBSERVACAO_OBS"
+      - "FK_REVISAO_OBSERVACAO_ANALISTA"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_REVISAO_OBSERVACAO_OBS"
+        attribute_ids:
+          - "OBSERVACAO_DE_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_REVISAO_OBSERVACAO_OBS e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_REVISAO_OBSERVACAO_ANALISTA"
+        attribute_ids:
+          - "ANALISTA_REVISOR_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_REVISAO_OBSERVACAO_ANALISTA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "ESTADO_DE_REVISAO"
+    schema_candidate: "public"
+    table_candidate: "estado_de_revisao"
+    description: "Gerenciar a situação no fluxo de homologação e validação da observação de scout."
+    grain: "Uma linha representa o status corrente de revisão de uma observação de scout."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do estado do fluxo de revisão."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_SOURCE_04C_DICIONARIO_DE_DADOS_MD_6B0D9716_006"
+          - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_022"
+      - attribute_id: "OBSERVACAO_DE_SCOUT_ID"
+        column_candidate: "observacao_de_scout_id"
+        description: "Chave estrangeira identificando a observação em acompanhamento."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "REVISAO_DA_OBSERVACAO_ID"
+        column_candidate: "revisao_da_observacao_id"
+        description: "Chave estrangeira opcional vinculando ao último evento de auditoria."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Estado inicial antes de qualquer evento de auditoria"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "STATUS_CORRENTE"
+        column_candidate: "status_corrente"
+        description: "Situação atual da validação da observação (Pendente, Aprovado, Rejeitado, Em Auditoria)."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: "PENDENTE"
+        unit: null
+        format: null
+        allowed_values:
+          - "PENDENTE"
+          - "APROVADO"
+          - "REJEITADO"
+          - "EM_AUDITORIA"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DATA_ULTIMA_ATUALIZACAO"
+        column_candidate: "data_ultima_atualizacao"
+        description: "Data e hora com fuso horário da alteração mais recente do status de revisão."
+        postgresql_type_candidate: "timestamptz"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_ESTADO_REVISAO_OBSERVACAO"
+      - "FK_ESTADO_REVISAO_REVISAO"
+    unique_constraint_ids:
+      - "UQ_ESTADO_REVISAO_OBSERVA"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_ESTADO_REVISAO_OBSERVACAO"
+        attribute_ids:
+          - "OBSERVACAO_DE_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_ESTADO_REVISAO_OBSERVACAO e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_ESTADO_REVISAO_REVISAO"
+        attribute_ids:
+          - "REVISAO_DA_OBSERVACAO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_ESTADO_REVISAO_REVISAO e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "PROVENIENCIA_OBSERVACAO"
+    schema_candidate: "public"
+    table_candidate: "proveniencia_observacao"
+    description: "Garantir o registro imutável da linhagem de dados, protocolo e mídia fonte da observação de scout."
+    grain: "Uma linha representa os metadados fixos de proveniência de uma observação de scout."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora dos metadados de proveniência."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_001"
+      - attribute_id: "OBSERVACAO_DE_SCOUT_ID"
+        column_candidate: "observacao_de_scout_id"
+        description: "Chave estrangeira identificando a observação associada."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PROTOCOLO_SCOUT_ID"
+        column_candidate: "protocolo_scout_id"
+        description: "Chave estrangeira identificando o protocolo aplicado."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "MIDIA_VIDEO_ID"
+        column_candidate: "midia_video_id"
+        description: "Chave estrangeira identificando o vídeo fonte."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "FERRAMENTA_SOFTWARE"
+        column_candidate: "ferramenta_software"
+        description: "Denominação e versão do software utilizado na codificação dos dados."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ORIGEM_DADO"
+        column_candidate: "origem_dado"
+        description: "Origem epistemológica da extração (Codificação Humana P1, Súmula Oficial, IA)."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "CODIFICACAO_HUMANA_P1"
+          - "SUMULA_OFICIAL"
+          - "EXTRACAO_AUTOMATIZADA"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "CHECKSUM_MIDIA"
+        column_candidate: "checksum_midia"
+        description: "Checksum verificado do arquivo de vídeo processado."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Hash SHA256 não calculated para o arquivo de mídia"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_PROVENIENCIA_OBSERVACAO_OBS"
+      - "FK_PROVENIENCIA_PROTOCOLO"
+      - "FK_PROVENIENCIA_MIDIA"
+    unique_constraint_ids:
+      - "UQ_PROVENIENCIA_OBS"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_PROVENIENCIA_OBSERVACAO_OBS"
+        attribute_ids:
+          - "OBSERVACAO_DE_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PROVENIENCIA_OBSERVACAO_OBS e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_PROVENIENCIA_PROTOCOLO"
+        attribute_ids:
+          - "PROTOCOLO_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PROVENIENCIA_PROTOCOLO e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_PROVENIENCIA_MIDIA"
+        attribute_ids:
+          - "MIDIA_VIDEO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PROVENIENCIA_MIDIA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "TRECHO_OBSERVADO"
+    schema_candidate: "public"
+    table_candidate: "trecho_observado"
+    description: "Mapear o recorte temporal exato de vídeo correspondente a um evento de scout."
+    grain: "Uma linha representa o recorte de timecode de vídeo de um evento específico."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do trecho audiovisual de vídeo."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+          - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+      - attribute_id: "EVENTO_SCOUT_ID"
+        column_candidate: "evento_scout_id"
+        description: "Chave estrangeira de vinculação ao evento de scout ancorado."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "MIDIA_VIDEO_ID"
+        column_candidate: "midia_video_id"
+        description: "Chave estrangeira da mídia de vídeo recortada."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMECODE_INICIO"
+        column_candidate: "timecode_inicio"
+        description: "Timecode de início no formato HH:MM:SS:FF do clipe do evento."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "HH:MM:SS:FF"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIMECODE_FIM"
+        column_candidate: "timecode_fim"
+        description: "Timecode de término no formato HH:MM:SS:FF do clipe do evento."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "HH:MM:SS:FF"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "OFFSET_MILISSEGUNDOS"
+        column_candidate: "offset_milissegundos"
+        description: "Deslocamento de precisão do tempo inicial expresso em milissegundos."
+        postgresql_type_candidate: "integer"
+        nullable: true
+        null_meaning: "Offset preciso em milissegundos não calculado"
+        default_candidate: null
+        unit: "milissegundos"
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_TRECHO_OBSERVADO_EVENTO"
+      - "FK_TRECHO_OBSERVADO_MIDIA"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_TRECHO_OBSERVADO_EVENTO"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_TRECHO_OBSERVADO_EVENTO e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_TRECHO_OBSERVADO_MIDIA"
+        attribute_ids:
+          - "MIDIA_VIDEO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_TRECHO_OBSERVADO_MIDIA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "SPIN_SHOT"
+    schema_candidate: "public"
+    table_candidate: "spin_shot"
+    description: "Especialização tática para detalhamento da técnica de arremesso com giro de 360° no ar."
+    grain: "Uma linha representa a caracterização especializada de um Spin Shot efetuado em um evento."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do detalhe do Spin Shot."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+      - attribute_id: "EVENTO_SCOUT_ID"
+        column_candidate: "evento_scout_id"
+        description: "Chave estrangeira de vinculação ao evento base de scout."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ROTACAO_COMPLETA_360"
+        column_candidate: "rotacao_completa_360"
+        description: "Verificação da execução de rotação de 360 graus inteiramente suspensa no ar."
+        postgresql_type_candidate: "boolean"
+        nullable: false
+        null_meaning: null
+        default_candidate: true
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SALTO_PE_DIRECIONADO"
+        column_candidate: "salto_pe_direcionado"
+        description: "Verificação do início do salto com os pés apontados em direção ao gol."
+        postgresql_type_candidate: "boolean"
+        nullable: false
+        null_meaning: null
+        default_candidate: true
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "VALOR_PONTOS"
+        column_candidate: "valor_pontos"
+        description: "Valor do gol especial convertido (estritamente 2 pontos)."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: 2
+        unit: "pontos"
+        format: null
+        allowed_values:
+          - 2
+        min_value: 2
+        max_value: 2
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_SPIN_SHOT_EVENTO"
+    unique_constraint_ids:
+      - "UQ_SPIN_SHOT_EVENTO"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_SPIN_SHOT_EVENTO"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SPIN_SHOT_EVENTO e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "IN_FLIGHT_SHOT"
+    schema_candidate: "public"
+    table_candidate: "in_flight_shot"
+    description: "Especialização tática para detalhamento da técnica de arremesso aéreo (ponte aérea)."
+    grain: "Uma linha representa a caracterização especializada de um In-flight Shot efetuado."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora da técnica de in-flight shot."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_IHF_RULES_2026_EN_014"
+          - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+      - attribute_id: "EVENTO_SCOUT_ID"
+        column_candidate: "evento_scout_id"
+        description: "Chave estrangeira identificando o evento base de scout."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "RECEPCAO_NO_AR"
+        column_candidate: "recepcao_no_ar"
+        description: "Confirmação de que o passe foi recebido com o atleta suspenso no ar."
+        postgresql_type_candidate: "boolean"
+        nullable: false
+        null_meaning: null
+        default_candidate: true
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SEM_CONTATO_AREIA"
+        column_candidate: "sem_contato_areia"
+        description: "Confirmação de arremesso antes do atleta tocar a areia da quadra."
+        postgresql_type_candidate: "boolean"
+        nullable: false
+        null_meaning: null
+        default_candidate: true
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "VALOR_PONTOS"
+        column_candidate: "valor_pontos"
+        description: "Valor do gol de ponte aérea convertido (estritamente 2 pontos)."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: 2
+        unit: "pontos"
+        format: null
+        allowed_values:
+          - 2
+        min_value: 2
+        max_value: 2
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_IN_FLIGHT_SHOT_EVENTO"
+    unique_constraint_ids:
+      - "UQ_IN_FLIGHT_EVENTO"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_IN_FLIGHT_SHOT_EVENTO"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_IN_FLIGHT_SHOT_EVENTO e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    schema_candidate: "public"
+    table_candidate: "desqualificacao_segunda_exclusao"
+    description: "Registrar a desqualificação e o afastamento definitivo do atleta pelo acúmulo da segunda exclusão."
+    grain: "Uma linha representa a ocorrência de desqualificação por acúmulo de duas exclusões em uma partida."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "RESTRITO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do registro de desqualificação por 2ª exclusão."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+      - attribute_id: "EVENTO_SCOUT_ID"
+        column_candidate: "evento_scout_id"
+        description: "Chave estrangeira do evento de scout associado."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ATLETA_ID"
+        column_candidate: "atleta_id"
+        description: "Chave estrangeira identificando o atleta desqualificado."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira da partida em que ocorreu a sanção."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "SAIDA_IMEDIATA_QUADRA"
+        column_candidate: "saida_imediata_quadra"
+        description: "Confirmação de cumprimento da obrigatoriedade de saída imediata da área de jogo."
+        postgresql_type_candidate: "boolean"
+        nullable: false
+        null_meaning: null
+        default_candidate: true
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_DESQUALIFICACAO_EVENTO"
+      - "FK_DESQUALIFICACAO_ATLETA"
+      - "FK_DESQUALIFICACAO_PARTIDA"
+    unique_constraint_ids:
+      - "UQ_DESQ_EXC_EVENTO"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_DESQUALIFICACAO_EVENTO"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_DESQUALIFICACAO_EVENTO e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_DESQUALIFICACAO_ATLETA"
+        attribute_ids:
+          - "ATLETA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_DESQUALIFICACAO_ATLETA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_DESQUALIFICACAO_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_DESQUALIFICACAO_PARTIDA e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "CARTAO_AZUL_SUSPENSAO"
+    schema_candidate: "public"
+    table_candidate: "cartao_azul_suspensao"
+    description: "Registrar a desqualificação directa gravíssima com relatório por escrito e suspensão administrativa."
+    grain: "Uma linha representa um evento de exibição de Cartão Azul e relatório formal da arbitragem."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "RESTRITO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora da aplicação do Cartão Azul."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_017"
+      - attribute_id: "EVENTO_SCOUT_ID"
+        column_candidate: "evento_scout_id"
+        description: "Chave estrangeira do evento de scout gerador da sanção."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira identificando a partida correspondente."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "ATLETA_ID"
+        column_candidate: "atleta_id"
+        description: "Chave estrangeira opcional identificando o atleta sancionado."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Cartão azul aplicado a oficial de comissão técnica e não a atleta"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "PAPEL_OPERACIONAL_ID"
+        column_candidate: "papel_operacional_id"
+        description: "Chave estrangeira opcional identificando o oficial de comissão técnica sancionado."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Cartão azul aplicado a atleta e não a oficial de comissão técnica"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "RELATORIO_ARBITRAGEM"
+        column_candidate: "relatorio_arbitragem"
+        description: "Texto descritivo do relatório por escrito lavrado pela arbitragem."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "JOGOS_SUSPENSAO_AUTOMATICA"
+        column_candidate: "jogos_suspensao_automatica"
+        description: "Quantidade de partidas de suspensão automática (mínimo de 1 partida)."
+        postgresql_type_candidate: "integer"
+        nullable: false
+        null_meaning: null
+        default_candidate: 1
+        unit: "partidas"
+        format: null
+        allowed_values: []
+        min_value: 1
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_CARTAO_AZUL_EVENTO"
+      - "FK_CARTAO_AZUL_PARTIDA"
+      - "FK_CARTAO_AZUL_ATLETA"
+      - "FK_CARTAO_AZUL_PAPEL_OPERACIONAL"
+    unique_constraint_ids:
+      - "UQ_CARTAO_AZUL_EVENTO"
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_CARTAO_AZUL_EVENTO"
+        attribute_ids:
+          - "EVENTO_SCOUT_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_CARTAO_AZUL_EVENTO e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_CARTAO_AZUL_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_CARTAO_AZUL_PARTIDA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_CARTAO_AZUL_ATLETA"
+        attribute_ids:
+          - "ATLETA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_CARTAO_AZUL_ATLETA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_CARTAO_AZUL_PAPEL_OPERACIONAL"
+        attribute_ids:
+          - "PAPEL_OPERACIONAL_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_CARTAO_AZUL_PAPEL_OPERACIONAL e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "SISTEMA_TATICO"
+    schema_candidate: "public"
+    table_candidate: "sistema_tatico"
+    description: "Registrar a disposição espacial coletiva e formação tática adotada em um intervalo do jogo."
+    grain: "Uma linha representa a configuração tática adotada por uma equipe durante uma posse/intervalo."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do snapshot tático."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+          - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - attribute_id: "POSSE_DE_BOLA_ID"
+        column_candidate: "posse_de_bola_id"
+        description: "Chave estrangeira de vinculação à posse de bola."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_ID"
+        column_candidate: "equipe_id"
+        description: "Chave estrangeira de vinculação à equipe executora do sistema."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "CODIGO_SISTEMA_TATICO"
+        column_candidate: "codigo_sistema_tatico"
+        description: "Código do arranjo e disposição coletiva do sistema tático."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "ATAQUE_3_1"
+          - "ATAQUE_2_2"
+          - "ATAQUE_4_0"
+          - "DEFESA_3_0"
+          - "DEFESA_2_1"
+          - "DEFESA_1_2"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "FASE_TATICA"
+        column_candidate: "fase_tatica"
+        description: "Fase tática contextual em que a formação é executada."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "TO"
+          - "AP"
+          - "TD"
+          - "DP"
+          - "F_IND"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_SISTEMA_TATICO_POSSE"
+      - "FK_SISTEMA_TATICO_EQUIPE"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_SISTEMA_TATICO_POSSE"
+        attribute_ids:
+          - "POSSE_DE_BOLA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SISTEMA_TATICO_POSSE e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_SISTEMA_TATICO_EQUIPE"
+        attribute_ids:
+          - "EQUIPE_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_SISTEMA_TATICO_EQUIPE e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    schema_candidate: "public"
+    table_candidate: "papel_esportivo_operacional"
+    description: "Registrar as funções formais de comissão técnica, arbitragem e organização na súmula da partida."
+    grain: "Uma linha representa a atribuição de um papel operacional a uma pessoa em uma partida."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora da atribuição de papel operacional."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+          - "EVID_REGULAMENTO_CBHB_2026_PDF_818BCC8B_005"
+      - attribute_id: "PARTIDA_ID"
+        column_candidate: "partida_id"
+        description: "Chave estrangeira identificando a partida associada."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_ID"
+        column_candidate: "equipe_id"
+        description: "Chave estrangeira opcional vinculando o oficial à equipe (nulo para arbitragem/mesa)."
+        postgresql_type_candidate: "uuid"
+        nullable: true
+        null_meaning: "Papéis neutros de arbitragem, delegados e oficiais de mesa não possuem vínculo com equipe"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "NOME_PESSOA"
+        column_candidate: "nome_pessoa"
+        description: "Nome completo da pessoa física atuando no papel operacional."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: true
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "CODIGO_PAPEL"
+        column_candidate: "codigo_papel"
+        description: "Código do papel esportivo ou operacional desempenhado na partida."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "TECNICO"
+          - "AUXILIAR_TECNICO"
+          - "MEDICO"
+          - "FISIOTERAPEUTA"
+          - "DELEGADO_A"
+          - "DELEGADO_B"
+          - "SECRETARIO"
+          - "CRONOMETRISTA"
+          - "OFICIAL_ARBITRAGEM"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_PAPEL_OPERACIONAL_PARTIDA"
+      - "FK_PAPEL_OPERACIONAL_EQUIPE"
+    unique_constraint_ids: []
+    check_constraint_ids: []
+    index_candidates:
+      - id: "IDX_PAPEL_OPERACIONAL_PARTIDA"
+        attribute_ids:
+          - "PARTIDA_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PAPEL_OPERACIONAL_PARTIDA e as operações de junção e manutenção referencial associadas."
+      - id: "IDX_PAPEL_OPERACIONAL_EQUIPE"
+        attribute_ids:
+          - "EQUIPE_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PAPEL_OPERACIONAL_EQUIPE e as operações de junção e manutenção referencial associadas."
+    retention_rule_ids: []
+  - relation_id: "PARTICIPACAO_EQUIPE_COMPETICAO"
+    schema_candidate: "public"
+    table_candidate: "participacao_equipe_competicao"
+    description: "Registrar participação e elegibilidade para o ranking final no contexto de uma edição de competição, sem\
+      \ alterar o cadastro global da equipe."
+    grain: "Uma linha representa a situação de participação e elegibilidade de uma equipe em uma competição durante um intervalo\
+      \ de vigência."
+    ownership_domain: "PARTIDAS_SCOUT_ANALISE_TATICA"
+    access_classification: "INTERNO"
+    columns:
+      - attribute_id: "ID"
+        column_candidate: "id"
+        description: "Chave primária surrogate UUID v4 identificadora do registro de participação da equipe na competição."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "COMPETICAO_ID"
+        column_candidate: "competicao_id"
+        description: "Chave estrangeira identificando a competição correspondente."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "EQUIPE_ID"
+        column_candidate: "equipe_id"
+        description: "Chave estrangeira identificando a equipe participante."
+        postgresql_type_candidate: "uuid"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "TIPO_PARTICIPACAO"
+        column_candidate: "tipo_participacao"
+        description: "Categorização do formato de participação da equipe na competição."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "REGULAR"
+          - "CONVIDADA"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "STATUS_ELEGIBILIDADE_RANKING"
+        column_candidate: "status_elegibilidade_ranking"
+        description: "Situação regulamentar de elegibilidade para acumulação de pontos no ranking geral."
+        postgresql_type_candidate: "text"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values:
+          - "ELEGIVEL"
+          - "INELEGIVEL_POR_DECISAO_COLETIVA"
+          - "PENDENTE_DELIBERACAO"
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids:
+          - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+        evidence_ref_ids:
+          - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+      - attribute_id: "MOTIVO_DECISAO"
+        column_candidate: "motivo_decisao"
+        description: "Justificativa textual formal para decisões excepcionais de elegibilidade ao ranking."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Participação regular sem exceção específica ou decisão ainda sem justificativa registrada"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "DECISAO_REF"
+        column_candidate: "decisao_ref"
+        description: "Referência documental ou ata homologatória da decisão regulamentar."
+        postgresql_type_candidate: "text"
+        nullable: true
+        null_meaning: "Participação regular sem decisão excepcional associada"
+        default_candidate: null
+        unit: null
+        format: null
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids:
+          - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+      - attribute_id: "VALIDO_DESDE"
+        column_candidate: "valido_desde"
+        description: "Início da janela temporal de vigência da condição de participação."
+        postgresql_type_candidate: "timestamptz"
+        nullable: false
+        null_meaning: null
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+      - attribute_id: "VALIDO_ATE"
+        column_candidate: "valido_ate"
+        description: "Término da janela temporal de vigência da condição de participação."
+        postgresql_type_candidate: "timestamptz"
+        nullable: true
+        null_meaning: "Participação ou decisão vigente sem término registrado"
+        default_candidate: null
+        unit: null
+        format: "YYYY-MM-DD HH:MM:SS"
+        allowed_values: []
+        min_value: null
+        max_value: null
+        pii: false
+        sensitive: false
+        generated: false
+        derivation_rule_id: null
+        rule_ids: []
+        evidence_ref_ids: []
+    primary_key_attribute_ids:
+      - "ID"
+    foreign_key_ids:
+      - "FK_PARTICIPACAO_EQUIPE_COMPETICAO_COMPETICAO"
+      - "FK_PARTICIPACAO_EQUIPE_COMPETICAO_EQUIPE"
+    unique_constraint_ids:
+      - "UQ_PARTICIPACAO_EQUIPE_COMPETICAO_VIGENCIA"
+    check_constraint_ids:
+      - "CHK_ELEGIBILIDADE_RANKING_CONTEXTUAL"
+      - "CHK_INTERVALO_VIGENCIA_PARTICIPACAO"
+    index_candidates:
+      - id: "IDX_PARTICIPACAO_EQUIPE_COMPETICAO_COMPETICAO"
+        attribute_ids:
+          - "COMPETICAO_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PARTICIPACAO_EQUIPE_COMPETICAO_COMPETICAO e as operações de junção e manutenção referencial\
+          \ associadas."
+      - id: "IDX_PARTICIPACAO_EQUIPE_COMPETICAO_EQUIPE"
+        attribute_ids:
+          - "EQUIPE_ID"
+        purpose: "FK"
+        rationale: "Suporta a FK FK_PARTICIPACAO_EQUIPE_COMPETICAO_EQUIPE e as operações de junção e manutenção referencial\
+          \ associadas."
+    retention_rule_ids: []
+catalogs:
+  - id: "CAT_PARTIDA_STATUS_PARTIDA"
+    name: "Domínio de Status da Partida"
+    versioned: true
+    values:
+      - code: "AGENDADA"
+        label: "Agendada"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "EM_ANDAMENTO"
+        label: "Em Andamento"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "CONCLUIDA"
+        label: "Concluida"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "CANCELADA"
+        label: "Cancelada"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "INTERROMPIDA"
+        label: "Interrompida"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_ATLETA_POSICAO_PRINCIPAL"
+    name: "Domínio de Posição Tática Principal"
+    versioned: true
+    values:
+      - code: "GOLEIRA"
+        label: "Goleira"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_007"
+      - code: "ESPECIALISTA"
+        label: "Especialista"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_007"
+      - code: "PIVO"
+        label: "Pivo"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_007"
+      - code: "ALA_DIREITA"
+        label: "Ala Direita"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_007"
+      - code: "ALA_ESQUERDA"
+        label: "Ala Esquerda"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_007"
+      - code: "DEFENSORA"
+        label: "Defensora"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+          - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_007"
+  - id: "CAT_PARTIDA_EQUIPE_PAPEL_REGULAMENTAR"
+    name: "Domínio de Papel Regulamentar na Súmula"
+    versioned: true
+    values:
+      - code: "EQUIPE_A"
+        label: "Equipe A"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "EQUIPE_B"
+        label: "Equipe B"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_PARTIDA_EQUIPE_CONDICAO_MANDO"
+    name: "Domínio de Condição de Mando de Campo"
+    versioned: true
+    values:
+      - code: "MANDANTE"
+        label: "Mandante"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "VISITANTE"
+        label: "Visitante"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_EQUIPE_ATLETA_INSCRICAO_STATUS_ELEGIBILIDADE"
+    name: "Domínio de Status de Elegibilidade"
+    versioned: true
+    values:
+      - code: "ELEGIVEL"
+        label: "Elegivel"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SUSPENSO"
+        label: "Suspenso"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "INATIVO"
+        label: "Inativo"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "PENDENTE_DOCUMENTACAO"
+        label: "Pendente Documentacao"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_SHOOT_OUT_STATUS_COMPLETUDE"
+    name: "Domínio de Estado de Completude do Shoot-out"
+    versioned: true
+    values:
+      - code: "COMPLETO"
+        label: "Completo"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_008"
+      - code: "PARCIAL"
+        label: "Parcial"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_008"
+      - code: "NAO_DOCUMENTADO"
+        label: "Nao Documentado"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_CEPRAEA_DATABASE_CCB2A718_008"
+  - id: "CAT_POSSE_DE_BOLA_FASE_OFENSIVA_DOMINANTE"
+    name: "Domínio de Fase Ofensiva Dominante"
+    versioned: true
+    values:
+      - code: "TRANSICAO_OFENSIVA"
+        label: "Transicao Ofensiva"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ATAQUE_POSICIONAL"
+        label: "Ataque Posicional"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_POSSE_DE_BOLA_MOTIVO_TERMINO"
+    name: "Domínio de Motivo do Término da Posse"
+    versioned: true
+    values:
+      - code: "GOL"
+        label: "Gol"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DEFESA_GOLEIRA"
+        label: "Defesa Goleira"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ERRO_TECNICO"
+        label: "Erro Tecnico"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "FALTA_REVERSAO"
+        label: "Falta Reversao"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "BOLA_FORA"
+        label: "Bola Fora"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "FIM_PERIODO"
+        label: "Fim Periodo"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_UNIDADE_BASICA_ATAQUE_BOU_FASE_TATICA"
+    name: "Domínio de Fase Tática"
+    versioned: true
+    values:
+      - code: "TO"
+        label: "To"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "AP"
+        label: "Ap"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "TD"
+        label: "Td"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DP"
+        label: "Dp"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "F_IND"
+        label: "F Ind"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_EVENTO_SCOUT_ZONA_ANALITICA"
+    name: "Domínio de Zona Analítica da Quadra"
+    versioned: true
+    values:
+      - code: "ZE"
+        label: "Ze"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ZCE"
+        label: "Zce"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ZCD"
+        label: "Zcd"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ZD"
+        label: "Zd"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_EVENTO_SCOUT_TIPO_ACAO_OBSERVADA"
+    name: "Domínio de Tipo da Ação Observada"
+    versioned: true
+    values:
+      - code: "PONTUACAO_SIMPLES"
+        label: "Pontuacao Simples"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "PONTUACAO_DUPLA"
+        label: "Pontuacao Dupla"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ARREMESSO_SPIN"
+        label: "Arremesso Spin"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ARREMESSO_IN_FLIGHT"
+        label: "Arremesso In Flight"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ARREMESSO_SIMPLES"
+        label: "Arremesso Simples"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "TIRO_SEIS_METROS"
+        label: "Tiro Seis Metros"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "PASSE"
+        label: "Passe"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "RECEPCAO"
+        label: "Recepcao"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DESARME"
+        label: "Desarme"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "BLOQUEIO"
+        label: "Bloqueio"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DEFESA_GOLEIRA"
+        label: "Defesa Goleira"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "FALTA_COMETIDA"
+        label: "Falta Cometida"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "FALTA_SOFRIDA"
+        label: "Falta Sofrida"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "EXCLUSAO_DISCIPLINAR"
+        label: "Exclusao Disciplinar"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "CARTAO_AZUL"
+        label: "Cartao Azul"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_EVENTO_SCOUT_RESULTADO_ACAO"
+    name: "Domínio de Resultado da Ação"
+    versioned: true
+    values:
+      - code: "GOL"
+        label: "Gol"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DEFESA"
+        label: "Defesa"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "FORA"
+        label: "Fora"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "TRAVE"
+        label: "Trave"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ERRO_TECNICO"
+        label: "Erro Tecnico"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "FALTA_SOFRIDA"
+        label: "Falta Sofrida"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_EVENTO_SCOUT_ACAO_GOLEIRA"
+    name: "Domínio de Ação da Goleira"
+    versioned: true
+    values:
+      - code: "DEFESA_PARADA"
+        label: "Defesa Parada"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DEFESA_COUNTER_SPIN"
+        label: "Defesa Counter Spin"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DEFESA_COUNTER_FLY"
+        label: "Defesa Counter Fly"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "PASSE_TRANSICAO_T4"
+        label: "Passe Transicao T4"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ARREMESSO_DIRETO_GOLEIRA"
+        label: "Arremesso Direto Goleira"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "INTERVENCAO_SHOOTOUT"
+        label: "Intervencao Shootout"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_EVENTO_SCOUT_PUNICAO_DISCIPLINAR"
+    name: "Domínio de Punição Disciplinar"
+    versioned: true
+    values:
+      - code: "ADVERTENCIA"
+        label: "Advertencia"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "EXCLUSAO_TEMPORARIA"
+        label: "Exclusao Temporaria"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DESQUALIFICACAO_DIRETA"
+        label: "Desqualificacao Direta"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "CARTAO_AZUL"
+        label: "Cartao Azul"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_EVENTO_SCOUT_CONSEQUENCIA_DISCIPLINAR"
+    name: "Domínio de Consequência Disciplinar"
+    versioned: true
+    values:
+      - code: "REDUCAO_NUMERICA_QUADRA"
+        label: "Reducao Numerica Quadra"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SUSPENSAO_PROXIMA_PARTIDA"
+        label: "Suspensao Proxima Partida"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "CONCESSAO_TIRO_SIX_METROS"
+        label: "Concessao Tiro Six Metros"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_OBSERVACAO_DE_SCOUT_TIPO_OBSERVACAO"
+    name: "Domínio de Tipo da Observação"
+    versioned: true
+    values:
+      - code: "PRIMARIA_P1"
+        label: "Primaria P1"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "REVISAO_AUDITORIA"
+        label: "Revisao Auditoria"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "AUTOMATIZADA_IA"
+        label: "Automatizada Ia"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_ANALISTA_OBSERVADOR_STATUS_HABILITACAO"
+    name: "Domínio de Status de Habilitação"
+    versioned: true
+    values:
+      - code: "HABILITADO"
+        label: "Habilitado"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "EM_TREINAMENTO"
+        label: "Em Treinamento"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DESABILITADO"
+        label: "Desabilitado"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_MIDIA_VIDEO_TIPO_MIDIA"
+    name: "Domínio de Tipo da Mídia"
+    versioned: true
+    values:
+      - code: "BROADCAST_P0"
+        label: "Broadcast P0"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "CAMARA_ALTA_TATICA"
+        label: "Camara Alta Tatica"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "CORTE_CLIPE"
+        label: "Corte Clipe"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_PLACAR_JOGO_RESULTADO_FINAL_SETS"
+    name: "Domínio de Resultado Final em Sets"
+    versioned: true
+    values:
+      - code: "VITORIA_2_0"
+        label: "Vitoria 2 0"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "VITORIA_2_1"
+        label: "Vitoria 2 1"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DERROTA_0_2"
+        label: "Derrota 0 2"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DERROTA_1_2"
+        label: "Derrota 1 2"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_ESTADO_DO_PLACAR_SITUACAO_VANTAGEM"
+    name: "Domínio de Situação de Vantagem"
+    versioned: true
+    values:
+      - code: "EMPATADO"
+        label: "Empatado"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "FAVORAVEL"
+        label: "Favoravel"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DESFAVORAVEL"
+        label: "Desfavoravel"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_EVOLUCAO_DO_PLACAR_VALOR_INCREMENTO"
+    name: "Domínio de Valor do Incremento"
+    versioned: true
+    values:
+      - code: 1
+        label: "1"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: 2
+        label: "2"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_SISTEMA_DEFENSIVO_CODIGO_SISTEMA_DEFENSIVO"
+    name: "Domínio de Código do Sistema Defensivo"
+    versioned: true
+    values:
+      - code: "SIS_3_0"
+        label: "Sis 3 0"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SIS_2_1_CENTRAL"
+        label: "Sis 2 1 Central"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SIS_2_1_LATERAL"
+        label: "Sis 2 1 Lateral"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SIS_1_2"
+        label: "Sis 1 2"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SIS_AVANCADO_7M"
+        label: "Sis Avancado 7M"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SIS_REATIVO"
+        label: "Sis Reativo"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SIS_PROATIVO"
+        label: "Sis Proativo"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_CONFIABILIDADE_OBSERVADOR_STATUS_QUALIFICACAO"
+    name: "Domínio de Status da Qualificação"
+    versioned: true
+    values:
+      - code: "QUALIFICADO"
+        label: "Qualificado"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "NAO_QUALIFICADO"
+        label: "Nao Qualificado"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_ESTADO_DE_REVISAO_STATUS_CORRENTE"
+    name: "Domínio de Status Corrente"
+    versioned: true
+    values:
+      - code: "PENDENTE"
+        label: "Pendente"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "APROVADO"
+        label: "Aprovado"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "REJEITADO"
+        label: "Rejeitado"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "EM_AUDITORIA"
+        label: "Em Auditoria"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_PROVENIENCIA_OBSERVACAO_ORIGEM_DADO"
+    name: "Domínio de Origem da Extração do Dado"
+    versioned: true
+    values:
+      - code: "CODIFICACAO_HUMANA_P1"
+        label: "Codificacao Humana P1"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SUMULA_OFICIAL"
+        label: "Sumula Oficial"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "EXTRACAO_AUTOMATIZADA"
+        label: "Extracao Automatizada"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_SPIN_SHOT_VALOR_PONTOS"
+    name: "Domínio de Valor em Pontos"
+    versioned: true
+    values:
+      - code: 2
+        label: "2"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_IN_FLIGHT_SHOT_VALOR_PONTOS"
+    name: "Domínio de Valor em Pontos"
+    versioned: true
+    values:
+      - code: 2
+        label: "2"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_SISTEMA_TATICO_CODIGO_SISTEMA_TATICO"
+    name: "Domínio de Código do Sistema Tático"
+    versioned: true
+    values:
+      - code: "ATAQUE_3_1"
+        label: "Ataque 3 1"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ATAQUE_2_2"
+        label: "Ataque 2 2"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "ATAQUE_4_0"
+        label: "Ataque 4 0"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DEFESA_3_0"
+        label: "Defesa 3 0"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DEFESA_2_1"
+        label: "Defesa 2 1"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DEFESA_1_2"
+        label: "Defesa 1 2"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_SISTEMA_TATICO_FASE_TATICA"
+    name: "Domínio de Fase Tática Contextual"
+    versioned: true
+    values:
+      - code: "TO"
+        label: "To"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "AP"
+        label: "Ap"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "TD"
+        label: "Td"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DP"
+        label: "Dp"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "F_IND"
+        label: "F Ind"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_PAPEL_ESPORTIVO_OPERACIONAL_CODIGO_PAPEL"
+    name: "Domínio de Código da Função / Papel"
+    versioned: true
+    values:
+      - code: "TECNICO"
+        label: "Tecnico"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "AUXILIAR_TECNICO"
+        label: "Auxiliar Tecnico"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "MEDICO"
+        label: "Medico"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "FISIOTERAPEUTA"
+        label: "Fisioterapeuta"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DELEGADO_A"
+        label: "Delegado A"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "DELEGADO_B"
+        label: "Delegado B"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "SECRETARIO"
+        label: "Secretario"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "CRONOMETRISTA"
+        label: "Cronometrista"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "OFICIAL_ARBITRAGEM"
+        label: "Oficial Arbitragem"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_PARTICIPACAO_EQUIPE_COMPETICAO_TIPO_PARTICIPACAO"
+    name: "Domínio de Tipo de Participação"
+    versioned: true
+    values:
+      - code: "REGULAR"
+        label: "Regular"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+      - code: "CONVIDADA"
+        label: "Convidada"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids: []
+  - id: "CAT_PARTICIPACAO_EQUIPE_COMPETICAO_STATUS_ELEGIBILIDADE_RANKING"
+    name: "Domínio de Elegibilidade para o Ranking Final"
+    versioned: true
+    values:
+      - code: "ELEGIVEL"
+        label: "Elegivel"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+      - code: "INELEGIVEL_POR_DECISAO_COLETIVA"
+        label: "Inelegivel Por Decisao Coletiva"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+      - code: "PENDENTE_DELIBERACAO"
+        label: "Pendente Deliberacao"
+        valid_from: null
+        valid_to: null
+        evidence_ref_ids:
+          - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+open_issues:
+  - id: "ISSUE_LACUNA_PLACAR_SHOOTOUT_E_ETAPAS"
+    status: "ABERTA"
+    question: "Como completar a lacuna de documentação de placar detalhado de shoot-out em jogos específicos da Etapa Final\
+      \ (ex.: J71) e parciais de sets da 4ª Etapa Estadual?"
+    affected_ids:
+      - "PLACAR_JOGO"
+      - "EVOLUCAO_DO_PLACAR"
+      - "PARTIDA"
+      - "SHOOT_OUT"
+    impact: "Incompletude no histórico cronológico e auditável do placar em partidas passadas específicas sem registro de\
+      \ vídeo em arquivo."
+    required_evidence: "Súmula física impressa assinada ou boletim impresso oficial expedido pela FHERJ/CBHb."
+    owner: "OPERADOR"
+  - id: "ISSUE_ENFORCEMENT_TETO_PARTICIPANTES_SUMULA"
+    status: "ABERTA"
+    question: "Como representar atletas e oficiais relacionados na súmula de uma partida para aplicar os limites de 10 e 4\
+      \ por equipe?"
+    affected_ids:
+      - "PARTIDA_EQUIPE"
+      - "PARTIDA"
+      - "EQUIPE"
+    impact: "O teto regulamentar não pode ser validado fielmente no schema físico atual."
+    required_evidence: "Extensão aprovada do modelo com o elenco da súmula por partida e a categoria do participante."
+    owner: "MODELISTA"
+  - id: "ISSUE_ENFORCEMENT_PRAZO_INSCRICAO_72H"
+    status: "ABERTA"
+    question: "Qual partida ou prazo oficial deve ser associado a cada inscrição para validar a antecedência mínima de 72\
+      \ horas?"
+    affected_ids:
+      - "EQUIPE_ATLETA_INSCRICAO"
+      - "PARTIDA"
+    impact: "A inscrição referencia a competição, mas não contém o marco temporal específico exigido pela regra."
+    required_evidence: "Decisão de modelagem que vincule a inscrição ao prazo oficial aplicável ou à partida correspondente."
+    owner: "MODELISTA"
+  - id: "ISSUE_ENFORCEMENT_PASSIVO_QUATRO_PASSES"
+    status: "ABERTA"
+    question: "Como registrar o sinal de jogo passivo e a contagem de passes posteriores dentro da posse?"
+    affected_ids:
+      - "POSSE_DE_BOLA"
+      - "EVENTO_SCOUT"
+    impact: "Sem o sinal e a contagem observada, o limite de quatro passes não possui operandos físicos."
+    required_evidence: "Extensão aprovada do protocolo e do modelo para sinal de passivo e passes subsequentes."
+    owner: "MODELISTA"
+  - id: "ISSUE_ENFORCEMENT_PROTECAO_CABECA_GOLEIRA"
+    status: "ABERTA"
+    question: "Como registrar impacto na cabeça, condição de arremessador desmarcado e eventual simulação da goleira?"
+    affected_ids:
+      - "EVENTO_SCOUT"
+      - "ATLETA"
+    impact: "Os fatos condicionantes da sanção não existem como atributos ou eventos no modelo atual."
+    required_evidence: "Extensão aprovada do evento de scout e do protocolo observacional com os fatos condicionantes."
+    owner: "MODELISTA"
+  - id: "ISSUE_ENFORCEMENT_EXECUCAO_TIRO_SEIS_METROS"
+    status: "ABERTA"
+    question: "Como registrar execução direta, tempo de execução e distância defensiva do tiro de seis metros?"
+    affected_ids:
+      - "EVENTO_SCOUT"
+    impact: "A classificação do evento como tiro de seis metros não prova as três condições de execução."
+    required_evidence: "Extensão aprovada do evento de scout ou evento especializado com os três fatos observáveis."
+    owner: "MODELISTA"
