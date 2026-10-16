@@ -1,0 +1,37 @@
+status: "PASS"
+inputs:
+  base_candidate:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.yaml"
+    sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
+  ranking_reconciliation:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.ranking-reconciliation.yaml"
+    sha256: "1f5e33324868e81eaa2c10f06915b1ac5a0dd60b529f376e46ae9589474078c8"
+  semantic_registry:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+    sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+  source_manifest:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+    sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+operator_decision:
+  id: "DEC_RANKING_CONVIDADOS_FHERJ_2026"
+  source: "USER_STATEMENT_2026_10_14"
+  decision: "A participação esportiva e a elegibilidade para o ranking final são fatos independentes e contextuais à competição."
+  confirmed_facts:
+    - "Campinas participa do Campeonato Carioca desde 2025 e não conta para o ranking final."
+    - "Chile participa de determinadas etapas e não conta para o ranking final."
+    - "A participação sem pontuação final decorre de decisão dos clubes apoiada pela FHERJ."
+  modeling_consequence: "Registrar a elegibilidade na participação equipe-competição, sem inferi-la por UF, país ou cadastro\
+    \ global da equipe."
+changes:
+  version: "0.1.1"
+  supersedes: "CONCEPTUAL_MODEL@0.1.0"
+  added_relationship_id: "EQUIPE_PARTICIPA_COMPETICAO"
+  added_invariant_id: "INV_ELEGIBILIDADE_RANKING_CONTEXTUAL"
+  entities_changed: false
+  coverage_changed: false
+  open_issues_changed: false
+counts:
+  entities: 29
+  relationships: 47
+  domain_invariants: 23
+  open_issues: 0

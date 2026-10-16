@@ -1,0 +1,82 @@
+status: "PASS"
+inputs:
+  base_candidate:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.yaml"
+    sha256: "211c443c6db456b2db07c4225308fa66fe13cc159ca26ca417eef70a6efcd903"
+  exclusion_review:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.exclusion-review.yaml"
+    sha256: "9a83d2d50b8e9641ea06c1f9fdf8dac9ba4eb9a9a8ce8a07f561bdd18389383e"
+  semantic_registry:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+    sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+  source_manifest:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+    sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+decisions:
+  - concept_id: "SPIN_SHOT"
+    decision: "PROMOVER_COMO_EVENTO"
+    rationale: "A taxonomia da técnica pode ser catalogar, mas cada execução observada possui instante, atleta, contexto e\
+      \ proveniência próprios."
+  - concept_id: "IN_FLIGHT_SHOT"
+    decision: "PROMOVER_COMO_EVENTO"
+    rationale: "A taxonomia da técnica pode ser catalogar, mas cada execução observada possui instante, atleta, contexto e\
+      \ proveniência próprios."
+  - concept_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    decision: "PROMOVER_COMO_EVENTO"
+    rationale: "A desqualificação é consequência disciplinar verificável com ator, partida, instante e efeito próprio; não\
+      \ deve existir apenas como valor de atributo."
+  - concept_id: "CARTAO_AZUL_SUSPENSAO"
+    decision: "PROMOVER_COMO_EVENTO"
+    rationale: "O cartão azul exige relatório e produz suspensão posterior, portanto possui identidade e efeitos além do evento\
+      \ genérico de scout."
+  - concept_id: "SISTEMA_TATICO"
+    decision: "PROMOVER_COMO_SNAPSHOT_VERSIONADO"
+    rationale: "A configuração coletiva muda durante a partida e precisa preservar equipe, fase, intervalo de vigência e proveniência\
+      \ observacional."
+  - concept_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    decision: "PROMOVER_COMO_ATRIBUICAO_TEMPORAL"
+    rationale: "O papel é atribuído a uma pessoa em uma partida e, quando aplicável, a uma equipe; o vínculo transitório é\
+      \ o fato modelado."
+changes:
+  added_entity_ids:
+    - "SPIN_SHOT"
+    - "IN_FLIGHT_SHOT"
+    - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    - "CARTAO_AZUL_SUSPENSAO"
+    - "SISTEMA_TATICO"
+    - "PAPEL_ESPORTIVO_OPERACIONAL"
+  added_relationship_ids:
+    - "EVENTO_SCOUT_CLASSIFICA_SPIN_SHOT"
+    - "EVENTO_SCOUT_CLASSIFICA_IN_FLIGHT_SHOT"
+    - "DESQUALIFICACAO_REGISTRADA_EM_EVENTO_SCOUT"
+    - "DESQUALIFICACAO_ATINGE_ATLETA"
+    - "DESQUALIFICACAO_OCORRE_EM_PARTIDA"
+    - "CARTAO_AZUL_REGISTRADO_EM_EVENTO_SCOUT"
+    - "CARTAO_AZUL_OCORRE_EM_PARTIDA"
+    - "CARTAO_AZUL_ATINGE_ATLETA"
+    - "CARTAO_AZUL_ATINGE_PAPEL_OPERACIONAL"
+    - "SISTEMA_TATICO_CONTEXTUALIZA_POSSE"
+    - "SISTEMA_TATICO_ADOTADO_POR_EQUIPE"
+    - "SISTEMA_DEFENSIVO_ESPECIALIZA_SISTEMA_TATICO"
+    - "PAPEL_OPERACIONAL_ATRIBUIDO_EM_PARTIDA"
+    - "PAPEL_OPERACIONAL_VINCULADO_A_EQUIPE"
+  added_invariant_ids:
+    - "INV_EVENTO_TECNICA_ARREMESSO"
+    - "INV_DESQUALIFICACAO_POR_SEGUNDA_EXCLUSAO"
+    - "INV_CARTAO_AZUL_RELATORIO_E_SUSPENSAO"
+    - "INV_VIGENCIA_SISTEMA_TATICO"
+    - "INV_ESCOPO_PAPEL_OPERACIONAL"
+  removed_open_issue_ids:
+    - "ISSUE_COVERAGE_CARTAO_AZUL_SUSPENSAO"
+    - "ISSUE_COVERAGE_DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    - "ISSUE_COVERAGE_IN_FLIGHT_SHOT"
+    - "ISSUE_COVERAGE_PAPEL_ESPORTIVO_OPERACIONAL"
+    - "ISSUE_COVERAGE_SISTEMA_TATICO"
+    - "ISSUE_COVERAGE_SPIN_SHOT"
+counts:
+  entities: 29
+  relationships: 46
+  domain_invariants: 22
+  covered_concept_ids: 47
+  excluded_concept_ids: 0
+  open_issues: 0

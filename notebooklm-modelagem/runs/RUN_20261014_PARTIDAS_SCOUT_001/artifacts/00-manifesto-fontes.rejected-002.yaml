@@ -1,0 +1,405 @@
+schema_version: "1.1"
+execution_metadata:
+  run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
+  domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
+  reference_date: "2026-10-14"
+  document_status: "PROPOSTO"
+  governance_note: >-
+    O estado PROPOSTO é o único estado válido para a presente execução. Declarações históricas contidas nos
+    documentos de origem (como APPROVED, ACTIVE ou CANÔNICO) representam estritamente registros do contexto
+    passado e não constituem estado aprovado da presente execução.
+
+sources:
+  - notebook_source_id: "965f27f8-7475-43d0-a5b3-0fc985debf80"
+    title: "CTRL — Fluxo_Modelagem — acf6afa2aab0"
+    classification_category: "CONTROLE_DE_EXECUCAO"
+  - notebook_source_id: "991b26f0-0d26-4cfe-935d-81b92dee7c76"
+    title: "CTRL — Instrucoes_Notebook — a6ede74b1baa"
+    classification_category: "CONTROLE_DE_EXECUCAO"
+  - notebook_source_id: "cf663fd6-cb2a-4c03-82a0-a31023023f1c"
+    title: "CTRL — Contrato_Artefatos — db2d64da9680"
+    classification_category: "CONTROLE_DE_EXECUCAO"
+  - notebook_source_id: "68359adc-709d-4603-8da0-bf45f26e6903"
+    title: "CTRL — Template_00_Manifesto_MD — d7daeb639df5"
+    classification_category: "CONTROLE_DE_EXECUCAO"
+  - notebook_source_id: "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+    title: "regras_ihf_beach_handball_2026_en.pdf.pdf"
+    classification_category: "NORMA_OFICIAL_INTERNACIONAL"
+  - notebook_source_id: "236e788c-9c85-4133-93c8-4650a26e867a"
+    title: "Regras de Handebol de Praia 2026 — tradução"
+    classification_category: "TRADUCAO_NORMATIVA"
+  - notebook_source_id: "0d48291e-32ab-449e-8f86-ea43244c921c"
+    title: "atualizacoes_ihf_2026.md"
+    classification_category: "NORMA_OFICIAL_INTERNACIONAL"
+  - notebook_source_id: "9c553f24-6f99-4a21-b63c-9cbfda6552c1"
+    title: "Esclarecimentos regras de jogo.pdf"
+    classification_category: "NORMA_OFICIAL_INTERNACIONAL"
+  - notebook_source_id: "e593c4e6-903a-4169-a1c5-7f551bbe5b9d"
+    title: "Regulamento Geral Campeonato Carioca 2026"
+    classification_category: "REGULAMENTO_REGIONAL"
+  - notebook_source_id: "bb8b9ba4-cd24-452a-aa2b-2a3a3854e0a0"
+    title: "regulamento_cbhb_2026.pdf"
+    classification_category: "REGULAMENTO_NACIONAL"
+  - notebook_source_id: "f68c1687-7153-4283-a6a0-5e33b814fe00"
+    title: "2-point goals — spin and in-flight"
+    classification_category: "DIDATICO_TECNICO_IHF"
+  - notebook_source_id: "049d2bf2-ac90-44f8-951a-ae9a32c0cc64"
+    title: "6-metre throw + punishments"
+    classification_category: "DIDATICO_TECNICO_IHF"
+  - notebook_source_id: "a44eece7-56e3-407c-9348-23b35ab0efa4"
+    title: "Protocolo de Scout — Beach Handball"
+    classification_category: "INSTRUMENTO_OPERACIONAL"
+  - notebook_source_id: "162256e7-41bf-40ac-b77f-7b892250771f"
+    title: "Instrument for observation of collective tactical procedures"
+    classification_category: "SUPORTE_ACADEMICO_TECNICO"
+  - notebook_source_id: "605ea05f-b931-405d-984f-4773065aa6c8"
+    title: "Contextual factors and decision-making in positional attack"
+    classification_category: "SUPORTE_ACADEMICO_TECNICO"
+  - notebook_source_id: "74cb7983-decc-42de-86eb-f691d8e00d53"
+    title: "O jogo ofensivo do handebol de areia"
+    classification_category: "SUPORTE_ACADEMICO_TECNICO"
+  - notebook_source_id: "d8076ca2-b651-48af-be4e-b14dd524c377"
+    title: "Latest trends in defence"
+    classification_category: "SUPORTE_ACADEMICO_TECNICO"
+  - notebook_source_id: "de6241bc-cad8-42a5-80db-015ef2c1a780"
+    title: "Structuring of the defensive phase"
+    classification_category: "SUPORTE_ACADEMICO_TECNICO"
+  - notebook_source_id: "a3068def-bef6-49bd-b063-c8593116298f"
+    title: "Estudo das ações do guarda-redes"
+    classification_category: "SUPORTE_ACADEMICO_TECNICO"
+  - notebook_source_id: "9b742f2e-0d21-4fb1-bca9-33411d6c6ec2"
+    title: "Tempos de defesa do goleiro"
+    classification_category: "SUPORTE_ACADEMICO_TECNICO"
+  - notebook_source_id: "36d92b57-69c1-4563-a2a4-71a7bd357dc7"
+    title: "Psychological pressure in shootouts"
+    classification_category: "SUPORTE_ACADEMICO_TECNICO"
+  - notebook_source_id: "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+    title: "CEPRAEA DATABASE"
+    classification_category: "INSTRUMENTO_OPERACIONAL"
+  - notebook_source_id: "3bb0c332-947d-494f-a6fa-85493b579464"
+    title: "04A-MODELO-CONCEITUAL.md"
+    classification_category: "PROPOSTA_HISTORICA_ARQUITETURA"
+  - notebook_source_id: "aef04d7f-4e75-4597-8f96-acc3b87f945d"
+    title: "04B-MODELO-LOGICO.md"
+    classification_category: "PROPOSTA_HISTORICA_ARQUITETURA"
+  - notebook_source_id: "fef688f6-d141-475d-87c0-abbeaffe46fb"
+    title: "04C-DICIONARIO-DE-DADOS.md"
+    classification_category: "PROPOSTA_HISTORICA_ARQUITETURA"
+  - notebook_source_id: "475ce51f-f4bd-44ca-8194-31d42ea308e8"
+    title: "catalogo-regras-invariantes.md"
+    classification_category: "PROPOSTA_HISTORICA_ARQUITETURA"
+  - notebook_source_id: "2cea376b-08be-4969-b2e4-d66189ca0935"
+    title: "matriz-relacoes-cardinalidades.md"
+    classification_category: "PROPOSTA_HISTORICA_ARQUITETURA"
+  - notebook_source_id: "c30b6966-654c-4682-84d5-41b0d15febb0"
+    title: "05-schema-postgresql.sql"
+    classification_category: "PROPOSTA_HISTORICA_ARQUITETURA"
+  - notebook_source_id: "e9e4272e-d302-4ce3-bf80-b1c9bdc84060"
+    title: "06-migrations-rollback.sql.md"
+    classification_category: "PROPOSTA_HISTORICA_ARQUITETURA"
+  - notebook_source_id: "49ceb0ca-9160-4d36-a8ac-b58470c73f80"
+    title: "07-matriz-rbac-e-politicas-rls"
+    classification_category: "PROPOSTA_HISTORICA_ARQUITETURA"
+
+classification_rules:
+  execution_controls:
+    description: >-
+      As fontes CTRL são classificadas estritamente como ferramentas de governança, instrução de pipeline e
+      controle de execução, sem valor declarativo ou factual para evidência esportiva.
+  normative_precedence:
+    description: >-
+      As regras oficiais publicadas pela IHF (em inglês), suas atualizações e esclarecimentos oficiais, bem como os
+      regulamentos vigentes das entidades organizadoras (CBHb e FHERJ), possuem a mais alta precedência normative.
+  translation_governance:
+    description: >-
+      Traduções em língua portuguesa representam apoio operacional e não superam nem alteram o texto oficial em
+      inglês da IHF em caso de divergência conceitual.
+  operational_tools:
+    description: >-
+      O Protocolo de Scout e a base CEPRAEA DATABASE constituem instrumentos operacionais de trabalho e registros de
+      campo, não configurando normas oficiais do esporte.
+  technical_support:
+    description: >-
+      Artigos científicos, estudos acadêmicos e apresentações técnicas da IHF servem como material analítico de suporte.
+  historical_proposals:
+    description: >-
+      Os 8 artefatos finais da arquitetura de dados (04A, 04B, 04C, catálogo de invariantes, matriz de cardinalidades,
+      05-schema SQL, 06-migrations e 07-matriz RBAC/RLS) são classificados formalmente como propostas históricas da
+      arquitetura e não comprovam implementação física corrente, teste efetuado ou aprovação ativa.
+
+precedence_hierarchy:
+  - level: 1
+    category: "NORMA_OFICIAL_INTERNACIONAL"
+    description: "Regras oficiais IHF em inglês, atualizações e esclarecimentos oficiais de jogo."
+  - level: 2
+    category: "REGULAMENTO_NACIONAL"
+    description: "Regulamentos gerais e específicos da Confederação Brasileira de Handebol (CBHb)."
+  - level: 3
+    category: "REGULAMENTO_REGIONAL"
+    description: "Regulamentos gerais e boletins da Federação de Handebol do Estado do Rio de Janeiro (FHERJ)."
+  - level: 4
+    category: "TRADUCAO_NORMATIVA"
+    description: "Traduções em português das regras oficiais IHF (subordinadas ao texto original em inglês)."
+  - level: 5
+    category: "DIDATICO_TECNICO_IHF"
+    description: "Apresentações didáticas, seminários da IHF Virtual Academy e guias de arbitragem."
+  - level: 6
+    category: "INSTRUMENTO_OPERACIONAL"
+    description: "Bancos de dados operacionais (CEPRAEA DATABASE) e protocolos de scout de campo."
+  - level: 7
+    category: "SUPORTE_ACADEMICO_TECNICO"
+    description: "Estudos acadêmicos, artigos de análise tática e artigos científicos do handebol de praia."
+  - level: 8
+    category: "PROPOSTA_HISTORICA_ARQUITETURA"
+    description: "Modelos conceituais, lógicos, dicionários de dados, esquemas SQL e RLS do histórico do projeto."
+  - level: 9
+    category: "CONTROLE_DE_EXECUCAO"
+    description: "Instruções de notebook, contratos de artefatos e templates de governança da execução."
+
+included_scope:
+  - "Regras da partida"
+  - "Sets e segmentos de partida"
+  - "Shoot-out, placar e pontuação"
+  - "Finalizações de 1 ponto e 2 pontos (spin shot, in-flight, goleira/especialista, tiro de 6m)"
+  - "Tiro de 6 metros e punições disciplinares"
+  - "Posses de bola e fases ofensivas"
+  - "Sistemas defensivos e ações da goleira (tempos e zonas de defesa)"
+  - "Zonas de quadra e resultado final"
+  - "Scout observacional, protocolo, observador, processo de revisão e confiabilidade"
+  - "Trechos de vídeo e timecodes"
+
+excluded_scope:
+  - "Treinamento e prescrição de cargas"
+  - "Saúde, fisioterapia e medicina esportiva"
+  - "Finanças e gestão orçamentária"
+  - "Gestão administrativa de clube/entidade"
+  - "Mídia institucional e assessoria de imprensa"
+  - "Infraestrutura e logística não diretamente necessárias ao scout e à análise tática"
+
+semantic_entities:
+  - entity_id: "ONE_POINT_GOAL"
+    description: >-
+      Golo simples de 1 ponto concedido após finalização regular efetuada por jogador de linha sem rotação (spin)
+      ou recepção em suspensão (in-flight), golo contra efetuado por qualquer atleta (Regra 12:2) ou arremesso
+      espetacular executado sem o domínio ou a rotação técnica regulamentar exigida.
+    evidence_ref_ids:
+      - "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+      - "236e788c-9c85-4133-93c8-4650a26e867a"
+      - "f68c1687-7153-4283-a6a0-5e33b814fe00"
+    detailed_location: "IHF Rule 9:1, Rule 12:2; Presentation Slides 5-8"
+
+  - entity_id: "SPIN_SHOT_TWO_POINTS"
+    description: >-
+      Finalização espetacular de 2 pontos efetuada com rotação corporal completa de 360 graus no ar. O critério técnico
+      exige rigorosamente que os pés do atleta no momento do salto/impulsão estejam direcionados frontalmente para
+      a baliza adversária. Rotações incompletas (menores que 360 graus) são invalidadas para 1 ponto.
+    evidence_ref_ids:
+      - "f68c1687-7153-4283-a6a0-5e33b814fe00"
+      - "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+      - "236e788c-9c85-4133-93c8-4650a26e867a"
+    detailed_location: "Presentation Slides 11-35; IHF Rule 9:2"
+
+  - entity_id: "IN_FLIGHT_SHOT_TWO_POINTS"
+    description: >-
+      Finalização espetacular de 2 pontos (aéreo/in-flight) realizada em suspensão, onde o atleta domina a bola no ar
+      e efetua o arremesso à baliza antes de tocar o solo. Ações de apenas empurrar ou dar uma palmada na bola no ar
+      (slapping/pushing) valem apenas 1 ponto.
+    evidence_ref_ids:
+      - "f68c1687-7153-4283-a6a0-5e33b814fe00"
+      - "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+      - "236e788c-9c85-4133-93c8-4650a26e867a"
+    detailed_location: "Presentation Slides 36-43; IHF Rule 9:2"
+
+  - entity_id: "SIX_METRE_THROW"
+    description: >-
+      Tiro livre direto da linha de 6 metros concedido quando uma clara chance de golo é destruída ilicitamente em
+      qualquer local da quadra por um adversário/oficial, por apito indevido ou interferência externa. O golo resultante
+      é sempre recompensado com 2 pontos. O arremessador possui 3 segundos após o apito e não pode tocar a linha de 6m.
+    evidence_ref_ids:
+      - "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+      - "236e788c-9c85-4133-93c8-4650a26e867a"
+      - "049d2bf2-ac90-44f8-951a-ae9a32c0cc64"
+      - "f68c1687-7153-4283-a6a0-5e33b814fe00"
+    detailed_location: "IHF Rule 14; Presentation Slides 4-12 (6m throw + punishments); Presentation Slide 45"
+
+  - entity_id: "GOALKEEPER_SPECIALIST_GOAL_TWO_POINTS"
+    description: >-
+      Golo marcado por goleira ou especialista (atleta usando camisa de cor diferenciada), recompensado com 2 pontos
+      em qualquer modalidade técnica de arremesso, seja cobrando diretamente da sua área de golo ou em ataque posicionado.
+    evidence_ref_ids:
+      - "f68c1687-7153-4283-a6a0-5e33b814fe00"
+      - "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+      - "236e788c-9c85-4133-93c8-4650a26e867a"
+    detailed_location: "Presentation Slides 49-51; IHF Rule 9:2"
+
+  - entity_id: "SHOOT_OUT"
+    description: >-
+      Fase de desempate individual do jogo de handebol de praia, executada via duelo 1 contra a goleira em caso de
+      empate em sets (1x1). Envolve passe da atleta para sua goleira e corrida para receber o contra-ataque e finalizar.
+    evidence_ref_ids:
+      - "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+      - "f68c1687-7153-4283-a6a0-5e33b814fe00"
+      - "36d92b57-69c1-4563-a2a4-71a7bd357dc7"
+      - "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+    detailed_location: "IHF Rule 9:3; CEPRAEA DB_JOGOS (shootout_cepraea/shootout_adversario)"
+
+  - entity_id: "BALL_POSSESSION"
+    description: >-
+      Unidade estrutural de controle contínuo da bola por uma das equipes durante a partida. Inicia com a recuperação,
+      tiro de golo ou tiro de sada e encerra por finalização, perda de bola, falta atacante ou término do segmento.
+      Possui relação 1:N com Blocos de Organização Tática (BOU).
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+    detailed_location: "05-schema-postgresql.sql Table public.possessions; CEPRAEA DB_JOGOS"
+
+  - entity_id: "POSSESSION_START"
+    description: >-
+      Evento de início da posse de bola catalogado pelo scout observacional, caracterizado pelo tipo de origem
+      (ex.: tiro de golo, roubo de bola, rebote, tiro livre) e delimitado por marcação temporal de vídeo (start_timecode).
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+    detailed_location: "05-schema-postgresql.sql Table public.possessions (origin_type, start_timecode)"
+
+  - entity_id: "BOU_BASIC_TACTICAL_UNIT"
+    description: >-
+      Bloco de Organização de Unidade Tática (BOU) pertencente a uma posse de bola (`possessions.id`). Delimita a
+      estabilidade das estruturas ofensiva e defensiva e contém 1..N procedimentos táticos (`tactical_events`) ou
+      uma finalização (`finalizations`).
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+    detailed_location: "05-schema-postgresql.sql Table public.bous (possession_id, offensive_structure, initial_defensive_structure, final_defensive_structure)"
+
+  - entity_id: "TACTICAL_EVENT"
+    description: >-
+      Procedimento tático coletivo ou individual registrado no scout observacional durante um BOU (`bous.id`), como
+      passagem, engajamento, fixação, cruzamento, bloqueio, desmarcação ou circulação de especialista.
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "162256e7-41bf-40ac-b77f-7b892250771f"
+      - "a44eece7-56e3-407c-9348-23b35ab0efa4"
+    detailed_location: "05-schema-postgresql.sql Table public.tactical_events; Protocolo de Scout"
+
+  - entity_id: "FINALIZATION"
+    description: >-
+      Ação técnica de arremesso direcionada à baliza ao término ou durante um BOU. Registra atleta finalizador, zona de
+      origem, zona de alvo, tipo técnico (spin, in-flight, especialista, simples, 6m), resultado (golo, defesa, fora, trave)
+      e pontuação atribuída (0, 1 ou 2 pontos).
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "605ea05f-b931-405d-984f-4773065aa6c8"
+    detailed_location: "05-schema-postgresql.sql Table public.finalizations (origin_zone, target_zone, finalization_type, result, points_awarded)"
+
+  - entity_id: "COURT_ZONE_LOCATION"
+    description: >-
+      Mapeamento e codificação espacial do terreno de jogo de areia (zonas de origem de arremesso e zonas de alvo na
+      baliza) utilizado no scout tático observacional para análise de eficácia de finalização e setorização defensiva.
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "a44eece7-56e3-407c-9348-23b35ab0efa4"
+    detailed_location: "05-schema-postgresql.sql Table public.finalizations (origin_zone, target_zone); Protocolo de Scout"
+
+  - entity_id: "GOALKEEPER_SAVE"
+    description: >-
+      Ação defensiva da goleira vinculada a uma finalização adversária (`finalizations.id`). Registra o tipo de ação
+      defensiva, saída de profundidade e ação subsequente (recuperação de bola, passe de contra-ataque/shoot-out).
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "a3068def-bef6-49bd-b063-c8593116298f"
+      - "9b742f2e-0d21-4fb1-bca9-33411d6c6ec2"
+    detailed_location: "05-schema-postgresql.sql Table public.goalkeeper_actions (defensive_action, forward_depth, subsequent_action)"
+
+  - entity_id: "DEFENSIVE_STRUCTURE"
+    description: >-
+      Organização e desenho tático da fase defensiva registrado no BOU (`initial_defensive_structure` e
+      `final_defensive_structure`), abrangendo os sistemas canônicos 3:0 (base, solta, cobertura) e 2:1 (coberturas, avançada).
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "de6241bc-cad8-42a5-80db-015ef2c1a780"
+      - "d8076ca2-b651-48af-be4e-b14dd524c377"
+    detailed_location: "05-schema-postgresql.sql Table public.bous (initial_defensive_structure, final_defensive_structure)"
+
+  - entity_id: "OFFENSIVE_STRUCTURE"
+    description: >-
+      Organização tática do ataque posicionado registrada no BOU (`offensive_structure`), abrangendo os sistemas
+      canônicos 3:1 (com especialista/coringa) e 4:0 (quatro jogadoras de linha sem coringa fixo).
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "74cb7983-decc-42de-86eb-f691d8e00d53"
+      - "605ea05f-b931-405d-984f-4773065aa6c8"
+    detailed_location: "05-schema-postgresql.sql Table public.bous (offensive_structure, specialist_athlete_id)"
+
+  - entity_id: "VIDEO_TIMECODE_SEGMENT"
+    description: >-
+      Marcação temporal exata de entrada e saída de trechos de vídeo (timecodes HH:MM:SS / MM:SS) associada a posses de
+      bola e eventos táticos para fins de vinculação entre dados observacionais e corte audiovisual.
+    evidence_ref_ids:
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "a44eece7-56e3-407c-9348-23b35ab0efa4"
+    detailed_location: "05-schema-postgresql.sql Table public.possessions (start_timecode, end_timecode)"
+
+  - entity_id: "OBSERVATIONAL_SCOUT_PROTOCOL"
+    description: >-
+      Conjunto padronizado de regras, critérios de notação tática e definições operacionais que orientam o registro de
+      eventos de jogo em campo ou via vídeo por analistas de scout.
+    evidence_ref_ids:
+      - "a44eece7-56e3-407c-9348-23b35ab0efa4"
+      - "162256e7-41bf-40ac-b77f-7b892250771f"
+    detailed_location: "Protocolo de Scout — Beach Handball; Instrument for observation of collective tactical procedures"
+
+  - entity_id: "OBSERVER_RELIABILITY_METRIC"
+    description: >-
+      Métrica de consistência e confiabilidade do scout (concordância intra e inter-observadores via índice Kappa de Cohen
+      ou percentual de acordo), utilizada para validar dados de analistas antes do consumo pelo modelo tático.
+    evidence_ref_ids:
+      - "a44eece7-56e3-407c-9348-23b35ab0efa4"
+      - "162256e7-41bf-40ac-b77f-7b892250771f"
+    detailed_location: "Protocolo de Scout — Beach Handball (Análise de Confiabilidade Intra/Inter-observador)"
+
+  - entity_id: "FACTUAL_PRESENCE"
+    description: >-
+      Comparecimento factual verificado e homologado de uma atleta em sessão de treino ou partida. Exige chancela humana
+      expressa do treinador e não pode ser inferido de declarações prospectivas ou propostas do autorelato.
+    evidence_ref_ids:
+      - "3bb0c332-947d-494f-a6fa-85493b579464"
+      - "fef688f6-d141-475d-87c0-abbeaffe46fb"
+      - "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "49ceb0ca-9160-4d36-a8ac-b58470c73f80"
+    detailed_location: "04C Section 2.6 public.factual_presences; 05-schema public.factual_presences; CEPRAEA DB_PRESENCA"
+
+  - entity_id: "AVAILABILITY_DECLARATION"
+    description: >-
+      Manifestação prospectiva individual de intenção ou disponibilidade informada pela atleta na agenda/calendário.
+      Possui natureza de DECLARAÇÃO e nunca constitui prova de presença factual posterior.
+    evidence_ref_ids:
+      - "3bb0c332-947d-494f-a6fa-85493b579464"
+      - "aef04d7f-4e75-4597-8f96-acc3b87f945d"
+      - "fef688f6-d141-475d-87c0-abbeaffe46fb"
+      - "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+    detailed_location: "04C Section 2.4 public.availability_declarations; CEPRAEA DB_DISPONIBILIDADE_DECLARADA"
+
+  - entity_id: "MATCH_ROSTER_APPEARANCE"
+    description: >-
+      Composição de súmula oficial de partida por atleta. Regida pela Regra IHF 4 (máximo de 10 atletas por jogo
+      selecionadas a partir da relação nominal de até 12 atletas da etapa).
+    evidence_ref_ids:
+      - "d7ebb4e2-04f1-43f8-b2a0-152b98e5a226"
+      - "3bb0c332-947d-494f-a6fa-85493b579464"
+      - "aef04d7f-4e75-4597-8f96-acc3b87f945d"
+      - "fef688f6-d141-475d-87c0-abbeaffe46fb"
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+    detailed_location: "IHF Rule 4; 04C Section 2.10 public.match_appearances; 05-schema public.match_appearances"
+
+  - entity_id: "MATCH_SET_RESULT"
+    description: >-
+      Pontuação por set (set 1, set 2 e shoot-out) e resultado numérico derivado do placar obtido pelas equipes
+      em jogo oficial, sustentando o cômputo de vitória/derrota e parcial de sets.
+    evidence_ref_ids:
+      - "3bb0c332-947d-494f-a6fa-85493b579464"
+      - "fef688f6-d141-475d-87c0-abbeaffe46fb"
+      - "c30b6966-654c-4682-84d5-41b0d15febb0"
+      - "569f2d66-ba38-41fc-aa84-d854bb6d0df9"
+    detailed_location: "04C Section 2.9 public.matches; 05-schema public.matches; CEPRAEA DB_JOGOS"

@@ -1,5 +1,17 @@
 {
   "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "write_file|edit_file|str_replace",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/home/davis/Gemini NotebookLM/scripts/check-diagnostics.sh'",
+            "statusMessage": "Verificando erros após escrita..."
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [

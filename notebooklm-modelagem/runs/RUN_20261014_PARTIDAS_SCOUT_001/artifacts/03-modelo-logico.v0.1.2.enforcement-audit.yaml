@@ -1,0 +1,24 @@
+status: "PASS"
+phase: "LOGICAL_MODEL_ENFORCEMENT_RECONCILIATION"
+base:
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.v0.1.1.yaml"
+  sha256: "aebdbd4c7b725a25ce1b89d632ae56e94ee25d5529e8ce7c82ab87387ef2e492"
+decision_source_id: "4761f1cf-bf81-463f-bd36-a78ab24786de"
+result:
+  relations: 32
+  attributes: 204
+  foreign_keys: 59
+  sql_check_candidates: 5
+  structural_invariants: 3
+  deferred_rules: 5
+removed_false_check_ids:
+  - "CHK_ATLETA_SEMANTICA_GOLEIRA"
+  - "CHK_BOU_REJEICAO_INFERENCIAIS"
+  - "CHK_PASSIVO_QUATRO_PASSES"
+  - "CHK_PRAZO_INSCRICAO_72H"
+  - "CHK_PROTECAO_CABECA_GOLEIRA"
+  - "CHK_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+  - "CHK_REJEICAO_VARIAVEIS_INFERENCIAIS"
+  - "CHK_TETO_PARTICIPANTES_SUMULA"
+scope_expanded: false
+validation: "PASS"

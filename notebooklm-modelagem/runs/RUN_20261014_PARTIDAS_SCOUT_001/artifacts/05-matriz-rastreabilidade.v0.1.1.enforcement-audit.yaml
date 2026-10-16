@@ -1,0 +1,29 @@
+status: "PASS"
+phase: "TRACEABILITY_ENFORCEMENT_RECONCILIATION"
+base:
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.yaml"
+  sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
+logical:
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.v0.1.2.yaml"
+  sha256: "7a82bd2235897e67338036ba5be67f222ac3fdcf19a05bb919ecb1787824b1cb"
+  source_id: "1689f311-fd8c-420e-bf53-593d7d90cd1d"
+dictionary:
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.v0.1.1.yaml"
+  sha256: "82ed6eb37a7872bb1eb66c6d853dd3e9d96b53f5a93b4670b67bd489a44c348e"
+  source_id: "0f1d2800-6195-4758-be73-a61da4546429"
+result:
+  traces: 113
+  direct_sql_checks: 5
+  structural_invariants: 3
+  deferred_rules: 5
+  open_issues: 6
+false_physical_constraints_removed:
+  - "CHK_ATLETA_SEMANTICA_GOLEIRA"
+  - "CHK_BOU_REJEICAO_INFERENCIAIS"
+  - "CHK_PASSIVO_QUATRO_PASSES"
+  - "CHK_PRAZO_INSCRICAO_72H"
+  - "CHK_PROTECAO_CABECA_GOLEIRA"
+  - "CHK_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+  - "CHK_REJEICAO_VARIAVEIS_INFERENCIAIS"
+  - "CHK_TETO_PARTICIPANTES_SUMULA"
+validation: "PASS"

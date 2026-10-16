@@ -1,0 +1,26 @@
+{
+  "answer": "source_assessment:\n  canonical_title_proposal: \"UNDERSTANDING PSYCHOLOGICAL PRESSURE IN BEACH HANDBALL SHOOTOUTS\"\n  publisher: \"EHF Beach Handball\"\n  source_revision: null\n  publication_date: null\n  language: \"en\"\n  source_type: \"MANUAL_TECNICO\"\n  authority_class_proposal: \"SUPORTE\"\n  lifecycle_status_proposal: \"PROPOSTO\"\n  classification_rationale: \"Trata-se de um manual/guia técnico e educativo publicado pela EHF Beach Handball, focado nos mecanismos psicológicos, cognitivos e emocionais do shoot-out no handebol de praia. Funciona como literatura de suporte técnico e metodológico, não constituindo regra oficial nem regulamento competitivo de federação.\"\n  limitations:\n    - \"Documento não apresenta data explícita de publicação nem número de revisão no cabeçalho ou folha de rosto.\"\n    - \"Aborda exclusivamente a dimensão psicológica e de treinamento mental do shoot-out, sem definir regras formais de arbitragem ou normas disciplinares de jogo.\"\nevidence_candidates:\n  - locator: \"p. 1 (passage 1)\"\n    evidence_type: \"SUPORTE\"\n    excerpt: \"This publication focuses on the psychological dynamics of the shootout in beach handball.\"\n    interpretation: \"A publicação tem como foco central a análise e aplicação das dinâmicas psicológicas durante as disputas de shoot-out no handebol de praia.\"\n  - locator: \"p. 1 (passage 1)\"\n    evidence_type: \"SUPORTE\"\n    excerpt: \"These situations, occurring when the immediate winner must be determined typically after regular time or overtime have failed to produce a decisive result - significantly increase the psychological demands placed on the athletes.\"\n    interpretation: \"Definição do contexto do shoot-out como fase desempate decisiva após o tempo regulamentar, a qual eleva exponencialmente as exigências psicológicas sobre os atletas.\"\n  - locator: \"p. 2 (passage 3)\"\n    evidence_type: \"FATO\"\n    excerpt: \"Unlike the continuous flow of regular gameplay, the shootout format imposes a unique combination of cognitive, emotional, and physiological stressors.\"\n    interpretation: \"O formato de shoot-out distingue-se do fluxo contínuo do jogo regular por impor uma combinação singular de estressores cognitivos, emocionais e fisiológicos.\"\n  - locator: \"p. 3 (passage 9)\"\n    evidence_type: \"SUPORTE\"\n    excerpt: \"Deep breathing: controlled breathing helps regulate physiological arousal by activating the parasympathetic nervous system, reducing tension, and promoting a state of calm focus\"\n    interpretation: \"A respiração profunda e controlada é recomendada como técnica de regulação fisiológica para reduzir a tensão muscular e promover foco calmo durante o shoot-out.\"\n  - locator: \"p. 17 (passage 67)\"\n    evidence_type: \"FATO\"\n    excerpt: \"Unlike shooters, who prepare to initiate an action, goalkeepers must respond to highly dynamic and unpredictable stimuli under extreme time constraints.\"\n    interpretation: \"Diferenciação do papel tático-psicológico: o arremessador inicia a ação planejada, enquanto o goleiro responde de forma reativa a estímulos dinâmicos e imprevisíveis em intervalo de tempo mínimo.\"\n  - locator: \"p. 28 (passage 115)\"\n    evidence_type: \"SUPORTE\"\n    excerpt: \"When athletes mentally rehearse high-stakes scenarios-such as walking to the 6-metre line, facing the goalkeeper, or responding to crowd noise-they build a sense of psychological readiness.\"\n    interpretation: \"A prática de ensaio mental (visualização do deslocamento até a linha de 6 metros e do duelo com o goleiro) desenvolve a prontidão psicológica do atleta.\"\nreconciliation_signals:\n  - \"O documento é editado em inglês pela EHF Beach Handball e inclui referências bibliográficas recentes (2024 e 2025), indicando ser um material contemporâneo de suporte técnico.\"\n  - \"Não substitui nem entra em conflito com o livro oficial de regras da IHF, atuando como documento complementar especializado em psicologia do esporte.\"\nopen_questions:\n  - \"Data exata de publicação não consta no texto, devendo ser estimada como circa 2025 com base na lista de referências bibliográficas.\"\n  - \"Inexistência de diretrizes específicas de coleta de dados de scout no documento, exigindo integração com os manuais de scout operacionais do CEPRAEA.\"",
+  "conversation_id": "447c36d8-e262-4c37-add6-e7a0347d91fb",
+  "turn_number": 1,
+  "is_follow_up": false,
+  "references": [],
+  "turn_key": {
+    "session_id": "447c36d8-e262-4c37-add6-e7a0347d91fb",
+    "turn_id": "d3633e5a-7fca-406b-a429-726aaa04d2bd",
+    "turn_code": 3262671888
+  },
+  "next_steps": [
+    {
+      "question": "Quais são as principais técnicas de respiração recomendadas?",
+      "type_code": 9
+    },
+    {
+      "question": "Como os goleiros devem treinar a regulação emocional?",
+      "type_code": 9
+    },
+    {
+      "question": "Qual é o papel do treinador na gestão da pressão da equipe?",
+      "type_code": 9
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+status: "PASS"
+inputs:
+  notebook_report:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.report-001.md"
+    sha256: "5cc7f17f275b6d2c30cb0b29e7faa38a7a31f9a3956c45e5196d044e4bf31dfb"
+  semantic_registry:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.candidate.yaml"
+    sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+  conceptual_model:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.yaml"
+    sha256: "e1084c2b63dfba148e6479031d01de01e2b283062fdcc4333df468247434c0b6"
+  source_manifest:
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/00-manifesto-fontes.candidate.yaml"
+    sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+normalization:
+  removed_markdown_heading: true
+  absorbed_concept_reference:
+    relation_id: "ATLETA"
+    removed_non_entity_concept_id: "GOLEIRA_POSICAO"
+  semantic_content_added: false
+coverage:
+  conceptual_entities: "29/29"
+  conceptual_relationships: "46/46"
+validator_compatibility:
+  generic_validate_yaml: "NOT_APPLICABLE"
+  reason: "IDs de atributos são locais à relação; o validador genérico exige unicidade global para toda chave id."
+  specialized_validation: "PASS"
+counts:
+  relations: 31
+  foreign_keys: 57
+  normalization_decisions: 5
+  open_issues: 2
+  covered_conceptual_entities: 29
+  covered_conceptual_relationships: 46
