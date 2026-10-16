@@ -1,0 +1,29 @@
+status: "PASS"
+stage_id: "STAGE_08"
+artifact_id: "c5daabd6-1192-4d09-b79c-9408661dc1b7"
+sql_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.candidate.sql"
+sql_sha256: "f5224887f8dd85b82542e3645e0c68fbad77c336a5f0509c229a6f7867694828"
+validated_at: "2026-10-15T18:33:00-03:00"
+input_artifacts:
+  logical_model:
+    version: "0.1.2"
+    sha256: "7a82bd2235897e67338036ba5be67f222ac3fdcf19a05bb919ecb1787824b1cb"
+  data_dictionary:
+    version: "0.1.1"
+    sha256: "82ed6eb37a7872bb1eb66c6d853dd3e9d96b53f5a93b4670b67bd489a44c348e"
+coverage:
+  tables: 32
+  public_tables: 9
+  private_tables: 23
+  expected_columns: 204
+  covered_columns: 204
+  primary_keys: 32
+  foreign_keys: 59
+  unique_constraints: 17
+  direct_checks: 5
+  direct_check_semantics: 5
+  explicit_fk_indexes: 50
+  fk_indexes_covered_by_pk_or_unique_prefix: 9
+  temporal_exclusion: true
+findings: []
+execution: "NOT_PERFORMED"

@@ -1,0 +1,747 @@
+status: "REJECTED"
+stage_id: "STAGE_08"
+artifact_id: "f0f349f3-0e3d-4c9d-bba9-df36eafcc339"
+sql_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-003.md"
+sql_sha256: "085e52e4520eee812a50b0b6e3abe6425ee37503bff94fe6d72fa6afb2484edc"
+validated_at: "2026-10-15T18:30:00-03:00"
+input_artifacts:
+  logical_model:
+    version: "0.1.2"
+    sha256: "7a82bd2235897e67338036ba5be67f222ac3fdcf19a05bb919ecb1787824b1cb"
+  data_dictionary:
+    version: "0.1.1"
+    sha256: "82ed6eb37a7872bb1eb66c6d853dd3e9d96b53f5a93b4670b67bd489a44c348e"
+coverage:
+  tables: 32
+  public_tables: 9
+  private_tables: 23
+  expected_columns: 204
+  covered_columns: 204
+  foreign_keys: 12
+  unique_constraints: 17
+  direct_checks: 5
+  explicit_fk_indexes: 59
+  fk_indexes_covered_by_pk_or_unique_prefix: 0
+  temporal_exclusion: false
+findings:
+  - id: "UNIQUE_CONFORMANCE_MISMATCH"
+    evidence:
+      missing_or_changed:
+        - "UQ_SEGMENTO_ORDEM"
+      unexpected: []
+  - id: "FOREIGN_KEY_CONFORMANCE_MISMATCH"
+    evidence:
+      errors:
+        - foreign_key_id: "FK_PARTIDA_EQUIPE_PARTIDA"
+          expected:
+            source:
+              - public
+              - partida_equipe
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_PARTIDA_EQUIPE_EQUIPE"
+          expected:
+            source:
+              - public
+              - partida_equipe
+            source_columns:
+              - "equipe_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_INSCRICAO_ATLETA"
+          expected:
+            source:
+              - private
+              - equipe_atleta_inscricao
+            source_columns:
+              - "atleta_id"
+            target:
+              - private
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_INSCRICAO_COMPETICAO"
+          expected:
+            source:
+              - private
+              - equipe_atleta_inscricao
+            source_columns:
+              - "competicao_id"
+            target:
+              - public
+              - competicao
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_PERIODO_SET_PARTIDA"
+          expected:
+            source:
+              - public
+              - periodo_set
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_SHOOT_OUT_PARTIDA"
+          expected:
+            source:
+              - public
+              - shoot_out
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_POSSE_DE_BOLA_PERIODO_SET"
+          expected:
+            source:
+              - private
+              - posse_de_bola
+            source_columns:
+              - "periodo_set_id"
+            target:
+              - public
+              - periodo_set
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_POSSE_DE_BOLA_EQUIPE"
+          expected:
+            source:
+              - private
+              - posse_de_bola
+            source_columns:
+              - "equipe_possuidora_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_BOU_POSSE_DE_BOLA"
+          expected:
+            source:
+              - private
+              - unidade_basica_ataque_bou
+            source_columns:
+              - "posse_de_bola_id"
+            target:
+              - private
+              - posse_de_bola
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_EVENTO_SCOUT_OBSERVACAO"
+          expected:
+            source:
+              - private
+              - evento_scout
+            source_columns:
+              - "observacao_de_scout_id"
+            target:
+              - private
+              - observacao_de_scout
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_EVENTO_SCOUT_BOU"
+          expected:
+            source:
+              - private
+              - evento_scout
+            source_columns:
+              - "unidade_basica_ataque_bou_id"
+            target:
+              - private
+              - unidade_basica_ataque_bou
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_OBSERVACAO_SCOUT_PARTIDA"
+          expected:
+            source:
+              - private
+              - observacao_de_scout
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_OBSERVACAO_SCOUT_ANALISTA"
+          expected:
+            source:
+              - private
+              - observacao_de_scout
+            source_columns:
+              - "analista_observador_id"
+            target:
+              - private
+              - analista_observador
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_OBSERVACAO_SCOUT_PROTOCOLO"
+          expected:
+            source:
+              - private
+              - observacao_de_scout
+            source_columns:
+              - "protocolo_scout_id"
+            target:
+              - private
+              - protocolo_scout
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_OBSERVACAO_SCOUT_MIDIA"
+          expected:
+            source:
+              - private
+              - observacao_de_scout
+            source_columns:
+              - "midia_video_id"
+            target:
+              - private
+              - midia_video
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_MIDIA_VIDEO_PARTIDA"
+          expected:
+            source:
+              - private
+              - midia_video
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_SEGMENTO_OBSERVADO_PARTIDA"
+          expected:
+            source:
+              - private
+              - segmento_observado
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_PLACAR_JOGO_PARTIDA"
+          expected:
+            source:
+              - public
+              - placar_jogo
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_ESTADO_PLACAR_PLACAR_JOGO"
+          expected:
+            source:
+              - public
+              - estado_do_placar
+            source_columns:
+              - "placar_jogo_id"
+            target:
+              - public
+              - placar_jogo
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_ESTADO_PLACAR_PERIODO_SET"
+          expected:
+            source:
+              - public
+              - estado_do_placar
+            source_columns:
+              - "periodo_set_id"
+            target:
+              - public
+              - periodo_set
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_EVOLUCAO_PLACAR_PARTIDA"
+          expected:
+            source:
+              - public
+              - evolucao_do_placar
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_EVOLUCAO_PLACAR_EVENTO_SCOUT"
+          expected:
+            source:
+              - public
+              - evolucao_do_placar
+            source_columns:
+              - "evento_scout_id"
+            target:
+              - private
+              - evento_scout
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_EVOLUCAO_PLACAR_EQUIPE"
+          expected:
+            source:
+              - public
+              - evolucao_do_placar
+            source_columns:
+              - "equipe_beneficiada_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_SISTEMA_DEFENSIVO_POSSE"
+          expected:
+            source:
+              - private
+              - sistema_defensivo
+            source_columns:
+              - "posse_de_bola_id"
+            target:
+              - private
+              - posse_de_bola
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_SISTEMA_DEFENSIVO_EQUIPE"
+          expected:
+            source:
+              - private
+              - sistema_defensivo
+            source_columns:
+              - "equipe_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_SISTEMA_DEFENSIVO_SISTEMA_TATICO"
+          expected:
+            source:
+              - private
+              - sistema_defensivo
+            source_columns:
+              - "sistema_tatico_id"
+            target:
+              - private
+              - sistema_tatico
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_CONFIABILIDADE_ANALISTA"
+          expected:
+            source:
+              - private
+              - confiabilidade_observador
+            source_columns:
+              - "analista_observador_id"
+            target:
+              - private
+              - analista_observador
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_REVISAO_OBSERVACAO_OBS"
+          expected:
+            source:
+              - private
+              - revisao_da_observacao
+            source_columns:
+              - "observacao_de_scout_id"
+            target:
+              - private
+              - observacao_de_scout
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_REVISAO_OBSERVACAO_ANALISTA"
+          expected:
+            source:
+              - private
+              - revisao_da_observacao
+            source_columns:
+              - "analista_revisor_id"
+            target:
+              - private
+              - analista_observador
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_ESTADO_REVISAO_OBSERVACAO"
+          expected:
+            source:
+              - private
+              - estado_de_revisao
+            source_columns:
+              - "observacao_de_scout_id"
+            target:
+              - private
+              - observacao_de_scout
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_ESTADO_REVISAO_REVISAO"
+          expected:
+            source:
+              - private
+              - estado_de_revisao
+            source_columns:
+              - "revisao_da_observacao_id"
+            target:
+              - private
+              - revisao_da_observacao
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_PROVENIENCIA_OBSERVACAO_OBS"
+          expected:
+            source:
+              - private
+              - proveniencia_observacao
+            source_columns:
+              - "observacao_de_scout_id"
+            target:
+              - private
+              - observacao_de_scout
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_PROVENIENCIA_PROTOCOLO"
+          expected:
+            source:
+              - private
+              - proveniencia_observacao
+            source_columns:
+              - "protocolo_scout_id"
+            target:
+              - private
+              - protocolo_scout
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_PROVENIENCIA_MIDIA"
+          expected:
+            source:
+              - private
+              - proveniencia_observacao
+            source_columns:
+              - "midia_video_id"
+            target:
+              - private
+              - midia_video
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_TRECHO_OBSERVADO_EVENTO"
+          expected:
+            source:
+              - private
+              - trecho_observado
+            source_columns:
+              - "evento_scout_id"
+            target:
+              - private
+              - evento_scout
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_SPIN_SHOT_EVENTO"
+          expected:
+            source:
+              - private
+              - spin_shot
+            source_columns:
+              - "evento_scout_id"
+            target:
+              - private
+              - evento_scout
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_IN_FLIGHT_SHOT_EVENTO"
+          expected:
+            source:
+              - private
+              - in_flight_shot
+            source_columns:
+              - "evento_scout_id"
+            target:
+              - private
+              - evento_scout
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_DESQUALIFICACAO_EVENTO"
+          expected:
+            source:
+              - private
+              - desqualificacao_segunda_exclusao
+            source_columns:
+              - "evento_scout_id"
+            target:
+              - private
+              - evento_scout
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_DESQUALIFICACAO_ATLETA"
+          expected:
+            source:
+              - private
+              - desqualificacao_segunda_exclusao
+            source_columns:
+              - "atleta_id"
+            target:
+              - private
+              - atleta
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_DESQUALIFICACAO_PARTIDA"
+          expected:
+            source:
+              - private
+              - desqualificacao_segunda_exclusao
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_CARTAO_AZUL_EVENTO"
+          expected:
+            source:
+              - private
+              - cartao_azul_suspensao
+            source_columns:
+              - "evento_scout_id"
+            target:
+              - private
+              - evento_scout
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_CARTAO_AZUL_PARTIDA"
+          expected:
+            source:
+              - private
+              - cartao_azul_suspensao
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_SISTEMA_TATICO_POSSE"
+          expected:
+            source:
+              - private
+              - sistema_tatico
+            source_columns:
+              - "posse_de_bola_id"
+            target:
+              - private
+              - posse_de_bola
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_SISTEMA_TATICO_EQUIPE"
+          expected:
+            source:
+              - private
+              - sistema_tatico
+            source_columns:
+              - "equipe_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_PAPEL_OPERACIONAL_PARTIDA"
+          expected:
+            source:
+              - private
+              - papel_esportivo_operacional
+            source_columns:
+              - "partida_id"
+            target:
+              - public
+              - partida
+            target_columns:
+              - "id"
+            on_delete: "CASCADE"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_PAPEL_OPERACIONAL_EQUIPE"
+          expected:
+            source:
+              - private
+              - papel_esportivo_operacional
+            source_columns:
+              - "equipe_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "SET NULL"
+            on_update: "CASCADE"
+          actual: null
+        - foreign_key_id: "FK_PARTICIPACAO_EQUIPE_COMPETICAO_EQUIPE"
+          expected:
+            source:
+              - private
+              - participacao_equipe_competicao
+            source_columns:
+              - "equipe_id"
+            target:
+              - public
+              - equipe
+            target_columns:
+              - "id"
+            on_delete: "RESTRICT"
+            on_update: "CASCADE"
+          actual: null
+      unexpected: []
+  - id: "TEMPORAL_EXCLUSION_MISSING"
+    evidence: "EXCL_PARTICIPACAO_EQUIPE_COMPETICAO_VIGENCIA"
+  - id: "FK_INDEX_COVERAGE_MISMATCH"
+    evidence:
+      explicit: 59
+      covered: 0
+execution: "NOT_PERFORMED"
