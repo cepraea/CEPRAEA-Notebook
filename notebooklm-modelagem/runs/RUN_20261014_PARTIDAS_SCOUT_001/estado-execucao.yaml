@@ -1551,17 +1551,23 @@ stages:
       evidence: "SQL_ONLY_PASS; TABLES_32_OF_32; SCHEMAS_PUBLIC_9_PRIVATE_23; COLUMNS_TYPES_NULLABILITY_DEFAULTS_204_OF_204; PRIMARY_KEYS_32_OF_32; FKS_AND_ACTIONS_59_OF_59; UNIQUES_17_OF_17; DIRECT_CHECKS_AND_SEMANTICS_5_OF_5; TEMPORAL_EXCLUSION_PASS; FK_INDEXES_50_EXPLICIT_PLUS_9_COVERED; LEGACY_IDS_ABSENT; NO_SQL_EXECUTION"
     approval:
       required: true
-      decision: "AWAITING_HUMAN_DECISION"
-      approved_by: null
-      approved_at: null
-      evidence: "CANDIDATE_VALIDATION_PASS; USER_AUTHORIZATION_LIMITED_TO_SCHEMA_CANDIDATE_GENERATION"
+      decision: "APPROVED_WITH_RESTRICTIONS"
+      approved_by: "USER"
+      approved_at: "2026-10-15T23:56:40-03:00"
+      evidence: "USER_EXPLICITLY_APPROVED_PROMOTION_AS_CANONICAL_SCHEMA; NO_SQL_EXECUTION; NO_MIGRATION; NO_DEPLOYMENT; NO_DATA_LOAD; NO_RLS; NO_LATER_STAGE"
+      operator_decision_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/08-schema-postgresql.operator-decision.md"
+      operator_decision_sha256: "bfa6ec13c000f6acd5277de0d9f86fb09cad57ba571a085353a0f128e9f15439"
     promotion:
-      status: "NOT_STARTED"
-      promoted_source_id: null
-      source_status: null
-      wrapper_path: null
-      wrapper_sha256: null
-      promoted_at: null
+      status: "PROMOTED"
+      artifact_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.candidate.sql"
+      artifact_sha256: "f5224887f8dd85b82542e3645e0c68fbad77c336a5f0509c229a6f7867694828"
+      promoted_source_id: "1f69f4e5-f4f3-43fd-b8b0-87f19b8b2c8b"
+      source_status: "READY"
+      source_type: "MARKDOWN"
+      title: "PROMOTED — Schema PostgreSQL candidato STAGE_08 — 034a77c283fc"
+      wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/08-schema-postgresql.promoted.md"
+      wrapper_sha256: "034a77c283fca5c435d4953d1ae09b73414f31b5bd1bfcfb38834df04bd1ca24"
+      promoted_at: "2026-10-15T23:58:37-03:00"
 
 incidents:
   - id: "INC_AUTH_001"
@@ -1679,7 +1685,7 @@ physical_gate:
   decided_by: "USER"
   decided_at: "2026-10-15T16:00:15-03:00"
   evidence: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/07-stop-gate.candidate-002.yaml"
-  downstream_status: "STAGE_08_BLOCKED_AFTER_PHYSICAL_ENFORCEABILITY_REVIEW"
+  downstream_status: "STAGE_08_PROMOTED_WITH_RESTRICTIONS; NO_LATER_STAGE_AUTHORIZED"
 
 implementation:
   migration_path: null
