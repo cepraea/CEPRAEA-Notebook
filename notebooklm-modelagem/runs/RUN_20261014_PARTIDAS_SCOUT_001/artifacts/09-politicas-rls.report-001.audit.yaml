@@ -1,0 +1,60 @@
+status: "REJECTED"
+stage_id: "STAGE_09"
+artifact_id: "51df428d-f797-4a90-bda3-5161a4a6f176"
+report_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/09-politicas-rls.report-001.md"
+report_sha256: "417ce0bf0de2a5e141fae079cf0cbea59e5d7242562f56634301849c7f38a8b3"
+reviewed_at: "2026-10-16T01:42:40-03:00"
+input_artifacts:
+  access_requirements:
+    version: "0.1.0"
+    sha256: "bafce57a9d71ef3ea0ba54c79fac585f075d8d0efe5fe22967e62bde6c424c92"
+    promoted_source_id: "c7f18856-d7c7-4b77-8feb-3266d60337c0"
+  postgresql_schema_candidate:
+    sha256: "f5224887f8dd85b82542e3645e0c68fbad77c336a5f0509c229a6f7867694828"
+    promoted_source_id: "1f69f4e5-f4f3-43fd-b8b0-87f19b8b2c8b"
+  operator_decision:
+    sha256: "78a6e2a4d1a60ec525c02e1cb4ae2d82a07a9678f67e080958a4967442fe22e0"
+    notebook_source_id: "5a493e45-c8e5-4c09-9986-40e504c8c14a"
+coverage:
+  required_permissions: 55
+  implemented_public_select_permissions: 9
+  blocked_permissions: 46
+  tables_with_rls_enabled: 32
+  tables_with_rls_forced: 32
+  public_select_policies: 9
+  private_permissive_policies: 0
+findings:
+  - id: "STAGE_09_FORMAT_MARKDOWN_H1"
+    impact: "A primeira linha é Markdown e impede que o arquivo seja SQL executável sem normalização."
+  - id: "STAGE_09_BLOCKED_OUTPUT_MIXED_WITH_SQL"
+    impact: "A saída mistura SQL parcial com blocos GENERATION_BLOCKED, contrariando a instrução de retornar somente comentários quando uma policy fiel depende de estrutura ausente."
+  - id: "STAGE_09_PERMISSION_COVERAGE_INCOMPLETE"
+    impact: "Somente 9 das 55 permissões promovidas foram materializadas; as outras 46 permanecem sem grants e policies aplicáveis."
+  - id: "STAGE_09_DEFAULT_PRIVILEGES_OWNER_UNSPECIFIED"
+    impact: "ALTER DEFAULT PRIVILEGES depende do papel executor; sem FOR ROLE e sem proprietário físico definido, a proteção de objetos futuros não é verificável."
+structural_blockers:
+  - id: "BLOCK_STAGE_09_AUTHORIZATION_BINDINGS"
+    affected_roles:
+      - "ROLE_ADMIN_DADOS"
+      - "ROLE_TREINADOR"
+      - "ROLE_ANALISTA_SCOUT"
+      - "ROLE_REVISOR_SCOUT"
+    affected_scopes:
+      - "GLOBAL"
+      - "TEAM"
+      - "MATCH"
+      - "REVISION"
+    reason: "O schema promovido não possui vínculo persistido entre auth.uid(), identidade interna, papel, escopo, vigência, responsável pela atribuição e revogação auditável."
+  - id: "BLOCK_STAGE_09_REVIEW_SEPARATION_BINDING"
+    affected_ids:
+      - "PERM_031"
+      - "PERM_032"
+      - "PERM_033"
+    reason: "Não existe atribuição física de revisão que permita verificar escopo da partida e impedir autorrevisão com a identidade autenticada."
+resolution_required:
+  - "Decidir entre modelar atribuições persistidas no banco, alterar a fonte de autorização para claims confiáveis ou restringir o STAGE_09 ao subconjunto público."
+  - "Se a escolha for persistência no banco, retropropagar somente as relações e restrições de identidade, papel, escopo, vigência e auditoria indispensáveis antes de regenerar o STAGE_09."
+  - "Definir o proprietário físico usado por ALTER DEFAULT PRIVILEGES antes de converter o candidato em migration."
+execution: "NOT_PERFORMED"
+approval: "NOT_REQUESTED_DUE_TO_STRUCTURAL_BLOCKER"
+promotion: "NOT_STARTED"

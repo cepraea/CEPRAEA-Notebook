@@ -1,0 +1,119 @@
+status: "REJECTED"
+stage_id: "STAGE_08"
+artifact_id: "c5fad8ec-2f6e-4d75-a0a4-1d8f59fd0772"
+report_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-001.md"
+report_sha256: "b6e88b5b436b2f2cd275695fb9821aebc0f897095b1ac4e21db566570e6e3a1a"
+validated_at: "2026-10-15T16:30:01-03:00"
+input_artifacts:
+  logical_model:
+    version: "0.1.1"
+    sha256: "aebdbd4c7b725a25ce1b89d632ae56e94ee25d5529e8ce7c82ab87387ef2e492"
+  data_dictionary:
+    version: "0.1.0"
+    sha256: "969b7479813c97f5b2da95631b185211495b509cf86147a0337a53dcbb909c2f"
+  traceability_matrix:
+    version: "0.1.0"
+    sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
+  access_requirements:
+    version: "0.1.0"
+    sha256: "bafce57a9d71ef3ea0ba54c79fac585f075d8d0efe5fe22967e62bde6c424c92"
+  stop_gate:
+    version: "0.2.0"
+    sha256: "8034fc8290a814a2cb63d7d43138c8552ea087d787f44566b94393449a2d09f0"
+  operator_decision:
+    sha256: "95861272d84e896a0ba82793b63788d8ec070efa284d4100da47b773e1657c66"
+accepted_coverage:
+  authorized_relations: 32
+  tables: 32
+  expected_columns: 204
+  covered_columns: 204
+  exact_column_types: 204
+  foreign_key_ids: 59
+  explicit_fk_indexes: 50
+  fk_indexes_covered_by_pk_or_unique_prefix: 9
+  public_resources: 9
+  closed_resources: 23
+rejection_findings:
+  - id: "STAGE_08_FORMAT_MARKDOWN_H1"
+    impact: "A saída não contém somente SQL e comentários SQL."
+    evidence: "A primeira linha é um H1 Markdown."
+  - id: "STAGE_08_FK_ACTIONS_MISSING"
+    impact: "As 59 FKs não preservam as semânticas ON DELETE e ON UPDATE aprovadas no modelo lógico."
+    expected: 59
+    covered: 0
+  - id: "STAGE_08_UNIQUE_MISSING"
+    impact: "A identidade temporal contextual aprovada não foi materializada."
+    missing_ids:
+      - "UQ_PARTICIPACAO_EQUIPE_COMPETICAO_VIGENCIA"
+  - id: "STAGE_08_LOGICAL_CHECKS_MISSING"
+    impact: "Dez checks lógicos aprovados e rastreados não foram materializados com os respectivos IDs."
+    missing_ids:
+      - "CHK_BOU_REJEICAO_INFERENCIAIS"
+      - "CHK_ELEGIBILIDADE_RANKING_CONTEXTUAL"
+      - "CHK_PARTIDA_VIGENCIA_2026"
+      - "CHK_PASSIVO_QUATRO_PASSES"
+      - "CHK_PRAZO_INSCRICAO_72H"
+      - "CHK_PROTECAO_CABECA_GOLEIRA"
+      - "CHK_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+      - "CHK_REJEICAO_VARIAVEIS_INFERENCIAIS"
+      - "CHK_SHOOT_OUT_COMPLETUDE"
+      - "CHK_TETO_PARTICIPANTES_SUMULA"
+  - id: "STAGE_08_CHECK_SEMANTICS_MISMATCH"
+    impact: "CHK_ATLETA_SEMANTICA_GOLEIRA foi reduzido a um domínio de posições e não comprova a relação semântica entre GOLEIRA e DEFESA."
+    affected_ids:
+      - "CHK_ATLETA_SEMANTICA_GOLEIRA"
+  - id: "STAGE_08_TEMPORAL_EXCLUSION_NOT_EMITTED"
+    impact: "A não sobreposição temporal aparece somente em comentário; não existe CONSTRAINT EXCLUDE executável nem declaração da extensão btree_gist."
+    affected_ids:
+      - "EXCL_PARTICIPACAO_EQUIPE_COMPETICAO_VIGENCIA"
+  - id: "STAGE_08_LEGACY_IDS_REINTRODUCED_IN_COMMENTS"
+    impact: "A saída viola a exigência de não conter os dois IDs legados, embora não os implemente."
+    affected_ids:
+      - "UQ_TRECHO_EVENTO"
+      - "CHK_VIGENCIA_PARTICIPACAO"
+  - id: "STAGE_08_PUBLIC_SCHEMA_CREATE_UNSAFE"
+    impact: "CREATE SCHEMA public falha em ambientes PostgreSQL ou Supabase onde o schema padrão já existe."
+structural_blockers:
+  - id: "BLOCK_CHECK_TETO_PARTICIPANTES_SUMULA"
+    affected_ids:
+      - "CHK_TETO_PARTICIPANTES_SUMULA"
+      - "PARTIDA_EQUIPE"
+    reason: "O escopo não possui relação de atleta ou oficial inscrito na súmula de uma partida que permita contar até 10 atletas e 4 oficiais por equipe."
+  - id: "BLOCK_CHECK_PRAZO_INSCRICAO_72H"
+    affected_ids:
+      - "CHK_PRAZO_INSCRICAO_72H"
+      - "EQUIPE_ATLETA_INSCRICAO"
+      - "PARTIDA"
+    reason: "A inscrição referencia competição, mas não identifica a partida ou o marco temporal específico contra o qual as 72 horas devem ser verificadas."
+  - id: "BLOCK_CHECK_PASSIVO_QUATRO_PASSES"
+    affected_ids:
+      - "CHK_PASSIVO_QUATRO_PASSES"
+      - "POSSE_DE_BOLA"
+      - "EVENTO_SCOUT"
+    reason: "Não há atributo ou evento explícito para o sinal de jogo passivo nem contagem ordenada dos passes posteriores."
+  - id: "BLOCK_CHECK_BOU_REJEICAO_INFERENCIAIS"
+    affected_ids:
+      - "CHK_BOU_REJEICAO_INFERENCIAIS"
+      - "UNIDADE_BASICA_ATAQUE_BOU"
+    reason: "A regra pode ser estruturalmente atendida pela ausência de campos inferenciais, mas a rastreabilidade exige uma constraint SQL sem expressão implementável definida."
+  - id: "BLOCK_CHECK_PROTECAO_CABECA_GOLEIRA"
+    affected_ids:
+      - "CHK_PROTECAO_CABECA_GOLEIRA"
+      - "EVENTO_SCOUT"
+    reason: "Não existem atributos para impacto direto na cabeça, situação de arremessadora desmarcada ou simulação da goleira."
+  - id: "BLOCK_CHECK_TIRO_SEIS_METROS"
+    affected_ids:
+      - "CHK_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+      - "EVENTO_SCOUT"
+    reason: "Não existem atributos para execução direta, duração de até três segundos ou distância defensiva de um metro."
+  - id: "BLOCK_CHECK_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    affected_ids:
+      - "CHK_REJEICAO_VARIAVEIS_INFERENCIAIS"
+      - "OBSERVACAO_DE_SCOUT"
+    reason: "A regra pode ser estruturalmente atendida pela ausência de campos inferenciais, mas a rastreabilidade exige uma constraint SQL sem expressão implementável definida."
+resolution_required:
+  - "Definir quais regras serão constraints SQL, triggers, validações de ingestão ou invariantes estruturais verificadas por teste."
+  - "Adicionar somente os atributos ou relações indispensáveis para as regras que permanecerem sob responsabilidade do banco."
+  - "Reconciliar modelo lógico, dicionário e matriz antes de regerar o schema candidato."
+implementation_status: "NAO_INICIADO"
+verification_status: "FAIL"

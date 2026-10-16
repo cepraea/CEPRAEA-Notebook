@@ -1,0 +1,23 @@
+status: "PASS"
+source_review_id: "STAGE_05_OPERATOR_REVIEW_001"
+base_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.candidate.yaml"
+base_sha256: "8f3b83a34f960c4c4387462cecafec2ae6c651046e1f56e3de7710c7c2ddecff"
+output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.v0.1.2.yaml"
+output_sha256: "0d3e0979f83106f51e675227eb00ad4614b3beb4a4f71ff5357de84812c0b2d0"
+version: "0.1.2"
+added_relationship_ids:
+  - "PERIODO_SET_VENCIDO_POR_EQUIPE"
+  - "SHOOT_OUT_VENCIDO_POR_EQUIPE"
+  - "POSSE_DE_BOLA_DETIDA_POR_EQUIPE"
+  - "MIDIA_VIDEO_REGISTRA_PARTIDA"
+  - "PLACAR_JOGO_INDICA_EQUIPE_VENCEDORA"
+  - "EVOLUCAO_PLACAR_ORIGINADA_POR_EVENTO_SCOUT"
+  - "EVOLUCAO_PLACAR_BENEFICIA_EQUIPE"
+added_invariant_ids:
+  - "INV_PARTIDA_EQUIPE_PAPEL_REGULAMENTAR_UNICO"
+  - "INV_PARTIDA_EQUIPE_CONDICAO_MANDO_UNICA"
+  - "INV_EVENTO_SCOUT_MULTIPLOS_TRECHOS"
+  - "INV_INTERVALO_VIGENCIA_PARTICIPACAO_VALIDO"
+  - "INV_NAO_SOBREPOSICAO_VIGENCIA_PARTICIPACAO"
+formalizations_backported: 9
+reconciliations_backported: 2

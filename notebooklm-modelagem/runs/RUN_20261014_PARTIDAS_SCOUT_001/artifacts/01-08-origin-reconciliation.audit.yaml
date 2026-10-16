@@ -1,0 +1,188 @@
+schema_version: "1.0"
+status: "PASS_WITH_BLOCKER"
+run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
+reconciled_at: "2026-10-16T03:17:52-03:00"
+scope:
+  stages:
+    - "STAGE_01"
+    - "STAGE_02"
+    - "STAGE_03"
+    - "STAGE_04"
+    - "STAGE_05"
+    - "STAGE_06"
+    - "STAGE_07"
+    - "STAGE_08"
+  prohibited_actions:
+    - "EXECUTAR_SQL"
+    - "GERAR_MIGRATION"
+    - "IMPLANTAR"
+    - "CRIAR_POLITICAS_RLS"
+    - "INICIAR_ESTAGIO_POSTERIOR"
+classification_legend:
+  - "REQUISITO_OPERADOR"
+  - "EVIDENCIA_DOCUMENTAL"
+  - "DERIVACAO_ARQUITETURAL"
+structures:
+  - id: "PROTOCOLO_SCOUT"
+    classifications:
+      - "REQUISITO_OPERADOR"
+      - "EVIDENCIA_DOCUMENTAL"
+      - "DERIVACAO_ARQUITETURAL"
+    operator_requirement: "Fluxo_Modelagem.md:521-522"
+    source_ids:
+      - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+      - "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_004"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_005"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_006"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+    architectural_decision: "Materializar uma linha por versao congelada do protocolo."
+  - id: "VERSAO_PROTOCOLO_SCOUT"
+    classifications:
+      - "REQUISITO_OPERADOR"
+      - "DERIVACAO_ARQUITETURAL"
+    operator_requirement: "Fluxo_Modelagem.md:521-522"
+    source_ids:
+      - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+      - "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
+    evidence_ref_ids: []
+    documentary_metadata: "source_revision v0.9.2; nao existe excerpt EVID_ que defina a versao do protocolo."
+    architectural_decision: "Representar a versao como atributo obrigatorio de PROTOCOLO_SCOUT, sem entidade fisica separada."
+  - id: "ANALISTA_OBSERVADOR"
+    classifications:
+      - "REQUISITO_OPERADOR"
+      - "EVIDENCIA_DOCUMENTAL"
+      - "DERIVACAO_ARQUITETURAL"
+    operator_requirement: "Fluxo_Modelagem.md:522-523"
+    source_ids:
+      - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+      - "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+    architectural_decision: "Persistir o agente humano responsavel pela codificacao e revisao."
+  - id: "QUALIFICACAO_OBSERVADOR"
+    supersedes_id: "CONFIABILIDADE_OBSERVADOR"
+    classifications:
+      - "EVIDENCIA_DOCUMENTAL"
+      - "DERIVACAO_ARQUITETURAL"
+    source_ids:
+      - "SRC_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+    semantic_decision: "CON-006 define qualificacao individual por teste teorico; nao mede a confiabilidade de uma observacao."
+    architectural_decision: "Preservar o historico individual de teste, percentual de acerto, erros criticos e status."
+  - id: "CONFIABILIDADE_OBSERVACAO"
+    classifications:
+      - "REQUISITO_OPERADOR"
+      - "EVIDENCIA_DOCUMENTAL"
+    operator_requirement: "Fluxo_Modelagem.md:524"
+    source_ids:
+      - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+      - "SRC_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC"
+    evidence_ref_ids:
+      - "EVID_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC_007"
+    blocker: "A estrutura fisica depende de decisao sobre granularidade da amostra, identidade dos avaliadores e representacao dos resultados."
+  - id: "REVISAO_DA_OBSERVACAO"
+    classifications:
+      - "REQUISITO_OPERADOR"
+      - "DERIVACAO_ARQUITETURAL"
+    operator_requirement: "Fluxo_Modelagem.md:522-523"
+    source_ids:
+      - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+    evidence_ref_ids: []
+    architectural_decision: "Modelar cada revisao como evento auditavel com observacao, revisor, instante e justificativa."
+  - id: "ESTADO_DE_REVISAO"
+    classifications:
+      - "REQUISITO_OPERADOR"
+      - "DERIVACAO_ARQUITETURAL"
+    operator_requirement: "Fluxo_Modelagem.md:522-523"
+    source_ids:
+      - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+    evidence_ref_ids: []
+    architectural_decision: "Materializar o estado corrente separadamente do historico de eventos de revisao."
+  - id: "PROVENIENCIA_OBSERVACAO"
+    classifications:
+      - "REQUISITO_OPERADOR"
+      - "DERIVACAO_ARQUITETURAL"
+    operator_requirement: "Fluxo_Modelagem.md:508,528-534"
+    source_ids:
+      - "SRC_CTRL_FLUXO_MODELAGEM_ACF6AFA2AAB0_C17B2843"
+      - "SRC_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC"
+    evidence_ref_ids: []
+    partial_field_evidence:
+      field: "FERRAMENTA_SOFTWARE"
+      evidence_ref_ids:
+        - "EVID_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC_005"
+    architectural_decision: "Materializar linhagem imutavel ligando observacao, protocolo, midia e ferramenta."
+corrections:
+  removed_invalid_evidence_bindings:
+    - concept_id: "VERSAO_PROTOCOLO_SCOUT"
+      removed:
+        - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+      reason: "O excerpt define posse de bola, nao versionamento."
+    - concept_id: "ESTADO_DE_REVISAO"
+      removed:
+        - "EVID_SOURCE_04C_DICIONARIO_DE_DADOS_MD_6B0D9716_006"
+        - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_022"
+      reason: "Os excerpts tratam de presenca factual e gate do treinador, nao de revisao de scout."
+    - concept_id: "PROVENIENCIA_OBSERVACAO"
+      removed:
+        - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+        - "EVID_CEPRAEA_DATABASE_CCB2A718_001"
+      reason: "Os excerpts tratam de variavel inferencial rejeitada e papel arquitetural geral do banco."
+  semantic_corrections:
+    - from: "CONFIABILIDADE_OBSERVADOR"
+      to: "QUALIFICACAO_OBSERVADOR"
+      reason: "Campos e evidencia descrevem habilitacao por teste CON-006."
+    - removed_attribute: "KAPPA_COHEN"
+      from: "QUALIFICACAO_OBSERVADOR"
+      reason: "Kappa mede confiabilidade dos dados observacionais e nao integra o teste teorico CON-006."
+blockers:
+  - id: "BLOCK_CONFIABILIDADE_OBSERVACAO_GRANULARIDADE"
+    affected_stage_id: "STAGE_09"
+    status: "OPEN"
+    required_decision: "Definir amostra, avaliadores, metodo e resultado da avaliacao antes de materializar CONFIABILIDADE_OBSERVACAO."
+outputs:
+  - stage_id: "STAGE_01"
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-registro-semantico.v0.1.1.reconciled.yaml"
+    sha256: "92c616d320ef329ceab5f94909c4c91d6f9fb64652c39f9d77821f833b23c187"
+  - stage_id: "STAGE_02"
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/02-modelo-conceitual.v0.1.3.reconciled.yaml"
+    sha256: "5c6b29fee4b5e2d9e9fed40caa03332ca6bc6255d81ab55085daad3e6d011bfe"
+  - stage_id: "STAGE_03"
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.v0.1.3.reconciled.yaml"
+    sha256: "d3f38a727177c1c72ac5ef7aa97a100a9dda64b4ff519273163abf605748a620"
+  - stage_id: "STAGE_04"
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.v0.1.2.reconciled.yaml"
+    sha256: "620fb876deddb562f152db923d47cf58f06be5209e50a8dc78a59b7ac051e660"
+  - stage_id: "STAGE_05"
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/05-matriz-rastreabilidade.v0.1.2.reconciled.yaml"
+    sha256: "0436dfbcd8c5f0c23acef73a381917119d7fe717f7d5bac6990fd88170e43948"
+  - stage_id: "STAGE_06"
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.v0.1.1.reconciled.yaml"
+    sha256: "6b6465ca2a28441755db0241d996b78bdbbcbdac6857a98e5bd15a56a4ba9057"
+  - stage_id: "STAGE_07"
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/07-stop-gate.v0.2.1.reconciled.yaml"
+    sha256: "3d60987fe404a5884ae1441d20c37c997de9ea955984a76093334783dcc948e5"
+  - stage_id: "STAGE_08"
+    path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.reconciled.sql"
+    sha256: "1afab3e9bdae88f2bd27d80802bf03722c2392b29052d39386f43aedb37a4146"
+promotion:
+  status: "NOT_STARTED"
+  reason: "Os arquivos sao candidatos locais; promocao e novo source_id exigem decisao humana posterior."
+validation:
+  yaml_parse: "PASS_7_OF_7"
+  package_validator: "PASS_6_OF_7"
+  package_validator_exception: "LOGICAL_MODEL reutiliza IDs de atributos no escopo de relacoes distintas; o validador exige unicidade global. O mesmo diagnostico existe no candidato promovido anterior e nao foi criado por esta reconciliacao."
+  evidence_ids: "PASS_0_MISSING"
+  local_input_chain: "PASS"
+  output_hashes: "PASS"
+  sql_static: "PASS_FINDINGS_0"
+  sql_static_audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.reconciled.audit.yaml"
+  sql_static_audit_sha256: "d8e73dca62bcf762e09beaca85eb7d1dcd58eb2a715370e303b874a217c3a0e9"
+  sql_execution: "NOT_RUN"
+  migration_generation: "NOT_RUN"
+  deployment: "NOT_RUN"

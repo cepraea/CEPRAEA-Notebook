@@ -1,0 +1,30 @@
+status: "PASS"
+phase: "DATA_DICTIONARY_ENFORCEMENT_RECONCILIATION"
+base:
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/04-dicionario-dados.candidate.yaml"
+  sha256: "969b7479813c97f5b2da95631b185211495b509cf86147a0337a53dcbb909c2f"
+logical:
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/03-modelo-logico.v0.1.2.yaml"
+  sha256: "7a82bd2235897e67338036ba5be67f222ac3fdcf19a05bb919ecb1787824b1cb"
+  source_id: "1689f311-fd8c-420e-bf53-593d7d90cd1d"
+result:
+  tables: 32
+  columns: 204
+  foreign_keys: 59
+  unique_constraints: 17
+  checks: 5
+  index_candidates: 59
+  catalogs: 32
+  open_issues: 6
+preserved:
+  - "32 tabelas"
+  - "204 colunas"
+  - "tipos PostgreSQL"
+  - "classificações de acesso"
+  - "59 índices de FK"
+changed:
+  - "unique_constraint_ids"
+  - "check_constraint_ids"
+  - "open_issues"
+  - "linhagem documental"
+validation: "PASS"

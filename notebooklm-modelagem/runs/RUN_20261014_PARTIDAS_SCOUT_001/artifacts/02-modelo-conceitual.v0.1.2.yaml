@@ -1,0 +1,1911 @@
+schema_version: "1.1"
+document:
+  id: "CONCEPTUAL_MODEL"
+  artifact_kind: "CONCEPTUAL_MODEL"
+  title: "Modelo conceitual"
+  version: "0.1.2"
+  status: "PROPOSTO"
+  run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
+  domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
+  notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
+  generated_at: "2026-10-15T14:06:57-03:00"
+  supersedes: "CONCEPTUAL_MODEL@0.1.1"
+  input_artifacts:
+    - document_id: "SEMANTIC_REGISTRY"
+      version: "0.1.0"
+      sha256: "c793bbc79bf9a77903cfce3a2398770d82d7d5bfa02b87f65942e438895e10f7"
+      promoted_source_id: "b9ddf059-9d06-4373-a828-61f409e30113"
+    - document_id: "TRACEABILITY_MATRIX"
+      version: "0.1.0"
+      sha256: "3e36cfb319571923d213c8527eda511bd6cba0f193e75dfbb795b94e839e66d1"
+      promoted_source_id: "5b4b8ee3-c08d-40b5-bc0d-705f68f2e0dd"
+entities:
+  - id: "COMPETICAO"
+    name: "Competicao Esportiva"
+    concept_id: "COMPETICAO"
+    definition: "Torneio, circuito ou evento oficial de Beach Handball no qual partidas sao disputadas sob regulamento especifico."
+    identity_rule: "Identificada de forma unica por seu codigo ou ID canonico de competicao."
+    temporality: "INTERVALO"
+    history_required: true
+    aggregate_root: true
+    rule_ids:
+      - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+      - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_005"
+  - id: "PARTIDA"
+    name: "Partida de Beach Handball"
+    concept_id: "PARTIDA"
+    definition: "Confronto esportivo estruturado entre duas equipes composto por dois sets independentes de 10 minutos e eventual\
+      \ shoot-out."
+    identity_rule: "Identificada por ID unico de partida no escopo de uma competicao e etapa."
+    temporality: "INTERVALO"
+    history_required: true
+    aggregate_root: true
+    rule_ids:
+      - "RN_IHF_VIGENCIA_2026"
+      - "RN_TETO_PARTICIPANTES_SUMULA"
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_007"
+  - id: "EQUIPE"
+    name: "Equipe Esportiva"
+    concept_id: "EQUIPE"
+    definition: "Entidade coletiva composta por atletas e comissao tecnica inscrita na competicao."
+    identity_rule: "Identificada pelo ID unico de equipe no cadastro mestre."
+    temporality: "ATEMPORAL"
+    history_required: true
+    aggregate_root: true
+    rule_ids:
+      - "RN_TETO_PARTICIPANTES_SUMULA"
+      - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_007"
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+  - id: "ATLETA"
+    name: "Atleta"
+    concept_id: "ATLETA"
+    definition: "Pessoa fisica praticante de Beach Handball devidamente registrada e elegivel para atuacao em partidas, incorporando\
+      \ conceitualmente a especificacao posicional GOLEIRA_POSICAO e acoes especializadas defensivas."
+    identity_rule: "Identificada pelo athlete_id em formato ATH-XXXX ou UUID no cadastro mestre imutavel."
+    temporality: "ATEMPORAL"
+    history_required: true
+    aggregate_root: true
+    rule_ids:
+      - "RN_SEMANTICA_GOLEIRA"
+      - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_005"
+  - id: "PERIODO_SET"
+    name: "Periodo Set de Jogo"
+    concept_id: "PERIODO_SET"
+    definition: "Unidade temporal autonoma da partida com duracao regulamentar de 10 minutos e placar proprio, englobando\
+      \ a modalidade de desempate por GOL_DE_OURO."
+    identity_rule: "Identificado pelo numero sequencial do set (1 ou 2) associado unicamente a partida."
+    temporality: "INTERVALO"
+    history_required: false
+    aggregate_root: false
+    rule_ids:
+      - "RN_IHF_VIGENCIA_2026"
+      - "RN_SANCAO_FINAL_15_SEGUNDOS"
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+      - "EVID_IHF_RULES_2026_EN_012"
+  - id: "SHOOT_OUT"
+    name: "Disputa de Shoot-out"
+    concept_id: "SHOOT_OUT"
+    definition: "Rodada especial de desempate da partida em cobrancas alternadas de um contra o goleiro executada apos empate\
+      \ em sets (1x1)."
+    identity_rule: "Identificado como estrutura de desempate vinculada a uma partida especifica."
+    temporality: "INTERVALO"
+    history_required: false
+    aggregate_root: false
+    rule_ids:
+      - "RN_IHF_VIGENCIA_2026"
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_004"
+      - "EVID_IHF_RULES_2026_EN_009"
+  - id: "POSSE_DE_BOLA"
+    name: "Posse de Bola"
+    concept_id: "POSSE_DE_BOLA"
+    definition: "Intervalo temporal continuo em que uma equipe detem o controle funcional ou direito legal da bola em jogo,\
+      \ delimitando o contexto de FASE_DEFENSIVA e ataque."
+    identity_rule: "Identificada por sua sequencia cronologica dentro do set e da partida."
+    temporality: "INTERVALO"
+    history_required: false
+    aggregate_root: false
+    rule_ids:
+      - "RN_PASSIVO_QUATRO_PASSES"
+      - "RN_PROIBICAO_RETARDO_REPETIDO"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+      - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_004"
+  - id: "UNIDADE_BASICA_ATAQUE_BOU"
+    name: "Unidade Basica de Ataque (BOU)"
+    concept_id: "UNIDADE_BASICA_ATAQUE_BOU"
+    definition: "Intervalo de observacao do ataque posicionado que inicia na organizacao posicional dos atacantes e encerra\
+      \ no desfecho da acao ou perda da posse, materializando os conceitos de FASE_TATICA e FASE_OFENSIVA."
+    identity_rule: "Identificada pela sequencia temporal da BOU no âmbito de uma posse de bola."
+    temporality: "INTERVALO"
+    history_required: false
+    aggregate_root: false
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_004"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+  - id: "EVENTO_SCOUT"
+    name: "Evento de Scout"
+    concept_id: "EVENTO_SCOUT"
+    definition: "Ocorrencia observavel e codificavel na partida representando acao tecnica, tática, pontuacao ou sançao disciplinar,\
+      \ absorvendo conceitualmente TIMECODE, ZONA_ANALITICA_QUADRA, ACAO_OBSERVADA, RESULTADO_DA_ACAO, ACAO_DA_GOLEIRA, EVENTO_DE_PONTUACAO,\
+      \ PUNICAO_DISCIPLINAR, CONSEQUENCIA_DISCIPLINAR, TIRO_SEIS_METROS, GOL_SIMPLES, GOL_DUPLO e EXCLUSAO_DISCIPLINAR."
+    identity_rule: "Identificado por ID unico do evento associado ao timecode preciso do video e da partida."
+    temporality: "INSTANTANEA"
+    history_required: true
+    aggregate_root: false
+    rule_ids:
+      - "RN_PROTECAO_CABECA_GOLEIRA"
+      - "RN_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+    evidence_ref_ids:
+      - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_009"
+      - "EVID_IHF_RULES_2026_EN_011"
+  - id: "OBSERVACAO_DE_SCOUT"
+    name: "Observacao de Scout"
+    concept_id: "OBSERVACAO_DE_SCOUT"
+    definition: "Sessao de codificacao estruturada dos eventos de uma partida realizada por observador qualificado segundo\
+      \ protocolo."
+    identity_rule: "Identificada pelo ID unico da sessao de observacao vinculada a partida e ao observador."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: true
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+  - id: "ANALISTA_OBSERVADOR"
+    name: "Analista Observador de Scout"
+    concept_id: "ANALISTA_OBSERVADOR"
+    definition: "Agente humano qualificado responsavel pelo registro metodologico e codificacao dos eventos de jogo."
+    identity_rule: "Identificado por seu ID unico de analista e historico de certificacao de confiabilidade."
+    temporality: "ATEMPORAL"
+    history_required: true
+    aggregate_root: false
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+  - id: "PROTOCOLO_SCOUT"
+    name: "Protocolo Metodologico de Scout"
+    concept_id: "PROTOCOLO_SCOUT"
+    definition: "Conjunto de regras, taxonomias, definicoes operacionais e criterios de qualidade para codificacao de partidas,\
+      \ incorporando a VERSAO_PROTOCOLO_SCOUT."
+    identity_rule: "Identificado por seu codigo de protocolo e numero formal de versao."
+    temporality: "VERSIONADA"
+    history_required: true
+    aggregate_root: true
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+  - id: "MIDIA_VIDEO"
+    name: "Midia de Video de Transmissao"
+    concept_id: "MIDIA_VIDEO"
+    definition: "Arquivo digital ou fluxo de video contendo a gravacao visual da partida utilizado como suporte para analise\
+      \ de scout."
+    identity_rule: "Identificada pelo hash SHA256 do arquivo e URI de armazenamento."
+    temporality: "ATEMPORAL"
+    history_required: false
+    aggregate_root: false
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+  - id: "SEGMENTO_OBSERVADO"
+    name: "Segmento Observado"
+    concept_id: "SEGMENTO_OBSERVADO"
+    definition: "Delimitação contínua de vídeo ou tempo de jogo associada à partida para análise tática, marcação temporal\
+      \ e codificação de scout."
+    identity_rule: "Identificado pela chave composta (partida_id, midia_video_id, timecode_inicio, timecode_fim)."
+    temporality: "INTERVALO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_002"
+  - id: "PLACAR_JOGO"
+    name: "Placar do Jogo"
+    concept_id: "PLACAR_JOGO"
+    definition: "Estado global e agregado do placar de uma partida, registrando a contagem consolidada de sets (2:0 ou 2:1)\
+      \ e o resultado final da disputa."
+    identity_rule: "Identificado unicamente pelo identificador da partida (partida_id) à qual está vinculado."
+    temporality: "VERSIONADA"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_003"
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_026"
+  - id: "ESTADO_DO_PLACAR"
+    name: "Estado do Placar"
+    concept_id: "ESTADO_DO_PLACAR"
+    definition: "Instante pontual que reflete a pontuação exata e a situação de vantagem ou desvantagem das equipes em um\
+      \ dado momento da partida e do set."
+    identity_rule: "Identificado pela chave composta (partida_id, periodo_set_id, timestamp_instante)."
+    temporality: "INSTANTANEA"
+    history_required: false
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_003"
+      - "EVID_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56_004"
+      - "EVID_ESTUDO_DAS_ACOES_DO_GUARDA_REDES_DE_ANDEBOL_DE_PRAIA_ATR_A9DF465E_007"
+  - id: "EVOLUCAO_DO_PLACAR"
+    name: "Evolução do Placar"
+    concept_id: "EVOLUCAO_DO_PLACAR"
+    definition: "Sequência ordenada de alterações de pontos ocorridas durante a partida, derivada deterministicamente de eventos\
+      \ de pontuação regulamentares (1 ou 2 pontos)."
+    identity_rule: "Identificado pela chave composta (partida_id, sequencial_ocorrencia) associada ao evento de pontuação\
+      \ correspondente."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_006"
+      - "EVID_SOURCE_04C_DICIONARIO_DE_DADOS_MD_6B0D9716_009"
+  - id: "SISTEMA_DEFENSIVO"
+    name: "Sistema Defensivo"
+    concept_id: "SISTEMA_DEFENSIVO"
+    definition: "Configuração tática defensiva posicionada em quadra pela equipe defensora (ex.: 3:0, 2:1, 1:2) durante uma\
+      \ posse de bola ou fase de defesa."
+    identity_rule: "Identificado pela chave composta (equipe_id, posse_de_bola_id, codigo_sistema_defensivo)."
+    temporality: "INTERVALO"
+    history_required: false
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - "EVID_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94_002"
+  - id: "CONFIABILIDADE_OBSERVADOR"
+    name: "Confiabilidade do Observador"
+    concept_id: "CONFIABILIDADE_OBSERVADOR"
+    definition: "Métrica de qualificação técnica, concordância intra/inter-observador (índices Kappa de Cohen e Fleiss) e\
+      \ precisão de codificação do analista."
+    identity_rule: "Identificado pela chave composta (analista_observador_id, versao_avaliacao, data_avaliacao)."
+    temporality: "VERSIONADA"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+      - "EVID_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC_007"
+  - id: "REVISAO_DA_OBSERVACAO"
+    name: "Revisão da Observação"
+    concept_id: "REVISAO_DA_OBSERVACAO"
+    definition: "Evento de auditoria, moderação, alteração ou re-validação executado por um analista sobre um registro prévio\
+      \ de observação de scout."
+    identity_rule: "Identificado pela chave composta (observacao_de_scout_id, analista_observador_id, timestamp_revisao)."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+  - id: "ESTADO_DE_REVISAO"
+    name: "Estado de Revisão"
+    concept_id: "ESTADO_DE_REVISAO"
+    definition: "Situação corrente do ciclo de vida da observação de scout (ex.: PENDENTE, APROVADO, REJEITADO, EM_REVISAO)\
+      \ mantida ao longo do tempo até sua transição."
+    identity_rule: "Identificado pela chave composta (observacao_de_scout_id, codigo_status_revisao)."
+    temporality: "VERSIONADA"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+  - id: "PROVENIENCIA_OBSERVACAO"
+    name: "Proveniência da Observação"
+    concept_id: "PROVENIENCIA_OBSERVACAO"
+    definition: "Registro imutável de linhagem de dados, especificando software gerador (ex.: LINCE PLUS), protocolo, arquivo\
+      \ de mídia e contexto de captura da observação."
+    identity_rule: "Identificado unicamente pelo identificador da observação de scout (observacao_de_scout_id) associada."
+    temporality: "ATEMPORAL"
+    history_required: false
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC_005"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+  - id: "TRECHO_OBSERVADO"
+    name: "Trecho Observado"
+    concept_id: "TRECHO_OBSERVADO"
+    definition: "Recorte delimitado de timecode no arquivo de vídeo correspondente a um evento discreto de scout ou unidade\
+      \ de observação tática."
+    identity_rule: "Identificado pela chave composta (evento_scout_id, midia_video_id, timecode_inicio, timecode_fim)."
+    temporality: "INTERVALO"
+    history_required: false
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+  - id: "SPIN_SHOT"
+    name: "Execução de Spin Shot"
+    concept_id: "SPIN_SHOT"
+    definition: "Ocorrência observada de arremesso em que o atleta completa rotação corporal de 360 graus no ar antes de liberar\
+      \ a bola."
+    identity_rule: "Identificada pelo evento de scout que registra uma execução específica na partida."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+  - id: "IN_FLIGHT_SHOT"
+    name: "Execução de In-flight Shot"
+    concept_id: "IN_FLIGHT_SHOT"
+    definition: "Ocorrência observada em que o atleta recebe a bola suspenso e arremessa antes de tocar a areia."
+    identity_rule: "Identificada pelo evento de scout que registra uma execução específica na partida."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_014"
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+  - id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    name: "Desqualificação por Segunda Exclusão"
+    concept_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    definition: "Evento disciplinar que afasta definitivamente o atleta da partida após a segunda exclusão no mesmo jogo."
+    identity_rule: "Identificada pela partida, pelo atleta sancionado e pela sequência disciplinar que alcança a segunda exclusão."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "CARTAO_AZUL_SUSPENSAO"
+    name: "Cartão Azul e Suspensão"
+    concept_id: "CARTAO_AZUL_SUSPENSAO"
+    definition: "Evento disciplinar de desqualificação direta acompanhado de relatório escrito e suspensão automática mínima\
+      \ de uma partida."
+    identity_rule: "Identificado pela partida, pelo infrator e pelo relatório disciplinar associado ao cartão azul."
+    temporality: "EVENTO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_017"
+  - id: "SISTEMA_TATICO"
+    name: "Snapshot de Sistema Tático"
+    concept_id: "SISTEMA_TATICO"
+    definition: "Registro versionado da organização espacial coletiva adotada por uma equipe em uma fase e intervalo determinados\
+      \ da partida."
+    identity_rule: "Identificado pela partida, equipe, fase tática, intervalo de vigência e versão da observação."
+    temporality: "VERSIONADA"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_007"
+      - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_004"
+  - id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    name: "Atribuição de Papel Esportivo ou Operacional"
+    concept_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    definition: "Atribuição temporal de uma função formal a uma pessoa na comissão técnica, arbitragem ou organização de uma\
+      \ partida."
+    identity_rule: "Identificada pela partida, referência da pessoa, código do papel e intervalo de vigência."
+    temporality: "INTERVALO"
+    history_required: true
+    aggregate_root: false
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+      - "EVID_REGULAMENTO_CBHB_2026_PDF_818BCC8B_005"
+relationships:
+  - id: "COMPETICAO_POSSUI_PARTIDA"
+    name: "Competicao possui Partida"
+    from_entity_id: "COMPETICAO"
+    to_entity_id: "PARTIDA"
+    meaning: "Agrupa as partidas oficiais organizadas no âmbito de uma determinada competicao ou circuito."
+    cardinality:
+      from_to:
+        min: 1
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+    temporality: "INTERVALO"
+  - id: "PARTIDA_DISPUTADA_POR_EQUIPE"
+    name: "Partida disputada por Equipe"
+    from_entity_id: "PARTIDA"
+    to_entity_id: "EQUIPE"
+    meaning: "Associa exatamente duas equipes (mandante e visitante) para a disputa de uma partida de Beach Handball."
+    cardinality:
+      from_to:
+        min: 1
+        max: "N"
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "papel_regulamentar"
+      - "condicao_mando"
+    exclusivity_rules:
+      - "Cada partida deve relacionar exatamente duas equipes."
+      - "Em uma partida, cada papel regulamentar de equipe ocorre no máximo uma vez."
+      - "Em uma partida, cada condição de mando ocorre no máximo uma vez."
+    rule_ids:
+      - "RN_TETO_PARTICIPANTES_SUMULA"
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+    temporality: "INTERVALO"
+  - id: "EQUIPE_INSCREVE_ATLETA"
+    name: "Equipe inscreve Atleta"
+    from_entity_id: "EQUIPE"
+    to_entity_id: "ATLETA"
+    meaning: "Vincula formalmente atletas a uma equipe dentro do prazo e limites regulamentares da competicao."
+    cardinality:
+      from_to:
+        min: 1
+        max: "N"
+      to_from:
+        min: 1
+        max: "N"
+    relationship_attributes:
+      - "data_inscricao"
+      - "status_elegibilidade"
+    exclusivity_rules:
+      - "No contexto da partida, a equipe deve possuir no mínimo seis atletas inscritos para iniciar o jogo."
+    rule_ids:
+      - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+    temporality: "VERSIONADA"
+  - id: "PARTIDA_POSSUI_PERIODO_SET"
+    name: "Partida possui Periodo Set"
+    from_entity_id: "PARTIDA"
+    to_entity_id: "PERIODO_SET"
+    meaning: "Estrutura a partida em exatamente dois periodos/sets regulamentares independentes."
+    cardinality:
+      from_to:
+        min: 1
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    exclusivity_rules:
+      - "Cada partida regulamentar deve possuir exatamente dois períodos ou sets."
+    rule_ids:
+      - "RN_IHF_VIGENCIA_2026"
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+    temporality: "INTERVALO"
+  - id: "PARTIDA_POSSUI_SHOOT_OUT"
+    name: "Partida possui Shoot-out"
+    from_entity_id: "PARTIDA"
+    to_entity_id: "SHOOT_OUT"
+    meaning: "Vincula a fase especial de desempate por shoot-out a partida quando houver empate em sets (1x1)."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_IHF_VIGENCIA_2026"
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_004"
+    temporality: "INTERVALO"
+  - id: "PERIODO_SET_CONTEM_POSSE_DE_BOLA"
+    name: "Periodo Set contem Posse de Bola"
+    from_entity_id: "PERIODO_SET"
+    to_entity_id: "POSSE_DE_BOLA"
+    meaning: "Sequencia cronologicamente as posses de bola ocorridas ao longo do tempo regulamentar de um set."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_IHF_VIGENCIA_2026"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+    temporality: "INTERVALO"
+  - id: "POSSE_DE_BOLA_CONTEM_BOU"
+    name: "Posse de Bola contem Unidade Basica de Ataque"
+    from_entity_id: "POSSE_DE_BOLA"
+    to_entity_id: "UNIDADE_BASICA_ATAQUE_BOU"
+    meaning: "Relaciona a posse de bola defensiva/ofensiva as unidades organizadas de ataque posicionado (BOU)."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_004"
+    temporality: "INTERVALO"
+  - id: "UNIDADE_BASICA_ATAQUE_BOU_GERA_EVENTO_SCOUT"
+    name: "Unidade Basica de Ataque gera Evento de Scout"
+    from_entity_id: "UNIDADE_BASICA_ATAQUE_BOU"
+    to_entity_id: "EVENTO_SCOUT"
+    meaning: "Associa a unidade de ataque aos eventos observaveis ocorridos em seu transcorrer ou desfecho."
+    cardinality:
+      from_to:
+        min: 1
+        max: "N"
+      to_from:
+        min: 0
+        max: 1
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_004"
+    temporality: "INSTANTANEA"
+  - id: "EVENTO_SCOUT_ENVOLVE_ATLETA"
+    name: "Evento de Scout envolve Atleta"
+    from_entity_id: "EVENTO_SCOUT"
+    to_entity_id: "ATLETA"
+    meaning: "Identifica o atleta executor, receptor ou alvo da acao observada no evento de scout."
+    cardinality:
+      from_to:
+        min: 1
+        max: "N"
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "papel_no_evento"
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_SEMANTICA_GOLEIRA"
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+    temporality: "INSTANTANEA"
+  - id: "OBSERVACAO_DE_SCOUT_REGISTRA_PARTIDA"
+    name: "Observacao de Scout registra Partida"
+    from_entity_id: "OBSERVACAO_DE_SCOUT"
+    to_entity_id: "PARTIDA"
+    meaning: "Vincula uma sessao de observacao de scout a partida correspondente."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "EVENTO"
+  - id: "OBSERVACAO_DE_SCOUT_UTILIZA_PROTOCOLO"
+    name: "Observacao de Scout utiliza Protocolo"
+    from_entity_id: "OBSERVACAO_DE_SCOUT"
+    to_entity_id: "PROTOCOLO_SCOUT"
+    meaning: "Associa a sessao de observacao a versao especifica do protocolo metodologico aplicado."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "EVENTO"
+  - id: "OBSERVACAO_DE_SCOUT_EXECUTADA_POR_ANALISTA"
+    name: "Observacao de Scout executada por Analista"
+    from_entity_id: "OBSERVACAO_DE_SCOUT"
+    to_entity_id: "ANALISTA_OBSERVADOR"
+    meaning: "Responsabiliza o analista observador pela codificacao executada na sessao de scout."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+    temporality: "EVENTO"
+  - id: "OBSERVACAO_DE_SCOUT_BASEADA_EM_MIDIA"
+    name: "Observacao de Scout baseada em Midia"
+    from_entity_id: "OBSERVACAO_DE_SCOUT"
+    to_entity_id: "MIDIA_VIDEO"
+    meaning: "Conecta a sessao de codificacao de scout ao arquivo de video de transmissao utilizado."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "EVENTO"
+  - id: "OBSERVACAO_DE_SCOUT_CONTEM_EVENTO"
+    name: "Observacao de Scout contem Evento de Scout"
+    from_entity_id: "OBSERVACAO_DE_SCOUT"
+    to_entity_id: "EVENTO_SCOUT"
+    meaning: "Agrupa todos os eventos individuais gravados durante uma sessao de observacao."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    exclusivity_rules: []
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "EVENTO"
+  - id: "PARTIDA_POSSUI_SEGMENTO_OBSERVADO"
+    name: "Partida possui Segmento Observado"
+    from_entity_id: "PARTIDA"
+    to_entity_id: "SEGMENTO_OBSERVADO"
+    meaning: "Delimita os intervalos contínuos de análise tática e observação associados a uma partida."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes:
+      - "intervalo_ordem"
+      - "faixa_tempo_inicio"
+      - "faixa_tempo_fim"
+    exclusivity_rules:
+      - "O segmento observado não pode se estender além dos limites operacionais de tempo da partida."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "INTERVALO"
+  - id: "SEGMENTO_OBSERVADO_MAPPED_TO_MIDIA_VIDEO"
+    name: "Segmento Observado mapeado para Mídia Vídeo"
+    from_entity_id: "SEGMENTO_OBSERVADO"
+    to_entity_id: "MIDIA_VIDEO"
+    meaning: "Associa o segmento contínuo de análise ao arquivo físico de mídia de vídeo correspondente."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "timecode_start_frame"
+      - "timecode_end_frame"
+    exclusivity_rules:
+      - "O timecode do segmento deve estar integralmente contido na duração do arquivo de mídia."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "ATEMPORAL"
+  - id: "PARTIDA_POSSUI_PLACAR_JOGO"
+    name: "Partida possui Placar do Jogo"
+    from_entity_id: "PARTIDA"
+    to_entity_id: "PLACAR_JOGO"
+    meaning: "Relaciona a partida ao seu estado global consolidado de placar de sets e pontos."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes:
+      - "sets_vencidos_equipe_a"
+      - "sets_vencidos_equipe_b"
+      - "vencedor_partida_id"
+    exclusivity_rules:
+      - "A soma dos sets vencidos deve encerrar rigorosamente em 2:0 ou 2:1 conforme regras IHF."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_026"
+    temporality: "SNAPSHOT"
+  - id: "PLACAR_JOGO_REGISTRA_ESTADO"
+    name: "Placar do Jogo registra Estado do Placar"
+    from_entity_id: "PLACAR_JOGO"
+    to_entity_id: "ESTADO_DO_PLACAR"
+    meaning: "Mapeia os estados pontuais e instantâneos de pontuação registrados ao longo da partida."
+    cardinality:
+      from_to:
+        min: 1
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes:
+      - "pontos_equipe_a"
+      - "pontos_equipe_b"
+      - "situacao_vantagem"
+    exclusivity_rules:
+      - "O estado instantâneo reflete estritamente o somatório acumulado até o timestamp informado."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+      - "EVID_CONTEXTUAL_FACTORS_AND_DECISION_MAKING_IN_POSITIONAL_ATT_1A033B56_004"
+    temporality: "INSTANTANEA"
+  - id: "ESTADO_DO_PLACAR_PERTENCE_A_PERIODO_SET"
+    name: "Estado do Placar pertence a Período Set"
+    from_entity_id: "ESTADO_DO_PLACAR"
+    to_entity_id: "PERIODO_SET"
+    meaning: "Localiza temporalmente a pontuação instantânea no âmbito específico de um set do jogo."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "numero_set"
+      - "tempo_decorrido_segundos"
+    exclusivity_rules:
+      - "Os pontos acumulados no Estado do Placar pertencem unicamente ao set no qual foram marcados."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_003"
+    temporality: "INSTANTANEA"
+  - id: "PARTIDA_REGISTRA_EVOLUCAO_PLACAR"
+    name: "Partida registra Evolução do Placar"
+    from_entity_id: "PARTIDA"
+    to_entity_id: "EVOLUCAO_DO_PLACAR"
+    meaning: "Associa a partida à série cronológica e ordenada de eventos de alteração de placar."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes:
+      - "sequencia_pontuacao"
+      - "valor_incremento"
+      - "equipe_beneficiada_id"
+    exclusivity_rules:
+      - "A sequência de alterações deve ser estritamente monotônica crescente no tempo."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_006"
+      - "EVID_SOURCE_04C_DICIONARIO_DE_DADOS_MD_6B0D9716_009"
+    temporality: "EVENTO"
+  - id: "POSSE_DE_BOLA_POSSUI_SISTEMA_DEFENSIVO"
+    name: "Posse de Bola possui Sistema Defensivo"
+    from_entity_id: "POSSE_DE_BOLA"
+    to_entity_id: "SISTEMA_DEFENSIVO"
+    meaning: "Caracteriza o arranjo tático estruturado da equipe defensora durante uma posse de bola."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "codigo_sistema_defensivo"
+      - "disposicao_central_lateral"
+    exclusivity_rules:
+      - "Somente a equipe sem a posse de bola pode registrar um sistema defensivo ativo no intervalo."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - "EVID_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94_002"
+    temporality: "INTERVALO"
+  - id: "SISTEMA_DEFENSIVO_PERTENCE_A_EQUIPE"
+    name: "Sistema Defensivo pertence a Equipe"
+    from_entity_id: "SISTEMA_DEFENSIVO"
+    to_entity_id: "EQUIPE"
+    meaning: "Identifica explicitamente qual equipe adotou a configuração tática defensiva em quadra."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "equipe_defensora_id"
+      - "em_desvantagem_numerica"
+    exclusivity_rules:
+      - "A equipe proprietária do sistema defensivo deve ser a equipe contrária ao possuidor da bola."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+    temporality: "INTERVALO"
+  - id: "ANALISTA_OBSERVADOR_POSSUI_CONFIABILIDADE"
+    name: "Analista Observador possui Confiabilidade"
+    from_entity_id: "ANALISTA_OBSERVADOR"
+    to_entity_id: "CONFIABILIDADE_OBSERVADOR"
+    meaning: "Vincula o analista de scout ao seu histórico de testes de calibração e métricas de precisão."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes:
+      - "indice_kappa_cohen"
+      - "indice_kappa_fleiss"
+      - "taxa_acerto_percentual"
+    exclusivity_rules:
+      - "A avaliação de confiabilidade é individual e não pode ser compartilhada entre analistas."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+    temporality: "VERSIONADA"
+  - id: "OBSERVACAO_DE_SCOUT_SOFRE_REVISAO"
+    name: "Observação de Scout sofre Revisão"
+    from_entity_id: "OBSERVACAO_DE_SCOUT"
+    to_entity_id: "REVISAO_DA_OBSERVACAO"
+    meaning: "Registra os eventos formais de auditoria, edição e moderação sobre uma observação."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes:
+      - "timestamp_revisao"
+      - "motivo_revisao"
+      - "campo_alterado"
+    exclusivity_rules:
+      - "Cada evento de revisão modifica o registro mantendo a auditabilidade do histórico."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "EVENTO"
+  - id: "REVISAO_DA_OBSERVACAO_EXECUTADA_POR_ANALISTA"
+    name: "Revisão da Observação executada por Analista"
+    from_entity_id: "REVISAO_DA_OBSERVACAO"
+    to_entity_id: "ANALISTA_OBSERVADOR"
+    meaning: "Identifica o analista observador com autoridade responsável pela execução da revisão."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "analista_revisor_id"
+      - "nivel_autoridade"
+    exclusivity_rules:
+      - "O analista revisor deve ser um usuário autenticado e habilitado no protocolo CON-006."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+    temporality: "EVENTO"
+  - id: "REVISAO_DA_OBSERVACAO_GERA_ESTADO_DE_REVISAO"
+    name: "Revisão da Observação gera Estado de Revisão"
+    from_entity_id: "REVISAO_DA_OBSERVACAO"
+    to_entity_id: "ESTADO_DE_REVISAO"
+    meaning: "Mapeia a transição de estado da observação decorrente do evento de revisão efetuado."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "codigo_status_resultante"
+      - "timestamp_transicao"
+    exclusivity_rules:
+      - "Uma revisão concluída atualiza obrigatoriamente o Estado de Revisão da observação."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "EVENTO"
+  - id: "OBSERVACAO_DE_SCOUT_POSSUI_ESTADO_DE_REVISAO"
+    name: "Observação de Scout possui Estado de Revisão"
+    from_entity_id: "OBSERVACAO_DE_SCOUT"
+    to_entity_id: "ESTADO_DE_REVISAO"
+    meaning: "Indica a situação corrente de aprovação e governança da observação de scout."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "status_corrente"
+      - "data_ultima_atualizacao"
+    exclusivity_rules:
+      - "A observação possui exatamente um Estado de Revisão ativo em um dado momento."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "VERSIONADA"
+  - id: "OBSERVACAO_DE_SCOUT_TEM_PROVENIENCIA"
+    name: "Observação de Scout tem Proveniência"
+    from_entity_id: "OBSERVACAO_DE_SCOUT"
+    to_entity_id: "PROVENIENCIA_OBSERVACAO"
+    meaning: "Associa a observação de scout ao registro único e imutável de proveniência de dados."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes:
+      - "ferramenta_software"
+      - "versao_protocolo"
+      - "checksum_midia"
+    exclusivity_rules:
+      - "A proveniência é gerada no momento do registro e torna-se imutável."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC_005"
+    temporality: "ATEMPORAL"
+  - id: "PROVENIENCIA_OBSERVACAO_VINCULA_PROTOCOLO_SCOUT"
+    name: "Proveniência da Observação vincula Protocolo Scout"
+    from_entity_id: "PROVENIENCIA_OBSERVACAO"
+    to_entity_id: "PROTOCOLO_SCOUT"
+    meaning: "Especifica a versão e diretrizes do protocolo metodológico seguidas na geração da observação."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "versao_protocolo_aplicada"
+      - "guia_metodologia_ref"
+    exclusivity_rules:
+      - "O protocolo referenciado deve ser uma especificação cadastrada e ativa."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "ATEMPORAL"
+  - id: "PROVENIENCIA_OBSERVACAO_REFERENCIA_MIDIA_VIDEO"
+    name: "Proveniência da Observação referência Mídia Vídeo"
+    from_entity_id: "PROVENIENCIA_OBSERVACAO"
+    to_entity_id: "MIDIA_VIDEO"
+    meaning: "Conecta a proveniência da observação ao arquivo físico de vídeo utilizado na codificação."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "arquivo_midia_id"
+      - "hash_arquivo_video"
+    exclusivity_rules:
+      - "O hash do arquivo garante a integridade e não repúdio da fonte audiovisual."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "ATEMPORAL"
+  - id: "EVENTO_SCOUT_VINCULA_TRECHO_OBSERVADO"
+    name: "Evento Scout vincula Trecho Observado"
+    from_entity_id: "EVENTO_SCOUT"
+    to_entity_id: "TRECHO_OBSERVADO"
+    meaning: "Associa o evento tático discreto de scout ao recorte preciso de timecode de vídeo."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes:
+      - "timecode_in"
+      - "timecode_out"
+      - "duracao_frames"
+    exclusivity_rules:
+      - "O trecho observado deve delimitar exatamente a janela de ocorrência da ação tática."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "INTERVALO"
+  - id: "TRECHO_OBSERVADO_PERTENCE_A_MIDIA_VIDEO"
+    name: "Trecho Observado pertence a Mídia Vídeo"
+    from_entity_id: "TRECHO_OBSERVADO"
+    to_entity_id: "MIDIA_VIDEO"
+    meaning: "Identifica o arquivo de vídeo no qual o recorte delimitado de timecode está localizado."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "offset_milissegundos"
+      - "velocidade_reproducao"
+    exclusivity_rules:
+      - "O intervalo do trecho observado não pode ultrapassar o limite temporal do arquivo de mídia."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    temporality: "ATEMPORAL"
+  - id: "EVENTO_SCOUT_CLASSIFICA_SPIN_SHOT"
+    name: "Evento de Scout classifica Spin Shot"
+    from_entity_id: "EVENTO_SCOUT"
+    to_entity_id: "SPIN_SHOT"
+    meaning: "Vincula a ocorrência especializada de spin shot ao evento observável que preserva ator, timecode, resultado\
+      \ e proveniência."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+  - id: "EVENTO_SCOUT_CLASSIFICA_IN_FLIGHT_SHOT"
+    name: "Evento de Scout classifica In-flight Shot"
+    from_entity_id: "EVENTO_SCOUT"
+    to_entity_id: "IN_FLIGHT_SHOT"
+    meaning: "Vincula a ocorrência especializada de in-flight shot ao evento observável que preserva ator, timecode, resultado\
+      \ e proveniência."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 1
+        max: 1
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_014"
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+  - id: "DESQUALIFICACAO_REGISTRADA_EM_EVENTO_SCOUT"
+    name: "Desqualificação registrada em Evento de Scout"
+    from_entity_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    to_entity_id: "EVENTO_SCOUT"
+    meaning: "Preserva o registro observacional que originou a desqualificação por segunda exclusão."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: 1
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "DESQUALIFICACAO_ATINGE_ATLETA"
+    name: "Desqualificação atinge Atleta"
+    from_entity_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    to_entity_id: "ATLETA"
+    meaning: "Identifica o atleta definitivamente afastado após acumular a segunda exclusão na partida."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "DESQUALIFICACAO_OCORRE_EM_PARTIDA"
+    name: "Desqualificação ocorre em Partida"
+    from_entity_id: "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    to_entity_id: "PARTIDA"
+    meaning: "Delimita a partida na qual as duas exclusões acumuladas produzem a desqualificação."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "CARTAO_AZUL_REGISTRADO_EM_EVENTO_SCOUT"
+    name: "Cartão Azul registrado em Evento de Scout"
+    from_entity_id: "CARTAO_AZUL_SUSPENSAO"
+    to_entity_id: "EVENTO_SCOUT"
+    meaning: "Preserva o registro observacional da exibição do cartão azul e da desqualificação correspondente."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: 1
+    relationship_attributes:
+      - "referencia_relatorio_arbitragem"
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+  - id: "CARTAO_AZUL_OCORRE_EM_PARTIDA"
+    name: "Cartão Azul ocorre em Partida"
+    from_entity_id: "CARTAO_AZUL_SUSPENSAO"
+    to_entity_id: "PARTIDA"
+    meaning: "Delimita a partida de origem do cartão azul e da suspensão administrativa subsequente."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_017"
+  - id: "CARTAO_AZUL_ATINGE_ATLETA"
+    name: "Cartão Azul atinge Atleta"
+    from_entity_id: "CARTAO_AZUL_SUSPENSAO"
+    to_entity_id: "ATLETA"
+    meaning: "Identifica o atleta infrator quando o destinatário do cartão azul participa como atleta."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules:
+      - "Cada cartão azul deve atingir exatamente um atleta ou uma atribuição de papel esportivo/operacional."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+  - id: "CARTAO_AZUL_ATINGE_PAPEL_OPERACIONAL"
+    name: "Cartão Azul atinge Papel Operacional"
+    from_entity_id: "CARTAO_AZUL_SUSPENSAO"
+    to_entity_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    meaning: "Identifica o oficial ou membro de comissão técnica infrator por sua atribuição válida na partida."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules:
+      - "Cada cartão azul deve atingir exatamente um atleta ou uma atribuição de papel esportivo/operacional."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+  - id: "SISTEMA_TATICO_CONTEXTUALIZA_POSSE"
+    name: "Sistema Tático contextualiza Posse de Bola"
+    from_entity_id: "SISTEMA_TATICO"
+    to_entity_id: "POSSE_DE_BOLA"
+    meaning: "Delimita a posse ou fração de posse durante a qual a organização coletiva observada esteve vigente."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "fase_tatica"
+      - "inicio_vigencia"
+      - "fim_vigencia"
+    temporality: "INTERVALO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+  - id: "SISTEMA_TATICO_ADOTADO_POR_EQUIPE"
+    name: "Sistema Tático adotado por Equipe"
+    from_entity_id: "SISTEMA_TATICO"
+    to_entity_id: "EQUIPE"
+    meaning: "Identifica a equipe cuja organização coletiva foi registrada no snapshot tático."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "codigo_sistema_tatico"
+    temporality: "VERSIONADA"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_007"
+  - id: "SISTEMA_DEFENSIVO_ESPECIALIZA_SISTEMA_TATICO"
+    name: "Sistema Defensivo especializa Sistema Tático"
+    from_entity_id: "SISTEMA_DEFENSIVO"
+    to_entity_id: "SISTEMA_TATICO"
+    meaning: "Declara que uma configuração defensiva observada é uma especialização do snapshot tático coletivo."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: 1
+    relationship_attributes: []
+    temporality: "VERSIONADA"
+    exclusivity_rules:
+      - "Somente snapshots de fase defensiva podem especializar-se como Sistema Defensivo."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_007"
+  - id: "PAPEL_OPERACIONAL_ATRIBUIDO_EM_PARTIDA"
+    name: "Papel Operacional atribuído em Partida"
+    from_entity_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    to_entity_id: "PARTIDA"
+    meaning: "Delimita a partida em cuja súmula ou organização a função foi atribuída."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "pessoa_ref"
+      - "codigo_papel"
+      - "inicio_vigencia"
+      - "fim_vigencia"
+    temporality: "INTERVALO"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+      - "EVID_REGULAMENTO_CBHB_2026_PDF_818BCC8B_005"
+  - id: "PAPEL_OPERACIONAL_VINCULADO_A_EQUIPE"
+    name: "Papel Operacional vinculado a Equipe"
+    from_entity_id: "PAPEL_ESPORTIVO_OPERACIONAL"
+    to_entity_id: "EQUIPE"
+    meaning: "Vincula à equipe os papéis de comissão técnica; funções de arbitragem e organização permanecem sem equipe."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "INTERVALO"
+    exclusivity_rules:
+      - "Papéis de arbitragem, delegado, secretário ou cronometrista não podem ser vinculados a uma equipe."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+  - id: "EQUIPE_PARTICIPA_COMPETICAO"
+    name: "Equipe Participa de Competição"
+    from_entity_id: "EQUIPE"
+    to_entity_id: "COMPETICAO"
+    meaning: "Associação temporal que registra a participação esportiva de uma equipe em uma competição e sua elegibilidade\
+      \ independente para o ranking final."
+    cardinality:
+      from_to:
+        min: 0
+        max: "N"
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes:
+      - "tipo_participacao"
+      - "status_elegibilidade_ranking"
+      - "motivo_decisao"
+      - "decisao_ref"
+      - "valido_desde"
+      - "valido_ate"
+    temporality: "VERSIONADA"
+    exclusivity_rules:
+      - "A inelegibilidade para o ranking final não pode ser inferida por UF, país ou cadastro global da equipe."
+      - "A inelegibilidade para o ranking final não invalida partidas, placares ou estatísticas esportivas da equipe."
+      - "Uma decisão de inelegibilidade exige motivo, referência e intervalo de vigência auditáveis."
+      - "O fim da vigência deve ser nulo ou posterior ao início da vigência."
+      - "Intervalos da mesma equipe na mesma competição não podem se sobrepor."
+    rule_ids:
+      - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+    evidence_ref_ids:
+      - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+  - id: "PERIODO_SET_VENCIDO_POR_EQUIPE"
+    name: "Período Set vencido por Equipe"
+    from_entity_id: "PERIODO_SET"
+    to_entity_id: "EQUIPE"
+    meaning: "Identifica opcionalmente a equipe vencedora do período/set entre as participantes da mesma partida."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules:
+      - "A equipe vencedora, quando informada, deve participar da mesma partida do período/set."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+  - id: "SHOOT_OUT_VENCIDO_POR_EQUIPE"
+    name: "Shoot-out vencido por Equipe"
+    from_entity_id: "SHOOT_OUT"
+    to_entity_id: "EQUIPE"
+    meaning: "Identifica opcionalmente a equipe vencedora quando o shoot-out estiver concluído."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules:
+      - "A equipe vencedora, quando informada, deve participar da partida do shoot-out."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_004"
+  - id: "POSSE_DE_BOLA_DETIDA_POR_EQUIPE"
+    name: "Posse de Bola detida por Equipe"
+    from_entity_id: "POSSE_DE_BOLA"
+    to_entity_id: "EQUIPE"
+    meaning: "Identifica a equipe que detém a bola no contexto da partida do período/set."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "INTERVALO"
+    exclusivity_rules:
+      - "A equipe possuidora deve participar da partida à qual pertence o período/set."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+  - id: "MIDIA_VIDEO_REGISTRA_PARTIDA"
+    name: "Mídia de Vídeo registra Partida"
+    from_entity_id: "MIDIA_VIDEO"
+    to_entity_id: "PARTIDA"
+    meaning: "Vincula opcionalmente a mídia de vídeo à partida que ela registra."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "ATEMPORAL"
+    exclusivity_rules: []
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+  - id: "PLACAR_JOGO_INDICA_EQUIPE_VENCEDORA"
+    name: "Placar do Jogo indica Equipe vencedora"
+    from_entity_id: "PLACAR_JOGO"
+    to_entity_id: "EQUIPE"
+    meaning: "Identifica opcionalmente a equipe vencedora no placar consolidado concluído."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "SNAPSHOT"
+    exclusivity_rules:
+      - "A equipe vencedora, quando informada, deve participar da partida do placar."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+  - id: "EVOLUCAO_PLACAR_ORIGINADA_POR_EVENTO_SCOUT"
+    name: "Evolução do Placar originada por Evento Scout"
+    from_entity_id: "EVOLUCAO_DO_PLACAR"
+    to_entity_id: "EVENTO_SCOUT"
+    meaning: "Vincula opcionalmente a alteração do placar ao evento de scout que a originou."
+    cardinality:
+      from_to:
+        min: 0
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules:
+      - "O evento vinculado deve pertencer à mesma partida da alteração do placar."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_006"
+  - id: "EVOLUCAO_PLACAR_BENEFICIA_EQUIPE"
+    name: "Evolução do Placar beneficia Equipe"
+    from_entity_id: "EVOLUCAO_DO_PLACAR"
+    to_entity_id: "EQUIPE"
+    meaning: "Identifica a equipe beneficiada por cada alteração do placar."
+    cardinality:
+      from_to:
+        min: 1
+        max: 1
+      to_from:
+        min: 0
+        max: "N"
+    relationship_attributes: []
+    temporality: "EVENTO"
+    exclusivity_rules:
+      - "A equipe beneficiada deve participar da partida da alteração do placar."
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_006"
+domain_invariants:
+  - id: "INV_LIMITE_JOGADORES_SUMULA"
+    statement: "Cada equipe pode relacionar no maximo 10 atletas uniformizados em sumula por partida, devendo manter exatamente\
+      \ 4 atletas em quadra (3 de linha e 1 goleiro/goleira)."
+    affected_entity_ids:
+      - "PARTIDA"
+      - "EQUIPE"
+      - "ATLETA"
+    rule_ids:
+      - "RN_TETO_PARTICIPANTES_SUMULA"
+      - "RN_IHF_VIGENCIA_2026"
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_005"
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_007"
+  - id: "INV_SEMANTICA_GOLEIRA_POSICAO"
+    statement: "O termo GOLEIRA expressa exclusivamente uma posicao especifica de jogo e jamais uma funcao tática ordinaria,\
+      \ devendo pertencer semanticamente a funcao DEFESA."
+    affected_entity_ids:
+      - "ATLETA"
+      - "EVENTO_SCOUT"
+    rule_ids:
+      - "RN_SEMANTICA_GOLEIRA"
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_004"
+      - "EVID_SOURCE_04A_MODELO_CONCEITUAL_MD_D7C900D7_007"
+  - id: "INV_SANCAO_FINAL_15_SEGUNDOS"
+    statement: "Nos ultimos 15 segundos de cada set e no Gol de Ouro, a obstrucao ou interferencia deliberada no reinicio\
+      \ de jogo acarreta desqualificacao direta do infrator e concessao de tiro de 6 metros."
+    affected_entity_ids:
+      - "PARTIDA"
+      - "PERIODO_SET"
+      - "SHOOT_OUT"
+      - "EVENTO_SCOUT"
+    rule_ids:
+      - "RN_SANCAO_FINAL_15_SEGUNDOS"
+      - "RN_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_012"
+      - "EVID_IHF_RULES_2026_EN_013"
+      - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_005"
+  - id: "INV_TIRO_SEIS_METROS_PONTUACAO"
+    statement: "O gol resultante da execucao de tiro de 6 metros concede 2 pontos a equipe arremessadora e exige execucao\
+      \ direta ao gol em ate 3 segundos apos o apito da arbitragem, conforme a Regra 14.5."
+    affected_entity_ids:
+      - "EVENTO_SCOUT"
+      - "POSSE_DE_BOLA"
+      - "ATLETA"
+    rule_ids:
+      - "RN_REGRAS_EXECUCAO_TIRO_SEIS_METROS"
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_007"
+      - "EVID_SOURCE_6_METRE_THROW_PUNISHMENTS_PDF_D2567ACD_009"
+  - id: "INV_PROTECAO_CABECA_GOLEIRA"
+    statement: "E obrigatoria a aplicacao de suspensao disciplinar ao arremessador sem marcacao direta em jogo aberto cujo\
+      \ arremesso atinja primeiramente a cabeca da goleira/goleiro."
+    affected_entity_ids:
+      - "EVENTO_SCOUT"
+      - "ATLETA"
+    rule_ids:
+      - "RN_PROTECAO_CABECA_GOLEIRA"
+    evidence_ref_ids:
+      - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_009"
+  - id: "INV_PASSIVO_REGRA_QUATRO_PASSES"
+    statement: "Apos a exibicao do sinal de advertencia de jogo passivo pela arbitragem, a equipe atacante dispõe de no maximo\
+      \ 4 passes para realizar arremesso a gol antes da reversao da posse de bola."
+    affected_entity_ids:
+      - "POSSE_DE_BOLA"
+      - "UNIDADE_BASICA_ATAQUE_BOU"
+    rule_ids:
+      - "RN_PASSIVO_QUATRO_PASSES"
+    evidence_ref_ids:
+      - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_004"
+  - id: "INV_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    statement: "E estritamente proibido registrar no scout primario P1 variaveis inferenciais ou subjetivas nao suportadas\
+      \ diretamente pela observacao objetiva de video."
+    affected_entity_ids:
+      - "OBSERVACAO_DE_SCOUT"
+      - "EVENTO_SCOUT"
+      - "PROTOCOLO_SCOUT"
+    rule_ids:
+      - "RN_REJEICAO_VARIAVEIS_INFERENCIAIS"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_007"
+  - id: "INV_PRAZO_INSCRICAO_ATLETA"
+    statement: "A inscricao valida de novos atletas para atuacao em partidas exige antecedencia minima de 72 horas em relacao\
+      \ ao horario fixado para o jogo na rodada."
+    affected_entity_ids:
+      - "EQUIPE"
+      - "ATLETA"
+      - "PARTIDA"
+    rule_ids:
+      - "RN_PRAZO_INSCRICAO_ATLETA_72H"
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_004"
+  - id: "INV_PROIBICAO_RETARDO_REPETIDO"
+    statement: "E vedado a equipe retardar repetidamente a execucao de tiro livre, tiro lateral ou tiro de goleiro."
+    affected_entity_ids:
+      - "POSSE_DE_BOLA"
+      - "EVENTO_SCOUT"
+    rule_ids:
+      - "RN_PROIBICAO_RETARDO_REPETIDO"
+    evidence_ref_ids:
+      - "EVID_ATUALIZACOES_IHF_2026_MD_02D99F75_003"
+  - id: "INV_EXCLUSIVIDADE_TRECHO_MIDIA"
+    statement: "O intervalo temporal de um Trecho Observado deve estar estritamente contido dentro da duração total do arquivo\
+      \ de Mídia Vídeo associado."
+    affected_entity_ids:
+      - "TRECHO_OBSERVADO"
+      - "MIDIA_VIDEO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+  - id: "INV_INTEGRIDADE_REVISAO_OBSERVACAO"
+    statement: "Toda Revisão da Observação deve ser executada por um Analista Observador qualificado e resulta obrigatoriamente\
+      \ em transição do Estado de Revisão."
+    affected_entity_ids:
+      - "REVISAO_DA_OBSERVACAO"
+      - "ESTADO_DE_REVISAO"
+      - "ANALISTA_OBSERVADOR"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+  - id: "INV_QUALIFICACAO_MINIMA_OBSERVADOR"
+    statement: "Um Analista Observador só pode ter suas observações validadas se possuir registro ativo de Confiabilidade\
+      \ do Observador com acerto mínimo de 90% (18/20) e zero erro crítico."
+    affected_entity_ids:
+      - "CONFIABILIDADE_OBSERVADOR"
+      - "ANALISTA_OBSERVADOR"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+  - id: "INV_CONSISTENCIA_EVOLUCAO_PLACAR"
+    statement: "Os registros de Evolução do Placar devem ser ordenados cronologicamente sem lacunas e ser derivados exclusivamente\
+      \ de ocorrências com valor de 1 ou 2 pontos."
+    affected_entity_ids:
+      - "EVOLUCAO_DO_PLACAR"
+      - "PLACAR_JOGO"
+      - "PARTIDA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_006"
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_026"
+  - id: "INV_PROVENIENCIA_RASTREAVEL"
+    statement: "Toda Observação de Scout deve possuir registro único e imutável de Proveniência da Observação que ateste a\
+      \ ferramenta, protocolo, autor e arquivo de vídeo fonte."
+    affected_entity_ids:
+      - "PROVENIENCIA_OBSERVACAO"
+      - "OBSERVACAO_DE_SCOUT"
+      - "PROTOCOLO_SCOUT"
+      - "MIDIA_VIDEO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_DEVELOPMENT_OF_AN_INSTRUMENT_FOR_OBSERVATION_OF_COLLECTI_7CF9CCAC_005"
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+  - id: "INV_TAXONOMIA_SISTEMA_DEFENSIVO"
+    statement: "O atributo codigo_sistema_defensivo da entidade Sistema Defensivo deve obrigatoriamente pertencer ao domínio\
+      \ tático padronizado ('3:0', '2:1', '1:2') conforme TAX-001."
+    affected_entity_ids:
+      - "SISTEMA_DEFENSIVO"
+      - "POSSE_DE_BOLA"
+      - "EQUIPE"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - "EVID_THE_STRUCTURING_OF_THE_DEFENSIVE_PHASE_OF_BEACH_HANDBALL_16FFDB94_002"
+  - id: "INV_INCREMENTO_PONTUACAO_IHF"
+    statement: "Cada evento individual registrado na Evolução do Placar deve incrementar o placar da equipe em exatamente\
+      \ 1 ponto (gol simples) ou 2 pontos (gols espetaculares, 6m, gol de goleiro/especialista), vedado qualquer outro valor."
+    affected_entity_ids:
+      - "EVOLUCAO_DO_PLACAR"
+      - "ESTADO_DO_PLACAR"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_006"
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_009"
+  - id: "INV_LIMITACAO_PLACAR_SETS"
+    statement: "A contagem consolidada de sets no Placar do Jogo é estritamente limitada aos placares de 2:0 ou 0:2 (vitória\
+      \ direta em dois sets) ou 2:1 ou 1:2 (vitória via Shoot-out após empate em sets)."
+    affected_entity_ids:
+      - "PLACAR_JOGO"
+      - "PARTIDA"
+      - "PERIODO_SET"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_002"
+      - "EVID_IHF_RULES_2026_EN_004"
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_026"
+  - id: "INV_EVENTO_TECNICA_ARREMESSO"
+    statement: "Cada ocorrência de Spin Shot ou In-flight Shot deve corresponder a exatamente um Evento de Scout com atleta,\
+      \ partida, timecode, resultado e proveniência rastreáveis."
+    affected_entity_ids:
+      - "SPIN_SHOT"
+      - "IN_FLIGHT_SHOT"
+      - "EVENTO_SCOUT"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_IHF_RULES_2026_EN_014"
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+  - id: "INV_DESQUALIFICACAO_POR_SEGUNDA_EXCLUSAO"
+    statement: "A segunda exclusão disciplinar do mesmo atleta na mesma partida deve produzir uma desqualificação própria\
+      \ e o afastamento definitivo do atleta daquele jogo."
+    affected_entity_ids:
+      - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+      - "ATLETA"
+      - "PARTIDA"
+      - "EVENTO_SCOUT"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+  - id: "INV_CARTAO_AZUL_RELATORIO_E_SUSPENSAO"
+    statement: "Todo Cartão Azul deve possuir relatório escrito da arbitragem, destinatário único e suspensão automática mínima\
+      \ de uma partida subsequente."
+    affected_entity_ids:
+      - "CARTAO_AZUL_SUSPENSAO"
+      - "ATLETA"
+      - "PAPEL_ESPORTIVO_OPERACIONAL"
+      - "PARTIDA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_ESCLARECIMENTOS_REGRAS_DE_JOGO_PDF_067CB8EA_015"
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_017"
+  - id: "INV_VIGENCIA_SISTEMA_TATICO"
+    statement: "Cada snapshot de Sistema Tático deve informar equipe, fase ofensiva ou defensiva, posse contextual, código\
+      \ de sistema e intervalo de vigência sem sobreposição contraditória."
+    affected_entity_ids:
+      - "SISTEMA_TATICO"
+      - "SISTEMA_DEFENSIVO"
+      - "POSSE_DE_BOLA"
+      - "EQUIPE"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_O_JOGO_OFENSIVO_DO_HANDEBOL_DE_AREIA_2BD736C2_005"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_006"
+      - "EVID_LATEST_TRENDS_IN_DEFENCE_PDF_9CE6234A_007"
+  - id: "INV_ESCOPO_PAPEL_OPERACIONAL"
+    statement: "Cada atribuição de papel esportivo ou operacional deve identificar pessoa, partida, código do papel e vigência;\
+      \ o vínculo com equipe é obrigatório apenas para funções de comissão técnica."
+    affected_entity_ids:
+      - "PAPEL_ESPORTIVO_OPERACIONAL"
+      - "PARTIDA"
+      - "EQUIPE"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_003"
+      - "EVID_REGULAMENTO_CBHB_2026_PDF_818BCC8B_005"
+  - id: "INV_ELEGIBILIDADE_RANKING_CONTEXTUAL"
+    statement: "Participação esportiva e elegibilidade para o ranking final são independentes: equipes inelegíveis por decisão\
+      \ contextual mantêm válidos seus jogos, placares e estatísticas e são excluídas somente da agregação do ranking final;\
+      \ a elegibilidade não é inferida por origem geográfica."
+    affected_entity_ids:
+      - "EQUIPE"
+      - "COMPETICAO"
+      - "PARTIDA"
+    rule_ids:
+      - "RN_SGATE_0023_PONTUACAO_FHERJ_2026"
+    evidence_ref_ids:
+      - "EVID_SOURCE_04B_MODELO_LOGICO_MD_FFCFA1B3_008"
+  - id: "INV_PARTIDA_EQUIPE_PAPEL_REGULAMENTAR_UNICO"
+    statement: "Em uma partida, cada papel regulamentar de equipe ocorre no máximo uma vez."
+    affected_entity_ids:
+      - "PARTIDA"
+      - "EQUIPE"
+    rule_ids: []
+    evidence_ref_ids: []
+  - id: "INV_PARTIDA_EQUIPE_CONDICAO_MANDO_UNICA"
+    statement: "Em uma partida, cada condição de mando ocorre no máximo uma vez."
+    affected_entity_ids:
+      - "PARTIDA"
+      - "EQUIPE"
+    rule_ids: []
+    evidence_ref_ids: []
+  - id: "INV_EVENTO_SCOUT_MULTIPLOS_TRECHOS"
+    statement: "Um evento de scout pode possuir zero a muitos trechos observados; não existe unicidade por evento."
+    affected_entity_ids:
+      - "EVENTO_SCOUT"
+      - "TRECHO_OBSERVADO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+  - id: "INV_INTERVALO_VIGENCIA_PARTICIPACAO_VALIDO"
+    statement: "Em cada participação, o fim da vigência deve ser nulo ou posterior ao início da vigência."
+    affected_entity_ids:
+      - "EQUIPE"
+      - "COMPETICAO"
+    rule_ids: []
+    evidence_ref_ids: []
+  - id: "INV_NAO_SOBREPOSICAO_VIGENCIA_PARTICIPACAO"
+    statement: "Intervalos de vigência da mesma equipe na mesma competição não podem se sobrepor."
+    affected_entity_ids:
+      - "EQUIPE"
+      - "COMPETICAO"
+    rule_ids: []
+    evidence_ref_ids: []
+coverage:
+  required_concept_ids:
+    - "PARTIDA"
+    - "EQUIPE"
+    - "ATLETA"
+    - "GOLEIRA_POSICAO"
+    - "PERIODO_SET"
+    - "GOL_DE_OURO"
+    - "SHOOT_OUT"
+    - "GOL_SIMPLES"
+    - "GOL_DUPLO"
+    - "SPIN_SHOT"
+    - "IN_FLIGHT_SHOT"
+    - "TIRO_SEIS_METROS"
+    - "EXCLUSAO_DISCIPLINAR"
+    - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    - "CARTAO_AZUL_SUSPENSAO"
+    - "POSSE_DE_BOLA"
+    - "UNIDADE_BASICA_ATAQUE_BOU"
+    - "FASE_TATICA"
+    - "SISTEMA_TATICO"
+    - "ZONA_ANALITICA_QUADRA"
+    - "PROTOCOLO_SCOUT"
+    - "CONFIABILIDADE_OBSERVADOR"
+    - "EVENTO_SCOUT"
+    - "ANALISTA_OBSERVADOR"
+    - "TIMECODE"
+    - "TRECHO_OBSERVADO"
+    - "COMPETICAO"
+    - "PAPEL_ESPORTIVO_OPERACIONAL"
+    - "SEGMENTO_OBSERVADO"
+    - "PLACAR_JOGO"
+    - "ESTADO_DO_PLACAR"
+    - "EVOLUCAO_DO_PLACAR"
+    - "EVENTO_DE_PONTUACAO"
+    - "PUNICAO_DISCIPLINAR"
+    - "CONSEQUENCIA_DISCIPLINAR"
+    - "FASE_OFENSIVA"
+    - "FASE_DEFENSIVA"
+    - "SISTEMA_DEFENSIVO"
+    - "ACAO_DA_GOLEIRA"
+    - "ACAO_OBSERVADA"
+    - "RESULTADO_DA_ACAO"
+    - "OBSERVACAO_DE_SCOUT"
+    - "VERSAO_PROTOCOLO_SCOUT"
+    - "REVISAO_DA_OBSERVACAO"
+    - "ESTADO_DE_REVISAO"
+    - "MIDIA_VIDEO"
+    - "PROVENIENCIA_OBSERVACAO"
+  covered_concept_ids:
+    - "PARTIDA"
+    - "EQUIPE"
+    - "ATLETA"
+    - "GOLEIRA_POSICAO"
+    - "PERIODO_SET"
+    - "GOL_DE_OURO"
+    - "SHOOT_OUT"
+    - "GOL_SIMPLES"
+    - "GOL_DUPLO"
+    - "TIRO_SEIS_METROS"
+    - "EXCLUSAO_DISCIPLINAR"
+    - "POSSE_DE_BOLA"
+    - "UNIDADE_BASICA_ATAQUE_BOU"
+    - "FASE_TATICA"
+    - "ZONA_ANALITICA_QUADRA"
+    - "PROTOCOLO_SCOUT"
+    - "EVENTO_SCOUT"
+    - "ANALISTA_OBSERVADOR"
+    - "TIMECODE"
+    - "COMPETICAO"
+    - "EVENTO_DE_PONTUACAO"
+    - "PUNICAO_DISCIPLINAR"
+    - "CONSEQUENCIA_DISCIPLINAR"
+    - "FASE_OFENSIVA"
+    - "FASE_DEFENSIVA"
+    - "ACAO_DA_GOLEIRA"
+    - "ACAO_OBSERVADA"
+    - "RESULTADO_DA_ACAO"
+    - "OBSERVACAO_DE_SCOUT"
+    - "VERSAO_PROTOCOLO_SCOUT"
+    - "MIDIA_VIDEO"
+    - "SEGMENTO_OBSERVADO"
+    - "PLACAR_JOGO"
+    - "ESTADO_DO_PLACAR"
+    - "EVOLUCAO_DO_PLACAR"
+    - "SISTEMA_DEFENSIVO"
+    - "CONFIABILIDADE_OBSERVADOR"
+    - "REVISAO_DA_OBSERVACAO"
+    - "ESTADO_DE_REVISAO"
+    - "PROVENIENCIA_OBSERVACAO"
+    - "TRECHO_OBSERVADO"
+    - "SPIN_SHOT"
+    - "IN_FLIGHT_SHOT"
+    - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    - "CARTAO_AZUL_SUSPENSAO"
+    - "SISTEMA_TATICO"
+    - "PAPEL_ESPORTIVO_OPERACIONAL"
+  excluded_concept_ids: []
+open_issues: []

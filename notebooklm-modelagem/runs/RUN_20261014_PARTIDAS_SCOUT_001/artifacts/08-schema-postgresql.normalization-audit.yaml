@@ -1,0 +1,32 @@
+status: "PASS"
+stage_id: "STAGE_08"
+operation: "DETERMINISTIC_OPERATOR_NORMALIZATION"
+normalized_at: "2026-10-15T18:25:00-03:00"
+base:
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.report-002.md"
+  sha256: "4e134a0886048cd2fac18f0cde23066f82e0122afbd457e3b78f0b3a7efc2acc"
+output:
+  path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/08-schema-postgresql.candidate.sql"
+  sha256: "f5224887f8dd85b82542e3645e0c68fbad77c336a5f0509c229a6f7867694828"
+changes:
+  - "REMOVE_MARKDOWN_H1"
+  - "FIX_SCHEMA_DISTRIBUTION_COMMENT"
+  - "CREATE"
+  - "REFERENCES"
+  - "ON"
+  - "fk_inscricao_equipe"
+  - "fk_periodo_set_equipe_vencedora"
+  - "fk_shoot_out_equipe_vencedora"
+  - "fk_evento_scout_atleta_exec"
+  - "fk_evento_scout_atleta_alvo"
+  - "fk_segmento_observado_midia"
+  - "fk_placar_jogo_equipe_vencedora"
+  - "fk_trecho_observado_midia"
+  - "fk_cartao_azul_atleta"
+  - "fk_cartao_azul_papel_operacional"
+  - "fk_participacao_equipe_competicao_competicao"
+  - "CONSTRAINT"
+semantic_scope_changed: false
+relations_added: 0
+columns_added: 0
+sql_executed: false
