@@ -1623,6 +1623,31 @@ stages:
       wrapper_sha256: null
       promoted_at: null
 
+origin_reconciliation:
+  status: "LOCAL_CANDIDATES_READY_NOT_PROMOTED"
+  reconciled_at: "2026-10-16T03:17:52-03:00"
+  audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-08-origin-reconciliation.audit.yaml"
+  audit_sha256: "2c4a43376edf945130b8153e506d71261d4520afd702ae01eebd80b6e48c7a43"
+  affected_stages:
+    - "STAGE_01"
+    - "STAGE_02"
+    - "STAGE_03"
+    - "STAGE_04"
+    - "STAGE_05"
+    - "STAGE_06"
+    - "STAGE_07"
+    - "STAGE_08"
+  semantic_decisions:
+    - "CONFIABILIDADE_OBSERVADOR_RECLASSIFICADA_COMO_QUALIFICACAO_OBSERVADOR"
+    - "KAPPA_REMOVIDO_DA_QUALIFICACAO_INDIVIDUAL"
+    - "CONFIABILIDADE_OBSERVACAO_MANTIDA_SEPARADA_E_NAO_MATERIALIZADA"
+  stage_09_status: "BLOCKED_PENDING_RECONCILIATION_APPROVAL_AND_RELIABILITY_GRAIN_DECISION"
+  prohibited_actions:
+    sql_execution: "NOT_RUN"
+    migration_generation: "NOT_RUN"
+    deployment: "NOT_RUN"
+    rls_generation: "NOT_RUN"
+
 incidents:
   - id: "INC_AUTH_001"
     operation: "AUTH_CHECK_BEFORE_SINGLE_SOURCE_ENRICHMENT"
@@ -1699,6 +1724,13 @@ blockers:
     affected_stage_id: "STAGE_09"
     description: "Quarenta e seis permissões exigem vínculo persistido entre auth.uid(), identidade interna, papel, escopo, vigência e auditoria; essas estruturas não existem no schema promovido."
     decision_required: "MODELAR_ATRIBUICOES_PERSISTIDAS; ADOTAR_CLAIMS_CONFIAVEIS_COM_REVISAO_DOS_REQUISITOS; OU_RESTRINGIR_STAGE_09_AO_SUBCONJUNTO_PUBLICO"
+    resolution: null
+  - id: "BLOCK_STAGE_09_OBSERVATION_RELIABILITY"
+    status: "OPEN"
+    affected_stage_id: "STAGE_09"
+    description: "A confiabilidade da observacao foi distinguida da qualificacao individual do observador, mas sua granularidade persistente ainda nao foi decidida."
+    decision_required: "DEFINIR_AMOSTRA_AVALIADORES_METODO_E_RESULTADO; REVISAR_E_APROVAR_CANDIDATOS_RECONCILIADOS_01_A_08; REAVALIAR_STOP_GATE"
+    evidence: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/01-08-origin-reconciliation.audit.yaml"
     resolution: null
 
 physical_gate:

@@ -1,0 +1,1439 @@
+schema_version: "1.1"
+document:
+  id: "ACCESS_REQUIREMENTS"
+  artifact_kind: "ACCESS_REQUIREMENTS"
+  title: "Requisitos de acesso e matriz de permissões"
+  version: "0.1.1"
+  status: "PROPOSTO"
+  run_id: "RUN_20261014_PARTIDAS_SCOUT_001"
+  domain_id: "PARTIDAS_SCOUT_ANALISE_TATICA"
+  notebook_id: "93446a17-55bf-4cd8-b9f9-18c52c8f4c1d"
+  generated_at: "2026-10-16T03:17:52-03:00"
+  supersedes: "ACCESS_REQUIREMENTS@0.1.0"
+  input_artifacts:
+    - document_id: "SOURCE_MANIFEST"
+      version: "0.1.0"
+      sha256: "4091e8f0f68cb8e5ad6aad8fbf2b5b7220131aca8ae42e48456d3fe9688209fc"
+      promoted_source_id: "d0a81644-ae48-4ac8-9954-676602780417"
+    - document_id: "SEMANTIC_REGISTRY"
+      version: "0.1.1"
+      sha256: "92c616d320ef329ceab5f94909c4c91d6f9fb64652c39f9d77821f833b23c187"
+      promoted_source_id: null
+    - document_id: "CONCEPTUAL_MODEL"
+      version: "0.1.3"
+      sha256: "5c6b29fee4b5e2d9e9fed40caa03332ca6bc6255d81ab55085daad3e6d011bfe"
+      promoted_source_id: null
+    - document_id: "LOGICAL_MODEL"
+      version: "0.1.3"
+      sha256: "d3f38a727177c1c72ac5ef7aa97a100a9dda64b4ff519273163abf605748a620"
+      promoted_source_id: null
+    - document_id: "DATA_DICTIONARY"
+      version: "0.1.2"
+      sha256: "620fb876deddb562f152db923d47cf58f06be5209e50a8dc78a59b7ac051e660"
+      promoted_source_id: null
+    - document_id: "TRACEABILITY_MATRIX"
+      version: "0.1.2"
+      sha256: "0436dfbcd8c5f0c23acef73a381917119d7fe717f7d5bac6990fd88170e43948"
+      promoted_source_id: null
+roles:
+  - id: "ROLE_ADMIN_DADOS"
+    name: "Administrador de dados"
+    description: "Responsável pela governança dos dados e pela administração controlada de cadastros e acessos."
+    authentication_required: true
+    assignment_scope: "GLOBAL"
+    authorization_claim_source: "DATABASE_MEMBERSHIP"
+    evidence_ref_ids: []
+  - id: "ROLE_TREINADOR"
+    name: "Treinador e comissão técnica"
+    description: "Responsável técnico por dados esportivos das equipes, competições e partidas sob sua atribuição."
+    authentication_required: true
+    assignment_scope: "TEAM"
+    authorization_claim_source: "DATABASE_MEMBERSHIP"
+    evidence_ref_ids: []
+  - id: "ROLE_ANALISTA_SCOUT"
+    name: "Analista de scout"
+    description: "Responsável por coletar, codificar e revisar observações das partidas que lhe foram atribuídas."
+    authentication_required: true
+    assignment_scope: "MATCH"
+    authorization_claim_source: "DATABASE_MEMBERSHIP"
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+  - id: "ROLE_PUBLICO_LEITOR"
+    name: "Leitor público"
+    description: "Acesso anônimo somente à leitura explicitamente permitida para recursos classificados como públicos."
+    authentication_required: false
+    assignment_scope: "GLOBAL"
+    authorization_claim_source: "NONE"
+    evidence_ref_ids:
+      - "EVID_SOURCE_07_MATRIZ_RBAC_E_POLITICAS_RLS_0BB80919_004"
+  - id: "ROLE_REVISOR_SCOUT"
+    name: "Revisor de scout"
+    description: "Responsável por revisar observações de partidas às quais foi atribuído, sem revisar o próprio registro."
+    authentication_required: true
+    assignment_scope: "MATCH"
+    authorization_claim_source: "DATABASE_MEMBERSHIP"
+    evidence_ref_ids: []
+resources:
+  - id: "RES_COMPETICAO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "COMPETICAO"
+    classification: "PUBLICO"
+    exposed_via_data_api: true
+    owner_rule: "Leitura pública somente por permissão explícita; mutações exigem papel autorizado e escopo atribuído no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_PARTIDA"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "PARTIDA"
+    classification: "PUBLICO"
+    exposed_via_data_api: true
+    owner_rule: "Leitura pública somente por permissão explícita; mutações exigem papel autorizado e escopo atribuído no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_EQUIPE"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "EQUIPE"
+    classification: "PUBLICO"
+    exposed_via_data_api: true
+    owner_rule: "Leitura pública somente por permissão explícita; mutações exigem papel autorizado e escopo atribuído no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_PARTIDA_EQUIPE"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "PARTIDA_EQUIPE"
+    classification: "PUBLICO"
+    exposed_via_data_api: true
+    owner_rule: "Leitura pública somente por permissão explícita; mutações exigem papel autorizado e escopo atribuído no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_PERIODO_SET"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "PERIODO_SET"
+    classification: "PUBLICO"
+    exposed_via_data_api: true
+    owner_rule: "Leitura pública somente por permissão explícita; mutações exigem papel autorizado e escopo atribuído no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_SHOOT_OUT"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "SHOOT_OUT"
+    classification: "PUBLICO"
+    exposed_via_data_api: true
+    owner_rule: "Leitura pública somente por permissão explícita; mutações exigem papel autorizado e escopo atribuído no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_PLACAR_JOGO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "PLACAR_JOGO"
+    classification: "PUBLICO"
+    exposed_via_data_api: true
+    owner_rule: "Leitura pública somente por permissão explícita; mutações exigem papel autorizado e escopo atribuído no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_ESTADO_DO_PLACAR"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "ESTADO_DO_PLACAR"
+    classification: "PUBLICO"
+    exposed_via_data_api: true
+    owner_rule: "Leitura pública somente por permissão explícita; mutações exigem papel autorizado e escopo atribuído no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_EVOLUCAO_DO_PLACAR"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "EVOLUCAO_DO_PLACAR"
+    classification: "PUBLICO"
+    exposed_via_data_api: true
+    owner_rule: "Leitura pública somente por permissão explícita; mutações exigem papel autorizado e escopo atribuído no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_EQUIPE_ATLETA_INSCRICAO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "EQUIPE_ATLETA_INSCRICAO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_POSSE_DE_BOLA"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "POSSE_DE_BOLA"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_UNIDADE_BASICA_ATAQUE_BOU"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "UNIDADE_BASICA_ATAQUE_BOU"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_EVENTO_SCOUT"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "EVENTO_SCOUT"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_OBSERVACAO_DE_SCOUT"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "OBSERVACAO_DE_SCOUT"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_PROTOCOLO_SCOUT"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "PROTOCOLO_SCOUT"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_MIDIA_VIDEO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "MIDIA_VIDEO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_SEGMENTO_OBSERVADO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "SEGMENTO_OBSERVADO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_SISTEMA_DEFENSIVO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "SISTEMA_DEFENSIVO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_QUALIFICACAO_OBSERVADOR"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "QUALIFICACAO_OBSERVADOR"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_REVISAO_DA_OBSERVACAO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "REVISAO_DA_OBSERVACAO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_ESTADO_DE_REVISAO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "ESTADO_DE_REVISAO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_PROVENIENCIA_OBSERVACAO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "PROVENIENCIA_OBSERVACAO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_TRECHO_OBSERVADO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "TRECHO_OBSERVADO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_SPIN_SHOT"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "SPIN_SHOT"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_IN_FLIGHT_SHOT"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "IN_FLIGHT_SHOT"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_SISTEMA_TATICO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "SISTEMA_TATICO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_PAPEL_ESPORTIVO_OPERACIONAL"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "PAPEL_ESPORTIVO_OPERACIONAL"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_PARTICIPACAO_EQUIPE_COMPETICAO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "PARTICIPACAO_EQUIPE_COMPETICAO"
+    classification: "INTERNO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso limitado às equipes, competições ou partidas associadas ao papel por vínculo vigente no banco."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_ATLETA"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "ATLETA"
+    classification: "RESTRITO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso mínimo por finalidade, escopo atribuído e colunas necessárias; nenhuma leitura pública."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_ANALISTA_OBSERVADOR"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "ANALISTA_OBSERVADOR"
+    classification: "RESTRITO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso mínimo por finalidade, escopo atribuído e colunas necessárias; nenhuma leitura pública."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    classification: "RESTRITO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso mínimo por finalidade, escopo atribuído e colunas necessárias; nenhuma leitura pública."
+    view_security_mode: "NOT_APPLICABLE"
+  - id: "RES_CARTAO_AZUL_SUSPENSAO"
+    resource_kind: "TABLE"
+    logical_relation_ids:
+      - "CARTAO_AZUL_SUSPENSAO"
+    classification: "RESTRITO"
+    exposed_via_data_api: false
+    owner_rule: "Acesso mínimo por finalidade, escopo atribuído e colunas necessárias; nenhuma leitura pública."
+    view_security_mode: "NOT_APPLICABLE"
+permissions:
+  - id: "PERM_001"
+    role_id: "ROLE_PUBLICO_LEITOR"
+    resource_id: "RES_COMPETICAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas do recurso cuja publicação para leitura pública tenha sido autorizada."
+    column_scope: []
+    conditions:
+      - "PUBLICACAO_EXPLICITA_DO_RECURSO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_001"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_001"
+  - id: "PERM_002"
+    role_id: "ROLE_ADMIN_DADOS"
+    resource_id: "RES_COMPETICAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Todas as linhas, somente enquanto houver atribuição administrativa vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_ADMINISTRATIVA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_002"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_002"
+  - id: "PERM_003"
+    role_id: "ROLE_PUBLICO_LEITOR"
+    resource_id: "RES_PARTIDA"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas do recurso cuja publicação para leitura pública tenha sido autorizada."
+    column_scope: []
+    conditions:
+      - "PUBLICACAO_EXPLICITA_DO_RECURSO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_003"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_003"
+  - id: "PERM_004"
+    role_id: "ROLE_ADMIN_DADOS"
+    resource_id: "RES_PARTIDA"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Todas as linhas, somente enquanto houver atribuição administrativa vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_ADMINISTRATIVA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_004"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_004"
+  - id: "PERM_005"
+    role_id: "ROLE_PUBLICO_LEITOR"
+    resource_id: "RES_EQUIPE"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas do recurso cuja publicação para leitura pública tenha sido autorizada."
+    column_scope: []
+    conditions:
+      - "PUBLICACAO_EXPLICITA_DO_RECURSO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_005"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_005"
+  - id: "PERM_006"
+    role_id: "ROLE_PUBLICO_LEITOR"
+    resource_id: "RES_PARTIDA_EQUIPE"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas do recurso cuja publicação para leitura pública tenha sido autorizada."
+    column_scope: []
+    conditions:
+      - "PUBLICACAO_EXPLICITA_DO_RECURSO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_006"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_006"
+  - id: "PERM_007"
+    role_id: "ROLE_PUBLICO_LEITOR"
+    resource_id: "RES_PERIODO_SET"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas do recurso cuja publicação para leitura pública tenha sido autorizada."
+    column_scope: []
+    conditions:
+      - "PUBLICACAO_EXPLICITA_DO_RECURSO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_007"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_007"
+  - id: "PERM_008"
+    role_id: "ROLE_PUBLICO_LEITOR"
+    resource_id: "RES_SHOOT_OUT"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas do recurso cuja publicação para leitura pública tenha sido autorizada."
+    column_scope: []
+    conditions:
+      - "PUBLICACAO_EXPLICITA_DO_RECURSO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_008"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_008"
+  - id: "PERM_009"
+    role_id: "ROLE_PUBLICO_LEITOR"
+    resource_id: "RES_PLACAR_JOGO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas do recurso cuja publicação para leitura pública tenha sido autorizada."
+    column_scope: []
+    conditions:
+      - "PUBLICACAO_EXPLICITA_DO_RECURSO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_009"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_009"
+  - id: "PERM_010"
+    role_id: "ROLE_PUBLICO_LEITOR"
+    resource_id: "RES_ESTADO_DO_PLACAR"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas do recurso cuja publicação para leitura pública tenha sido autorizada."
+    column_scope: []
+    conditions:
+      - "PUBLICACAO_EXPLICITA_DO_RECURSO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_010"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_010"
+  - id: "PERM_011"
+    role_id: "ROLE_PUBLICO_LEITOR"
+    resource_id: "RES_EVOLUCAO_DO_PLACAR"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas do recurso cuja publicação para leitura pública tenha sido autorizada."
+    column_scope: []
+    conditions:
+      - "PUBLICACAO_EXPLICITA_DO_RECURSO"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_011"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_011"
+  - id: "PERM_012"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_EQUIPE_ATLETA_INSCRICAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope: []
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_024"
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_025"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_012"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_012"
+  - id: "PERM_013"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_EQUIPE_ATLETA_INSCRICAO"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope: []
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_024"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_013"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_013"
+  - id: "PERM_014"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_POSSE_DE_BOLA"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_014"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_014"
+  - id: "PERM_015"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_POSSE_DE_BOLA"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_003"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_015"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_015"
+  - id: "PERM_016"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_UNIDADE_BASICA_ATAQUE_BOU"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_004"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_016"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_016"
+  - id: "PERM_017"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_UNIDADE_BASICA_ATAQUE_BOU"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_004"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_017"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_017"
+  - id: "PERM_018"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_EVENTO_SCOUT"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_018"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_018"
+  - id: "PERM_019"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_EVENTO_SCOUT"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_019"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_019"
+  - id: "PERM_020"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_OBSERVACAO_DE_SCOUT"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_020"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_020"
+  - id: "PERM_021"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_OBSERVACAO_DE_SCOUT"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_021"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_021"
+  - id: "PERM_022"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_PROTOCOLO_SCOUT"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_022"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_022"
+  - id: "PERM_023"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_MIDIA_VIDEO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_023"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_023"
+  - id: "PERM_024"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_MIDIA_VIDEO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope: []
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_024"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_024"
+  - id: "PERM_025"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_SEGMENTO_OBSERVADO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_025"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_025"
+  - id: "PERM_026"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_SEGMENTO_OBSERVADO"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_026"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_026"
+  - id: "PERM_027"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_SISTEMA_DEFENSIVO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_027"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_027"
+  - id: "PERM_028"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_SISTEMA_DEFENSIVO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope: []
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_028"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_028"
+  - id: "PERM_029"
+    role_id: "ROLE_REVISOR_SCOUT"
+    resource_id: "RES_QUALIFICACAO_OBSERVADOR"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao revisor por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_REVISAO_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_029"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_029"
+  - id: "PERM_030"
+    role_id: "ROLE_ADMIN_DADOS"
+    resource_id: "RES_QUALIFICACAO_OBSERVADOR"
+    operation: "UPDATE"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Todas as linhas, somente enquanto houver atribuição administrativa vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_ADMINISTRATIVA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_009"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_030"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_030"
+  - id: "PERM_031"
+    role_id: "ROLE_REVISOR_SCOUT"
+    resource_id: "RES_REVISAO_DA_OBSERVACAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao revisor por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_REVISAO_VIGENTE_NO_BANCO"
+      - "REVISOR_DIFERENTE_DO_ANALISTA_ORIGINAL"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_031"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_031"
+  - id: "PERM_032"
+    role_id: "ROLE_REVISOR_SCOUT"
+    resource_id: "RES_REVISAO_DA_OBSERVACAO"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao revisor por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_REVISAO_VIGENTE_NO_BANCO"
+      - "REVISOR_DIFERENTE_DO_ANALISTA_ORIGINAL"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_032"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_032"
+  - id: "PERM_033"
+    role_id: "ROLE_REVISOR_SCOUT"
+    resource_id: "RES_ESTADO_DE_REVISAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao revisor por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_REVISAO_VIGENTE_NO_BANCO"
+      - "REVISOR_DIFERENTE_DO_ANALISTA_ORIGINAL"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_033"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_033"
+  - id: "PERM_034"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_PROVENIENCIA_OBSERVACAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_034"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_034"
+  - id: "PERM_035"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_TRECHO_OBSERVADO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_035"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_035"
+  - id: "PERM_036"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_TRECHO_OBSERVADO"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_036"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_036"
+  - id: "PERM_037"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_SPIN_SHOT"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_037"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_037"
+  - id: "PERM_038"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_SPIN_SHOT"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_005"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_038"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_038"
+  - id: "PERM_039"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_IN_FLIGHT_SHOT"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_039"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_039"
+  - id: "PERM_040"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_IN_FLIGHT_SHOT"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_SOURCE_2_POINT_GOALS_SPIN_AND_IN_FLIGHT_SHOTS_MIN_PDF_923EFFD5_006"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_040"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_040"
+  - id: "PERM_041"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_SISTEMA_TATICO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope: []
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_041"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_041"
+  - id: "PERM_042"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_SISTEMA_TATICO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_042"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_042"
+  - id: "PERM_043"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_PAPEL_ESPORTIVO_OPERACIONAL"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope: []
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_043"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_043"
+  - id: "PERM_044"
+    role_id: "ROLE_ADMIN_DADOS"
+    resource_id: "RES_PAPEL_ESPORTIVO_OPERACIONAL"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Todas as linhas, somente enquanto houver atribuição administrativa vigente no banco."
+    column_scope: []
+    conditions:
+      - "ATRIBUICAO_ADMINISTRATIVA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_044"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_044"
+  - id: "PERM_045"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_PARTICIPACAO_EQUIPE_COMPETICAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope: []
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_045"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_045"
+  - id: "PERM_046"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_PARTICIPACAO_EQUIPE_COMPETICAO"
+    operation: "INSERT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope: []
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CEPRAEA_DATABASE_CCB2A718_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_046"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_046"
+  - id: "PERM_048"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_ATLETA"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope:
+      - "ID"
+      - "NOME_COMPLETO"
+      - "NOME_CAMISA"
+      - "NUMERO_REGISTRO"
+      - "POSICAO_PRINCIPAL"
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_005"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_048"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_048"
+  - id: "PERM_049"
+    role_id: "ROLE_ADMIN_DADOS"
+    resource_id: "RES_ATLETA"
+    operation: "UPDATE"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Todas as linhas, somente enquanto houver atribuição administrativa vigente no banco."
+    column_scope:
+      - "ID"
+      - "NOME_COMPLETO"
+      - "NOME_CAMISA"
+      - "NUMERO_REGISTRO"
+      - "POSICAO_PRINCIPAL"
+    conditions:
+      - "ATRIBUICAO_ADMINISTRATIVA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_049"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_049"
+  - id: "PERM_050"
+    role_id: "ROLE_ANALISTA_SCOUT"
+    resource_id: "RES_ANALISTA_OBSERVADOR"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às partidas atribuídas ao analista por associação vigente no banco."
+    column_scope:
+      - "ID"
+      - "NOME"
+      - "EMAIL"
+      - "STATUS_HABILITACAO"
+    conditions:
+      - "ATRIBUICAO_DE_PARTIDA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_PROTOCOLO_DE_SCOUT_BEACH_HANDBALL_05F9B6E2_001"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_050"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_050"
+  - id: "PERM_051"
+    role_id: "ROLE_ADMIN_DADOS"
+    resource_id: "RES_ANALISTA_OBSERVADOR"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Todas as linhas, somente enquanto houver atribuição administrativa vigente no banco."
+    column_scope:
+      - "ID"
+      - "NOME"
+      - "EMAIL"
+      - "STATUS_HABILITACAO"
+    conditions:
+      - "ATRIBUICAO_ADMINISTRATIVA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_051"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_051"
+  - id: "PERM_052"
+    role_id: "ROLE_ADMIN_DADOS"
+    resource_id: "RES_ANALISTA_OBSERVADOR"
+    operation: "UPDATE"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Todas as linhas, somente enquanto houver atribuição administrativa vigente no banco."
+    column_scope:
+      - "ID"
+      - "NOME"
+      - "EMAIL"
+      - "STATUS_HABILITACAO"
+    conditions:
+      - "ATRIBUICAO_ADMINISTRATIVA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_052"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_052"
+  - id: "PERM_053"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope:
+      - "ID"
+      - "EVENTO_SCOUT_ID"
+      - "ATLETA_ID"
+      - "PARTIDA_ID"
+      - "SAIDA_IMEDIATA_QUADRA"
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGRAS_DE_HANDEBOL_DE_PRAIA_2026_TRADUCAO_29_DE_MAIO_DE__92E1E487_015"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_053"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_053"
+  - id: "PERM_054"
+    role_id: "ROLE_ADMIN_DADOS"
+    resource_id: "RES_DESQUALIFICACAO_SEGUNDA_EXCLUSAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Todas as linhas, somente enquanto houver atribuição administrativa vigente no banco."
+    column_scope:
+      - "ID"
+      - "EVENTO_SCOUT_ID"
+      - "ATLETA_ID"
+      - "PARTIDA_ID"
+      - "SAIDA_IMEDIATA_QUADRA"
+    conditions:
+      - "ATRIBUICAO_ADMINISTRATIVA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_054"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_054"
+  - id: "PERM_055"
+    role_id: "ROLE_TREINADOR"
+    resource_id: "RES_CARTAO_AZUL_SUSPENSAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Somente linhas vinculadas às equipes, competições e partidas atribuídas ao papel por associação vigente no\
+      \ banco."
+    column_scope:
+      - "ID"
+      - "EVENTO_SCOUT_ID"
+      - "PARTIDA_ID"
+      - "ATLETA_ID"
+      - "PAPEL_OPERACIONAL_ID"
+      - "RELATORIO_ARBITRAGEM"
+      - "JOGOS_SUSPENSAO_AUTOMATICA"
+    conditions:
+      - "VINCULO_DE_EQUIPE_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_REGULAMENTO_GERAL_CAMPEONATO_CARIOCA_DE_HANDEBOL_DE_PRAI_85DF0327_017"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_055"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_055"
+  - id: "PERM_056"
+    role_id: "ROLE_ADMIN_DADOS"
+    resource_id: "RES_CARTAO_AZUL_SUSPENSAO"
+    operation: "SELECT"
+    effect: "ALLOW"
+    grant_required: true
+    row_scope: "Todas as linhas, somente enquanto houver atribuição administrativa vigente no banco."
+    column_scope:
+      - "ID"
+      - "EVENTO_SCOUT_ID"
+      - "PARTIDA_ID"
+      - "ATLETA_ID"
+      - "PAPEL_OPERACIONAL_ID"
+      - "RELATORIO_ARBITRAGEM"
+      - "JOGOS_SUSPENSAO_AUTOMATICA"
+    conditions:
+      - "ATRIBUICAO_ADMINISTRATIVA_VIGENTE_NO_BANCO"
+      - "ATRIBUICAO_NAO_AUTODECLARADA"
+      - "ATRIBUICAO_AUDITAVEL_COM_VIGENCIA"
+    rule_ids: []
+    evidence_ref_ids:
+      - "EVID_CATALOGO_REGRAS_INVARIANTES_MD_3A0566A7_002"
+    negative_test_ids:
+      - "TEST_ACCESS_NEG_056"
+    positive_test_ids:
+      - "TEST_ACCESS_POS_056"
+default_policy:
+  anonymous: "DENY"
+  authenticated_without_role: "DENY"
+  cross_tenant: "DENY"
+  privileged_service_role: "SERVER_ONLY"
+  client_authorization_from_user_metadata: "DENY"
+open_issues:
+  - id: "ISSUE_ACCESS_CONFIABILIDADE_OBSERVACAO"
+    status: "ABERTA"
+    question: "Quais papeis poderao criar, revisar e consultar avaliacoes de confiabilidade da observacao?"
+    affected_ids:
+      - "CONFIABILIDADE_OBSERVACAO"
+      - "ROLE_ANALISTA_SCOUT"
+      - "ROLE_REVISOR_SCOUT"
+      - "ROLE_ADMIN_DADOS"
+    impact: "Nao e possivel definir grants ou RLS para uma relacao cuja granularidade ainda nao foi aprovada."
+    required_evidence: "Modelo logico aprovado para CONFIABILIDADE_OBSERVACAO e decisao de acesso correspondente."
+    owner: "OPERADOR"
