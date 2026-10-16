@@ -210,6 +210,8 @@ def build(args: argparse.Namespace) -> tuple[dict[str, Any], dict[str, int]]:
     permissions = []
     for proposed in proposal["permissions"]:
         role_id = ROLE_MAP.get(proposed["role_id"], proposed["role_id"])
+        if not isinstance(role_id, str):
+            raise ValueError("role_id inválido na permissão proposta")
         resource_id = proposed["resource_id"]
         relation_id = relation_by_resource[resource_id]
         column_scope = list(proposed["column_scope"])
