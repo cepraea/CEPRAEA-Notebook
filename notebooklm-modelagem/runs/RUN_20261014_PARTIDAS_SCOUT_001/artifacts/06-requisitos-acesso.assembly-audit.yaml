@@ -1,0 +1,14 @@
+status: "PASS"
+accepted_proposal_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.report-002.md"
+accepted_proposal_sha256: "a6a55949442385aa0e816ecd9fef075a2fcfba0b77f0942076cbbefca72c9d5f"
+normalization: "RESOURCE_COVERAGE_AND_EVIDENCE_ACCEPTED; TEMPLATE_FIELDS_REBUILT; HISTORICAL_RELATIONS_DISCARDED; PLATFORM_SPECIFIC_ROW_SCOPES_REPLACED;\
+  \ UNKNOWN_RULE_IDS_REMOVED; DEFAULT_DENY_RESTORED; HUMAN_DECISIONS_EXPOSED"
+output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/06-requisitos-acesso.candidate.yaml"
+output_sha256: "1a3aec71a294618a3a5c9a63cdb331ff7e4a407b6e1f9213b32d8b9d1ee16809"
+counts:
+  roles: 5
+  resources: 32
+  permissions: 56
+  positive_tests: 56
+  negative_tests: 56
+  open_issues: 4
