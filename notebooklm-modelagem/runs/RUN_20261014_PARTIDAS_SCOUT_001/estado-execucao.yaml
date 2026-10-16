@@ -1568,6 +1568,60 @@ stages:
       wrapper_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/08-schema-postgresql.promoted.md"
       wrapper_sha256: "034a77c283fca5c435d4953d1ae09b73414f31b5bd1bfcfb38834df04bd1ca24"
       promoted_at: "2026-10-15T23:58:37-03:00"
+  - id: "STAGE_09"
+    started_at: "2026-10-16T01:36:28-03:00"
+    prompt_file: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/prompt-09-run-001.md"
+    prompt_sha256: "4133862b95194e4d222cd7842a84f6645dbc682b876dbd31f1a4abf64c11e1e9"
+    base_prompt_file: "notebooklm-modelagem/prompts/09-gerar-politicas-rls-candidatas.md"
+    base_prompt_sha256: "40589185f94e9e71d0aea904c2c5a0e47437f52b23041e9261e07f40caf5d463"
+    selected_source_ids:
+      - "c7f18856-d7c7-4b77-8feb-3266d60337c0"
+      - "1f69f4e5-f4f3-43fd-b8b0-87f19b8b2c8b"
+      - "5a493e45-c8e5-4c09-9986-40e504c8c14a"
+    input_artifacts:
+      - document_id: "ACCESS_REQUIREMENTS"
+        version: "0.1.0"
+        sha256: "bafce57a9d71ef3ea0ba54c79fac585f075d8d0efe5fe22967e62bde6c424c92"
+        promoted_source_id: "c7f18856-d7c7-4b77-8feb-3266d60337c0"
+      - document_id: "POSTGRESQL_SCHEMA_CANDIDATE"
+        sha256: "f5224887f8dd85b82542e3645e0c68fbad77c336a5f0509c229a6f7867694828"
+        promoted_source_id: "1f69f4e5-f4f3-43fd-b8b0-87f19b8b2c8b"
+      - document_id: "STAGE_09_OPERATOR_DECISION"
+        sha256: "78a6e2a4d1a60ec525c02e1cb4ae2d82a07a9678f67e080958a4967442fe22e0"
+        promoted_source_id: "5a493e45-c8e5-4c09-9986-40e504c8c14a"
+    authorization:
+      decision: "AUTHORIZED_WITH_RESTRICTIONS"
+      responsible: "USER"
+      decision_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/inputs/09-politicas-rls.operator-decision.md"
+      decision_sha256: "78a6e2a4d1a60ec525c02e1cb4ae2d82a07a9678f67e080958a4967442fe22e0"
+      decision_source_id: "5a493e45-c8e5-4c09-9986-40e504c8c14a"
+      decision_source_status: "READY"
+    generation:
+      mechanism: "REPORT_CUSTOM"
+      task_id: "51df428d-f797-4a90-bda3-5161a4a6f176"
+      artifact_id: "51df428d-f797-4a90-bda3-5161a4a6f176"
+      artifact_status: "COMPLETED"
+      output_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/09-politicas-rls.report-001.md"
+      output_sha256: "417ce0bf0de2a5e141fae079cf0cbea59e5d7242562f56634301849c7f38a8b3"
+    review:
+      status: "REJECTED"
+      reviewed_at: "2026-10-16T01:42:40-03:00"
+      audit_path: "notebooklm-modelagem/runs/RUN_20261014_PARTIDAS_SCOUT_001/artifacts/09-politicas-rls.report-001.audit.yaml"
+      audit_sha256: "411a7306c0e0c19b963ec365824d54ff81261dce1340f052fe5092e60798cb30"
+      evidence: "PUBLIC_SELECT_POLICIES_9_OF_9; REQUIRED_PERMISSIONS_IMPLEMENTED_9_OF_55; PERMISSIONS_BLOCKED_46; RLS_ENABLED_AND_FORCED_32_OF_32; MARKDOWN_H1_PRESENT; BLOCKED_OUTPUT_MIXED_WITH_SQL; AUTHORIZATION_BINDINGS_ABSENT; NO_SQL_EXECUTION"
+    approval:
+      required: true
+      decision: "NOT_REQUESTED_DUE_TO_STRUCTURAL_BLOCKER"
+      approved_by: null
+      approved_at: null
+      evidence: "BLOCK_STAGE_09_AUTHORIZATION_BINDINGS"
+    promotion:
+      status: "NOT_STARTED"
+      promoted_source_id: null
+      source_status: null
+      wrapper_path: null
+      wrapper_sha256: null
+      promoted_at: null
 
 incidents:
   - id: "INC_AUTH_001"
@@ -1640,6 +1694,12 @@ blockers:
     description: "A geração física expôs sete regras sem suporte suficiente para uma implementação SQL fiel; nesse conjunto, duas regras inferenciais não possuem responsabilidade de enforcement definida. O relatório também omitiu ações referenciais das 59 FKs e constraints diretamente implementáveis."
     decision_required: "RECONCILIAR_ENFORCEMENT_COMO_CONSTRAINT_TRIGGER_VALIDACAO_INGESTAO_OU_INVARIANTE_E_RETROPROPAGAR_MODELO_DICIONARIO_RASTREABILIDADE"
     resolution: "ENFORCEMENT_CLASSIFIED_AS_5_DECLARATIVE_CHECKS_3_STRUCTURAL_INVARIANTS_AND_5_DEFERRED_RULES; LOGICAL_0_1_2_DICTIONARY_0_1_1_TRACEABILITY_0_1_1_PROMOTED; SCHEMA_CANDIDATE_VALIDATION_PASS"
+  - id: "BLOCK_STAGE_09_AUTHORIZATION_BINDINGS"
+    status: "OPEN"
+    affected_stage_id: "STAGE_09"
+    description: "Quarenta e seis permissões exigem vínculo persistido entre auth.uid(), identidade interna, papel, escopo, vigência e auditoria; essas estruturas não existem no schema promovido."
+    decision_required: "MODELAR_ATRIBUICOES_PERSISTIDAS; ADOTAR_CLAIMS_CONFIAVEIS_COM_REVISAO_DOS_REQUISITOS; OU_RESTRINGIR_STAGE_09_AO_SUBCONJUNTO_PUBLICO"
+    resolution: null
 
 physical_gate:
   recommendation_artifact_id: "STOP_GATE_PARTIDAS_SCOUT_ANALISE_TATICA@0.2.0"

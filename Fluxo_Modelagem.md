@@ -142,7 +142,7 @@ Neste quadro, `[x]` significa que o artefato do estágio foi validado, aprovado 
 - [x] **STAGE_06 — Requisitos de acesso:** papéis, recursos, permissões, testes e política de negação padrão aprovados e promovidos.
 - [x] **STAGE_07 — Recomendação do `STOP GATE`:** `READY_WITH_RESTRICTIONS` aprovado, promovido e limitado à geração do schema PostgreSQL candidato no `STAGE_08`.
 - [x] **STAGE_08 — Schema PostgreSQL candidato:** candidato gerado, validado estaticamente, aprovado com restrições e promovido; não houve execução de SQL, migration, implantação, carga de dados ou criação de políticas RLS.
-- [ ] **STAGE_09 — Políticas RLS candidatas:** derivar grants e policies do artefato de acesso promovido.
+- [ ] **STAGE_09 — Políticas RLS candidatas:** iniciado; primeira geração rejeitada porque 46 das 55 permissões dependem de vínculos persistidos de identidade, papel, escopo, vigência e auditoria ainda ausentes do schema promovido.
 - [ ] **STAGE_10 — Seeds simulados candidatos:** preparar dados exclusivamente fictícios.
 - [ ] **STAGE_11 — Testes pgTAP candidatos:** materializar testes estruturais, positivos, negativos e de acesso.
 - [ ] **STAGE_12 — Migration de avanço candidata:** consolidar DDL, integridade e segurança autorizadas.
